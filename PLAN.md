@@ -2,6 +2,12 @@
 
 This plan serves as a blueprint for comprehensive project documentation. It defines the required structure, content, and standards for each documentation file to ensure consistency and maintainability.
 
+## Guiding principle
+
+Documentation is split by audience:
+- **`docs/`** — system-level: how components connect, what infrastructure they run on, external dependencies. Nothing implementation-specific.
+- **Sub-directory READMEs** — implementation-level: everything a developer needs to work on that part (tech stack, architectural pattern, coding conventions, env vars, setup, deployment).
+
 ## 1. README.md
 The primary entry point and high-level overview of the project.
 
@@ -20,20 +26,17 @@ The governing rules for project collaboration.
 *   **Issues**: Description of the issue hierarchy and template usage.
 *   **Branching**: Git flow and development rules.
 *   **Commits**: Specification for commit messages.
-*   **Pull Requests**: Requirements for Pull requests.
+*   **Pull Requests**: Requirements for pull requests.
 
 ## 3. conventions/
-> Already exists in the repository. Do not generate, used as inputs during documentation generation only. Each file covers general conventions and an enforcement section detailing what is automatically verified at build/lint time. The appropriate file is used to populate the coding conventions section of the relevant sub-directory README.
+> Already exists in the repository. Do not generate, used as inputs during documentation generation only. Each file covers folder structure (directory layout and module/layer boundary rules) and coding conventions (language standards, styling, and what is automatically enforced at build/lint time). The appropriate file is used to populate the folder structure and coding conventions sections of the relevant sub-directory README.
 
 ## 4. docs/ARCHITECTURE.md
-The technical "source of truth" for system design.
+System-level source of truth. Contains only what spans the whole system — nothing implementation-specific.
 
-*   **4.1. System Design**: 
-    *   Diagrams (e.g., Mermaid) illustrating the high-level data flow between components.
-    *   Explanation of the architectural pattern (e.g., Microservices, Monolith, Serverless).
-    *   Infrastructure overview (Cloud providers, Databases, Caching layers).
-*   **4.2. Tech Stack**: Versioned list of all major languages, frameworks, and libraries used across the stack.
-*   **4.3. Project Structure**: A directory tree explaining the purpose of top-level folders and files.
+*   **4.1. High-Level Data Flow**: Mermaid diagram showing communication between frontend, backend, database, and external services.
+*   **4.2. Infrastructure Overview**: Table of layers, technologies, and hosting locations (cloud providers, VPS, CDN, container registry).
+*   **4.3. Project Structure**: Top-level directory tree explaining the purpose of each folder.
 
 ## 5. docs/DESIGN.md
 Standards for UI, UX, and visual identity.
@@ -50,19 +53,21 @@ Technical reference for internal and external interfaces.
 *   **6.3. Data Models**: Schema definitions or descriptions of core domain entities and their relationships.
 
 ## 7. frontend/README.md
-Technical documentation specific to the user interface/client application.
+Technical documentation specific to the frontend application. All implementation-level detail lives here.
 
-*   **7.1. Folder Structure**: Deep dive into the client-side directory organization (e.g., components, hooks, state, assets).
-*   **7.2. Coding Conventions**: Populate from the relevant guide in `conventions/` if one exists for the framework in use, otherwise document conventions directly.
-*   **7.3. Environment Variables**: List of required keys and template for `.env.example`.
-*   **7.4. Local Development**: Step-by-step installation, build, and execution commands.
-*   **7.5. Deployment**: Build pipeline, environment-specific configurations, and hosting details.
+*   **7.1. Tech Stack**: Versioned list of all major languages, frameworks, and libraries used in the frontend.
+*   **7.2. Folder Structure**: Populated from `conventions/` if applicable — directory layout and module boundary rules.
+*   **7.3. Coding Conventions**: Populated from `conventions/` if applicable — language standards, styling, and enforcement rules.
+*   **7.4. Environment Variables**: List of required keys and `.env.example` reference.
+*   **7.5. Local Development**: Step-by-step installation, build, and execution commands.
+*   **7.6. Deployment**: Build pipeline, environment-specific configurations, and hosting details.
 
 ## 8. backend/README.md
-Technical documentation specific to the server-side/API application.
+Technical documentation specific to the backend application. All implementation-level detail lives here.
 
-*   **8.1. Folder Structure**: Breakdown of the server-side module or package organization (e.g., controllers, services, repositories).
-*   **8.2. Coding Conventions**: Populate from the relevant guide in `conventions/` if one exists for the framework in use, otherwise document conventions directly.
-*   **8.3. Environment Variables**: List of required keys (DB strings, API secrets) and `.env.example`.
-*   **8.4. Local Development**: Runtime/SDK requirements, external dependency setup (e.g., Docker), and startup commands.
-*   **8.5. Deployment**: Containerization (Dockerfile), CI/CD triggers, workflows, and orchestration details.
+*   **8.1. Tech Stack**: Versioned list of all major languages, frameworks, and libraries used in the backend.
+*   **8.2. Folder Structure**: Populated from `conventions/` if applicable — directory layout and layer dependency rules.
+*   **8.3. Coding Conventions**: Populated from `conventions/` if applicable — language standards, styling, and enforcement rules.
+*   **8.4. Environment Variables**: List of required keys and `.env.example` reference.
+*   **8.5. Local Development**: Runtime/SDK requirements, external dependency setup (e.g., Docker), and startup commands.
+*   **8.6. Deployment**: Containerisation (Dockerfile), CI/CD triggers, workflows, and orchestration details.
