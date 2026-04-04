@@ -1,0 +1,16 @@
+name: Bug
+description: A problem which impairs functionality.
+labels: ["Bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment

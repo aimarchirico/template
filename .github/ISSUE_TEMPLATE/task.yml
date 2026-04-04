@@ -1,0 +1,8 @@
+name: Task
+description: A technical piece of work.
+labels: ["Task"]
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective

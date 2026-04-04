@@ -1,0 +1,8 @@
+name: Epic
+description: A high-level initiative.
+labels: ["Epic"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary

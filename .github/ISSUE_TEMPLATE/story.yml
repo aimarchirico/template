@@ -1,0 +1,12 @@
+name: Story
+description: A user-facing feature.
+labels: ["Story"]
+body:
+  - type: textarea
+    id: story
+    attributes:
+      label: Story
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria

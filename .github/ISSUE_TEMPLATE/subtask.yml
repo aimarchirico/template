@@ -1,0 +1,8 @@
+name: Subtask
+description: A granular piece of work.
+labels: ["Subtask"]
+body:
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
