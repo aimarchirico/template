@@ -19,7 +19,7 @@ The primary entry point and high-level overview of the project.
 *   **1.6. Workflow**: Link to contribution guidelines in `CONTRIBUTING.md`.
 
 ## 2. CONTRIBUTING.md
-> Already exists in the repository. Do not generate, use as-is.
+> Already exists in the repository. Do not generate; use as-is.
 
 The governing rules for project collaboration.
 
@@ -29,12 +29,12 @@ The governing rules for project collaboration.
 *   **Pull Requests**: Requirements for pull requests.
 
 ## 3. conventions/
-> Already exists in the repository. Do not generate, used as inputs during documentation generation only. Each file covers folder structure (directory layout and module/layer boundary rules) and coding conventions (language standards, styling, and what is automatically enforced at build/lint time). The appropriate file is used to populate the folder structure and coding conventions sections of the relevant sub-directory README.
+> Already exists in the repository. Do not generate; use as inputs during documentation generation only. Each file covers folder structure (directory layout and module/layer boundary rules) and coding conventions (language standards, styling, and what is automatically enforced at build/lint time). The appropriate file is used to populate the folder structure and coding conventions sections of the relevant sub-directory README.
 
 ## 4. docs/ARCHITECTURE.md
 System-level source of truth. Contains only what spans the whole system — nothing implementation-specific.
 
-*   **4.1. High-Level Data Flow**: Mermaid diagram showing communication between frontend, backend, database, and external services.
+*   **4.1. Data Flow**: Mermaid diagram showing communication between frontend, backend, database, and external services.
 *   **4.2. Infrastructure Overview**: Table of layers, technologies, and hosting locations (cloud providers, VPS, CDN, container registry).
 *   **4.3. Project Structure**: Top-level directory tree explaining the purpose of each folder.
 
