@@ -33,8 +33,8 @@ graph TD
 
 | View | Purpose |
 | :--- | :--- |
-| [**Backlog**](https://github.com/users/aimarchirico/projects/1/views/1) | A table for prioritizing upcoming stories, tasks, and bugs. |
-| [**Sprint Board**](https://github.com/users/aimarchirico/projects/1/views/2) | A board for tracking stories, tasks, and bugs in the active sprint. |
+| **Backlog** | A table for prioritizing upcoming stories, tasks, and bugs. |
+| **Sprint Board** | A board for tracking stories, tasks, and bugs in the active sprint. |
 
 | Status | Description |
 | :--- | :--- |
