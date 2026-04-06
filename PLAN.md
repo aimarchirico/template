@@ -5,8 +5,8 @@ This plan serves as a blueprint for comprehensive project documentation. It defi
 ## Guiding principle
 
 Documentation is split by audience:
-- **`docs/`** — system-level: how components connect, what infrastructure they run on, external dependencies. Nothing implementation-specific.
-- **Sub-directory READMEs** — implementation-level: everything a developer needs to work on that part (tech stack, architectural pattern, coding conventions, env vars, setup, deployment).
+- **`docs/`**; system-level: how components connect, what infrastructure they run on, external dependencies. Nothing implementation-specific.
+- **Sub-directory READMEs**; implementation-level: everything a developer needs to work on that part.
 
 ## 1. README.md
 The primary entry point and high-level overview of the project.
@@ -29,10 +29,12 @@ The governing rules for project collaboration.
 *   **Pull Requests**: Requirements for pull requests.
 
 ## 3. conventions/
-> Already exists in the repository. Do not generate; use as inputs during documentation generation only. Each file covers folder structure (directory layout and module/layer boundary rules) and coding conventions (language standards, styling, and what is automatically enforced at build/lint time). The appropriate file is used to populate the folder structure and coding conventions sections of the relevant sub-directory README.
+> Already exists in the repository. Do not generate; use as inputs during documentation generation only. 
+
+Each file covers folder structure and coding conventions. The appropriate file is used to populate the folder structure and coding conventions sections of the relevant sub-directory README.
 
 ## 4. docs/ARCHITECTURE.md
-System-level source of truth. Contains only what spans the whole system — nothing implementation-specific.
+System-level source of truth. Contains only what spans the whole system; nothing implementation-specific.
 
 *   **4.1. Data Flow**: Mermaid diagram showing communication between frontend, backend, database, and external services.
 *   **4.2. Infrastructure Overview**: Table of layers, technologies, and hosting locations (cloud providers, VPS, CDN, container registry).
@@ -56,8 +58,8 @@ Technical reference for internal and external interfaces.
 Technical documentation specific to the frontend application. All implementation-level detail lives here.
 
 *   **7.1. Tech Stack**: Versioned list of all major languages, frameworks, and libraries used in the frontend.
-*   **7.2. Folder Structure**: Populated from `conventions/` if applicable — directory layout and module boundary rules.
-*   **7.3. Coding Conventions**: Populated from `conventions/` if applicable — language standards, styling, and enforcement rules.
+*   **7.2. Folder Structure**: Populated from `conventions/` if applicable; directory layout and module boundary rules.
+*   **7.3. Coding Conventions**: Populated from `conventions/` if applicable; language standards, styling, and enforcement rules.
 *   **7.4. Environment Variables**: List of required keys and `.env.example` reference.
 *   **7.5. Local Development**: Step-by-step installation, build, and execution commands.
 *   **7.6. Deployment**: Build pipeline, environment-specific configurations, and hosting details.
@@ -66,8 +68,8 @@ Technical documentation specific to the frontend application. All implementation
 Technical documentation specific to the backend application. All implementation-level detail lives here.
 
 *   **8.1. Tech Stack**: Versioned list of all major languages, frameworks, and libraries used in the backend.
-*   **8.2. Folder Structure**: Populated from `conventions/` if applicable — directory layout and layer dependency rules.
-*   **8.3. Coding Conventions**: Populated from `conventions/` if applicable — language standards, styling, and enforcement rules.
+*   **8.2. Folder Structure**: Populated from `conventions/` if applicable; directory layout and layer dependency rules.
+*   **8.3. Coding Conventions**: Populated from `conventions/` if applicable; language standards, styling, and enforcement rules.
 *   **8.4. Environment Variables**: List of required keys and `.env.example` reference.
 *   **8.5. Local Development**: Runtime/SDK requirements, external dependency setup (e.g., Docker), and startup commands.
 *   **8.6. Deployment**: Containerisation (Dockerfile), CI/CD triggers, workflows, and orchestration details.
