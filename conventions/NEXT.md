@@ -1,7 +1,7 @@
 # Coding Conventions: Next.js / Expo (TypeScript)
 
-## Folder Structure
-Feature-based layout. Top-level source directories:
+## Structure
+Feature-based folder structure. Top-level source directories:
 
 | Directory | Purpose |
 | :--- | :--- |
