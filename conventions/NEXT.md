@@ -3,7 +3,7 @@
 ## Structure
 Feature-based folder structure. Top-level source directories:
 
-| Directory | Purpose |
+| Module | Purpose |
 | :--- | :--- |
 | `src/app/` | File-based routing (Next.js App Router / Expo Router) |
 | `src/features/` | Self-contained feature modules (UI, hooks, utils scoped to a feature) |
