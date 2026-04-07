@@ -22,4 +22,4 @@ Feature-based layout. Top-level source directories:
 - **File Names**: `kebab-case` filenames; exception: `_layout.*`. Enforced by `eslint-plugin-check-file`.
 - **File Limits**: No file may exceed 300 lines (`max-lines`).
 - **Exclusions**: Exclude generated and static asset directories from formatting.
-- **Enforcement**: ESLint (framework base config + `gts`) + Prettier (gts) + `tsc --noEmit` must all pass.
+- **Enforcement**: ESLint (framework base config + `gts`) + Prettier (`gts`) + `tsc --noEmit` must all pass.
