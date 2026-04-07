@@ -12,18 +12,14 @@ Feature-based layout. Top-level source directories:
 
 **Rules**: Features may only import from themselves, `global`, and `api`. Cross-feature imports are prohibited (`eslint-plugin-boundaries`).
 
-## Language Standards
+## Language and Framework Standards
 - **TypeScript**: strict mode; no implicit `any`. Target `ESNext` with `isolatedModules: true`. Enforced by `tsc --noEmit`.
 - **Exports**: named exports only; default exports are banned (`import/no-default-export`), with the exception of `src/app/**` to support file-based routing.
-
-## Naming Conventions
-- **Files**: `kebab-case` filenames; exception: `_layout.*`. Enforced by `eslint-plugin-check-file`.
-
-## Framework Patterns
 - **Components**: functional components only.
 
-## Styling & Formatting
-- Google TypeScript Style (`gts`); the shared config used by both ESLint and Prettier.
-- No file may exceed 300 lines (`max-lines`).
-- Exclude generated and static asset directories from formatting.
-- ESLint (framework base config + `gts`) + Prettier + `tsc --noEmit` must all pass.
+## Styling and Formatting
+- **Style Guide**: Google TypeScript Style (`gts`); the shared config used by both ESLint and Prettier.
+- **File Names**: `kebab-case` filenames; exception: `_layout.*`. Enforced by `eslint-plugin-check-file`.
+- **File Limits**: No file may exceed 300 lines (`max-lines`).
+- **Exclusions**: Exclude generated and static asset directories from formatting.
+- **Enforcement**: ESLint (framework base config + `gts`) + Prettier + `tsc --noEmit` must all pass.
