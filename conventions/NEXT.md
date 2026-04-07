@@ -10,7 +10,8 @@ Feature-based layout. Top-level source directories:
 | `src/global/` | Shared utilities, hooks, and components used across features |
 | `src/api/` | API client, query definitions, and type-safe request functions |
 
-**Rules**: Features may only import from themselves, `global`, and `api`. Cross-feature imports are prohibited (`eslint-plugin-boundaries`).
+**Rules**: 
+- Features may only import from themselves, `global`, and `api`. Cross-feature imports are prohibited (`eslint-plugin-boundaries`).
 
 ## Language and Framework Standards
 - **TypeScript**: strict mode; no implicit `any`. Target `ESNext` with `isolatedModules: true`. Enforced by `tsc --noEmit`.
