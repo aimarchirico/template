@@ -7,11 +7,11 @@ Each module maintains its own `src/main/kotlin/` directory. The module directori
 | Directory | Purpose |
 | :--- | :--- |
 | `app/` | Application entry point, system configuration, and security setups |
-| `build-logic/` | Shared build conventions and custom build scripts |
+| `feature/<name>/` | Self-contained feature modules |
 | `core/domain/` | Shared pure business entities and interfaces without framework dependencies |
 | `core/repository/` | Shared data access implementations and database migrations |
 | `core/service/` | Shared application logic orchestrating domain and repository |
-| `feature/<name>/` | Self-contained feature modules |
+| `build-logic/` | Shared build conventions and custom build scripts |
 
 **Rules**:
 - **Dependency Direction**: `core:domain` ← `core:repository` ← `core:service` ← `feature` ← `app`. Each module may only depend on modules below it. Enforced by ArchUnit.
