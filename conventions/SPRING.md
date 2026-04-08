@@ -1,6 +1,6 @@
 # Spring Boot (Kotlin)
 
-## Structure
+## Folder Structure
 Modular monolith using Gradle multi-project builds. 
 Each module maintains its own `src/main/kotlin/` directory. The module directories are as follows:
 
