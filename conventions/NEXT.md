@@ -1,4 +1,4 @@
-# Coding Conventions: Next.js / Expo (TypeScript)
+# Next.js / Expo (TypeScript)
 
 ## Folder Structure
 Feature-based folder structure. Top-level source directories:
