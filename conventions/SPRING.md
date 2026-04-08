@@ -21,7 +21,7 @@ Each module maintains its own `src/main/kotlin/` directory. The module directori
 - **Kotlin**: Strict null-safety (`-Xjsr305=strict`). Prefer idiomatic Kotlin (data classes, extension functions, null-safe operators). Null-safety enforced by the compiler.
 - **Patterns**: Constructor injection only; avoid field injection.
 
-## Styling & Formatting
+## Styling and Formatting
 - **Style Guide**: Google Style via ktfmt.
 - **Naming Conventions**: `camelCase` for functions and variables. `SCREAMING_SNAKE_CASE` for constants.
 - **File Names**: all Kotlin source files must use `PascalCase`. Enforced by ArchUnit.
