@@ -11,7 +11,7 @@ Feature-based folder structure. Top-level source directories:
 | `src/api/` | API client, query definitions, and type-safe request functions |
 
 **Rules**: 
-- **Dependency direction**: `api` ← `global` ← `feature`. Each directory may only import from itself and the directories below it. Enforced by `eslint-plugin-boundaries`.
+- **Dependency direction**: `api` ← `global` ← `features` ← `app`. Each directory may only import from itself and the directories below it. Enforced by `eslint-plugin-boundaries`.
 - **​Isolation**: Cross-feature imports are strictly prohibited. Enforced by `eslint-plugin-boundaries`.
 
 
