@@ -1,4 +1,4 @@
-# Coding Conventions: Spring Boot (Kotlin)
+# Spring Boot (Kotlin)
 
 ## Structure
 Modular monolith using Gradle multi-project builds. 
