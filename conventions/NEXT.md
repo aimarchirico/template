@@ -5,13 +5,13 @@ Feature-based folder structure. Top-level source directories:
 
 | Directory | Purpose |
 | :--- | :--- |
-| `src/api/` | API client, query definitions, and type-safe request functions |
-| `src/global/` | Shared utilities, hooks, and components used across features |
-| `src/features/` | Self-contained feature modules (UI, hooks, utils scoped to a feature) |
 | `src/app/` | File-based routing (Next.js App Router / Expo Router) |
+| `src/features/` | Self-contained feature modules (UI, hooks, utils scoped to a feature) |
+| `src/global/` | Shared utilities, hooks, and components used across features |
+| `src/api/` | API client, query definitions, and type-safe request functions |
 
 **Rules**: 
-- **Dependency Direction**: `api` ← `global` ← `features` ← `app`. Each directory may only import from itself and the directories below it. Enforced by `eslint-plugin-boundaries`.
+- **Dependency Direction**: `app` → `features` → `global` → `api`. Each directory may only import from itself and the directories below it. Enforced by `eslint-plugin-boundaries`.
 - **​Isolation**: Cross-feature imports are strictly prohibited. Enforced by `eslint-plugin-boundaries`.
 
 
