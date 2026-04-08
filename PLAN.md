@@ -57,9 +57,9 @@ Technical reference for internal and external interfaces.
 ## 7. [module]/README.md
 Technical documentation specific to any project subsystem. All implementation-level detail lives here.
 
-*   **7.1. Tech Stack**: Versioned list of all major languages, frameworks, and libraries used in the frontend.
+*   **7.1. Tech Stack**: Versioned list of all major languages, frameworks, and libraries used in the module.
 *   **7.2. Folder Structure**: Populated from `conventions/` if applicable; directory layout and module boundary rules.
-*   **7.3. Coding Conventions**: Populated from `conventions/` if applicable; language standards, naming conventions, framework patterns, styling and formatting.
+*   **7.3. Coding Conventions**: Populated from `conventions/` if applicable; language and framework standards, styling and formatting.
 *   **7.4. Environment Variables**: List of required keys and `.env.example` reference.
 *   **7.5. Local Development**: Installation steps, runtime requirements, and execution commands.
 *   **7.6. Deployment**: CI/CD pipelines, containerization, and hosting details.
