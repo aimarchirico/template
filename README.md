@@ -13,3 +13,12 @@ A GitHub repository template with structured documentation, issue templates, and
 ## Getting Started
 
 Use this repository as a template on GitHub, then follow the [documentation plan](PLAN.md) to populate the project-specific docs.
+
+<html>
+<style>
+  .vscode-dark img[src$=".svg"] {
+    filter: invert(1) hue-rotate(180deg);
+  }
+</style>
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"/>
+</html>
