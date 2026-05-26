@@ -7,4 +7,4 @@ description: Initialize project documentation
 2. Read `PLAN.md` and any matching files in the `conventions/` folder. 
 3. Ask follow-up questions if technical details are missing.
 4. Generate all documentation based on the plan and conventions.
-5. Execute terminal commands to delete `PLAN.md` and the `conventions/` folder.
+5. Execute terminal commands to delete `PLAN.md`, the `conventions/` folder, and this specific skill file (.claude/skills/docs/SKILL.md).
