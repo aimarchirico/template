@@ -103,7 +103,7 @@ We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0
 | `revert` | - | Reverts a previous commit |
 
 **Rules**:
-- **Breaking**: Append `!` to type/scope or use `BREAKING CHANGE:` footer.
+- **Breaking (MAJOR)**: Append `!` to type/scope or use `BREAKING CHANGE:` footer.
 - **Mood**: Use imperative (e.g., `add` not `added`).
 - **Format**: Lowercase start, no trailing period.
 
