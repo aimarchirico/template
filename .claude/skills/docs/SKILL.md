@@ -1,6 +1,6 @@
 ---
 name: docs
-description: Initialize project documentation.
+description: Initialize project documentation
 ---
 
 1. Ask user for the project name, description, and tech stack. 
