@@ -1,6 +1,6 @@
 ---
 name: pr
-description: Create a standardized pull request.
+description: Create a standardized pull request
 ---
 
 1. Analyze the current git branch and recent commits. 
