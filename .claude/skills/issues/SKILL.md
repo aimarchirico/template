@@ -5,7 +5,7 @@ description: Generate the initial issue backlog from project documentation
 
 Requires the `gh-sub-issue` extension: `gh extension install yahsan2/gh-sub-issue`.
 
-1. Read `CONTRIBUTING.md`, `.github/ISSUE_TEMPLATE/` and the generated docs: `README.md`, `docs/`, each `<module>/README.md`.
+1. Read `CONTRIBUTING.md`, `.github/ISSUE_TEMPLATE/` and the generated docs: `README.md`, `docs/`, each `<module>/README.md`. Apply every rule those files state.
 2. Map docs to issues:
    - **Epic** per feature area in `README.md`.
    - **Story** per user flow in `DESIGN.md`.
