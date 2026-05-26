@@ -2,7 +2,7 @@
 
 This plan serves as a blueprint for comprehensive project documentation. It defines the required structure, content, and standards for each documentation file to ensure consistency and maintainability.
 
-## Guiding principle
+## Guiding Principle
 
 Documentation is split by audience:
 - **`docs/`**; system-level: how components connect, what infrastructure they run on, external dependencies. Nothing implementation-specific.
