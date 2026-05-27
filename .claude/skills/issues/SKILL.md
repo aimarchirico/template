@@ -1,20 +1,16 @@
 ---
 name: issues
-description: Generate the initial issue backlog from project documentation
+description: Manage issues for initial backlog generation and ad-hoc creation
+allowed-tools: Bash(bash .claude/skills/issues/scripts/create-issues.sh *)
 ---
 
-Requires the `gh-sub-issue` extension: `gh extension install yahsan2/gh-sub-issue`.
-
-1. Read `CONTRIBUTING.md`, `.github/ISSUE_TEMPLATE/` and the docs: `README.md`, `docs/`, each `<module>/README.md`. Apply every rule those files state.
-2. Map docs to issues:
-    - **Epic** per feature area in `README.md`.
-    - **Story** per user flow in `DESIGN.md`.
-    - **Task** per technical work item in `API.md` / `ARCHITECTURE.md` / module READMEs.
-   - **Subtask** for granular steps only when the docs make them obvious; otherwise leave the parent atomic.
-3. Show the drafted hierarchy and ask the user to confirm, edit, or trim. Do not create issues until approved.
-4. For every issue, source its label and body shape from the matching `.github/ISSUE_TEMPLATE/<type>.yml`:
-   - `--label` value comes from the template's `labels:` field, exactly as written (case-sensitive, e.g. `Epic`, `Story`, `Task`, `Subtask`). Do not invent labels.
-   - The body must render each `body:` field as a `### <label>` markdown section, in the order the template defines them. Do not skip fields or invent extra sections.
-5. Create parents first so sub-issue links have a target:
-   - Epics: `gh issue create --label <Label> --title "..." --body "..."`, capturing the returned number.
-   - Children: `gh sub-issue create --parent <num> --label <Label> --title "..." --body "..."`.
+1. Ask the user whether they want to generate an initial backlog from documentation or create new ad-hoc issues.
+2. Read `CONTRIBUTING.md` and `.github/ISSUE_TEMPLATE/` to understand the issue formatting and hierarchy rules to apply.
+3. Gather the necessary context based on the user's choice:
+    - For an initial backlog, read `README.md`, `docs/`, and module READMEs.
+    - For ad-hoc issues, ask for the new issue types and details and automatically infer any required logical children.
+4. Map the identified work to issues using Epic for high-level feature areas, Story for specific user flows, Task for technical work items, and Subtask for granular steps when appropriate.
+5. Show the drafted hierarchy, ask the user to confirm, edit, or trim, and do not proceed until approved.
+6. Generate `issues.json` containing an `items` array where every node in the hierarchy strictly follows this recursive JSON schema: { "title": "string", "body": "string", "label": "string", "children": [ /* nested objects */ ] }.
+7. Execute `bash .claude/skills/issues/scripts/create-issues.sh issues.json`.
+8. Delete the `issues.json` file.
