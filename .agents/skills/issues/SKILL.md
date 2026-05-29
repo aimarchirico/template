@@ -1,7 +1,7 @@
 ---
 name: issues
 description: Manage issues for initial backlog generation and ad-hoc creation
-allowed-tools: Bash(bash .claude/skills/issues/scripts/create-issues.sh *)
+allowed-tools: Bash(bash .agents/skills/issues/scripts/create-issues.sh *)
 ---
 
 1. Ask the user whether they want to generate an initial backlog from documentation or create new ad-hoc issues.
@@ -12,5 +12,5 @@ allowed-tools: Bash(bash .claude/skills/issues/scripts/create-issues.sh *)
 4. Map the identified work to issues strictly according to the rules defined in `CONTRIBUTING.md`.
 5. Show the drafted hierarchy, ask the user to confirm, edit, or trim, and do not proceed until approved.
 6. Generate `issues.json` containing an `items` array where every node in the hierarchy strictly follows this recursive JSON schema: { "title": "string", "body": "string", "label": "string", "children": [ /* nested objects */ ] }.
-7. Execute `bash .claude/skills/issues/scripts/create-issues.sh issues.json`.
+7. Execute `bash .agents/skills/issues/scripts/create-issues.sh issues.json`.
 8. Delete the `issues.json` file.
