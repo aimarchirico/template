@@ -1,6 +1,7 @@
 ---
 name: pr
 description: Create a standardized pull request
+allowed-tools: Bash(gh pr create *) Bash(git log *) Bash(git status *)
 ---
 
 1. Analyze the current git branch and recent commits. 
