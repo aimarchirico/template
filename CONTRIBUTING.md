@@ -73,6 +73,7 @@ We follow the [Conventional Branch](https://conventional-branch.github.io/) spec
 - Lowercase only
 - Hyphen-separated
 - Concise descriptions
+- **Ticket Numbers**: Include the ticket ID if applicable (e.g., `feature/issue-123-new-login`)
 
 ---
 
