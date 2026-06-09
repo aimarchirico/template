@@ -1,20 +1,25 @@
 ---
 name: docs
-description: Initialize and update project documentation
+description: Initialize or update project documentation
 ---
 
-1. Ask the user whether to initialize new documentation or update existing documentation.
+## Execution Steps
 
-## Initialization 
+1. Determine the mode: If the user passes the `--init` flag, proceed with **Initialization**. Otherwise, proceed with **Update**.
 
-1. Ask user for the project name, description, and tech stack. 
-2. Read `PLAN.md` and any matching files in the `conventions/` folder. 
-3. Ask follow-up questions if technical details are missing.
-4. Generate all documentation based on the plan and conventions.
-5. Delete `PLAN.md` and the `conventions/` folder.
+## Initialization
+
+1. Ask the user for the project name, description, tech stack, and any missing technical details.
+2. Read `PLAN.md` and any files in `conventions/`, which serve as the absolute source of truth for the required files, structure, content, and guidelines. 
+3. Generate the exact files and sections specified in `PLAN.md`.
+4. Delete `PLAN.md` and the `conventions/` folder if they were processed.
 
 ## Update
-1. Read the current `README.md`, `docs/`, and module READMEs.
-2. Analyze the codebase, recent git commits, or git diffs to automatically infer new features and architectural changes.
-3. Present the inferred updates to the user and wait for approval.
-4. Modify the documentation files while maintaining the existing formatting and structural conventions across all files. 
+
+1. Analyze the codebase, recent commits, and `git diff` to automatically infer new features and architectural changes.
+2. Present proposed updates and wait for user approval.
+3. Apply the approved edits to `README.md` and `docs/` files while maintaining their formatting and structural conventions.
+
+## Supported Flags
+
+- `--init`: Run the initialization workflow.
