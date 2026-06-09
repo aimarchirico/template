@@ -1,16 +1,34 @@
 ---
 name: issues
-description: Manage issues for initial backlog generation and ad-hoc creation
-allowed-tools: Bash(bash .agents/skills/issues/scripts/create-issues.sh *)
+description: Manage issues for initial backlog generation or ad-hoc creation
 ---
 
-1. Ask the user whether they want to generate an initial backlog from documentation or create new ad-hoc issues.
-2. Read `CONTRIBUTING.md` and `.github/ISSUE_TEMPLATE/` to understand the issue structure and hierarchy rules to apply.
-3. Gather the necessary context based on the user's choice:
-    - For an initial backlog, read `README.md`, `docs/`, and module READMEs.
-    - For ad-hoc issues, ask for the new issue types and details and automatically infer any required logical children.
-4. Map the identified work to issues strictly according to the rules defined in `CONTRIBUTING.md`.
-5. Show the drafted hierarchy, ask the user to confirm, edit, or trim, and do not proceed until approved.
-6. Generate `issues.json` containing an `items` array where every node in the hierarchy strictly follows this recursive JSON schema: { "title": "string", "body": "string", "label": "string", "children": [ /* nested objects */ ] }.
-7. Execute `bash .agents/skills/issues/scripts/create-issues.sh issues.json`.
-8. Delete the `issues.json` file.
+## Execution Steps
+
+1. Determine the workflow mode and gather context:
+
+   - **Backlog Initialization (if `--init` is passed)**: Read `README.md`, `docs/`, and module READMEs to map requirements to backlog issues.
+   - **New Issues (default)**: Ask the user for details of the issues to create.
+1. Map and format the identified work strictly following the hierarchy and conventions defined in `CONTRIBUTING.md#issues` and `.github/ISSUE_TEMPLATE/`. For both workflows, automatically infer any required logical child issues to completely represent the hierarchy of work. Ensure each issue is assigned its issue type label and priority label in the "labels" array based on the definitions in `CONTRIBUTING.md`.
+1. Show the drafted hierarchy and wait for user approval.
+1. Generate a temporary `issues.json` file containing an `items` array where every node in the hierarchy matches this recursive JSON schema:
+
+   ```json
+   {
+     "items": [
+       {
+         "title": "string",
+         "body": "string",
+         "labels": ["string"],
+         "children": [
+           /* nested child objects following the same schema */
+         ]
+       }
+     ]
+   }
+   ```
+1. Execute `bash .agents/skills/issues/scripts/create-issues.sh issues.json` (the script automatically deletes the temporary file upon completion).
+
+## Supported Flags
+
+- `--init`: Initialize the project backlog from documentation.
