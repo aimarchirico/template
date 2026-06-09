@@ -11,7 +11,8 @@ description: Orchestrate the development lifecycle starting from an existing iss
 4. Analyze requirements. If sub-issues exist, implement them sequentially. If no sub-issues exist, break the issue down into logical technical steps.
 5. Execute the `commit` skill iteratively as each sub-issue or logical step is completed.
 6. Execute the `docs` skill to update project documentation once implementation is complete.
-7. Execute the `pr` skill to open a pull request. Pass the --draft flag to the `pr` skill if it was provided by the user.
+7. Execute `git push -u origin <branch-name>` to push the commits to the remote repository.
+8. Execute the `pr` skill to open a pull request. Pass the --draft flag to the `pr` skill if it was provided by the user.
 
 ## Supported Flags
 
