@@ -12,7 +12,7 @@ description: Create a standardized pull request
    - **Branch Naming**: Extract the type and issue ID from the branch name according to `CONTRIBUTING.md#branching`.
    - **PR Title**: Format the PR title according to `CONTRIBUTING.md#pull-requests`.
    - **PR Commits**: Summarize recent commits on the branch using `git log`.
-4. Ask the user for any missing PR context and request related issue numbers if they were not successfully extracted in the previous step.
+4. Ask the user for any missing PR context and request related issue IDs if they were not successfully extracted in the previous step.
 5. Draft the PR description by populating `.github/PULL_REQUEST_TEMPLATE.md` using the gathered context and related issues.
 6. Verify remote state:
 
