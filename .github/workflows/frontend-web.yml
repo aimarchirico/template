@@ -1,0 +1,87 @@
+name: Frontend - Web
+
+on:
+  push:
+    tags:
+      - 'frontend-v*'
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Build and Deploy to Cloudflare Pages
+    steps:
+      - name: Setup Repo
+        uses: actions/checkout@v4
+      
+      - name: Setup Node
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: 20.x
+          cache: 'npm'
+          cache-dependency-path: './frontend/package-lock.json'
+
+      - name: Install Task
+        uses: arduino/setup-task@v2
+        with:
+          version: 3.x
+
+      - name: Get Version from Tag
+        id: get_version
+        run: |
+          VERSION="${GITHUB_REF#refs/tags/frontend-v}"
+          if [ "$VERSION" = "$GITHUB_REF" ]; then VERSION="dev"; fi
+          echo "VERSION_NAME=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Run CI Build
+        run: task ci:web
+        working-directory: ./frontend
+        env:
+          API_URL: ${{ vars.API_URL }}
+          CF_ACCESS_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
+          CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
+          RELEASE_URL: https://github.com/${{ github.repository }}/releases
+          VERSION_NAME: ${{ steps.get_version.outputs.VERSION_NAME }}
+
+      - name: Create GitHub Deployment
+        id: deployment
+        uses: bobheadxi/deployments@v1
+        with:
+          step: start
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: production
+          ref: ${{ github.ref }}
+
+      - name: Publish to Cloudflare Pages
+        id: cloudflare_deploy
+        working-directory: ./frontend
+        run: npx wrangler pages deploy ./dist --project-name=template --branch=main
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Update GitHub Deployment Status (Success)
+        if: success()
+        uses: bobheadxi/deployments@v1
+        with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: production
+          status: success
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+          ref: ${{ github.ref }}
+          env_url: ${{ vars.CLIENT_URL }}
+
+      - name: Update GitHub Deployment Status (Failure)
+        if: failure()
+        uses: bobheadxi/deployments@v1
+        with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: production
+          status: failure
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+          ref: ${{ github.ref }}
