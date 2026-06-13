@@ -36,7 +36,9 @@ export default {
       favicon: "./src/assets/icons/transparent-icon.png"
     },
     plugins: [
-      "expo-router"
+      "expo-router",
+      "expo-splash-screen",
+      "expo-status-bar"
     ],
     experiments: {
       typedRoutes: true
