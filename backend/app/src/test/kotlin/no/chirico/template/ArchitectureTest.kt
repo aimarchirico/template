@@ -59,11 +59,7 @@ class ArchitectureTest {
       .that()
       .resideInAPackage("no.chirico.template.core.service..")
       .should()
-      .onlyDependOnClassesThat(
-        allowedInternalPackages(
-          "no.chirico.template.core",
-        )
-      )
+      .onlyDependOnClassesThat(allowedInternalPackages("no.chirico.template.core"))
       .allowEmptyShould(true)
       .check(allClasses)
   }
