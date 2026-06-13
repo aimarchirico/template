@@ -1,0 +1,27 @@
+version: '3'
+
+tasks:
+  run:
+    desc: Start API server
+    cmds:
+      - bash gradlew bootRun
+
+  check:
+    desc: Compile and run tests for the Kotlin backend
+    cmds:
+      - bash gradlew check
+
+  fix:
+    desc: Fix formatting problems
+    cmds: 
+      - bash gradlew ktfmtFormat
+
+  up:
+    desc: Start the database container
+    cmds:
+      - docker compose up -d
+
+  down:
+    desc: Stop the database container
+    cmds:
+      - docker compose down

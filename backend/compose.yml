@@ -1,0 +1,16 @@
+services:
+  template-db:
+    container_name: template-db
+    image: postgres:18
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: template
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql
+    restart: always
+
+volumes:
+  pgdata: {}
