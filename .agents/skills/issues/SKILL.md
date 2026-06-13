@@ -7,7 +7,7 @@ description: Manage issues for initial backlog generation or ad-hoc creation
 
 1. Determine the workflow mode and gather context:
 
-   - **Backlog Initialization (if `--init` is passed)**: Read `README.md`, `docs/` files and inspect any modules to map requirements to backlog issues.
+   - **Backlog Initialization (if `--init` is passed)**: Read `README.md`, `docs/` files, and inspect any modules and workflows to map requirements to backlog issues.
    - **New Issues (default)**: Ask the user for details of the issues to create.
 1. Map and format the identified work strictly following the hierarchy and conventions defined in `CONTRIBUTING.md#issues` and `.github/ISSUE_TEMPLATE/`. For both workflows, automatically infer any required logical child issues to completely represent the hierarchy of work. Ensure each issue is assigned its issue type label and priority label in the "labels" array based on the definitions in `CONTRIBUTING.md`.
 1. Show the drafted hierarchy and wait for user approval.
@@ -31,4 +31,4 @@ description: Manage issues for initial backlog generation or ad-hoc creation
 
 ## Supported Flags
 
-- `--init`: Initialize the project backlog from documentation.
+- `--init`: Initialize the project backlog from documentation and workflows.
