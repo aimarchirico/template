@@ -1,15 +1,14 @@
 # Template
 
-A GitHub repository template with structured documentation, issue templates, and contribution workflows.
+A repository template featuring structured documentation and module templates.
 
 ## Features
 
-- GitHub issue templates (Epic, Story, Task, Bug, Subtask)
-- Pull request template
-- Contribution guidelines template (branching, commits, PRs)
-- Coding convention references for Next.js and Spring Boot
+- GitHub issue and pull request templates
+- Contribution guidelines template
+- Module templates and CI/CD workflow templates
 - Documentation plan for projects built from this template
 
 ## Getting Started
 
-Use this repository as a template on GitHub, then follow the [documentation plan](PLAN.md) to populate the project-specific docs.
+Use this repository as a template on GitHub, keeping only the applicable modules and CI/CD workflows, then follow the [documentation plan](file:///C:/Users/aimar/dev/template/PLAN.md) to populate the project-specific documentation.
