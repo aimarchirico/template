@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: template
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST}/template
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+management:
+  info:
+    env:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+info:
+  version: ${VERSION_NAME:unknown}
+
+server:
+  servlet:
+    context-path: /template
+  forward-headers-strategy: framework
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs: 
+    path: /v3/api-docs
+
+client:
+  url: ${CLIENT_URL}
+  proxy-secret: ${PROXY_SECRET:}
+
