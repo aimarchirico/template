@@ -10,15 +10,18 @@ description: Initialize or update project documentation
 ## Initialization
 
 1. Ask the user for the project name, description, tech stack, and any missing technical details.
-2. Read `PLAN.md` and any files in `conventions/`, which serve as the absolute source of truth for the required files, structure, content, and guidelines. 
+2. Determine if `backend/` and `frontend/` template modules align with the tech stack:
+
+   * If applicable: Utilize the modules for initialization.
+   * If not applicable: Delete the modules. 
 3. Generate the exact files and sections specified in `PLAN.md`.
-4. Delete `PLAN.md` and the `conventions/` folder if they were processed.
+4. Delete `PLAN.md` if it was processed. 
 
 ## Update
 
 1. Analyze the codebase, recent commits, and `git diff` to automatically infer new features and architectural changes.
 2. Present proposed updates and wait for user approval.
-3. Apply the approved edits to `README.md` and `docs/` files while maintaining their formatting and structural conventions.
+3. Apply the approved edits to `docs/` and README files while maintaining their formatting and structural conventions.
 
 ## Supported Flags
 

@@ -31,43 +31,37 @@ The governing rules for project collaboration.
 * **Commits**: Specification for commit messages.
 * **Pull Requests**: Requirements for pull requests.
 
-## 3. conventions/
-
-> Already exists in the repository. Do not generate; use as inputs during documentation generation only. 
-
-Each file covers folder structure and coding conventions. The appropriate file is used to populate the folder structure and coding conventions sections of the relevant sub-directory README.
-
-## 4. docs/ARCHITECTURE.md
+## 3. docs/ARCHITECTURE.md
 
 System-level source of truth. Contains only what spans the whole system; nothing implementation-specific.
 
-* **4.1. Data Flow**: Mermaid diagram showing communication between services.
-* **4.2. Infrastructure Overview**: Table of layers, technologies, and hosting locations.
-* **4.3. Project Structure**: Top-level directory tree explaining the purpose of each folder.
+* **3.1. Data Flow**: Mermaid diagram showing communication between services.
+* **3.2. Infrastructure Overview**: Table of layers, technologies, and hosting locations.
+* **3.3. Project Structure**: Top-level directory tree explaining the purpose of each folder.
 
-## 5. docs/DESIGN.md
+## 4. docs/DESIGN.md
 
 Standards for UI, UX, and visual identity.
 
-* **5.1. Design System**: Definitions for the color palette, typography, spacing scales, and component library usage.
-* **5.2. User Flows**: Logical maps or descriptions of the most critical user journeys through the application.
-* **5.3. Assets**: Markdown illustrations, screenshots, or other visual assets used in the design system.
+* **4.1. Design System**: Definitions for the color palette, typography, spacing scales, and component library usage.
+* **4.2. User Flows**: Logical maps or descriptions of the most critical user journeys through the application.
+* **4.3. Assets**: Markdown illustrations, screenshots, or other visual assets used in the design system.
 
-## 6. docs/API.md
+## 5. docs/API.md
 
 Technical reference for internal and external interfaces.
 
-* **6.1. Authentication**: Detailed security protocol. Instructions for obtaining and rotating credentials.
-* **6.2. Endpoints**: Summary of API resources. Link to interactive documentation if applicable.
-* **6.3. Data Models**: Schema definitions or descriptions of core domain entities and their relationships.
+* **5.1. Authentication**: Detailed security protocol. Instructions for obtaining and rotating credentials.
+* **5.2. Endpoints**: Summary of API resources. Link to interactive documentation if applicable.
+* **5.3. Data Models**: Schema definitions or descriptions of core domain entities and their relationships.
 
-## 7. [module]/README.md
+## 6. [module]/README.md
 
-Technical documentation specific to any project subsystem. All implementation-level detail lives here.
+Technical documentation specific to a project subsystem. All implementation-level detail lives here. Module templates natively enforce conventions.
 
-* **7.1. Tech Stack**: Versioned list of all major languages, frameworks, and libraries used in the module.
-* **7.2. Folder Structure**: Directory layout and module boundary rules.
-* **7.3. Coding Conventions**: Language and framework standards, styling and formatting.
-* **7.4. Environment Variables**: List of required keys and `.env.example` reference.
-* **7.5. Local Development**: Installation steps, runtime requirements, and task commands.
-* **7.6. Deployment**: CI/CD pipeline behaviors and orchestration.
+* **6.1. Tech Stack**: Versioned list of major languages, frameworks, and libraries. 
+* **6.2. Folder Structure**: Directory layout and module boundary rules. 
+* **6.3. Environment Variables**: List of required keys and `.env.example` reference. 
+* **6.4. Local Development**: Installation steps, runtime requirements and available commands. 
+* **6.5. Code Quality**: Code quality configurations, style guides, and rules. 
+* **6.6. Deployment**: CI/CD pipelines, deployment targets and hosting details.
