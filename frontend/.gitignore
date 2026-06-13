@@ -1,0 +1,10 @@
+# Node
+node_modules/
+
+# Expo
+.expo/
+dist/
+expo-env.d.ts
+
+# Environment
+.env

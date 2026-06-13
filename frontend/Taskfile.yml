@@ -1,0 +1,59 @@
+version: '3'
+
+tasks:
+  run:
+    desc: Start dev server
+    cmds:
+      - npx expo start --dev-client
+
+  check:
+    desc: Run lint and type checks
+    cmds:
+      - npx eslint src
+      - npx tsc --noEmit
+
+  fix:
+    desc: Fix lint problems
+    cmds: 
+      - npx eslint src --fix
+      
+  build: 
+    desc: Build development apk
+    dir: android
+    cmds: 
+      - npm install
+      - npx expo prebuild --platform android
+      - bash gradlew assembleDebug 
+
+  api:
+    desc: Generate OpenAPI client code and docs
+    cmds:
+      - node scripts/generate-api.js
+
+  ci:check:
+    desc: Run CI checks
+    cmds:
+      - npm ci
+      - task: check
+
+  ci:android:
+    desc: Run CI build for android
+    cmds:
+      - task: ci:check
+      - npx expo prebuild --platform android
+      - cd android && bash gradlew assembleRelease
+
+  ci:web:
+    desc: Run CI build for web
+    cmds:
+      - task: ci:check
+      - npx expo export --platform web
+      # Fix node modules asset paths for Cloudflare Pages
+      - |
+        if [ -d dist/assets/node_modules ]; then
+          mv dist/assets/node_modules/* dist/assets/ || true
+          rm -rf dist/assets/node_modules
+        fi
+        find dist/_expo/static/js/web/ -type f -print0 | xargs -0 sed -i 's/assets\/node_modules/assets/g'
+      - cp -r functions dist/functions
+      - cp public/_routes.json dist/_routes.json

@@ -1,0 +1,61 @@
+{
+  "name": "template",
+  "main": "expo-router/entry",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web",
+    "dev": "expo start --dev-client"
+  },
+  "dependencies": {
+    "expo": "~54.0.0",
+    "expo-constants": "~18.0.13",
+    "expo-linking": "~8.0.11",
+    "expo-router": "~6.0.22",
+    "expo-splash-screen": "~31.0.13",
+    "expo-status-bar": "~3.0.9",
+    "expo-system-ui": "~6.0.9",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-gesture-handler": "~2.28.0",
+    "react-native-reanimated": "~4.1.1",
+    "react-native-safe-area-context": "~5.6.0",
+    "react-native-screens": "~4.16.0",
+    "react-native-web": "~0.21.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@openapitools/openapi-generator-cli": "^2.13.4",
+    "@types/react": "~19.1.10",
+    "dotenv": "^10.0.0",
+    "eslint": "^9.39.2",
+    "eslint-config-expo": "~10.0.0",
+    "eslint-plugin-boundaries": "^6.0.2",
+    "eslint-plugin-check-file": "^3.3.1",
+    "gts": "^7.0.0",
+    "typescript": "~5.9.2",
+    "widdershins": "^4.0.1"
+  },
+  "overrides": {
+    "jsonpointer": "^5.0.1",
+    "postcss": "^8.5.10",
+    "tmp": "^0.2.6",
+    "uuid": "^11.1.1",
+    "oas-validator": {
+      "ajv": "^8.18.0"
+    },
+    "httpsnippet": {
+      "form-data": "^3.0.4"
+    },
+    "widdershins": {
+      "markdown-it": "^12.3.2",
+      "yargs": {
+        "yargs-parser": "^13.1.2"
+      }
+    }
+  },
+  "private": true
+}
