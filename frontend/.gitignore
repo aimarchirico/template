@@ -4,6 +4,7 @@ node_modules/
 # Expo
 .expo/
 dist/
+android/
 expo-env.d.ts
 
 # Environment
