@@ -17,5 +17,5 @@ description: Orchestrate the development lifecycle starting from an existing iss
 
 ## Supported Flags
 
-Flag --issue: The ID of the existing GitHub issue.
-Flag --draft: Create the resulting pull request as a draft.
+- `--issue`: The ID of the existing GitHub issue.
+- `--draft`: Create the resulting pull request as a draft.
