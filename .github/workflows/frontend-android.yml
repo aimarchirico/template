@@ -13,26 +13,26 @@ jobs:
     name: Build and Release Android APK
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Repo
+      - name: Check Out Repo
         uses: actions/checkout@v4
       
-      - name: Setup Node
+      - name: Set Up Node
         uses: actions/setup-node@v4.0.2
         with:
           node-version: 20.x
           cache: 'npm'
           cache-dependency-path: './frontend/package-lock.json'
 
-      - name: Install Task
-        uses: arduino/setup-task@v2
-        with:
-          version: 3.x
-
-      - name: Setup Java
+      - name: Set Up Java
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
+
+      - name: Set Up Task
+        uses: arduino/setup-task@v2
+        with:
+          version: 3.x
 
       - name: Get Version from Tag
         id: get_version

@@ -16,19 +16,17 @@ jobs:
       run:
         working-directory: backend
     steps:
-      - name: Setup Repo
+      - name: Check Out Repo
         uses: actions/checkout@v4
 
-      - name: Setup Java
+      - name: Set Up Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 21
+          java-version: 25
+          cache: gradle
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
-
-      - name: Install Task
+      - name: Set Up Task
         uses: arduino/setup-task@v2
         with:
           version: 3.x
