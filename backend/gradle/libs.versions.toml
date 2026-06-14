@@ -1,14 +1,11 @@
 [versions]
-kotlin = "2.1.0"
-spring-boot = "3.5.3"
+kotlin = "2.4.0"
+spring-boot = "4.1.0"
 spring-dependency-management = "1.1.7"
-hypersistence = "3.7.3"
-opencsv = "5.9"
-springdoc = "2.5.0"
-firebase-admin = "9.2.0"
-ktfmt = "0.22.0"
+hypersistence = "3.15.3"
+springdoc = "2.8.5"
+ktfmt = "0.26.0"
 archunit = "1.3.0"
-spring-ai = "1.1.2"
 
 [libraries]
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -17,14 +14,10 @@ kotlin-noarg = { module = "org.jetbrains.kotlin:kotlin-noarg", version.ref = "ko
 spring-boot-gradlePlugin = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "spring-boot" }
 spring-dependency-management-gradlePlugin = { module = "io.spring.gradle:dependency-management-plugin", version.ref = "spring-dependency-management" }
 
-hypersistence-utils = { module = "io.hypersistence:hypersistence-utils-hibernate-63", version.ref = "hypersistence" }
-opencsv = { module = "com.opencsv:opencsv", version.ref = "opencsv" }
+hypersistence-utils = { module = "io.hypersistence:hypersistence-utils-hibernate-73", version.ref = "hypersistence" }
 springdoc-openapi = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc" }
-firebase-admin = { module = "com.google.firebase:firebase-admin", version.ref = "firebase-admin" }
 ktfmt-gradlePlugin = { module = "com.ncorti.ktfmt.gradle:com.ncorti.ktfmt.gradle.gradle.plugin", version.ref = "ktfmt" }
 archunit = { module = "com.tngtech.archunit:archunit-junit5", version.ref = "archunit" }
-spring-ai-bom = { module = "org.springframework.ai:spring-ai-bom", version.ref = "spring-ai" }
-spring-ai-google-genai = { module = "org.springframework.ai:spring-ai-starter-model-google-genai", version.ref = "spring-ai" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

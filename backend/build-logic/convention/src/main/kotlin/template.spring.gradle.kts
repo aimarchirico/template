@@ -4,11 +4,11 @@ plugins {
 
 dependencyManagement {
     imports {
-        mavenBom("org.springframework.boot:spring-boot-dependencies:3.5.3")
+        mavenBom("org.springframework.boot:spring-boot-dependencies:4.1.0")
     }
 }
 
 dependencies {
-    "implementation"("com.fasterxml.jackson.module:jackson-module-kotlin")
+    "implementation"("tools.jackson.module:jackson-module-kotlin")
     "implementation"("org.jetbrains.kotlin:kotlin-reflect")
 }
