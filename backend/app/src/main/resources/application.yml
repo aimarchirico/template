@@ -10,9 +10,11 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: false
+      accept-empty-string-as-null-object: true
 
   flyway:
     enabled: true
@@ -40,6 +42,10 @@ springdoc:
     path: /swagger-ui.html
   api-docs: 
     path: /v3/api-docs
+  openapi:
+    info:
+      title: Template API
+      version: ${VERSION_NAME:unknown}
 
 client:
   url: ${CLIENT_URL}
