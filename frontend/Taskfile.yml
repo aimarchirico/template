@@ -4,6 +4,7 @@ tasks:
   run:
     desc: Start dev server
     cmds:
+      - npm install
       - npx expo start --dev-client
 
   check:
@@ -19,11 +20,10 @@ tasks:
       
   build: 
     desc: Build development apk
-    dir: android
     cmds: 
       - npm install
       - npx expo prebuild --platform android
-      - bash gradlew assembleDebug 
+      - cd android && bash gradlew assembleDebug
 
   api:
     desc: Generate OpenAPI client code and docs
