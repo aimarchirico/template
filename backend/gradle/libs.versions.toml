@@ -22,7 +22,5 @@ archunit = { module = "com.tngtech.archunit:archunit-junit5", version.ref = "arc
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
-spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "spring-dependency-management" }
 ktfmt = { id = "com.ncorti.ktfmt.gradle", version.ref = "ktfmt" }
 template-kotlin = { id = "template.kotlin", version = "unspecified" }
-template-spring = { id = "template.spring", version = "unspecified" }

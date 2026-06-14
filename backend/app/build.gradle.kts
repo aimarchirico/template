@@ -1,6 +1,5 @@
 plugins {
   alias(libs.plugins.template.kotlin)
-  alias(libs.plugins.template.spring)
   alias(libs.plugins.spring.boot)
 }
 
@@ -9,6 +8,10 @@ group = "no.chirico.template"
 version = "0.0.1-SNAPSHOT"
 
 dependencies {
+  implementation(platform("org.springframework.boot:spring-boot-dependencies:4.1.0"))
+  implementation("tools.jackson.module:jackson-module-kotlin")
+  implementation("org.jetbrains.kotlin:kotlin-reflect")
+
   implementation("org.springframework.boot:spring-boot-starter-actuator")
   implementation("org.springframework.boot:spring-boot-starter-data-jpa")
   implementation("org.springframework.boot:spring-boot-starter-validation")

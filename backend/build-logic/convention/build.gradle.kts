@@ -5,15 +5,16 @@ plugins {
 group = "no.chirico.template.buildlogic"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
 }
 
 dependencies {
     implementation(libs.kotlin.gradlePlugin)
     implementation(libs.kotlin.allopen)
     implementation(libs.kotlin.noarg)
-    implementation(libs.spring.boot.gradlePlugin)
-    implementation(libs.spring.dependency.management.gradlePlugin)
+    implementation(libs.spring.boot.gradlePlugin) {
+        exclude(group = "io.spring.gradle", module = "dependency-management-plugin")
+    }
     implementation(libs.ktfmt.gradlePlugin)
 }
