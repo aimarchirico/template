@@ -1,5 +1,49 @@
 # Contributing
 
+## Documentation
+
+We split documentation by audience:
+- **`docs/`** (System-level): How components connect, what infrastructure they run on, external dependencies. Nothing implementation-specific.
+- **Module READMEs** (Implementation-level): Everything a developer needs to work on that part.
+
+### 1. README.md
+The primary entry point and high-level overview of the project.
+* **1.1. Introduction**: Clear, concise statement of the project's purpose. What problem does it solve? Who is the target audience?
+* **1.2. Demo**: Visual evidence of the project in action. Placeholders for screenshots, GIFs, or links to live staging/production environments.
+* **1.3. Features**: High-level bullet points of the core functionality and value propositions.
+* **1.4. Getting Started**: Link to sub-directory READMEs for detailed technical setup.
+* **1.5. Documentation**: A directory map for the extended documentation located in the `docs/` folder.
+* **1.6. Workflow**: Link to contribution guidelines in `CONTRIBUTING.md`.
+
+### 2. docs/ARCHITECTURE.md
+System-level source of truth. Contains only what spans the whole system; nothing implementation-specific.
+* **2.1. Data Flow**: Mermaid diagram showing communication between services.
+* **2.2. Infrastructure Overview**: Table of layers, technologies, and hosting locations.
+* **2.3. Project Structure**: Top-level directory tree explaining the purpose of each folder.
+
+### 3. docs/DESIGN.md
+Standards for UI, UX, and visual identity.
+* **3.1. Design System**: Definitions for the color palette, typography, spacing scales, and component library usage.
+* **3.2. User Flows**: Logical maps or descriptions of the most critical user journeys through the application.
+* **3.3. Assets**: Markdown illustrations, screenshots, or other visual assets used in the design system.
+
+### 4. docs/API.md
+Technical reference for internal and external interfaces.
+* **4.1. Authentication**: Detailed security protocol. Instructions for obtaining and rotating credentials.
+* **4.2. Endpoints**: Summary of API resources. Link to interactive documentation if applicable.
+* **4.3. Data Models**: Schema definitions or descriptions of core domain entities and their relationships.
+
+### 5. [module]/README.md
+Technical documentation specific to a project subsystem. All implementation-level detail lives here. Module templates natively enforce conventions.
+* **5.1. Tech Stack**: Versioned list of major languages, frameworks, and libraries. 
+* **5.2. Folder Structure**: Directory layout and module boundary rules. 
+* **5.3. Environment Variables**: List of required keys and `.env.example` reference. 
+* **5.4. Local Development**: Installation steps, runtime requirements and available commands. 
+* **5.5. Code Quality**: Code quality configurations, style guides, and rules. 
+* **5.6. Deployment**: CI/CD pipelines, deployment targets and hosting details.
+
+---
+
 ## Issues
 
 We follow the [Jira hierarchy](https://www.atlassian.com/software/jira/guides/issues/overview#what-is-an-work-item) for issues. Choose the appropriate template:
