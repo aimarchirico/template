@@ -1,0 +1,12 @@
+{
+  "frontend": {
+    "description": "Expo App",
+    "path": "frontend",
+    "workflowPrefix": "frontend-"
+  },
+  "backend": {
+    "description": " Spring Boot REST API",
+    "path": "backend",
+    "workflowPrefix": "backend-"
+  }
+}

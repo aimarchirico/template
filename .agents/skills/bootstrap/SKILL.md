@@ -24,11 +24,13 @@ Determine which initialization steps to run:
    - Project name
    - Tech stack and languages
    - A brief description of the project
-1. Check if the template's `backend/` and `frontend/` modules align with the user's tech stack:
+1. Read `modules.json` [](file:///C:/Users/aimar/dev/template/template.json)to identify the available template modules.
+1. Check which modules align with the user's tech stack:
 
-   * If applicable: Utilize the modules and their corresponding CI/CD workflows for initialization.
-   * If not applicable: Delete the modules and their corresponding CI/CD workflows.
+   * If applicable: Utilize the module directory and its corresponding CI/CD workflows for initialization.
+   * If not applicable: Delete the module directory and its corresponding CI/CD workflows.
 1. Update any generic `template` placeholders with the chosen project name.
+1. Delete the `modules.json` file.
 
 ### 3. Documentation Initialization
 
