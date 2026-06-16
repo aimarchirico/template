@@ -4,10 +4,9 @@ A repository template featuring structured documentation and module templates.
 
 ## Features
 
-- GitHub issue and pull request templates
 - Contribution guidelines template
+- GitHub issue and pull request templates
 - Module templates and CI/CD workflow templates
-- Documentation plan for projects built from this template
 
 ## Getting Started
 
