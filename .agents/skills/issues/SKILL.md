@@ -1,17 +1,18 @@
 ---
 name: issues
-description: Manage issues for initial backlog generation or ad-hoc creation
+description: Create new hierarchical issues
 ---
+
+## When to Use
+
+Use when the user asks to create new issues.
 
 ## Execution Steps
 
-1. Determine the workflow mode and gather context:
-
-   - **Backlog Initialization (if `--init` is passed)**: Read `README.md`, `docs/` files, and inspect any modules and CI/CD workflows to map requirements to backlog issues.
-   - **New Issues (default)**: Ask the user for details of the issues to create.
-1. Map and format the identified work strictly following the hierarchy and conventions defined in `CONTRIBUTING.md#issues` and `.github/ISSUE_TEMPLATE/`. For both workflows, automatically infer any required logical child issues to completely represent the hierarchy of work. Ensure each issue is assigned its issue type label and priority label in the "labels" array based on the definitions in `CONTRIBUTING.md`.
-1. Show the drafted hierarchy and wait for user approval.
-1. Generate a temporary `issues.json` file containing an `items` array where every node in the hierarchy matches this recursive JSON schema:
+1. Identify the details and context of the issues to create. If these details are not already clear from the user's prompt or context, ask the user for clarification.
+2. Map and format the identified work strictly following the hierarchy and conventions defined in `CONTRIBUTING.md#issues` and `.github/ISSUE_TEMPLATE/`. Automatically infer any required logical child issues to completely represent the hierarchy of work. Ensure each issue is assigned its issue type label and priority label in the "labels" array based on the definitions in `CONTRIBUTING.md`.
+3. Show the drafted hierarchy and wait for user approval.
+4. Generate a temporary `issues.json` file containing an `items` array where every node in the hierarchy matches this recursive JSON schema:
 
    ```json
    {
@@ -27,8 +28,4 @@ description: Manage issues for initial backlog generation or ad-hoc creation
      ]
    }
    ```
-1. Execute `bash .agents/skills/issues/scripts/create-issues.sh issues.json` (the script automatically deletes the temporary file upon completion).
-
-## Supported Flags
-
-- `--init`: Initialize the project backlog from documentation and workflows.
+5. Execute `bash .agents/skills/issues/scripts/create-issues.sh issues.json` (the script automatically deletes the temporary file upon completion).
