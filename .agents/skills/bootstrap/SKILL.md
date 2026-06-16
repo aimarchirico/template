@@ -16,15 +16,18 @@ Determine which initialization steps to run:
 - `--no-template`: skip Template Initialization.
 - `--no-docs`: skip Documentation Initialization.
 - `--no-issues`: skip Issue Backlog Initialization.
+- If `modules.json` is not present in the project root, skip Template Initialization.
 
 ### 2. Template Initialization
+
+If `modules.json` is not present in the project root, skip this step entirely.
 
 1. Prompt the user for the following project details:
 
    - Project name
    - Tech stack and languages
    - A brief description of the project
-1. Read `modules.json` [](file:///C:/Users/aimar/dev/template/template.json)to identify the available template modules.
+1. Read `modules.json` to identify the available module templates.
 1. Check which modules align with the user's tech stack:
 
    * If applicable: Utilize the module directory and its corresponding CI/CD workflows for initialization.
