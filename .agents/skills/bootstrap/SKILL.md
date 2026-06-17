@@ -16,7 +16,6 @@ Determine which initialization steps to run:
 - `--no-template`: skip Template Initialization.
 - `--no-docs`: skip Documentation Initialization.
 - `--no-issues`: skip Issue Backlog Initialization.
-- If `modules.json` is not present in the project root, skip Template Initialization.
 
 ### 2. Template Initialization
 
