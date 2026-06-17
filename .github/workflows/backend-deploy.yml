@@ -22,4 +22,4 @@ jobs:
 
       - name: Deploy to VPS
         run: |
-          ssh -i ~/.ssh/key ${{ vars.VPS_USER }}@${{ vars.VPS_HOST }} "cd ~/template && docker compose -f compose.yml -f compose.prod.yml up -d --pull always template-api"
+          ssh -i ~/.ssh/key ${{ vars.VPS_USER }}@${{ vars.VPS_HOST }} "cd ~/docker/template && docker compose -f compose.yml -f compose.prod.yml up -d --pull always template-api"
