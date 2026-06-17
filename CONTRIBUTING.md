@@ -44,7 +44,7 @@ Technical reference for internal and external interfaces.
 
 ### 5. [module]/README.md
 
-Technical documentation specific to a project subsystem. All implementation-level detail lives here. Module templates natively enforce conventions.
+Technical documentation specific to a project subsystem. All implementation-level detail lives here. 
 
 * **Tech Stack**: Versioned list of major languages, frameworks, and libraries. 
 * **Folder Structure**: Directory layout and module boundary rules. 
