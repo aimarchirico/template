@@ -16,24 +16,13 @@ Determine which initialization steps to run:
 - `--no-template`: skip Template Initialization.
 - `--no-docs`: skip Documentation Initialization.
 - `--no-issues`: skip Issue Backlog Initialization.
-- If `modules.json` is not present in the project root, skip Template Initialization.
+- If `template.json` is not present in the project root, skip Template Initialization.
 
 ### 2. Template Initialization
 
-If `modules.json` is not present in the project root, skip this step entirely.
+If `template.json` is not present in the project root, skip this step entirely.
 
-1. Prompt the user for the following project details:
-
-   - Project name
-   - Tech stack and languages
-   - A brief description of the project
-1. Read `modules.json` to identify the available module templates.
-1. Check which modules align with the user's tech stack:
-
-   * If applicable: Utilize the module directory and its corresponding CI/CD workflows for initialization.
-   * If not applicable: Delete the module directory and its corresponding CI/CD workflows.
-1. Update any generic `template` placeholders with the chosen project name.
-1. Delete the `modules.json` file.
+1. Execute `python init.py` to deterministically replace placeholders, delete unselected modules, rename package directories, and clean up the configuration.
 
 ### 3. Documentation Initialization
 

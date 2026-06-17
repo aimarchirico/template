@@ -1,0 +1,10 @@
+{
+  "name": "template",
+  "description": "A repository template featuring structured documentation and module templates.",
+  "org": "no.chirico",
+  "github_org": "aimarchirico",
+  "modules": {
+    "backend": "Spring Boot REST API",
+    "frontend": "Expo App"
+  }
+}
