@@ -4,7 +4,7 @@
 
 We split documentation by audience:
 
-- [**`docs/`**](docs/) (System-level): How components connect, what infrastructure they run on, external dependencies. Nothing implementation-specific.
+- **`README.md` and `docs/`** (System-level): Features, how components connect, what infrastructure they run on, external dependencies. Nothing implementation-specific.
 - **Module READMEs** (Implementation-level): Everything a developer needs to work on that part.
 
 ### 1. README.md
@@ -16,7 +16,7 @@ The primary entry point and high-level overview of the project.
 * **Features**: High-level bullet points of the core functionality and value propositions.
 * **Getting Started**: Link to sub-directory READMEs for detailed technical setup.
 * **Documentation**: A directory map for the extended documentation located in the `docs/` folder.
-* **Workflow**: Link to contribution guidelines in `CONTRIBUTING.md`.
+* **Workflow**: Link to contribution guidelines in [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ### 2. docs/ARCHITECTURE.md
 
