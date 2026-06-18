@@ -16,6 +16,7 @@ Determine which initialization steps to run:
 - `--no-template`: skip Template Initialization.
 - `--no-docs`: skip Documentation Initialization.
 - `--no-issues`: skip Issue Backlog Initialization.
+- `--no-project`: skip GitHub Project Initialization.
 
 ### 2. Template Initialization
 
@@ -24,7 +25,7 @@ If `init/default.json` is not present, skip this step entirely.
 1. Read `init/default.json` to understand the default settings.
 2. Prompt the user to customize these settings (e.g. name, package, docker image for each module).
 3. Save the customized configuration to `init/config.json`.
-4. Execute `python3 init/main.py` to perform the modular template initialization, which will process the configuration, customize the modules, clean up template artifacts, and self-delete the `init/` folder.
+4. Execute `python3 init/main.py` (appending `--no-project` if the flag was specified) to perform the modular template initialization. This will configure the GitHub Project board (unless skipped), customize the modules, clean up template artifacts, and self-delete the `init/` folder.
 
 ### 3. Documentation Initialization
 
@@ -42,3 +43,4 @@ If `init/default.json` is not present, skip this step entirely.
 - `--no-template`: Skip the template initialization step.
 - `--no-docs`: Skip the documentation initialization step.
 - `--no-issues`: Skip the issue backlog initialization step.
+- `--no-project`: Skip the GitHub Project initialization step.

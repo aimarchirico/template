@@ -1,11 +1,17 @@
 import os
 import json
 import shutil
+import argparse
 from utils import delete_files
 from backend import setup_backend, delete_backend
 from frontend import setup_frontend, delete_frontend
+from project import setup_github_project
 
 def main():
+    parser = argparse.ArgumentParser(description="Modular Template Initialization Script")
+    parser.add_argument("--no-project", action="store_true", help="Skip GitHub Project initialization")
+    args, unknown = parser.parse_known_args()
+
     default_path = "init/default.json"
     config_path = "init/config.json"
 
@@ -17,6 +23,12 @@ def main():
         default_data = json.load(f)
     with open(config_path, "r", encoding="utf-8") as f:
         config_data = json.load(f)
+
+    # Initialize GitHub Project if enabled in config and not skipped via flag
+    enable_project = config_data.get("github_project", True) and not args.no_project
+    if enable_project:
+        project_title = config_data.get("name", "Template")
+        setup_github_project(project_title)
 
     default_modules = default_data.get("modules", {})
     config_modules = config_data.get("modules", {})
