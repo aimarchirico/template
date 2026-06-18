@@ -17,7 +17,7 @@ def main():
         return
 
     # Initialize GitHub Project
-    project_title = config_data.get("name", "Template")
+    project_title = config_data.get("name")
     setup_github_project(project_title)
 
     # Configure modules
