@@ -89,23 +89,31 @@ create_issue_recursive() {
   local body
   body=$(echo "$item_json" | jq -r '.body')
 
-  # Parse Type and Priority from labels, keeping others
+  # Parse Type and Priority directly
+  local type_val
+  type_val=$(echo "$item_json" | jq -r '.type // empty')
+  local priority_val
+  priority_val=$(echo "$item_json" | jq -r '.priority // empty')
+
+  # Parse labels
   local raw_labels_json
   raw_labels_json=$(echo "$item_json" | jq -r 'if .labels | type == "array" then .labels[] else empty end')
   
   local issue_labels=""
-  local type_val=""
-  local priority_val=""
   
   if [ -n "$raw_labels_json" ]; then
     while IFS= read -r label; do
       [ -z "$label" ] && continue
       case "$label" in
         Epic|Story|Task|Bug|Subtask)
-          type_val="$label"
+          if [ -z "$type_val" ]; then
+            type_val="$label"
+          fi
           ;;
         High|Medium|Low)
-          priority_val="$label"
+          if [ -z "$priority_val" ]; then
+            priority_val="$label"
+          fi
           ;;
         *)
           if [ -z "$issue_labels" ]; then
