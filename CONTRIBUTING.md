@@ -4,7 +4,7 @@
 
 We split documentation by audience:
 
-- **`docs/`** (System-level): How components connect, what infrastructure they run on, external dependencies. Nothing implementation-specific.
+- [**`docs/`**](docs/) (System-level): How components connect, what infrastructure they run on, external dependencies. Nothing implementation-specific.
 - **Module READMEs** (Implementation-level): Everything a developer needs to work on that part.
 
 ### 1. README.md
