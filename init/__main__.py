@@ -7,7 +7,8 @@ from frontend import setup_frontend, delete_frontend
 from project import setup_github_project
 
 def main():
-    parser = argparse.ArgumentParser(description="Modular Template Initialization Script")
+    # Set up
+    parser = argparse.ArgumentParser()
     parser.add_argument("--no-project", action="store_true", help="Skip GitHub Project initialization")
     args, unknown = parser.parse_known_args()
 
@@ -21,16 +22,16 @@ def main():
         print("Required configuration files default.json or config.json are missing or empty in init/")
         return
 
-    # Initialize GitHub Project unless skipped via flag
-    enable_project = not args.no_project
-    if enable_project:
+    # Initialize GitHub Project
+    create_project = not args.no_project
+    if create_project:
         project_title = config_data.get("name", "Template")
         setup_github_project(project_title)
 
+    # Configure modules
     default_modules = default_data.get("modules", {})
     config_modules = config_data.get("modules", {})
 
-    # Configure modules
     for mod_name, default_mod in default_modules.items():
         if mod_name in config_modules:
             config_mod = config_modules[mod_name]
