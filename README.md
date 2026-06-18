@@ -23,4 +23,4 @@ Use this repository as a template on GitHub, then run the `/bootstrap` skill to 
    ```bash
    python -m init
    ```
-3. Create documentation and issues according to the guidelines in `CONTRIBUTING.md`.
+3. Create documentation and issues according to the guidelines in [`CONTRIBUTING.md`](CONTRIBUTING.md).
