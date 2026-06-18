@@ -2,7 +2,7 @@ import os
 import shutil
 import re
 
-def Pascal(name: str) -> str:
+def pascal(name: str) -> str:
     words = re.findall(r'[a-zA-Z0-9]+', name)
     return "".join(word.capitalize() for word in words)
 

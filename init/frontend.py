@@ -1,6 +1,6 @@
 import os
 import glob
-from helpers import lower, replace_text, delete_files
+from utils import lower, replace_text, delete_files
 
 def setup_frontend(default_mod, config_mod):
     def_pkg = default_mod["package"]

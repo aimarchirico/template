@@ -1,7 +1,7 @@
 import os
 import json
 import shutil
-from helpers import delete_files
+from utils import delete_files
 from backend import setup_backend, delete_backend
 from frontend import setup_frontend, delete_frontend
 
@@ -21,16 +21,6 @@ def main():
     default_modules = default_data.get("modules", {})
     config_modules = config_data.get("modules", {})
 
-    # Load modules.json to sync it with active modules
-    modules_json_path = "modules.json"
-    modules_json_data = {}
-    if os.path.exists(modules_json_path):
-        try:
-            with open(modules_json_path, "r", encoding="utf-8") as f:
-                modules_json_data = json.load(f)
-        except Exception as e:
-            print(f"Error loading modules.json: {e}")
-
     for mod_name, default_mod in default_modules.items():
         if mod_name in config_modules:
             config_mod = config_modules[mod_name]
@@ -45,15 +35,6 @@ def main():
                 delete_backend()
             elif mod_name == "frontend":
                 delete_frontend()
-            
-            # Remove from modules.json if exists
-            if mod_name in modules_json_data:
-                modules_json_data.pop(mod_name)
-
-    # Save updated modules.json if it was loaded
-    if modules_json_data and os.path.exists(modules_json_path):
-        with open(modules_json_path, "w", encoding="utf-8") as f:
-            json.dump(modules_json_data, f, indent=2)
 
     # Delete the root README.md file
     if os.path.exists("README.md"):

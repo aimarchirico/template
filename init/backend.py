@@ -1,5 +1,5 @@
 import os
-from helpers import Pascal, lower, path, replace_text, move_files, delete_files
+from utils import pascal, lower, path, replace_text, move_files, delete_files
 
 def setup_backend(default_mod, config_mod):
     def_pkg = default_mod["package"]
@@ -11,8 +11,8 @@ def setup_backend(default_mod, config_mod):
 
     def_pkg_path = path(def_pkg)
     cfg_pkg_path = path(cfg_pkg)
-    def_pascal = Pascal(def_name)
-    cfg_pascal = Pascal(cfg_name)
+    def_pascal = pascal(def_name)
+    cfg_pascal = pascal(cfg_name)
     def_lower = lower(def_name)
     cfg_lower = lower(cfg_name)
 
