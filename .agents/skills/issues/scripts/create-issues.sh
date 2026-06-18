@@ -95,37 +95,6 @@ create_issue_recursive() {
   local priority_val
   priority_val=$(echo "$item_json" | jq -r '.priority // empty')
 
-  # Parse labels
-  local raw_labels_json
-  raw_labels_json=$(echo "$item_json" | jq -r 'if .labels | type == "array" then .labels[] else empty end')
-  
-  local issue_labels=""
-  
-  if [ -n "$raw_labels_json" ]; then
-    while IFS= read -r label; do
-      [ -z "$label" ] && continue
-      case "$label" in
-        Epic|Story|Task|Bug|Subtask)
-          if [ -z "$type_val" ]; then
-            type_val="$label"
-          fi
-          ;;
-        High|Medium|Low)
-          if [ -z "$priority_val" ]; then
-            priority_val="$label"
-          fi
-          ;;
-        *)
-          if [ -z "$issue_labels" ]; then
-            issue_labels="$label"
-          else
-            issue_labels="$issue_labels,$label"
-          fi
-          ;;
-      esac
-    done <<< "$raw_labels_json"
-  fi
-
   if [ -z "$title" ] || [ "$title" == "null" ]; then
     if [ -z "$parent_id" ]; then
       echo "Warning: Skipped creating issue due to missing title."
@@ -134,9 +103,6 @@ create_issue_recursive() {
   fi
 
   local args=(--title "$title" --body "$body")
-  if [ -n "$issue_labels" ]; then
-    args+=(--label "$issue_labels")
-  fi
 
   local issue_url
   local issue_id

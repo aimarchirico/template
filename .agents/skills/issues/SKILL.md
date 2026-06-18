@@ -22,7 +22,6 @@ Use when the user asks to create new issues.
          "body": "string",
          "type": "string",
          "priority": "string",
-         "labels": ["string"],
          "children": [
            /* nested child objects following the same schema */
          ]
