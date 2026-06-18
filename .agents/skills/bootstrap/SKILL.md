@@ -22,7 +22,7 @@ Determine which initialization steps to run:
 1. Read `init/default.json` to understand the default settings.
 2. Prompt the user to customize these settings.
 3. Save the customized configuration to `init/config.json`.
-4. Execute `python -m init` (appending `--no-project` if the flag was specified).
+4. Execute `python -m init`.
 
 ### 3. Documentation Initialization
 
