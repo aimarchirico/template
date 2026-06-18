@@ -13,11 +13,11 @@ Use when the user asks to bootstrap or initalize the project, initialize documen
 
 Determine which initialization steps to run:
 
-- `--no-template`: skip Template Initialization.
+- `--no-project`: skip Project Initialization.
 - `--no-docs`: skip Documentation Initialization.
 - `--no-issues`: skip Issue Backlog Initialization.
 
-### 2. Template Initialization
+### 2. Project Initialization
 
 1. Read `init/default.json` to understand the default settings.
 2. Prompt the user to customize these settings.
@@ -37,6 +37,6 @@ Determine which initialization steps to run:
 
 ## Supported Flags
 
-- `--no-template`: Skip the template initialization step.
+- `--no-project`: Skip the project initialization step.
 - `--no-docs`: Skip the documentation initialization step.
 - `--no-issues`: Skip the issue backlog initialization step.
