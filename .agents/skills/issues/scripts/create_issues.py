@@ -40,34 +40,58 @@ def get_project_context():
         print(f"Error: Could not retrieve GitHub repository context. {e}", file=sys.stderr)
         sys.exit(1)
 
-    # Resolve project title from config.json or default.json
-    project_title = ""
-    for path in ["init/config.json", "init/default.json"]:
-        if os.path.exists(path):
-            try:
-                with open(path, "r", encoding="utf-8") as f:
-                    data = json.load(f)
-                    project_title = data.get("name")
-                    if project_title:
-                        break
-            except Exception:
-                pass
-    
-    if not project_title:
-        project_title = repo_name
+    print(f"Checking for projects linked to repository '{owner}/{repo_name}'...")
+    try:
+        query = """
+        query($owner: String!, $name: String!) {
+          repository(owner: $owner, name: $name) {
+            projectsV2(first: 10) {
+              nodes {
+                id
+                number
+                title
+                closed
+              }
+            }
+          }
+        }
+        """
+        api_output = run_cmd([
+            "gh", "api", "graphql",
+            "-f", f"owner={owner}",
+            "-f", f"name={repo_name}",
+            "-f", f"query={query}"
+        ])
+        api_data = json.loads(api_output)
+        linked_projects = api_data.get("data", {}).get("repository", {}).get("projectsV2", {}).get("nodes", [])
+        
+        # Filter for open projects
+        open_projects = [p for p in linked_projects if not p.get("closed", False)]
+        if open_projects:
+            # Prefer the first open linked project
+            proj = open_projects[0]
+            project_number = proj["number"]
+            project_id = proj["id"]
+            print(f"Found active linked project: '{proj.get('title')}' (number: {project_number}, id: {project_id})")
+            return owner, project_number, project_id
+    except Exception as e:
+        print(f"Warning: Error querying linked projects via GraphQL. {e}", file=sys.stderr)
 
-    print(f"Resolving GitHub Project: '{project_title}' under owner '{owner}'...")
+    # Fallback: list all projects for the owner and find one matching repo name or 'template'
+    print(f"No active linked projects found. Listing projects for owner '{owner}'...")
     try:
         projects_output = run_cmd(["gh", "project", "list", "--owner", owner, "--format", "json"])
         projects_data = json.loads(projects_output)
         for proj in projects_data.get("projects", []):
-            if proj.get("title", "").lower() == project_title.lower() and not proj.get("closed", False):
-                project_number = proj["number"]
-                project_id = proj["id"]
-                print(f"Found active project: '{proj.get('title')}' (number: {project_number}, id: {project_id})")
-                return owner, project_number, project_id
+            if not proj.get("closed", False):
+                title = proj.get("title", "").lower()
+                if title == repo_name.lower() or title == "template":
+                    project_number = proj["number"]
+                    project_id = proj["id"]
+                    print(f"Found fallback active project: '{proj.get('title')}' (number: {project_number}, id: {project_id})")
+                    return owner, project_number, project_id
     except Exception as e:
-        print(f"Warning: Could not list/resolve GitHub Projects. {e}", file=sys.stderr)
+        print(f"Warning: Could not list fallback GitHub Projects. {e}", file=sys.stderr)
 
     return owner, None, None
 
