@@ -1,17 +1,11 @@
 import os
 import shutil
-import argparse
 from fs import load_json
 from backend import setup_backend, delete_backend
 from frontend import setup_frontend, delete_frontend
 from project import setup_github_project
 
 def main():
-    # Set up
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--no-project", action="store_true", help="Skip GitHub Project initialization")
-    args, unknown = parser.parse_known_args()
-
     default_path = "init/default.json"
     config_path = "init/config.json"
 
@@ -23,10 +17,8 @@ def main():
         return
 
     # Initialize GitHub Project
-    create_project = not args.no_project
-    if create_project:
-        project_title = config_data.get("name", "Template")
-        setup_github_project(project_title)
+    project_title = config_data.get("name", "Template")
+    setup_github_project(project_title)
 
     # Configure modules
     default_modules = default_data.get("modules", {})
