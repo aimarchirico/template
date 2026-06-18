@@ -77,22 +77,7 @@ def get_project_context():
     except Exception as e:
         print(f"Warning: Error querying linked projects via GraphQL. {e}", file=sys.stderr)
 
-    # Fallback: list all projects for the owner and find one matching repo name or 'template'
-    print(f"No active linked projects found. Listing projects for owner '{owner}'...")
-    try:
-        projects_output = run_cmd(["gh", "project", "list", "--owner", owner, "--format", "json"])
-        projects_data = json.loads(projects_output)
-        for proj in projects_data.get("projects", []):
-            if not proj.get("closed", False):
-                title = proj.get("title", "").lower()
-                if title == repo_name.lower() or title == "template":
-                    project_number = proj["number"]
-                    project_id = proj["id"]
-                    print(f"Found fallback active project: '{proj.get('title')}' (number: {project_number}, id: {project_id})")
-                    return owner, project_number, project_id
-    except Exception as e:
-        print(f"Warning: Could not list fallback GitHub Projects. {e}", file=sys.stderr)
-
+    print("No active linked projects found. Skipping project field setup.")
     return owner, None, None
 
 def get_project_fields(owner, project_number):
