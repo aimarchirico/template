@@ -29,4 +29,4 @@ Use when the user asks to create new issues.
      ]
    }
    ```
-5. Execute `bash .agents/skills/issues/scripts/create-issues.sh issues.json` (the script automatically deletes the temporary file upon completion).
+5. Execute `python3 .agents/skills/issues/scripts/create_issues.py issues.json` (the script automatically deletes the temporary file upon completion).
