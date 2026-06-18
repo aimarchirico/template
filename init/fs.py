@@ -1,17 +1,6 @@
 import os
 import shutil
-import re
-
-def pascal(name: str) -> str:
-    words = re.findall(r'[a-zA-Z0-9]+', name)
-    return "".join(word.capitalize() for word in words)
-
-def lower(name: str) -> str:
-    words = re.findall(r'[a-zA-Z0-9]+', name)
-    return "".join(word.lower() for word in words)
-
-def path(package: str) -> str:
-    return package.replace('.', '/')
+import json
 
 def replace_text(file_path: str, old_text: str, new_text: str):
     if not os.path.exists(file_path):
@@ -35,7 +24,7 @@ def move_files(src_path: str, dest_path: str):
         else:
             os.remove(dest_path)
     shutil.move(src_path, dest_path)
-    _clean_empty_parents(src_path)
+    _clean_empty_parents(src_path, dest_path)
 
 def delete_files(path: str):
     if not os.path.exists(path):
@@ -45,10 +34,16 @@ def delete_files(path: str):
     else:
         os.remove(path)
 
-def _clean_empty_parents(path: str):
-    parent = os.path.dirname(path)
-    stop_dirs = {".", "", "/", "backend", "frontend", "backend/app/src/main/kotlin", "backend/app/src/test/kotlin"}
-    while parent and parent not in stop_dirs:
+def _clean_empty_parents(src_path: str, dest_path: str):
+    try:
+        common = os.path.commonpath([os.path.abspath(src_path), os.path.abspath(dest_path)])
+    except ValueError:
+        common = os.path.abspath(".")
+
+    parent = os.path.abspath(os.path.dirname(src_path))
+    project_root = os.path.abspath(".")
+
+    while parent and parent != common and parent != project_root:
         try:
             if not os.listdir(parent):
                 os.rmdir(parent)
@@ -57,3 +52,9 @@ def _clean_empty_parents(path: str):
                 break
         except Exception:
             break
+
+def load_json(path: str) -> dict:
+    if not os.path.exists(path):
+        return {}
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)

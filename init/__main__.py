@@ -1,26 +1,25 @@
 import os
-import json
 import shutil
-from utils import delete_files
+from fs import load_json
 from backend import setup_backend, delete_backend
 from frontend import setup_frontend, delete_frontend
 
 def main():
+    # Load data
     default_path = "init/default.json"
     config_path = "init/config.json"
 
-    if not os.path.exists(default_path) or not os.path.exists(config_path):
-        print("Required configuration files default.json or config.json are missing in init/")
-        return
+    default_data = load_json(default_path)
+    config_data = load_json(config_path)
 
-    with open(default_path, "r", encoding="utf-8") as f:
-        default_data = json.load(f)
-    with open(config_path, "r", encoding="utf-8") as f:
-        config_data = json.load(f)
+    if not default_data or not config_data:
+        print("Required configuration files default.json or config.json are missing or empty in init/")
+        return
 
     default_modules = default_data.get("modules", {})
     config_modules = config_data.get("modules", {})
 
+    # Configure modules
     for mod_name, default_mod in default_modules.items():
         if mod_name in config_modules:
             config_mod = config_modules[mod_name]
@@ -41,7 +40,7 @@ def main():
         print("Deleting root README.md")
         os.remove("README.md")
 
-    # Clean up and self-delete the init/ directory
+    # Clean up
     print("Self-deleting the init/ directory")
     shutil.rmtree("init")
 
