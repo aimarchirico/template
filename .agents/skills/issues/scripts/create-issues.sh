@@ -47,7 +47,37 @@ fi
 echo "Checking gh-sub-issue extension..."
 gh extension list | grep "gh-sub-issue" > /dev/null || gh extension install yahsan2/gh-sub-issue
 
-# 5. Process issues
+# 5. Resolve Project Context
+OWNER=$(gh repo view --json owner -q '.owner.login')
+REPO_NAME=$(gh repo view --json name -q '.name')
+
+PROJECT_TITLE=$(jq -r '.name' init/config.json 2>/dev/null || jq -r '.name' init/default.json 2>/dev/null || echo "")
+if [ -z "$PROJECT_TITLE" ] || [ "$PROJECT_TITLE" == "null" ]; then
+  PROJECT_TITLE="$REPO_NAME"
+fi
+
+echo "Resolving GitHub Project: '$PROJECT_TITLE' under owner '$OWNER'..."
+PROJECT_INFO=$(gh project list --owner "$OWNER" --format json 2>/dev/null | jq -c --arg title "$PROJECT_TITLE" '.projects[] | select((.title | ascii_downcase) == ($title | ascii_downcase) and .closed == false)' 2>/dev/null | head -n 1 || echo "")
+
+if [ -n "$PROJECT_INFO" ]; then
+  PROJECT_NUMBER=$(echo "$PROJECT_INFO" | jq -r '.number')
+  PROJECT_ID=$(echo "$PROJECT_INFO" | jq -r '.id')
+  echo "Found active project: '$PROJECT_TITLE' (number: $PROJECT_NUMBER, id: $PROJECT_ID)"
+  
+  # Fetch field lists
+  FIELDS_JSON=$(gh project field-list "$PROJECT_NUMBER" --owner "$OWNER" --format json)
+  
+  # Type field details
+  TYPE_FIELD_ID=$(echo "$FIELDS_JSON" | jq -r '.fields[] | select(.name == "Type") | .id')
+  
+  # Priority field details
+  PRIORITY_FIELD_ID=$(echo "$FIELDS_JSON" | jq -r '.fields[] | select(.name == "Priority") | .id')
+else
+  echo "Warning: Active project '$PROJECT_TITLE' not found. Will create issues without project fields."
+  PROJECT_ID=""
+fi
+
+# 6. Process issues
 echo "Processing and creating issues..."
 
 create_issue_recursive() {
@@ -58,8 +88,12 @@ create_issue_recursive() {
   title=$(echo "$item_json" | jq -r '.title')
   local body
   body=$(echo "$item_json" | jq -r '.body')
-  local labels
-  labels=$(echo "$item_json" | jq -r 'if .labels | type == "array" then .labels | join(",") else "" end')
+
+  # Parse Type and Priority directly
+  local type_val
+  type_val=$(echo "$item_json" | jq -r '.type // empty')
+  local priority_val
+  priority_val=$(echo "$item_json" | jq -r '.priority // empty')
 
   if [ -z "$title" ] || [ "$title" == "null" ]; then
     if [ -z "$parent_id" ]; then
@@ -69,9 +103,6 @@ create_issue_recursive() {
   fi
 
   local args=(--title "$title" --body "$body")
-  if [ -n "$labels" ] && [ "$labels" != "null" ]; then
-    args+=(--label "$labels")
-  fi
 
   local issue_url
   local issue_id
@@ -89,6 +120,37 @@ create_issue_recursive() {
     echo "Created child issue: $issue_id"
   fi
 
+  # Link to project and set fields if project is resolved
+  if [ -n "$PROJECT_ID" ] && [ -n "$issue_url" ]; then
+    echo "Adding issue $issue_id to project #$PROJECT_NUMBER..."
+    local project_item_json
+    project_item_json=$(gh project item-add "$PROJECT_NUMBER" --owner "$OWNER" --url "$issue_url" --format json 2>/dev/null || echo "")
+    local item_id
+    item_id=$(echo "$project_item_json" | jq -r '.id 2>/dev/null' 2>/dev/null || echo "")
+    
+    if [ -n "$item_id" ] && [ "$item_id" != "null" ]; then
+      # Set Type field if specified
+      if [ -n "$type_val" ] && [ -n "$TYPE_FIELD_ID" ]; then
+        local option_id
+        option_id=$(echo "$FIELDS_JSON" | jq -r --arg val "$type_val" '.fields[] | select(.name == "Type") | .options[] | select(.name == $val) | .id' 2>/dev/null || echo "")
+        if [ -n "$option_id" ] && [ "$option_id" != "null" ]; then
+          echo "Setting project item Type to '$type_val'..."
+          gh project item-edit --id "$item_id" --project-id "$PROJECT_ID" --field-id "$TYPE_FIELD_ID" --single-select-option-id "$option_id" > /dev/null 2>&1 || true
+        fi
+      fi
+      
+      # Set Priority field if specified
+      if [ -n "$priority_val" ] && [ -n "$PRIORITY_FIELD_ID" ]; then
+        local option_id
+        option_id=$(echo "$FIELDS_JSON" | jq -r --arg val "$priority_val" '.fields[] | select(.name == "Priority") | .options[] | select(.name == $val) | .id' 2>/dev/null || echo "")
+        if [ -n "$option_id" ] && [ "$option_id" != "null" ]; then
+          echo "Setting project item Priority to '$priority_val'..."
+          gh project item-edit --id "$item_id" --project-id "$PROJECT_ID" --field-id "$PRIORITY_FIELD_ID" --single-select-option-id "$option_id" > /dev/null 2>&1 || true
+        fi
+      fi
+    fi
+  fi
+
   echo "$item_json" | jq -c '.children[]?' 2>/dev/null | grep -v 'null' | while read -r child; do
     create_issue_recursive "$child" "$issue_id"
   done
@@ -99,4 +161,3 @@ jq -c '.items[]' "$JSON_FILE" | while read -r item; do
 done
 
 echo "Successfully created all issues."
-

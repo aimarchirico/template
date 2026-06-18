@@ -15,6 +15,8 @@ def replace_text(file_path: str, old_text: str, new_text: str):
 def move_files(src_path: str, dest_path: str):
     if not os.path.exists(src_path):
         return
+    if os.path.abspath(src_path) == os.path.abspath(dest_path):
+        return
     dest_dir = os.path.dirname(dest_path)
     if dest_dir:
         os.makedirs(dest_dir, exist_ok=True)
