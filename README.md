@@ -11,4 +11,4 @@ A repository template featuring structured documentation and module templates.
 
 ## Getting Started
 
-Use this repository as a template on GitHub, keeping only the applicable modules and CI/CD workflows, then run the `/bootstrap` skill to initialize the project.
+Use this repository as a template on GitHub, then run the `/bootstrap` skill to initialize the project.
