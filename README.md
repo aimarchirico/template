@@ -21,6 +21,6 @@ Use this repository as a template on GitHub, then run the `/bootstrap` skill to 
 1. Configure `init/config.json` with the project's details.
 2. Run the initialization script:
    ```bash
-   python3 -m init
+   python -m init
    ```
 3. Create documentation and issues according to the guidelines in `CONTRIBUTING.md`.
