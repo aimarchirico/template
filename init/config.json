@@ -1,6 +1,5 @@
 {
   "name": "Template",
-  "github_project": true,
   "modules": {
     "frontend": {
       "name": "Template",

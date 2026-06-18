@@ -21,8 +21,8 @@ def main():
         print("Required configuration files default.json or config.json are missing or empty in init/")
         return
 
-    # Initialize GitHub Project if enabled in config and not skipped via flag
-    enable_project = config_data.get("github_project", True) and not args.no_project
+    # Initialize GitHub Project unless skipped via flag
+    enable_project = not args.no_project
     if enable_project:
         project_title = config_data.get("name", "Template")
         setup_github_project(project_title)
