@@ -1,10 +1,10 @@
 # Template
 
-A repository template featuring structured documentation and module templates.
+A repository template featuring guidelines, templates, modules, workflows, scripts and skills.
 
 ## Features
 
-- Contribution and documentation guidelines template
+- Contribution and documentation guidelines
 - GitHub issue and pull request templates
 - Module templates and CI/CD workflow templates
 - Project initialization script
