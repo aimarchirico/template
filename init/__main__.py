@@ -3,7 +3,7 @@ import shutil
 from fs import load_json
 from backend import setup_backend, delete_backend
 from frontend import setup_frontend, delete_frontend
-from project import setup_github_project
+from gh import setup_github_project
 
 def main():
     default_path = "init/default.json"
