@@ -6,7 +6,7 @@ A repository template featuring guidelines, templates, modules, workflows, scrip
 
 - Contribution and documentation guidelines
 - GitHub issue and pull request templates
-- Module templates and CI/CD workflow templates
+- Module and CI/CD workflow templates
 - Project initialization script
 - Agent skills for the development workflow
 
