@@ -9,8 +9,9 @@ Use when the user explicitly asks to commit unstaged changes, analyze git diffs 
 
 ## Execution Steps
 
-1. Execute `git status` and `git diff` to analyze all unstaged changes (including untracked files).
-2. If there are no changes to commit, notify the user and exit.
-3. Group the changes into logical, atomic units and draft a commit message for each group strictly following the rules in `CONTRIBUTING.md#commits`.
-4. Present the proposed commit plan, and wait for explicit user approval.
-5. For each approved unit, execute `git add` for those specific files followed by `git commit -m` with the approved message.
+1. Preflight: Verify that `CONTRIBUTING.md` exists in the repository root. If it is missing, halt execution and notify the user.
+2. Execute `git status` and `git diff` to analyze all unstaged changes (including untracked files).
+3. If there are no changes to commit, notify the user and exit.
+4. Group the changes into logical, atomic units and draft a commit message for each group strictly following the rules in `CONTRIBUTING.md#commits`.
+5. Present the proposed commit plan, and wait for explicit user approval.
+6. For each approved unit, execute `git add` for those specific files followed by `git commit -m` with the approved message.
