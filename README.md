@@ -18,7 +18,7 @@ The project can be initialized either using the AI agent or manually:
 Use this repository as a template on GitHub, then run the `/bootstrap` skill to initialize the project.
 
 ### Manual Initialization
-1. Configure [`init/config.json`](init/config.json) with the project's details.
+1. Configure [`init/config.json`](init/config.json) with the project's details, keeping only applicable modules.
 2. Run the initialization script:
    ```bash
    python -m init

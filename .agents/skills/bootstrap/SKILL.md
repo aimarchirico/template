@@ -20,7 +20,7 @@ Determine which initialization steps to run:
 ### 2. Project Initialization
 
 1. Read `init/default.json` to understand the default settings.
-2. Prompt the user to customize these settings.
+2. Prompt the user to customize these settings, keeping only applicable modules in the configuration.
 3. Save the customized configuration to `init/config.json`.
 4. Execute `python -m init`.
 
