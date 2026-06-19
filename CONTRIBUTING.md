@@ -114,7 +114,7 @@ Issue summaries are based on the [Conventional Commits](https://www.conventional
 
 ---
 
-## Branching
+## Branches
 
 We follow the [Conventional Branch](https://conventional-branch.github.io/) specification.
 
