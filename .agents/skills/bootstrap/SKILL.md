@@ -11,10 +11,7 @@ Use when the user asks to bootstrap or initalize the project, initialize documen
 
 ### 1. Preflight
 
-Validate that the required configuration files and folders are present:
-- Check that the `init/` directory exists.
-- Check that `init/default.json` exists.
-If any are missing, report the error to the user and halt execution.
+Verify that the `init/` directory and `CONTRIBUTING.md` exist in the repository root. If any are missing, halt execution and notify the user.
 
 ### 2. Parse Flags
 
