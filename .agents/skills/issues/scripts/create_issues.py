@@ -115,14 +115,24 @@ def create_issue_recursive(item, parent_id, owner, project_number, project_id, t
     if not parent_id:
         print(f"Creating top-level issue: '{title}'...")
         args = ["gh", "issue", "create", "--title", title, "--body", body]
-        issue_url = run_cmd(args)
-        issue_id = issue_url.split("/")[-1]
-        print(f"Created top-level issue: {issue_id}")
+        issue_url_raw = run_cmd(args)
     else:
         print(f"Creating child issue: '{title}' under parent {parent_id}...")
         args = ["gh", "sub-issue", "create", "--title", title, "--body", body, "--parent", str(parent_id)]
-        issue_url = run_cmd(args)
-        issue_id = issue_url.split("/")[-1]
+        issue_url_raw = run_cmd(args)
+
+    issue_url = None
+    for word in issue_url_raw.split():
+        if word.startswith("http://") or word.startswith("https://"):
+            issue_url = word
+            break
+    if not issue_url:
+        issue_url = issue_url_raw
+
+    issue_id = issue_url.split("/")[-1]
+    if not parent_id:
+        print(f"Created top-level issue: {issue_id}")
+    else:
         print(f"Created child issue: {issue_id}")
 
     # Add to project and configure fields
