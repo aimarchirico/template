@@ -12,6 +12,7 @@ java {
 dependencies {
     implementation(libs.kotlin.gradlePlugin)
     implementation(libs.kotlin.allopen)
+    implementation(libs.kotlin.noarg)
     implementation(libs.spring.boot.gradlePlugin) {
         exclude(group = "io.spring.gradle", module = "dependency-management-plugin")
     }
