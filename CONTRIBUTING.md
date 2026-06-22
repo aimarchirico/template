@@ -179,3 +179,13 @@ We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0
 **Title**: `<type>[optional scope][optional !]: <description>`
 
 **Description**: Use the provided [template](.github/PULL_REQUEST_TEMPLATE.md).
+
+---
+
+## Dependency Updates
+
+We use [Dependabot](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates) to keep project dependencies and GitHub Actions workflows up to date.
+
+- **Configuration**: Defined in [`.github/dependabot.yml`](file:///.github/dependabot.yml).
+- **Schedule**: Weekly updates for the backend Gradle version catalog, frontend npm dependencies, and GitHub Actions workflows.
+- **Initialization**: The `init/` script automatically configures Dependabot ecosystems based on the active modules, removing deleted modules' ecosystems to prevent run failures.

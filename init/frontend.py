@@ -1,6 +1,6 @@
 import glob
 from text import lower
-from fs import replace_text, delete_files
+from fs import replace_text, delete_files, remove_dependabot_ecosystem
 
 def setup_frontend(default_mod, config_mod):
     def_name = default_mod["name"]
@@ -31,3 +31,4 @@ def delete_frontend():
     # Delete GitHub workflows
     for f in glob.glob(".github/workflows/frontend-*.yml"):
         delete_files(f)
+    remove_dependabot_ecosystem("/frontend")
