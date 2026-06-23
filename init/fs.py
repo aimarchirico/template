@@ -60,3 +60,39 @@ def load_json(path: str) -> dict:
         return {}
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
+
+def remove_dependabot_ecosystem(directory_pattern: str):
+    dependabot_path = ".github/dependabot.yml"
+    if not os.path.exists(dependabot_path):
+        return
+    with open(dependabot_path, "r", encoding="utf-8") as f:
+        content = f.read()
+    
+    lines = content.splitlines()
+    new_lines = []
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        if line.strip().startswith("- package-ecosystem:"):
+            block_lines = [line]
+            j = i + 1
+            is_target = False
+            while j < len(lines) and not lines[j].strip().startswith("- package-ecosystem:"):
+                block_lines.append(lines[j])
+                if f'directory: "{directory_pattern}"' in lines[j] or f'directory: {directory_pattern}' in lines[j]:
+                    is_target = True
+                j += 1
+            
+            if is_target:
+                i = j
+                continue
+            else:
+                new_lines.extend(block_lines)
+                i = j
+        else:
+            new_lines.append(line)
+            i += 1
+            
+    with open(dependabot_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(new_lines) + "\n")
+

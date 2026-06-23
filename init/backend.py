@@ -1,6 +1,6 @@
 import glob
 from text import pascal, lower, path
-from fs import replace_text, move_files, delete_files
+from fs import replace_text, move_files, delete_files, remove_dependabot_ecosystem
 
 def setup_backend(default_mod, config_mod):
     def_name = default_mod["name"]
@@ -79,3 +79,4 @@ def delete_backend():
     # Delete GitHub workflows
     for f in glob.glob(".github/workflows/backend-*.yml"):
         delete_files(f)
+    remove_dependabot_ecosystem("/backend")
