@@ -8,7 +8,7 @@ group = "no.chirico.template"
 version = "0.0.1-SNAPSHOT"
 
 dependencies {
-  implementation(platform("org.springframework.boot:spring-boot-dependencies:4.1.0"))
+  implementation(platform(libs.spring.boot.dependencies))
   implementation("tools.jackson.module:jackson-module-kotlin")
   implementation("org.jetbrains.kotlin:kotlin-reflect")
 
