@@ -1,12 +1,13 @@
 name: Story
 description: A user-facing feature.
-labels: ["Story"]
 body:
   - type: textarea
-    id: story
+    id: user-story
     attributes:
-      label: Story
+      label: User Story
+      description: As a [role], I want [goal], so that [benefit].
   - type: textarea
     id: acceptance-criteria
     attributes:
       label: Acceptance Criteria
+      description: Given [context], when [action], then [outcome].

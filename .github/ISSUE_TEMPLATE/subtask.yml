@@ -1,8 +1,8 @@
 name: Subtask
 description: A granular piece of work.
-labels: ["Subtask"]
 body:
   - type: textarea
-    id: details
+    id: description
     attributes:
-      label: Details
+      label: Description
+      description: The slice of the parent this covers.

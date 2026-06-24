@@ -1,8 +1,13 @@
 name: Epic
 description: A high-level initiative.
-labels: ["Epic"]
 body:
   - type: textarea
-    id: summary
+    id: goal
     attributes:
-      label: Summary
+      label: Goal
+      description: For [who], the [epic] delivers [value / outcome].
+  - type: textarea
+    id: success-criteria
+    attributes:
+      label: Success Criteria
+      description: Measurable result that proves it worked.

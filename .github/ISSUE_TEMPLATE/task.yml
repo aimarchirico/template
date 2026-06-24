@@ -1,8 +1,8 @@
 name: Task
 description: A technical piece of work.
-labels: ["Task"]
 body:
   - type: textarea
-    id: objective
+    id: description
     attributes:
-      label: Objective
+      label: Description
+      description: What needs doing and why.
