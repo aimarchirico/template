@@ -105,8 +105,8 @@ graph TD
 | `Medium` | Standard priority issues.  |
 | `Low`    | Non-urgent issues.         |
 
-**Naming Rules**:
-Issue summaries are based on the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) imperative style, and follow these formatting rules:
+**Title**:
+Issue titles are based on the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) imperative style, and follow these formatting rules:
 
 - **Imperative**: Use the imperative mood (e.g., `Add` not `Added`).
 - **Capitalized**: Start the first word with a capital letter.
@@ -118,7 +118,7 @@ Issue summaries are based on the [Conventional Commits](https://www.conventional
 
 We follow the [Conventional Branch](https://conventional-branch.github.io/) specification.
 
-**Title**: `<type>/[ticket-id]-<description>`
+**Name**: `<type>/[ticket-id]-<description>`
 
 | Type       | Usage                |
 | :--------- | :------------------- |
