@@ -179,9 +179,9 @@ We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0
 
 ### Rules
 
-- **Breaking**: Append `!` to type/scope or use `BREAKING CHANGE:` footer for MAJOR version update.
-- **Mood**: Use imperative (e.g., `add` not `added`).
+- **Imperative**: Use the imperative mood (e.g., `add` not `added`).
 - **Format**: Lowercase start, no trailing period.
+- **Breaking**: Append `!` to type/scope or use `BREAKING CHANGE:` footer for MAJOR version update.
 
 ---
 
