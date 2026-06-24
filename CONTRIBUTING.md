@@ -71,7 +71,7 @@ Each issue type has has a provided template.
 | [`Bug`](.github/ISSUE_TEMPLATE/bug.yml)         | A problem which impairs functionality. |
 | [`Subtask`](.github/ISSUE_TEMPLATE/subtask.yml) | A granular piece of work.              |
 
-### Hierarchy Rules
+### Hierarchy
 
 ```mermaid
 graph TD
