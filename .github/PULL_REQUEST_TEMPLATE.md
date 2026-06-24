@@ -1,8 +1,15 @@
 > [!TIP]
-> For PR titles, we follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0) format: `<type>[optional scope][optional !]: <description>`
+> For PR titles, we follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0) specification:
+> ```<type>[optional scope][optional !]: <description>```
 
 ## Description
-Please include a summary of the change.
+
+Provide a clear summary of what this does and why.
+
+## Verification
+
+Step-by-step instructions to verify this works.
 
 ## Related Issues
-- Closes #(issue)
+
+Link related issues.
