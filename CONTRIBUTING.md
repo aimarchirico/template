@@ -57,7 +57,11 @@ Technical documentation specific to a project subsystem. All implementation-leve
 
 ## Issues
 
-We follow the [Jira hierarchy](https://www.atlassian.com/software/jira/guides/issues/overview#what-is-an-work-item) for issues. Choose the appropriate template:
+We follow the [Jira hierarchy](https://www.atlassian.com/software/jira/guides/issues/overview#what-is-an-work-item) for issues. 
+
+### Types
+
+Each issue type has has a provided template.
 
 | Type                                            | Purpose                                |
 | :---------------------------------------------- | :------------------------------------- |
@@ -67,7 +71,7 @@ We follow the [Jira hierarchy](https://www.atlassian.com/software/jira/guides/is
 | [`Bug`](.github/ISSUE_TEMPLATE/bug.yml)         | A problem which impairs functionality. |
 | [`Subtask`](.github/ISSUE_TEMPLATE/subtask.yml) | A granular piece of work.              |
 
-**Hierarchy Rules**:
+### Hierarchy Rules
 
 ```mermaid
 graph TD
@@ -86,7 +90,7 @@ graph TD
     Bug --> Subtask
 ```
 
-**Project Management:**
+### Project Management
 
 | View             | Purpose                                                             |
 | :--------------- | :------------------------------------------------------------------ |
@@ -105,7 +109,8 @@ graph TD
 | `Medium` | Standard priority issues.  |
 | `Low`    | Non-urgent issues.         |
 
-**Title**:
+### Title
+
 Issue titles are based on the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) imperative style, and follow these formatting rules:
 
 - **Imperative**: Use the imperative mood (e.g., `Add` not `Added`).
@@ -118,7 +123,13 @@ Issue titles are based on the [Conventional Commits](https://www.conventionalcom
 
 We follow the [Conventional Branch](https://conventional-branch.github.io/) specification.
 
-**Name**: `<type>/[ticket-id]-<description>`
+### Pattern
+
+```text
+<type>/[ticket-id]-<description>
+```
+
+### Types
 
 | Type       | Usage                |
 | :--------- | :------------------- |
@@ -128,7 +139,7 @@ We follow the [Conventional Branch](https://conventional-branch.github.io/) spec
 | `release/` | Release preparations |
 | `chore/`   | Maintenance tasks    |
 
-**Rules**:
+### Rules
 
 - Lowercase only
 - Hyphen-separated
@@ -140,7 +151,7 @@ We follow the [Conventional Branch](https://conventional-branch.github.io/) spec
 
 We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0) specification.
 
-**Pattern**:
+### Pattern
 
 ```text
 <type>[optional scope][optional !]: <description>
@@ -149,6 +160,8 @@ We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0
 
 [optional footer(s)]
 ```
+
+### Types
 
 | Type       | Release | Description                 |
 | :--------- | :------ | :-------------------------- |
@@ -164,7 +177,7 @@ We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0
 | `test`     | -       | Adding/correcting tests     |
 | `revert`   | -       | Reverts a previous commit   |
 
-**Rules**:
+### Rules
 
 - **Breaking**: Append `!` to type/scope or use `BREAKING CHANGE:` footer for MAJOR version update.
 - **Mood**: Use imperative (e.g., `add` not `added`).
@@ -176,6 +189,11 @@ We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0
 
 We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0) specification for PR titles.
 
-**Title**: `<type>[optional scope][optional !]: <description>`
+### Title 
+```text
+<type>[optional scope][optional !]: <description>
+```
 
-**Description**: Use the provided [template](.github/PULL_REQUEST_TEMPLATE.md).
+### Description
+
+Use the provided [template](.github/PULL_REQUEST_TEMPLATE.md).
