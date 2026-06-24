@@ -187,12 +187,15 @@ We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0
 
 ## Pull Requests
 
-We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0) specification for PR titles.
+We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0) specification for PR titles. 
 
 ### Title 
+
 ```text
 <type>[optional scope][optional !]: <description>
 ```
+
+See [Commits](#commits) for further details. 
 
 ### Description
 
