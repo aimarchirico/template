@@ -183,11 +183,11 @@ We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0
 
 ## Pull Requests
 
-We use the commit summary style for PR titles. 
+We adapt the [Gitmore PR Template](https://gitmore.io/blog/pull-request-template) for pull requests.
 
 ### Title 
 
-See [Commits](#commits) for details. 
+PR titles follow the commit summary style. See [Commits](#commits) for details. 
 
 ### Description
 
