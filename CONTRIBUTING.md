@@ -111,11 +111,7 @@ graph TD
 
 ### Title
 
-Issue titles are based on the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) imperative style, and follow these formatting rules:
-
-- **Imperative**: Use the imperative mood (e.g., `Add` not `Added`).
-- **Capitalized**: Start the first word with a capital letter.
-- **Clean**: No prefixes (e.g., `feat:`, `fix:`) or trailing periods.
+Issue titles follow the commit summary style but omit prefixes and use sentence case. See [Commits](#commits) for details. 
 
 ---
 
@@ -180,22 +176,18 @@ We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0
 ### Rules
 
 - **Imperative**: Use the imperative mood (e.g., `add` not `added`).
-- **Format**: Lowercase start, no trailing period.
-- **Breaking**: Append `!` to type/scope or use `BREAKING CHANGE:` footer for MAJOR version update.
+- **Formatting**: Lowercase start and no trailing period.
+- **Breaking**: Append `!` to type/scope or include `BREAKING CHANGE:` footer for MAJOR version update.
 
 ---
 
 ## Pull Requests
 
-We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0) specification for PR titles. 
+We use the commit summary style for PR titles. 
 
 ### Title 
 
-```text
-<type>[optional scope][optional !]: <description>
-```
-
-See [Commits](#commits) for further details. 
+See [Commits](#commits) for details. 
 
 ### Description
 
