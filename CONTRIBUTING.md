@@ -2,7 +2,7 @@
 
 ## Documentation
 
-We split documentation by audience:
+We adapt the [Google documentation guide](https://google.github.io/styleguide/docguide/) and split documentation by audience:
 
 - **`README.md` and `docs/`** (System-level): Features, how components connect, what infrastructure they run on, external dependencies. Nothing implementation-specific.
 - **Module READMEs** (Implementation-level): Everything a developer needs to work on that part.
@@ -183,7 +183,7 @@ We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0
 
 ## Pull Requests
 
-We adapt the [Gitmore PR Template](https://gitmore.io/blog/pull-request-template) for pull requests.
+We adapt the [Gitmore PR Template](https://gitmore.io/blog/pull-request-template).
 
 ### Title 
 
