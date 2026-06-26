@@ -25,15 +25,8 @@ def setup_frontend(default_mod, config_mod):
         "frontend/package.json",
         "frontend/apps/expo/package.json",
         "frontend/apps/expo/tsconfig.json",
-        "frontend/apps/expo/.prettierrc",
         "frontend/apps/expo/eslint.config.mjs",
-        "frontend/packages/api-client/package.json",
-        "frontend/tooling/eslint/package.json",
-        "frontend/tooling/eslint/eslint.config.mjs",
-        "frontend/tooling/typescript/package.json",
-        "frontend/tooling/typescript/base.json",
-        "frontend/tooling/prettier/package.json",
-        "frontend/tooling/prettier/index.json"
+        "frontend/packages/api-client/package.json"
     ]
     for f in other_files:
         replace_text(f, def_lower, cfg_lower)
