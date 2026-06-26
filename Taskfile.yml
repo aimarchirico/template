@@ -82,14 +82,13 @@ tasks:
       - task: frontend:ci:web
 
   "sync:skills":
-    desc: Orchestrate automated skill loading sequence for all 6 agent skills
+    desc: Orchestrate automated skill loading sequence for the core agent skills
     preconditions:
       - sh: "npx --version"
         msg: "Missing dependency: npx/node is required to sync skills"
       - sh: "python3 -c \"import os; exit(0 if os.path.isdir('../core/skills') else 1)\""
         msg: "Missing dependency: Core repository is not cloned at sibling path ../core"
     cmds:
-      - npx skills add ../core/skills/bootstrap
       - npx skills add ../core/skills/commit
       - npx skills add ../core/skills/docs
       - npx skills add ../core/skills/implement
