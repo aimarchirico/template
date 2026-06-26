@@ -1,5 +1,5 @@
 {
-  "extends": "@template/tsconfig/base.json",
+  "extends": "@aimarchirico/core-tooling/tsconfig.json",
   "compilerOptions": {
     "paths": {
       "@/*": [

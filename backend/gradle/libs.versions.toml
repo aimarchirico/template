@@ -17,9 +17,11 @@ hypersistence-utils = { module = "io.hypersistence:hypersistence-utils-hibernate
 springdoc-openapi = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc" }
 ktfmt-gradlePlugin = { module = "com.ncorti.ktfmt.gradle:com.ncorti.ktfmt.gradle.gradle.plugin", version.ref = "ktfmt" }
 archunit = { module = "com.tngtech.archunit:archunit-junit5", version.ref = "archunit" }
+core-security = { module = "no.chirico.core:security", version = "0.0.1" }
+core-testing = { module = "no.chirico.core:testing", version = "0.0.1" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
 ktfmt = { id = "com.ncorti.ktfmt.gradle", version.ref = "ktfmt" }
-template-kotlin = { id = "template.kotlin", version = "unspecified" }
+template-kotlin = { id = "no.chirico.core.build-logic", version = "0.0.1" }
