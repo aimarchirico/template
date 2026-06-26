@@ -11,8 +11,6 @@ A repository template featuring guidelines, templates, modules, workflows, tools
 - Project initialization script
 - Agent skills for the development workflow
 
-
-
 ## Getting Started
 
 The project can be initialized either using the AI agent or manually:
@@ -29,4 +27,5 @@ Use this repository as a template on GitHub, then run the `/bootstrap` skill to 
    ```bash
    python -m init
    ```
+
 3. Create documentation and issues according to the guidelines in [`CONTRIBUTING.md`](CONTRIBUTING.md).

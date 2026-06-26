@@ -21,7 +21,7 @@ Use when the user asks to create a pull request.
 6. Verify remote state:
 
    - Check if the local branch is pushed to remote. If not, execute `git push -u origin <branch-name>` to set upstream.
-7. Present the proposed PR Title and Body, and wait for explicit user approval. 
+7. Present the proposed PR Title and Body, and wait for explicit user approval.
 8. Execute `gh pr create --title "<title>" --body "<body>"` (supporting `--draft` to create a draft PR).
 
 ## Supported Flags
