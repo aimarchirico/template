@@ -1,9 +1,0 @@
-{
-  "name": "@template/prettier-config",
-  "version": "1.0.0",
-  "private": true,
-  "main": "index.js",
-  "dependencies": {
-    "gts": "^7.0.0"
-  }
-}

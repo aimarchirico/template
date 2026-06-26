@@ -31,14 +31,12 @@
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
-    "@template/eslint-config": "workspace:*",
-    "@template/prettier-config": "workspace:*",
-    "@template/tsconfig": "workspace:*",
+    "@aimarchirico/core-tooling": "^0.0.1",
     "@types/react": "~19.2.14",
     "dotenv": "^17.4.2",
     "eslint": "^9.39.2",
     "typescript": "~6.0.3"
   },
-  "prettier": "@template/prettier-config",
+  "prettier": "@aimarchirico/core-tooling/prettier.json",
   "private": true
 }
