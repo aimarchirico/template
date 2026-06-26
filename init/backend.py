@@ -19,12 +19,9 @@ def setup_backend(default_mod, config_mod):
 
     # Replace package
     pkg_files = [
-        "backend/build-logic/convention/build.gradle.kts",
         "backend/app/build.gradle.kts",
         f"backend/app/src/test/kotlin/{def_pkg_path}/ArchitectureTest.kt",
-        f"backend/app/src/main/kotlin/{def_pkg_path}/{def_pascal}Application.kt",
-        f"backend/app/src/main/kotlin/{def_pkg_path}/config/CorsConfig.kt",
-        f"backend/app/src/main/kotlin/{def_pkg_path}/security/ProxyValidationFilter.kt"
+        f"backend/app/src/main/kotlin/{def_pkg_path}/{def_pascal}Application.kt"
     ]
     for f in pkg_files:
         replace_text(f, def_pkg, cfg_pkg)
@@ -62,11 +59,7 @@ def setup_backend(default_mod, config_mod):
         f"backend/app/src/test/kotlin/{cfg_pkg_path}"
     )
 
-    # Move build-logic file
-    move_files(
-        f"backend/build-logic/convention/src/main/kotlin/{def_lower}.kotlin.gradle.kts",
-        f"backend/build-logic/convention/src/main/kotlin/{cfg_lower}.kotlin.gradle.kts"
-    )
+    # Note: build-logic convention plugin is now in Core, no local file to rename.
 
     # move Application file
     move_files(
