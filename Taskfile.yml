@@ -1,0 +1,12 @@
+version: '3'
+
+tasks:
+  check:
+    desc: Check markdown formatting using markdownlint-cli2
+    cmds:
+      - npm run lint:markdown
+
+  fix:
+    desc: Fix markdown formatting using markdownlint-cli2
+    cmds:
+      - npm run lint:markdown:fix
