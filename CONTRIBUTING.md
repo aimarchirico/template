@@ -11,53 +11,53 @@ We adapt the [Google documentation guide](https://google.github.io/styleguide/do
 
 The primary entry point and high-level overview of the project.
 
-* **Introduction**: Clear, concise statement of the project's purpose. What problem does it solve? Who is the target audience?
-* **Demo**: Visual evidence of the project in action. Placeholders for screenshots, GIFs, or links to live staging/production environments.
-* **Features**: High-level bullet points of the core functionality and value propositions.
-* **Getting Started**: Link to sub-directory READMEs for detailed technical setup.
-* **Documentation**: A directory map for the extended documentation located in the `docs/` folder.
-* **Workflow**: Link to contribution guidelines in `CONTRIBUTING.md`.
+- **Introduction**: Clear, concise statement of the project's purpose. What problem does it solve? Who is the target audience?
+- **Demo**: Visual evidence of the project in action. Placeholders for screenshots, GIFs, or links to live staging/production environments.
+- **Features**: High-level bullet points of the core functionality and value propositions.
+- **Getting Started**: Link to sub-directory READMEs for detailed technical setup.
+- **Documentation**: A directory map for the extended documentation located in the `docs/` folder.
+- **Workflow**: Link to contribution guidelines in `CONTRIBUTING.md`.
 
 ### 2. docs/ARCHITECTURE.md
 
 System-level source of truth. Contains only what spans the whole system; nothing implementation-specific.
 
-* **Data Flow**: Mermaid diagram showing communication between services.
-* **Infrastructure Overview**: Table of layers, technologies, and hosting locations.
-* **Project Structure**: Top-level directory tree explaining the purpose of each folder.
+- **Data Flow**: Mermaid diagram showing communication between services.
+- **Infrastructure Overview**: Table of layers, technologies, and hosting locations.
+- **Project Structure**: Top-level directory tree explaining the purpose of each folder.
 
 ### 3. docs/DESIGN.md
 
 Standards for UI, UX, and visual identity.
 
-* **Design System**: Definitions for the color palette, typography, spacing scales, and component library usage.
-* **User Flows**: Logical maps or descriptions of the most critical user journeys through the application.
-* **Assets**: Markdown illustrations, screenshots, or other visual assets used in the design system.
+- **Design System**: Definitions for the color palette, typography, spacing scales, and component library usage.
+- **User Flows**: Logical maps or descriptions of the most critical user journeys through the application.
+- **Assets**: Markdown illustrations, screenshots, or other visual assets used in the design system.
 
 ### 4. docs/API.md
 
 Technical reference for internal and external interfaces.
 
-* **Authentication**: Detailed security protocol. Instructions for obtaining and rotating credentials.
-* **Endpoints**: Summary of API resources. Link to interactive documentation if applicable.
-* **Data Models**: Schema definitions or descriptions of core domain entities and their relationships.
+- **Authentication**: Detailed security protocol. Instructions for obtaining and rotating credentials.
+- **Endpoints**: Summary of API resources. Link to interactive documentation if applicable.
+- **Data Models**: Schema definitions or descriptions of core domain entities and their relationships.
 
 ### 5. [module]/README.md
 
-Technical documentation specific to a project subsystem. All implementation-level detail lives here. 
+Technical documentation specific to a project subsystem. All implementation-level detail lives here.
 
-* **Tech Stack**: Versioned list of major languages, frameworks, and libraries. 
-* **Folder Structure**: Directory layout and module boundary rules. 
-* **Environment Variables**: List of required keys and `.env.example` reference. 
-* **Local Development**: Installation steps, runtime requirements and available commands. 
-* **Code Quality**: Code quality configurations, style guides, and rules. 
-* **Deployment**: CI/CD pipelines, deployment targets and hosting details.
+- **Tech Stack**: Versioned list of major languages, frameworks, and libraries.
+- **Folder Structure**: Directory layout and module boundary rules.
+- **Environment Variables**: List of required keys and `.env.example` reference.
+- **Local Development**: Installation steps, runtime requirements and available commands.
+- **Code Quality**: Code quality configurations, style guides, and rules.
+- **Deployment**: CI/CD pipelines, deployment targets and hosting details.
 
 ---
 
 ## Issues
 
-We follow the [Jira hierarchy](https://www.atlassian.com/software/jira/guides/issues/overview#what-is-an-work-item) for issues. 
+We follow the [Jira hierarchy](https://www.atlassian.com/software/jira/guides/issues/overview#what-is-an-work-item) for issues.
 
 ### Types
 
@@ -111,7 +111,7 @@ graph TD
 
 ### Title
 
-Issue titles follow the commit summary style but omit prefixes and use sentence case. See [Commits](#commits) for details. 
+Issue titles follow the commit summary style but omit prefixes and use sentence case. See [Commits](#commits) for details.
 
 ---
 
@@ -185,9 +185,9 @@ We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0
 
 We adapt the [Gitmore PR Template](https://gitmore.io/blog/pull-request-template).
 
-### Title 
+### Title
 
-PR titles follow the commit summary style. See [Commits](#commits) for details. 
+PR titles follow the commit summary style. See [Commits](#commits) for details.
 
 ### Description
 
