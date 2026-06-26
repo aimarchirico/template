@@ -4,57 +4,55 @@ tasks:
   run:
     desc: Start dev server
     cmds:
-      - npm install
-      - npx expo start --dev-client
+      - pnpm install
+      - pnpm --filter @template/expo start
 
   check:
     desc: Run lint and type checks
     cmds:
-      - npx eslint src
-      - npx tsc --noEmit
+      - pnpm turbo run check
 
   fix:
     desc: Fix lint problems
     cmds: 
-      - npx eslint src --fix
+      - pnpm turbo run fix
       
   build: 
     desc: Build development apk
     cmds: 
-      - npm install
-      - npx expo prebuild --platform android
-      - cd android && bash gradlew assembleDebug
+      - pnpm install
+      - pnpm turbo run build --filter=@template/expo
 
   api:
     desc: Generate OpenAPI client code and docs
     cmds:
-      - node scripts/generate-api.js
+      - pnpm turbo run api
 
   ci:check:
     desc: Run CI checks
     cmds:
-      - npm ci
-      - task: api
-      - task: check
+      - pnpm install --frozen-lockfile
+      - pnpm turbo run api
+      - pnpm turbo run check
 
   ci:android:
     desc: Run CI build for android
     cmds:
       - task: ci:check
-      - npx expo prebuild --platform android
-      - cd android && bash gradlew assembleRelease
+      - pnpm --filter @template/expo build
+      - cd apps/expo/android && bash gradlew assembleRelease
 
   ci:web:
     desc: Run CI build for web
     cmds:
       - task: ci:check
-      - npx expo export --platform web
+      - pnpm --filter @template/expo export:web
       # Fix node modules asset paths for Cloudflare Pages
       - |
-        if [ -d dist/assets/node_modules ]; then
-          mv dist/assets/node_modules/* dist/assets/ || true
-          rm -rf dist/assets/node_modules
+        if [ -d apps/expo/dist/assets/node_modules ]; then
+          mv apps/expo/dist/assets/node_modules/* apps/expo/dist/assets/ || true
+          rm -rf apps/expo/dist/assets/node_modules
         fi
-        find dist/_expo/static/js/web/ -type f -print0 | xargs -0 sed -i 's/assets\/node_modules/assets/g'
-      - cp -r functions dist/functions
-      - cp public/_routes.json dist/_routes.json
+        find apps/expo/dist/_expo/static/js/web/ -type f -print0 | xargs -0 sed -i 's/assets\/node_modules/assets/g'
+      - cp -r functions apps/expo/dist/functions
+      - cp public/_routes.json apps/expo/dist/_routes.json

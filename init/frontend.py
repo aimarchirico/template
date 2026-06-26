@@ -12,16 +12,28 @@ def setup_frontend(default_mod, config_mod):
     cfg_lower = lower(cfg_name)
 
     # Replacements for app.config.js
-    config_file = "frontend/app.config.js"
+    config_file = "frontend/apps/expo/app.config.js"
     replace_text(config_file, def_pkg, cfg_pkg)
     replace_text(config_file, def_name, cfg_name)
     replace_text(config_file, def_lower, cfg_lower)
 
-    # Replace lower case name
+    # Replace lower case name in all workspace configurations and workflows
     other_files = [
         ".github/workflows/frontend-web.yml",
         ".github/workflows/frontend-android.yml",
-        "frontend/package.json"
+        ".github/workflows/frontend-ci.yml",
+        "frontend/package.json",
+        "frontend/apps/expo/package.json",
+        "frontend/apps/expo/tsconfig.json",
+        "frontend/apps/expo/.prettierrc",
+        "frontend/apps/expo/eslint.config.mjs",
+        "frontend/packages/api-client/package.json",
+        "frontend/tooling/eslint/package.json",
+        "frontend/tooling/eslint/eslint.config.mjs",
+        "frontend/tooling/typescript/package.json",
+        "frontend/tooling/typescript/base.json",
+        "frontend/tooling/prettier/package.json",
+        "frontend/tooling/prettier/index.json"
     ]
     for f in other_files:
         replace_text(f, def_lower, cfg_lower)

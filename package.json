@@ -1,0 +1,12 @@
+{
+  "name": "template-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "lint:markdown": "markdownlint-cli2",
+    "lint:markdown:fix": "markdownlint-cli2 --fix"
+  },
+  "devDependencies": {
+    "markdownlint-cli2": "^0.13.0"
+  }
+}

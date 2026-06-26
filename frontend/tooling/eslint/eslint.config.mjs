@@ -1,7 +1,6 @@
 import { defineConfig } from "eslint/config";
 import expoConfig from "eslint-config-expo/flat.js";
 import gts from "gts";
-import boundaries from "eslint-plugin-boundaries";
 import checkFile from "eslint-plugin-check-file";
 
 export default defineConfig([
@@ -11,47 +10,8 @@ export default defineConfig([
 
   {
     files: ["src/**/*.{js,ts,jsx,tsx}"],
-    plugins: { boundaries, "check-file": checkFile },
-    settings: {
-
-      "boundaries/elements": [
-        {
-          type: "feature",
-          pattern: "src/features/*",
-          capture: ["featureName"],
-        },
-        {
-          type: "app",
-          pattern: "src/app/*",
-        },
-        {
-          type: "global",
-          pattern: "src/global/*",
-        },
-      ],
-    },
+    plugins: { "check-file": checkFile },
     rules: {
-
-      "boundaries/element-types": [
-        "error",
-        {
-          default: "allow",
-          rules: [
-            {
-              from: ["feature"],
-              allow: [
-                ["feature", { featureName: "${from.featureName}" }],
-                "global",
-              ],
-            },
-            {
-              from: ["global"],
-              allow: ["global"],
-            },
-          ],
-        },
-      ],
-
       "import/no-default-export": ["error"],
 
       "check-file/filename-naming-convention": [
