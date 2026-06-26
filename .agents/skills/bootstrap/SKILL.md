@@ -11,7 +11,7 @@ Use when the user asks to bootstrap or initalize the project, initialize documen
 
 ### 1. Preflight
 
-Check if the `init/` directory and `CONTRIBUTING.md` exist in the repository root. If they are missing, copy them from the skill's own `resources/init` and `resources/CONTRIBUTING.md` to the repository root before proceeding.
+Check if the `init/` directory, `CONTRIBUTING.md`, `.github/dependabot.yml`, `.github/PULL_REQUEST_TEMPLATE.md`, and `.github/ISSUE_TEMPLATE/` exist in the repository root. If they are missing, copy them from the skill's own `resources/init`, `resources/CONTRIBUTING.md`, and `resources/.github/` to the repository root before proceeding.
 
 ### 2. Parse Flags
 
