@@ -6,8 +6,11 @@ const fs = require('fs');
 const https = require('https');
 const http = require('http');
 
+const packageRoot = path.resolve(__dirname, '..');
+const repoRoot = path.resolve(packageRoot, '../../..');
+
 try {
-  require('dotenv').config({ path: path.resolve(process.cwd(), '.env') });
+  require('dotenv').config({ path: path.resolve(repoRoot, 'frontend/.env') });
 } catch (e) {
 }
 
@@ -47,21 +50,22 @@ async function fetchSpec() {
 
 function generateClient(specPath) {
   console.log('Generating API client...');
-  const cmd = `rm -rf src/global/api/generated && npx @openapitools/openapi-generator-cli generate -i ${specPath} -g typescript-axios -o src/global/api/generated`;
-  execSync(cmd, { stdio: 'inherit', cwd: path.resolve(process.cwd()) });
-  console.log('OpenAPI client generated at src/global/api/generated');
+  const outputDir = path.resolve(packageRoot, 'src/generated');
+  const cmd = `rm -rf "${outputDir}" && npx @openapitools/openapi-generator-cli generate -i "${specPath}" -g typescript-axios -o "${outputDir}"`;
+  execSync(cmd, { stdio: 'inherit', cwd: packageRoot });
+  console.log(`OpenAPI client generated at ${outputDir}`);
 }
 
 function generateDocs(specPath) {
   console.log('Generating API documentation...');
-  const docsDir = path.resolve(process.cwd(), '../docs');
+  const docsDir = path.resolve(repoRoot, 'docs');
   if (!fs.existsSync(docsDir)) {
     fs.mkdirSync(docsDir);
   }
 
   const outputPath = path.resolve(docsDir, 'API.md');
-  const cmd = `npx widdershins --code ${specPath} -o ${outputPath}`;
-  execSync(cmd, { stdio: 'inherit', cwd: path.resolve(process.cwd()) });
+  const cmd = `npx widdershins --code "${specPath}" -o "${outputPath}"`;
+  execSync(cmd, { stdio: 'inherit', cwd: packageRoot });
   console.log(`OpenAPI documentation generated at ${outputPath}`);
 }
 
@@ -69,7 +73,7 @@ async function main() {
   try {
     console.log('Fetching OpenAPI spec from', apiUrl);
     const spec = await fetchSpec();
-    const specPath = path.resolve(process.cwd(), 'openapi-spec.json');
+    const specPath = path.resolve(packageRoot, 'openapi-spec.json');
     fs.writeFileSync(specPath, spec);
 
     generateClient(specPath);

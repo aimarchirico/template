@@ -1,39 +1,17 @@
 {
-  "name": "template",
-  "main": "expo-router/entry",
+  "name": "template-monorepo",
   "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@9.15.9",
   "scripts": {
-  },
-  "dependencies": {
-    "expo": "~56.0.11",
-    "expo-constants": "~56.0.18",
-    "expo-dev-client": "~56.0.20",
-    "expo-linking": "~56.0.14",
-    "expo-router": "~56.2.10",
-    "expo-splash-screen": "~56.0.10",
-    "expo-status-bar": "~56.0.4",
-    "expo-system-ui": "~56.0.5",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
-    "react-native": "0.85.3",
-    "react-native-gesture-handler": "~2.31.1",
-    "react-native-reanimated": "4.3.1",
-    "react-native-safe-area-context": "~5.8.0",
-    "react-native-screens": "4.25.2",
-    "react-native-web": "~0.21.0"
+    "build": "turbo run build",
+    "check": "turbo run check",
+    "fix": "turbo run fix",
+    "api": "turbo run api",
+    "dev": "turbo run dev"
   },
   "devDependencies": {
-    "@babel/core": "^7.26.0",
-    "@openapitools/openapi-generator-cli": "^2.39.0",
-    "@types/react": "~19.2.14",
-    "dotenv": "^17.4.2",
-    "eslint": "^9.39.2",
-    "eslint-config-expo": "~56.0.4",
-    "eslint-plugin-boundaries": "^6.0.2",
-    "eslint-plugin-check-file": "^3.3.1",
-    "gts": "^7.0.0",
-    "typescript": "~6.0.3",
-    "widdershins": "^4.0.1"
+    "turbo": "^2.3.3"
   },
   "overrides": {
     "jsonpointer": "^5.0.1",
@@ -52,6 +30,5 @@
         "yargs-parser": "^13.1.2"
       }
     }
-  },
-  "private": true
+  }
 }
