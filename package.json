@@ -7,8 +7,9 @@
     "lint:markdown:fix": "markdownlint-cli2 --fix"
   },
   "devDependencies": {
+    "@aimarchirico/core-eslint": "^0.0.1",
     "@aimarchirico/core-markdown": "^0.0.1",
-    "@aimarchirico/core-tooling": "^0.0.1",
+    "@aimarchirico/core-typescript": "^0.0.1",
     "markdownlint-cli2": "^0.13.0"
   }
 }

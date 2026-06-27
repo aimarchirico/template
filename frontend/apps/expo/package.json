@@ -31,12 +31,13 @@
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
-    "@aimarchirico/core-tooling": "^0.0.1",
+    "@aimarchirico/core-eslint": "^0.0.1",
+    "@aimarchirico/core-typescript": "^0.0.1",
     "@types/react": "~19.2.14",
     "dotenv": "^17.4.2",
     "eslint": "^9.39.2",
     "typescript": "~6.0.3"
   },
-  "prettier": "@aimarchirico/core-tooling/prettier.json",
+  "prettier": "@aimarchirico/core-eslint/prettier.json",
   "private": true
 }
