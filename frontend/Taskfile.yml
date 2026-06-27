@@ -26,7 +26,7 @@ tasks:
   api:
     desc: Generate OpenAPI client code and docs
     cmds:
-      - pnpm turbo run api
+      - task: :api
 
   ci:check:
     desc: Run CI checks

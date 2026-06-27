@@ -16,11 +16,12 @@ includes:
 
 tasks:
   check:
-    desc: Trigger backend and frontend check
+    desc: Trigger backend, frontend and core check
     preconditions:
       - sh: "pnpm --version"
         msg: "Missing dependency: pnpm is required for frontend tasks"
     cmds:
+      - task: core:check
       - task: backend:check
       - task: frontend:check
 
@@ -34,20 +35,25 @@ tasks:
       - task: frontend:run
 
   fix:
-    desc: Trigger frontend formatting/linting orchestration
+    desc: Trigger formatting/linting orchestration for backend, frontend, and core
     preconditions:
       - sh: "pnpm --version"
         msg: "Missing dependency: pnpm is required for frontend tasks"
     cmds:
+      - task: core:fix
+      - task: backend:fix
       - task: frontend:fix
 
   api:
-    desc: Delegate to core:openapi:run
+    desc: Delegate to core:openapi:run with project output targets
     preconditions:
       - sh: "node --version"
         msg: "Missing dependency: Node.js is required for API generation"
     cmds:
       - task: core:frontend:core-openapi:openapi:run
+        env:
+          API_CLIENT_OUTPUT_DIR: '{{.ROOT_DIR}}/frontend/packages/api-client/src/generated'
+          API_DOCS_OUTPUT_DIR: '{{.ROOT_DIR}}/docs'
 
   "docker:up":
     desc: Start local container state
