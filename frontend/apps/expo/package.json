@@ -38,6 +38,5 @@
     "eslint": "^9.39.2",
     "typescript": "~6.0.3"
   },
-  "prettier": "@aimarchirico/core-eslint/prettier.json",
   "private": true
 }
