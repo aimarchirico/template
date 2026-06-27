@@ -1,3 +1,3 @@
-import baseConfig from "@aimarchirico/core-tooling/eslint.config.mjs";
+import baseConfig from "@aimarchirico/core-eslint/eslint.config.mjs";
 
 export default baseConfig;
