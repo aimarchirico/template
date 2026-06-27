@@ -28,7 +28,7 @@ dependencies {
   testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
   testRuntimeOnly("org.junit.platform:junit-platform-launcher")
   testImplementation(libs.archunit)
-  testImplementation(libs.core.testing)
+  testImplementation(libs.core.test)
 }
 
 tasks.withType<org.springframework.boot.gradle.tasks.run.BootRun>().configureEach {
