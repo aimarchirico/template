@@ -1,5 +1,5 @@
 {
-  "extends": "@aimarchirico/core-tooling/tsconfig.json",
+  "extends": "@aimarchirico/core-typescript/tsconfig.json",
   "compilerOptions": {
     "paths": {
       "@/*": [
