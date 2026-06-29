@@ -3,21 +3,19 @@ version: '3'
 includes:
   core:
     taskfile: ../../core/Taskfile.yml
-    dir: ../../core
+    dir: .
     optional: true
 
 tasks:
   check:
     desc: Run markdown lint check
     cmds:
-      - pnpm install
-      - pnpm run lint:markdown
+      - sh: "[ -f ../../core/Taskfile.yml ] && task core:docs:check || (pnpm install && pnpm run lint:markdown)"
 
   fix:
     desc: Fix markdown lint issues
     cmds:
-      - pnpm install
-      - pnpm run lint:markdown:fix
+      - sh: "[ -f ../../core/Taskfile.yml ] && task core:docs:fix || (pnpm install && pnpm run lint:markdown:fix)"
 
   api:
     desc: Delegate to core:openapi:run with project output targets
@@ -47,6 +45,5 @@ tasks:
   "lint:commit":
     desc: Lint commit messages
     cmds:
-      - pnpm install
-      - pnpm run lint:commit --from HEAD~1
+      - sh: "[ -f ../../core/Taskfile.yml ] && task core:commit:check -- HEAD~1 || (pnpm install && pnpm run lint:commit --from HEAD~1)"
 

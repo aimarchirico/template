@@ -1,4 +1,8 @@
-version: '3'
+includes:
+  core:
+    taskfile: ../../core/pnpm/Taskfile.yml
+    dir: .
+    optional: true
 
 tasks:
   run:
@@ -10,12 +14,12 @@ tasks:
   check:
     desc: Run lint and type checks
     cmds:
-      - pnpm turbo run check
+      - sh: "[ -f ../../core/pnpm/Taskfile.yml ] && task core:check || pnpm turbo run check"
 
   fix:
     desc: Fix lint problems
-    cmds: 
-      - pnpm turbo run fix
+    cmds:
+      - sh: "[ -f ../../core/pnpm/Taskfile.yml ] && task core:fix || pnpm turbo run fix"
       
   build: 
     desc: Build development apk
