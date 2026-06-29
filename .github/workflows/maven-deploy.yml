@@ -1,8 +1,8 @@
-name: Backend - Deploy
+name: Maven - Deploy
 
 on:
   workflow_run:
-    workflows: ["Backend - Push"]
+    workflows: ["Maven - Push"]
     types:
       - completed
 

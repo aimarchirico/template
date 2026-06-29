@@ -7,16 +7,16 @@ on:
       - "**/*.md"
       - ".github/workflows/docs-ci.yml"
       - "Taskfile.yml"
-      - "package.json"
-      - "package-lock.json"
+      - "tools/package.json"
+      - "tools/pnpm-lock.yaml"
   pull_request:
     branches: [main, dev]
     paths:
       - "**/*.md"
       - ".github/workflows/docs-ci.yml"
       - "Taskfile.yml"
-      - "package.json"
-      - "package-lock.json"
+      - "tools/package.json"
+      - "tools/pnpm-lock.yaml"
 
 jobs:
   ci:
