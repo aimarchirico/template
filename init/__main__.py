@@ -1,8 +1,8 @@
 import os
 import shutil
 from fs import load_json
-from maven import setup_maven, delete_maven
-from npm import setup_npm, delete_npm
+from backend import setup_backend, delete_backend
+from frontend import setup_frontend, delete_frontend
 from gh import setup_github_project
 
 def main():
@@ -28,16 +28,16 @@ def main():
         if mod_name in config_modules:
             config_mod = config_modules[mod_name]
             print(f"Configuring module: {mod_name}")
-            if mod_name == "maven":
-                setup_maven(default_mod, config_mod)
-            elif mod_name == "npm":
-                setup_npm(default_mod, config_mod)
+            if mod_name == "backend":
+                setup_backend(default_mod, config_mod)
+            elif mod_name == "frontend":
+                setup_frontend(default_mod, config_mod)
         else:
             print(f"Removing module: {mod_name}")
-            if mod_name == "maven":
-                delete_maven()
-            elif mod_name == "npm":
-                delete_npm()
+            if mod_name == "backend":
+                delete_backend()
+            elif mod_name == "frontend":
+                delete_frontend()
 
     # Delete the root README.md file
     if os.path.exists("README.md"):

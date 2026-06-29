@@ -1,9 +1,9 @@
-name: Maven - Push
+name: Backend - Push
 
 on:
   push:
     tags:
-      - 'maven-v*'
+      - 'backend-v*'
 
 env:
   REGISTRY: ghcr.io
@@ -34,7 +34,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=match,pattern=maven-v(.*),group=1
+            type=match,pattern=backend-v(.*),group=1
             type=raw,value=latest
 
       - name: Set Up Docker Buildx
@@ -42,12 +42,12 @@ jobs:
 
       - name: Get Version from Tag
         id: version
-        run: echo "VERSION_NAME=${GITHUB_REF_NAME#maven-v}" >> $GITHUB_OUTPUT
+        run: echo "VERSION_NAME=${GITHUB_REF_NAME#backend-v}" >> $GITHUB_OUTPUT
 
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v7
         with:
-          context: ./maven
+          context: ./backend
           push: true
           platforms: linux/amd64,linux/arm64
           tags: ${{ steps.meta.outputs.tags }}

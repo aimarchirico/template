@@ -1,12 +1,12 @@
-name: Maven - CI
+name: Backend - CI
 
 on:
   push:
     branches: [main, dev]
-    paths: [maven/**]
+    paths: [backend/**]
   pull_request:
     branches: [main, dev]
-    paths: [maven/**]
+    paths: [backend/**]
 
 jobs:
   ci:
