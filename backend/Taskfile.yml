@@ -1,8 +1,4 @@
-includes:
-  core:
-    taskfile: ../../core/gradle/Taskfile.yml
-    dir: .
-    optional: true
+version: '3'
 
 tasks:
   run:
@@ -13,12 +9,12 @@ tasks:
   check:
     desc: Compile and run tests for the Kotlin backend
     cmds:
-      - sh: "[ -f ../../core/gradle/Taskfile.yml ] && task core:check || bash gradlew check"
+      - bash gradlew check
 
   fix:
     desc: Fix formatting problems
     cmds:
-      - sh: "[ -f ../../core/gradle/Taskfile.yml ] && task core:fix || bash gradlew ktfmtFormat"
+      - bash gradlew ktfmtFormat
 
   up:
     desc: Start the database container
