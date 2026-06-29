@@ -1,0 +1,11 @@
+{
+  "packages": {
+    "maven": {
+      "release-type": "java"
+    },
+    "npm": {
+      "release-type": "node"
+    }
+  },
+  "plugins": []
+}
