@@ -17,22 +17,23 @@ jobs:
     name: Release Please
     runs-on: ubuntu-latest
     outputs:
-      backend--released: ${{ steps.release.outputs.backend--released }}
+      paths_released: ${{ steps.release.outputs.paths_released }}
       backend--version: ${{ steps.release.outputs.backend--version }}
-      frontend--released: ${{ steps.release.outputs.frontend--released }}
       frontend--version: ${{ steps.release.outputs.frontend--version }}
       frontend--upload_url: ${{ steps.release.outputs.frontend--upload_url }}
     steps:
-      - uses: google-github-actions/release-please-action@v4
+      - name: Run Release Please
         id: release
+        uses: googleapis/release-please-action@v4
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           config-file: tools/release-please-config.json
           manifest-file: tools/release-please-manifest.json
 
   backend-release:
     name: Backend Release
     needs: release-please
-    if: ${{ needs.release-please.outputs.backend--released == 'true' }}
+    if: contains(fromJSON(needs.release-please.outputs.paths_released), 'backend')
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
@@ -81,7 +82,7 @@ jobs:
   frontend-release:
     name: Frontend Release
     needs: release-please
-    if: ${{ needs.release-please.outputs.frontend--released == 'true' }}
+    if: contains(fromJSON(needs.release-please.outputs.paths_released), 'frontend')
     runs-on: ubuntu-latest
     env:
       GITHUB_NPM_TOKEN: ${{ secrets.NPM_GITHUB_TOKEN }}
