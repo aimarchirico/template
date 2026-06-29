@@ -10,82 +10,49 @@ includes:
   tools:
     taskfile: ./tools/Taskfile.yml
     dir: ./tools
-  core:
-    # Sibling relative path for local development
-    taskfile: ../core/Taskfile.yml
-    dir: ../core
-    optional: true
 
 tasks:
   check:
-    desc: Trigger maven, npm, and tools check
-    preconditions:
-      - sh: "pnpm --version"
-        msg: "Missing dependency: pnpm is required for npm/tools tasks"
+    desc: Run check across backend, frontend, and tools
     cmds:
-      - sh: "[ -f ../core/Taskfile.yml ] && task core:check || echo 'Skipping core checks'"
       - task: backend:check
       - task: frontend:check
       - task: tools:check
 
   run:
-    desc: Trigger maven and npm run
-    preconditions:
-      - sh: "pnpm --version"
-        msg: "Missing dependency: pnpm is required for npm/tools tasks"
+    desc: Run backend and frontend servers
     cmds:
       - task: backend:run
       - task: frontend:run
 
   fix:
-    desc: Trigger formatting/linting orchestration for maven, npm, and tools
-    preconditions:
-      - sh: "pnpm --version"
-        msg: "Missing dependency: pnpm is required for npm/tools tasks"
+    desc: Fix formatting/linting across backend, frontend, and tools
     cmds:
-      - sh: "[ -f ../core/Taskfile.yml ] && task core:fix || echo 'Skipping core formatting'"
       - task: backend:fix
       - task: frontend:fix
       - task: tools:fix
 
   api:
-    desc: Delegate to tools:api
+    desc: Generate API client
     cmds:
       - task: tools:api
 
-  "docker:up":
-    desc: Start local container state
-    preconditions:
-      - sh: "docker --version"
-        msg: "Missing dependency: Docker is required to manage containers"
+  up:
+    desc: Start local containers
     cmds:
       - task: backend:up
 
   "docker:down":
-    desc: Stop local container state
-    preconditions:
-      - sh: "docker --version"
-        msg: "Missing dependency: Docker is required to manage containers"
+    desc: Stop local containers
     cmds:
       - task: backend:down
 
   "ci:android":
-    desc: Trigger targeted Android build pipeline
-    preconditions:
-      - sh: "pnpm --version"
-        msg: "Missing dependency: pnpm is required for Android build"
+    desc: Run CI Android build
     cmds:
       - task: frontend:ci:android
 
   "ci:web":
-    desc: Trigger targeted Web build pipeline
-    preconditions:
-      - sh: "pnpm --version"
-        msg: "Missing dependency: pnpm is required for Web build"
+    desc: Run CI Web build
     cmds:
       - task: frontend:ci:web
-
-  "sync:skills":
-    desc: Delegate to tools:sync:skills
-    cmds:
-      - task: tools:sync:skills
