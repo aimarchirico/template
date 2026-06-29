@@ -1,0 +1,180 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+  packages: write
+  deployments: write
+
+jobs:
+  release-please:
+    name: Release Please
+    runs-on: ubuntu-latest
+    outputs:
+      backend--released: ${{ steps.release.outputs.backend--released }}
+      backend--version: ${{ steps.release.outputs.backend--version }}
+      frontend--released: ${{ steps.release.outputs.frontend--released }}
+      frontend--version: ${{ steps.release.outputs.frontend--version }}
+      frontend--upload_url: ${{ steps.release.outputs.frontend--upload_url }}
+    steps:
+      - uses: google-github-actions/release-please-action@v4
+        id: release
+        with:
+          config-file: tools/release-please-config.json
+          manifest-file: tools/release-please-manifest.json
+
+  backend-release:
+    name: Backend Release
+    needs: release-please
+    if: ${{ needs.release-please.outputs.backend--released == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Out Repo
+        uses: actions/checkout@v4
+
+      - name: Log In to Container Registry
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract Metadata and Create Tags
+        id: meta
+        uses: docker/metadata-action@v6
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=raw,value=${{ needs.release-please.outputs.backend--version }}
+            type=raw,value=latest
+
+      - name: Set Up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v7
+        with:
+          context: ./backend
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: VERSION_NAME=${{ needs.release-please.outputs.backend--version }}
+
+      - name: Set Up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/key
+          chmod 600 ~/.ssh/key
+          ssh-keyscan -H ${{ vars.VPS_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to VPS
+        run: |
+          ssh -i ~/.ssh/key ${{ vars.VPS_USER }}@${{ vars.VPS_HOST }} "cd ~/docker/template && docker compose -f compose.yml -f compose.prod.yml up -d --pull always template-api"
+
+  frontend-release:
+    name: Frontend Release
+    needs: release-please
+    if: ${{ needs.release-please.outputs.frontend--released == 'true' }}
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_NPM_TOKEN: ${{ secrets.NPM_GITHUB_TOKEN }}
+    steps:
+      - name: Check Out Repo
+        uses: actions/checkout@v4
+
+      - name: Set Up Node
+        uses: ./.github/actions/setup-node
+        with:
+          node-version: 20.x
+          cache-dependency-path: ./frontend/pnpm-lock.yaml
+
+      - name: Set Up Java
+        uses: ./.github/actions/setup-java
+        with:
+          java-version: '17'
+
+      - name: Set Up Task
+        uses: arduino/setup-task@v2
+        with:
+          version: 3.x
+
+      - name: Run CI Build for Android
+        run: task ci:android
+        working-directory: ./frontend
+        env:
+          API_URL: ${{ vars.API_URL }}
+          CF_ACCESS_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
+          CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
+          GOOGLE_SERVICES_JSON_BASE64: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64 }}
+          VERSION_NAME: ${{ needs.release-please.outputs.frontend--version }}
+          RELEASE_URL: https://github.com/${{ github.repository }}/releases
+
+      - name: Copy APK
+        run: cp ./frontend/apps/expo/android/app/build/outputs/apk/release/app-release.apk ${{ github.workspace }}/app-release.apk
+
+      - name: Upload Release Asset to GitHub
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.release-please.outputs.frontend--upload_url }}
+          asset_path: ${{ github.workspace }}/app-release.apk
+          asset_name: template-${{ needs.release-please.outputs.frontend--version }}.apk
+          asset_content_type: application/vnd.android.package-archive
+
+      - name: Run CI Build for Web
+        run: task ci:web
+        working-directory: ./frontend
+        env:
+          API_URL: ${{ vars.API_URL }}
+          CF_ACCESS_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
+          CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
+          RELEASE_URL: https://github.com/${{ github.repository }}/releases
+          VERSION_NAME: ${{ needs.release-please.outputs.frontend--version }}
+
+      - name: Create GitHub Deployment
+        id: deployment
+        uses: bobheadxi/deployments@v1
+        with:
+          step: start
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: production
+          ref: ${{ github.ref }}
+
+      - name: Publish to Cloudflare Pages
+        id: cloudflare_deploy
+        working-directory: ./frontend
+        run: npx wrangler pages deploy ./apps/expo/dist --project-name=template --branch=main
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Update GitHub Deployment Status (Success)
+        if: success()
+        uses: bobheadxi/deployments@v1
+        with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: production
+          status: success
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+          ref: ${{ github.ref }}
+          env_url: ${{ vars.CLIENT_URL }}
+
+      - name: Update GitHub Deployment Status (Failure)
+        if: failure()
+        uses: bobheadxi/deployments@v1
+        with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: production
+          status: failure
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+          ref: ${{ github.ref }}
