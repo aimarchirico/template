@@ -96,7 +96,7 @@ jobs:
           cache-dependency-path: ./frontend/pnpm-lock.yaml
 
       - name: Set Up Gradle/Java
-        uses: aimarchirico/core/.github/actions/setup-gradle@dev
+        uses: aimarchirico/core/.github/actions/setup-java@dev
 
       - name: Run CI Build for Android
         run: task ci:android
