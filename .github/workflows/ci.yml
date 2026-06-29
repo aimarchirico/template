@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+
+jobs:
+  changes:
+    name: Detect Changes
+    runs-on: ubuntu-latest
+    outputs:
+      backend: ${{ steps.filter.outputs.backend }}
+      frontend: ${{ steps.filter.outputs.frontend }}
+      docs: ${{ steps.filter.outputs.docs }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            backend:
+              - 'backend/**'
+            frontend:
+              - 'frontend/**'
+            docs:
+              - '**/*.md'
+              - '.github/workflows/ci.yml'
+              - 'Taskfile.yml'
+              - 'tools/**'
+
+  backend-ci:
+    name: Backend CI
+    needs: changes
+    if: needs.changes.outputs.backend == 'true'
+    uses: aimarchirico/core/.github/workflows/reusable-backend-ci.yml@dev
+
+  frontend-ci:
+    name: Frontend CI
+    needs: changes
+    if: needs.changes.outputs.frontend == 'true'
+    uses: aimarchirico/core/.github/workflows/reusable-frontend-ci.yml@dev
+    secrets: inherit
+
+  docs-ci:
+    name: Docs CI
+    needs: changes
+    if: needs.changes.outputs.docs == 'true'
+    uses: aimarchirico/core/.github/workflows/reusable-docs-ci.yml@dev
