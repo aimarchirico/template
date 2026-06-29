@@ -1,12 +1,12 @@
 version: '3'
 
 includes:
-  maven:
-    taskfile: ./maven/Taskfile.yml
-    dir: ./maven
-  npm:
-    taskfile: ./npm/Taskfile.yml
-    dir: ./npm
+  backend:
+    taskfile: ./backend/Taskfile.yml
+    dir: ./backend
+  frontend:
+    taskfile: ./frontend/Taskfile.yml
+    dir: ./frontend
   tools:
     taskfile: ./tools/Taskfile.yml
     dir: ./tools
@@ -24,8 +24,8 @@ tasks:
         msg: "Missing dependency: pnpm is required for npm/tools tasks"
     cmds:
       - sh: "[ -f ../core/Taskfile.yml ] && task core:check || echo 'Skipping core checks'"
-      - task: maven:check
-      - task: npm:check
+      - task: backend:check
+      - task: frontend:check
       - task: tools:check
 
   run:
@@ -34,8 +34,8 @@ tasks:
       - sh: "pnpm --version"
         msg: "Missing dependency: pnpm is required for npm/tools tasks"
     cmds:
-      - task: maven:run
-      - task: npm:run
+      - task: backend:run
+      - task: frontend:run
 
   fix:
     desc: Trigger formatting/linting orchestration for maven, npm, and tools
@@ -44,8 +44,8 @@ tasks:
         msg: "Missing dependency: pnpm is required for npm/tools tasks"
     cmds:
       - sh: "[ -f ../core/Taskfile.yml ] && task core:fix || echo 'Skipping core formatting'"
-      - task: maven:fix
-      - task: npm:fix
+      - task: backend:fix
+      - task: frontend:fix
       - task: tools:fix
 
   api:
@@ -59,7 +59,7 @@ tasks:
       - sh: "docker --version"
         msg: "Missing dependency: Docker is required to manage containers"
     cmds:
-      - task: maven:up
+      - task: backend:up
 
   "docker:down":
     desc: Stop local container state
@@ -67,7 +67,7 @@ tasks:
       - sh: "docker --version"
         msg: "Missing dependency: Docker is required to manage containers"
     cmds:
-      - task: maven:down
+      - task: backend:down
 
   "ci:android":
     desc: Trigger targeted Android build pipeline
@@ -75,7 +75,7 @@ tasks:
       - sh: "pnpm --version"
         msg: "Missing dependency: pnpm is required for Android build"
     cmds:
-      - task: npm:ci:android
+      - task: frontend:ci:android
 
   "ci:web":
     desc: Trigger targeted Web build pipeline
@@ -83,7 +83,7 @@ tasks:
       - sh: "pnpm --version"
         msg: "Missing dependency: pnpm is required for Web build"
     cmds:
-      - task: npm:ci:web
+      - task: frontend:ci:web
 
   "sync:skills":
     desc: Delegate to tools:sync:skills

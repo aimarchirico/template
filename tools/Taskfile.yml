@@ -27,7 +27,7 @@ tasks:
     cmds:
       - sh: "[ -f ../../core/Taskfile.yml ] && task core:npm:core-openapi:openapi:run || echo 'Skipping API client regeneration (core repository not found)'"
         env:
-          API_CLIENT_OUTPUT_DIR: '{{.ROOT_DIR}}/npm/packages/api-client/src/generated'
+          API_CLIENT_OUTPUT_DIR: '{{.ROOT_DIR}}/frontend/packages/api-client/src/generated'
           API_DOCS_OUTPUT_DIR: '{{.ROOT_DIR}}/docs'
 
   "sync:skills":
