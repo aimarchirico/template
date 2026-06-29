@@ -1,11 +1,11 @@
 {
   "name": "Template",
   "modules": {
-    "frontend": {
+    "npm": {
       "name": "Template",
       "package": "no.chirico.template"
     },
-    "backend": {
+    "maven": {
       "name": "Template",
       "package": "no.chirico.template",
       "image": "ghcr.io/aimarchirico/template"

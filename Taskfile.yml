@@ -1,59 +1,57 @@
 version: '3'
 
 includes:
-  backend:
-    taskfile: ./backend/Taskfile.yml
-    dir: ./backend
-  frontend:
-    taskfile: ./frontend/Taskfile.yml
-    dir: ./frontend
+  maven:
+    taskfile: ./maven/Taskfile.yml
+    dir: ./maven
+  npm:
+    taskfile: ./npm/Taskfile.yml
+    dir: ./npm
+  tools:
+    taskfile: ./tools/Taskfile.yml
+    dir: ./tools
   core:
-    # Remote Taskfile registry (requires TASK_X_REMOTE_TASKFILES=1 and auth token for private repo):
-    # taskfile: https://raw.githubusercontent.com/aimarchirico/core/dev/Taskfile.yml
-    # Sibling relative path for local development (functional):
+    # Sibling relative path for local development
     taskfile: ../core/Taskfile.yml
     dir: ../core
+    optional: true
 
 tasks:
   check:
-    desc: Trigger backend, frontend and core check
+    desc: Trigger maven, npm, and tools check
     preconditions:
       - sh: "pnpm --version"
-        msg: "Missing dependency: pnpm is required for frontend tasks"
+        msg: "Missing dependency: pnpm is required for npm/tools tasks"
     cmds:
-      - task: core:check
-      - task: backend:check
-      - task: frontend:check
+      - sh: "[ -f ../core/Taskfile.yml ] && task core:check || echo 'Skipping core checks'"
+      - task: maven:check
+      - task: npm:check
+      - task: tools:check
 
   run:
-    desc: Trigger backend and frontend run
+    desc: Trigger maven and npm run
     preconditions:
       - sh: "pnpm --version"
-        msg: "Missing dependency: pnpm is required for frontend tasks"
+        msg: "Missing dependency: pnpm is required for npm/tools tasks"
     cmds:
-      - task: backend:run
-      - task: frontend:run
+      - task: maven:run
+      - task: npm:run
 
   fix:
-    desc: Trigger formatting/linting orchestration for backend, frontend, and core
+    desc: Trigger formatting/linting orchestration for maven, npm, and tools
     preconditions:
       - sh: "pnpm --version"
-        msg: "Missing dependency: pnpm is required for frontend tasks"
+        msg: "Missing dependency: pnpm is required for npm/tools tasks"
     cmds:
-      - task: core:fix
-      - task: backend:fix
-      - task: frontend:fix
+      - sh: "[ -f ../core/Taskfile.yml ] && task core:fix || echo 'Skipping core formatting'"
+      - task: maven:fix
+      - task: npm:fix
+      - task: tools:fix
 
   api:
-    desc: Delegate to core:openapi:run with project output targets
-    preconditions:
-      - sh: "node --version"
-        msg: "Missing dependency: Node.js is required for API generation"
+    desc: Delegate to tools:api
     cmds:
-      - task: core:frontend:core-openapi:openapi:run
-        env:
-          API_CLIENT_OUTPUT_DIR: '{{.ROOT_DIR}}/frontend/packages/api-client/src/generated'
-          API_DOCS_OUTPUT_DIR: '{{.ROOT_DIR}}/docs'
+      - task: tools:api
 
   "docker:up":
     desc: Start local container state
@@ -61,7 +59,7 @@ tasks:
       - sh: "docker --version"
         msg: "Missing dependency: Docker is required to manage containers"
     cmds:
-      - task: backend:up
+      - task: maven:up
 
   "docker:down":
     desc: Stop local container state
@@ -69,7 +67,7 @@ tasks:
       - sh: "docker --version"
         msg: "Missing dependency: Docker is required to manage containers"
     cmds:
-      - task: backend:down
+      - task: maven:down
 
   "ci:android":
     desc: Trigger targeted Android build pipeline
@@ -77,7 +75,7 @@ tasks:
       - sh: "pnpm --version"
         msg: "Missing dependency: pnpm is required for Android build"
     cmds:
-      - task: frontend:ci:android
+      - task: npm:ci:android
 
   "ci:web":
     desc: Trigger targeted Web build pipeline
@@ -85,18 +83,9 @@ tasks:
       - sh: "pnpm --version"
         msg: "Missing dependency: pnpm is required for Web build"
     cmds:
-      - task: frontend:ci:web
+      - task: npm:ci:web
 
   "sync:skills":
-    desc: Orchestrate automated skill loading sequence for the core agent skills
-    preconditions:
-      - sh: "npx --version"
-        msg: "Missing dependency: npx/node is required to sync skills"
-      - sh: "python3 -c \"import os; exit(0 if os.path.isdir('../core/skills') else 1)\""
-        msg: "Missing dependency: Core repository is not cloned at sibling path ../core"
+    desc: Delegate to tools:sync:skills
     cmds:
-      - npx skills add ../core/skills/commit
-      - npx skills add ../core/skills/docs
-      - npx skills add ../core/skills/implement
-      - npx skills add ../core/skills/issues
-      - npx skills add ../core/skills/pr
+      - task: tools:sync:skills

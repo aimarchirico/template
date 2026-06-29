@@ -1,15 +1,19 @@
 {
-  "name": "template-root",
+  "name": "template-tools",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "lint:markdown": "markdownlint-cli2",
-    "lint:markdown:fix": "markdownlint-cli2 --fix"
+    "lint:markdown:fix": "markdownlint-cli2 --fix",
+    "lint:commit": "commitlint"
   },
   "devDependencies": {
     "@aimarchirico/core-eslint": "^0.0.1",
     "@aimarchirico/core-markdown": "^0.0.1",
     "@aimarchirico/core-typescript": "^0.0.1",
-    "markdownlint-cli2": "^0.13.0"
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "markdownlint-cli2": "^0.13.0",
+    "turbo": "^2.3.3"
   }
 }

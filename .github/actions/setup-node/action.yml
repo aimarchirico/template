@@ -1,0 +1,30 @@
+name: 'Setup Node'
+description: 'Set up Node.js and package manager'
+inputs:
+  node-version:
+    description: 'Node.js version'
+    required: false
+    default: '20.x'
+  cache:
+    description: 'Package manager cache'
+    required: false
+    default: 'pnpm'
+  cache-dependency-path:
+    description: 'Path to lock file'
+    required: false
+    default: 'npm/pnpm-lock.yaml'
+runs:
+  using: 'composite'
+  steps:
+    - name: Install pnpm
+      if: ${{ inputs.cache == 'pnpm' }}
+      uses: pnpm/action-setup@v4
+      with:
+        version: 9
+
+    - name: Set Up Node
+      uses: actions/setup-node@v6.4.0
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: ${{ inputs.cache }}
+        cache-dependency-path: ${{ inputs.cache-dependency-path }}

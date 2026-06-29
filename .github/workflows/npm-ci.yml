@@ -1,14 +1,15 @@
-name: Frontend - CI
+name: Npm - CI
 
 on:
   push:
     branches: [main, dev]
-    paths: [frontend/**]
+    paths: [npm/**]
   pull_request:
     branches: [main, dev]
-    paths: [frontend/**]
+    paths: [npm/**]
 
 jobs:
   ci:
     uses: aimarchirico/core/.github/workflows/reusable-frontend-ci.yml@dev
     secrets: inherit
+
