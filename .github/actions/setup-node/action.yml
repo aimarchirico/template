@@ -12,7 +12,7 @@ inputs:
   cache-dependency-path:
     description: 'Path to lock file'
     required: false
-    default: 'npm/pnpm-lock.yaml'
+    default: 'frontend/pnpm-lock.yaml'
 runs:
   using: 'composite'
   steps:

@@ -16,8 +16,8 @@
     "../**/dist/**",
     "../**/.expo/**",
     "../**/.git/**",
-    "../maven/**/build/**",
-    "../maven/**/.gradle/**",
+    "../backend/**/build/**",
+    "../backend/**/.gradle/**",
     "../**/tmp/**",
     "node_modules/**",
     ".turbo/**"

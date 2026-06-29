@@ -1,12 +1,12 @@
-name: Npm - CI
+name: Frontend - CI
 
 on:
   push:
     branches: [main, dev]
-    paths: [npm/**]
+    paths: [frontend/**]
   pull_request:
     branches: [main, dev]
-    paths: [npm/**]
+    paths: [frontend/**]
 
 jobs:
   ci:

@@ -1,9 +1,9 @@
 {
   "packages": {
-    "maven": {
+    "backend": {
       "release-type": "java"
     },
-    "npm": {
+    "frontend": {
       "release-type": "node"
     }
   },
