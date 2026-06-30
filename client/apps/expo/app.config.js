@@ -4,7 +4,7 @@ export default {
   expo: {
     name: IS_DEV ? "Template (Dev)" : "Template",
     slug: "template",
-    version: process.env.VERSION_NAME || "1.0.0",
+    version: "1.0.0", // x-release-please-version
     orientation: "portrait",
     icon: "./src/assets/icons/icon.png",
     scheme: "template",
