@@ -2,3 +2,10 @@ packages:
   - "apps/*"
   - "packages/*"
   - "tooling/*"
+allowBuilds:
+  '@openapitools/openapi-generator-cli': true
+  core-js: true
+  unrs-resolver: true
+minimumReleaseAgeExclude:
+  - '@aimarchirico/core-expo@0.1.1'
+  - '@aimarchirico/core-ts@0.1.1'
