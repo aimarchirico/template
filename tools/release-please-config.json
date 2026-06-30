@@ -1,7 +1,7 @@
 {
   "packages": {
     "backend": {
-      "release-type": "java",
+      "release-type": "simple",
       "extra-files": ["app/src/main/resources/application.yml"]
     },
     "frontend": {
