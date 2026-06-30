@@ -7,7 +7,8 @@
     "fix": "eslint . --no-error-on-unmatched-pattern --fix",
     "dev": "expo start --dev-client",
     "prebuild": "expo prebuild --platform android",
-    "build": "cd android && bash gradlew assembleDebug",
+    "build:debug": "cd android && bash gradlew assembleDebug",
+    "build:release": "cd android && bash gradlew assembleRelease",
     "export": "expo export --platform web",
     "cloudflare:fix": "node scripts/fix-cloudflare.js"
   },
