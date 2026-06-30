@@ -13,5 +13,24 @@
     "fix": {
       "cache": false
     }
+  },
+  "boundaries": {
+    "tags": {
+      "type:app": {
+        "dependencies": {
+          "allow": ["type:feature", "type:shared"]
+        }
+      },
+      "type:feature": {
+        "dependencies": {
+          "allow": ["type:shared"]
+        }
+      },
+      "type:shared": {
+        "dependencies": {
+          "allow": ["type:shared"]
+        }
+      }
+    }
   }
 }

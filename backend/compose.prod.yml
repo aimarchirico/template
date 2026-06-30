@@ -1,10 +1,8 @@
 services:
-  template-api:
-    container_name: template-api
+  template-backend:
+    container_name: template-backend
     image: ghcr.io/aimarchirico/template:latest
-    build:
-      context: .
-      dockerfile: Dockerfile
+
     ports:
       - "8080:8080"
     env_file: .env
