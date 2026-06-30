@@ -1,20 +1,17 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
-    "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**"]
-    },
     "check": {
-      "dependsOn": ["^build"]
+      "cache": true,
+      "inputs": [
+        "src/**/*",
+        "eslint.config.mjs",
+        "tsconfig.json",
+        "package.json"
+      ]
     },
-    "fix": {},
-    "api": {
-      "dependsOn": ["^build"]
-    },
-    "dev": {
-      "cache": false,
-      "persistent": true
+    "fix": {
+      "cache": false
     }
   }
 }
