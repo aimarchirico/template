@@ -75,7 +75,7 @@ jobs:
   # ANDROID APK
   # ==========================================
   android-release:
-    name: Frontend Release
+    name: Android Release
     needs: release-please
     if: contains(fromJSON(needs.release-please.outputs.paths_released), 'frontend')
     runs-on: ubuntu-latest
@@ -116,7 +116,7 @@ jobs:
           asset_content_type: application/vnd.android.package-archive
 
   # ==========================================
-  # DEPLOY API -> VPS
+  # TRIGGER API DEPLOYMENT
   # ==========================================
   deploy-api:
     name: Deploy API
@@ -127,11 +127,12 @@ jobs:
     secrets: inherit
 
   # ==========================================
-  # DEPLOY WEB -> Cloudflare Pages
+  # TRIGGER WEB DEPLOYMENT
   # ==========================================
   deploy-web:
     name: Deploy Web
-    needs: android-release
+    needs: release-please
+    if: contains(fromJSON(needs.release-please.outputs.paths_released), 'frontend')
     uses: ./.github/workflows/deploy.yml
     with:
       deploy-web: true
