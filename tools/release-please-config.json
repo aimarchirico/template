@@ -5,7 +5,7 @@
       "extra-files": ["app/src/main/resources/application.yml"]
     },
     "frontend": {
-      "release-type": "node",
+      "release-type": "simple",
       "extra-files": ["apps/expo/app.config.js"]
     }
   },
