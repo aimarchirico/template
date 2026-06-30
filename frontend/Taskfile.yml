@@ -28,11 +28,12 @@ tasks:
   build:
     desc: Build development apk
     cmds:
-      - pnpm --filter=@template/expo build
+      - pnpm --filter=@template/expo build:debug
 
   api:
     desc: Generate OpenAPI client code and docs
     env:
+      API_CLIENT_OUTPUT_DIR: '{{.TASKFILE_DIR}}/apps/expo/src/generated'
       API_DOCS_OUTPUT_DIR: '{{.TASKFILE_DIR}}/../docs'
     cmds:
       - pnpm --filter @template/api-client api
@@ -41,8 +42,9 @@ tasks:
     desc: Build release for android
     cmds:
       - task: install
+      - task: api
       - pnpm --filter @template/expo prebuild
-      - pnpm --filter @template/expo build
+      - pnpm --filter @template/expo build:release
 
   build:web:
     desc: Build release for web
