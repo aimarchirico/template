@@ -66,7 +66,6 @@ jobs:
           platforms: linux/amd64,linux/arm64
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          build-args: VERSION_NAME=${{ needs.release-please.outputs.backend--version }}
 
       - name: Set Up SSH
         run: |
@@ -77,7 +76,7 @@ jobs:
 
       - name: Deploy to VPS
         run: |
-          ssh -i ~/.ssh/key ${{ vars.VPS_USER }}@${{ vars.VPS_HOST }} "cd ~/docker/template && docker compose -f compose.yml -f compose.prod.yml up -d --pull always template-api"
+          ssh -i ~/.ssh/key ${{ vars.VPS_USER }}@${{ vars.VPS_HOST }} "cd ~/docker/template && docker compose -f compose.yml -f compose.prod.yml up -d --pull always template-backend"
 
   frontend-release:
     name: Frontend Release
@@ -99,14 +98,13 @@ jobs:
         uses: aimarchirico/core/.github/actions/setup-java@dev
 
       - name: Run CI Build for Android
-        run: task ci:android
+        run: task build:android
         working-directory: ./frontend
         env:
           API_URL: ${{ vars.API_URL }}
           CF_ACCESS_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
           CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
           GOOGLE_SERVICES_JSON_BASE64: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64 }}
-          VERSION_NAME: ${{ needs.release-please.outputs.frontend--version }}
           RELEASE_URL: https://github.com/${{ github.repository }}/releases
 
       - name: Copy APK
@@ -123,14 +121,13 @@ jobs:
           asset_content_type: application/vnd.android.package-archive
 
       - name: Run CI Build for Web
-        run: task ci:web
+        run: task build:web
         working-directory: ./frontend
         env:
           API_URL: ${{ vars.API_URL }}
           CF_ACCESS_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
           CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
           RELEASE_URL: https://github.com/${{ github.repository }}/releases
-          VERSION_NAME: ${{ needs.release-please.outputs.frontend--version }}
 
       - name: Create GitHub Deployment
         id: deployment

@@ -1,6 +1,6 @@
 import glob
 from text import lower
-from fs import replace_text, delete_files, remove_dependabot_ecosystem
+from fs import replace_text
 
 def setup_frontend(default_mod, config_mod):
     def_name = default_mod["name"]
@@ -19,21 +19,11 @@ def setup_frontend(default_mod, config_mod):
 
     # Replace lower case name in all workspace configurations and workflows
     other_files = [
-        ".github/workflows/frontend-web.yml",
-        ".github/workflows/frontend-android.yml",
-        ".github/workflows/frontend-ci.yml",
         "frontend/package.json",
         "frontend/apps/expo/package.json",
         "frontend/apps/expo/tsconfig.json",
         "frontend/apps/expo/eslint.config.mjs",
-        "frontend/packages/api-client/package.json"
+        "frontend/packages/shared/api-client/package.json"
     ]
     for f in other_files:
         replace_text(f, def_lower, cfg_lower)
-
-def delete_frontend():
-    delete_files("frontend")
-    # Delete GitHub workflows
-    for f in glob.glob(".github/workflows/frontend-*.yml"):
-        delete_files(f)
-    remove_dependabot_ecosystem("/frontend")

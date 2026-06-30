@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "api": "core-openapi"
+    "api": "core-openapi",
+    "check": "eslint . --no-error-on-unmatched-pattern && tsc",
+    "fix": "eslint . --no-error-on-unmatched-pattern --fix"
   },
   "devDependencies": {
     "@aimarchirico/core-expo": "^0.1.0",

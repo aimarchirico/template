@@ -3,8 +3,8 @@
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
-    "check": "eslint",
-    "fix": "eslint --fix",
+    "check": "eslint . --no-error-on-unmatched-pattern && tsc",
+    "fix": "eslint . --no-error-on-unmatched-pattern --fix",
     "dev": "expo start --dev-client",
     "prebuild": "expo prebuild --platform android",
     "build": "cd android && bash gradlew assembleDebug",
