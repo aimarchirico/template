@@ -1,8 +1,8 @@
 spring:
-  config:
-    import: optional:file:.env[.properties],optional:file:../.env[.properties]
   application:
     name: template
+  config:
+    import: optional:file:../.env[.properties]
 
   datasource:
     url: jdbc:postgresql://${DB_HOST}/template
@@ -51,6 +51,5 @@ springdoc:
       version: "0.1.0" # x-release-please-version
 
 client:
-  url: ${CLIENT_URL}
   proxy-secret: ${PROXY_SECRET:}
 
