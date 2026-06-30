@@ -98,9 +98,8 @@ jobs:
         working-directory: ./frontend
         env:
           API_URL: ${{ vars.API_URL }}
-          CF_ACCESS_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
+          CF_ACCESS_CLIENT_ID: ${{ vars.CF_ACCESS_CLIENT_ID }}
           CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
-          GOOGLE_SERVICES_JSON_BASE64: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64 }}
 
       - name: Copy APK
         run: cp ./frontend/apps/expo/android/app/build/outputs/apk/release/app-release.apk ${{ github.workspace }}/app-release.apk
