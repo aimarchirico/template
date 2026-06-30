@@ -1,10 +1,10 @@
 {
   "packages": {
-    "api": {
+    "backend": {
       "release-type": "java",
       "extra-files": ["app/src/main/resources/application.yml"]
     },
-    "client": {
+    "frontend": {
       "release-type": "node",
       "extra-files": ["apps/expo/app.config.js"]
     }

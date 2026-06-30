@@ -1,6 +1,6 @@
 services:
-  template-api:
-    container_name: template-api
+  template-backend:
+    container_name: template-backend
     image: ghcr.io/aimarchirico/template:latest
 
     ports:

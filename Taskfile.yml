@@ -3,12 +3,12 @@ version: '3'
 dotenv: ['.env']
 
 includes:
-  api:
-    taskfile: ./api/Taskfile.yml
-    dir: ./api
-  client:
-    taskfile: ./client/Taskfile.yml
-    dir: ./client
+  backend:
+    taskfile: ./backend/Taskfile.yml
+    dir: ./backend
+  frontend:
+    taskfile: ./frontend/Taskfile.yml
+    dir: ./frontend
   tools:
     taskfile: ./tools/Taskfile.yml
     dir: ./tools
