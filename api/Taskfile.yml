@@ -7,7 +7,7 @@ tasks:
       - bash gradlew bootRun
 
   check:
-    desc: Compile and run tests for the Kotlin backend
+    desc: Compile and run tests for the Kotlin api
     cmds:
       - bash gradlew check
 

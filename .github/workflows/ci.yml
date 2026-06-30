@@ -11,8 +11,8 @@ jobs:
     name: Detect Changed Paths
     runs-on: ubuntu-latest
     outputs:
-      backend: ${{ steps.filter.outputs.backend }}
-      frontend: ${{ steps.filter.outputs.frontend }}
+      api: ${{ steps.filter.outputs.api }}
+      client: ${{ steps.filter.outputs.client }}
       docs: ${{ steps.filter.outputs.docs }}
     steps:
       - name: Check Out Repo
@@ -23,20 +23,20 @@ jobs:
         id: filter
         with:
           filters: |
-            backend:
-              - 'backend/**'
+            api:
+              - 'api/**'
               - '.github/workflows/ci.yml'
-            frontend:
-              - 'frontend/**'
+            client:
+              - 'client/**'
               - '.github/workflows/ci.yml'
             docs:
               - '**/*.md'
               - '.github/workflows/ci.yml'
 
-  backend-ci:
-    name: Backend CI
+  api-ci:
+    name: Api CI
     needs: changes
-    if: needs.changes.outputs.backend == 'true'
+    if: needs.changes.outputs.api == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
@@ -46,12 +46,12 @@ jobs:
         uses: aimarchirico/core/.github/actions/setup-java@dev
 
       - name: Run Check
-        run: task backend:check
+        run: task api:check
 
-  frontend-ci:
-    name: Frontend CI
+  client-ci:
+    name: Client CI
     needs: changes
-    if: needs.changes.outputs.frontend == 'true'
+    if: needs.changes.outputs.client == 'true'
     runs-on: ubuntu-latest
     env:
       GITHUB_NPM_TOKEN: ${{ secrets.NPM_GITHUB_TOKEN }}
@@ -62,10 +62,10 @@ jobs:
       - name: Set Up Node
         uses: aimarchirico/core/.github/actions/setup-node@dev
         with:
-          cache-dependency-path: ./frontend/pnpm-lock.yaml
+          cache-dependency-path: ./client/pnpm-lock.yaml
 
       - name: Run Check
-        run: task frontend:check
+        run: task client:check
         env:
           API_URL: ${{ vars.API_URL }}
           CF_ACCESS_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}

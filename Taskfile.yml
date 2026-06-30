@@ -1,35 +1,35 @@
 version: '3'
 
 includes:
-  backend:
-    taskfile: ./backend/Taskfile.yml
-    dir: ./backend
-  frontend:
-    taskfile: ./frontend/Taskfile.yml
-    dir: ./frontend
+  api:
+    taskfile: ./api/Taskfile.yml
+    dir: ./api
+  client:
+    taskfile: ./client/Taskfile.yml
+    dir: ./client
   tools:
     taskfile: ./tools/Taskfile.yml
     dir: ./tools
 
 tasks:
   check:
-    desc: Run check across backend, frontend, and tools
+    desc: Run check across api, client, and tools
     cmds:
-      - task: backend:check
-      - task: frontend:check
+      - task: api:check
+      - task: client:check
       - task: tools:check
 
   run:
-    desc: Run backend and frontend servers
+    desc: Run api and client servers
     cmds:
-      - task: backend:run
-      - task: frontend:run
+      - task: api:run
+      - task: client:run
 
   fix:
-    desc: Fix formatting/linting across backend, frontend, and tools
+    desc: Fix formatting/linting across api, client, and tools
     cmds:
-      - task: backend:fix
-      - task: frontend:fix
+      - task: api:fix
+      - task: client:fix
       - task: tools:fix
 
   api:
@@ -40,19 +40,19 @@ tasks:
   up:
     desc: Start local containers
     cmds:
-      - task: backend:up
+      - task: api:up
 
   "docker:down":
     desc: Stop local containers
     cmds:
-      - task: backend:down
+      - task: api:down
 
   "ci:android":
     desc: Run CI Android build
     cmds:
-      - task: frontend:ci:android
+      - task: client:ci:android
 
   "ci:web":
     desc: Run CI Web build
     cmds:
-      - task: frontend:ci:web
+      - task: client:ci:web

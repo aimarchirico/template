@@ -7,7 +7,7 @@ export async function onRequest(context) {
 
   const url = new URL(context.request.url);
   const apiPath = url.pathname.replace(/^\/api/, '');
-  const backendUrl = `${apiUrl}${apiPath}${url.search}`;
+  const apiUrl = `${apiUrl}${apiPath}${url.search}`;
 
   const headers = new Headers(context.request.headers);
   headers.delete('host');
@@ -17,7 +17,7 @@ export async function onRequest(context) {
   headers.set('X-Forwarded-Proto', url.protocol.replace(':', ''));
   headers.set('X-Proxy-Secret', context.env.PROXY_SECRET);
 
-  const response = await fetch(backendUrl, {
+  const response = await fetch(apiUrl, {
     method: context.request.method,
     headers: headers,
     body: context.request.body,

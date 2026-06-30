@@ -1,8 +1,8 @@
 import os
 import shutil
 from fs import load_json
-from backend import setup_backend, delete_backend
-from frontend import setup_frontend, delete_frontend
+from api import setup_api, delete_api
+from client import setup_client, delete_client
 from gh import setup_github_project
 
 def main():
@@ -28,25 +28,12 @@ def main():
         if mod_name in config_modules:
             config_mod = config_modules[mod_name]
             print(f"Configuring module: {mod_name}")
-            if mod_name == "backend":
-                setup_backend(default_mod, config_mod)
-            elif mod_name == "frontend":
-                setup_frontend(default_mod, config_mod)
-        else:
-            print(f"Removing module: {mod_name}")
-            if mod_name == "backend":
-                delete_backend()
-            elif mod_name == "frontend":
-                delete_frontend()
+            if mod_name == "api":
+                setup_api(default_mod, config_mod)
+            elif mod_name == "client":
+                setup_client(default_mod, config_mod)
 
-    # Delete the root README.md file
-    if os.path.exists("README.md"):
-        print("Deleting root README.md")
-        os.remove("README.md")
 
-    # Clean up
-    print("Self-deleting the init/ directory")
-    shutil.rmtree("init")
 
 if __name__ == "__main__":
     main()

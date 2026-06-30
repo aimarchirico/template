@@ -1,11 +1,11 @@
 {
   "name": "Template",
   "modules": {
-    "frontend": {
+    "client": {
       "name": "Template",
       "package": "no.chirico.template"
     },
-    "backend": {
+    "api": {
       "name": "Template",
       "package": "no.chirico.template",
       "image": "ghcr.io/aimarchirico/template"

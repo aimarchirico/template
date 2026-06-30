@@ -24,4 +24,4 @@ core-test = { module = "no.chirico.core:core-test", version = "0.0.1" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
 ktfmt = { id = "com.ncorti.ktfmt.gradle", version.ref = "ktfmt" }
-template-kotlin = { id = "no.chirico.core.build-logic", version = "0.0.1" }
+template-kotlin = { id = "no.chirico.core.buildlogic.kotlin", version = "0.0.1" }

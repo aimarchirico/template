@@ -1,4 +1,6 @@
 spring:
+  config:
+    import: optional:file:.env[.properties]
   application:
     name: template
 
@@ -38,6 +40,7 @@ server:
   forward-headers-strategy: framework
 
 springdoc:
+  show-actuator: true
   swagger-ui:
     path: /swagger-ui.html
   api-docs: 

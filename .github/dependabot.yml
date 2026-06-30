@@ -1,12 +1,12 @@
 version: 2
 updates:
   - package-ecosystem: "gradle"
-    directory: "/backend"
+    directory: "/api"
     schedule:
       interval: "weekly"
 
   - package-ecosystem: "npm"
-    directory: "/frontend"
+    directory: "/client"
     schedule:
       interval: "weekly"
 

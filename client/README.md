@@ -1,6 +1,6 @@
-# Frontend Module
+# Client Module
 
-A monorepo for the template frontend containing the Expo host application, client API library, and shared configurations.
+A monorepo for the template client containing the Expo host application, client API library, and shared configurations.
 
 ## Tech Stack
 
@@ -28,9 +28,9 @@ Workspace constraints and package exports handle module boundaries natively via 
 
 ## Environment Variables
 
-The module utilizes a `.env` file at the `frontend` root for local environment variables:
+The module utilizes a `.env` file at the `client` root for local environment variables:
 
-- `API_URL`: The base URL of the backend API (e.g. `https://api.example.com`).
+- `API_URL`: The base URL of the api API (e.g. `https://api.example.com`).
 - `CF_ACCESS_CLIENT_ID`: Cloudflare Access Client ID (optional, for authenticated environments).
 - `CF_ACCESS_CLIENT_SECRET`: Cloudflare Access Client Secret (optional, for authenticated environments).
 
@@ -40,7 +40,7 @@ Refer to [.env.example](.env.example) for the template.
 
 ### Installation
 
-Install workspace dependencies from the `frontend` root:
+Install workspace dependencies from the `client` root:
 
 ```bash
 pnpm install
@@ -74,7 +74,7 @@ All task executions are orchestrated by Turborepo:
   pnpm fix
   ```
 
-- **Generate API Client**: Fetch backend spec and generate internal API package code.
+- **Generate API Client**: Fetch api spec and generate internal API package code.
 
   ```bash
   task api
@@ -98,5 +98,5 @@ All task executions are orchestrated by Turborepo:
 
 Deployments are automated through GitHub Actions:
 
-- **Android deployment** (`.github/workflows/frontend-android.yml`): Triggers on `frontend-v*` tags, builds the release APK via `task ci:android`, and uploads the release asset.
-- **Web deployment** (`.github/workflows/frontend-web.yml`): Triggers on `frontend-v*` tags, exports the web application, and deploys the static files to Cloudflare Pages.
+- **Android deployment** (`.github/workflows/client-android.yml`): Triggers on `client-v*` tags, builds the release APK via `task ci:android`, and uploads the release asset.
+- **Web deployment** (`.github/workflows/client-web.yml`): Triggers on `client-v*` tags, exports the web application, and deploys the static files to Cloudflare Pages.
