@@ -31,23 +31,3 @@ dependencies {
   testImplementation(libs.core.test)
 }
 
-tasks.withType<org.springframework.boot.gradle.tasks.run.BootRun>().configureEach {
-  val envFile = project.file("../.env")
-  if (envFile.exists()) {
-    envFile.readLines().forEach { line ->
-      val trimmed = line.trim()
-      if (trimmed.isNotEmpty() && !trimmed.startsWith("#") && trimmed.contains("=")) {
-        val parts = trimmed.split("=", limit = 2)
-        val key = parts[0].trim()
-        var value = parts[1].trim()
-        if (
-          (value.startsWith("\"") && value.endsWith("\"")) ||
-            (value.startsWith("'") && value.endsWith("'"))
-        ) {
-          value = value.substring(1, value.length - 1)
-        }
-        environment(key, value)
-      }
-    }
-  }
-}
