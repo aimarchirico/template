@@ -1,9 +1,9 @@
 {
   "packages": {
-    "backend": {
-      "release-type": "java"
+    "api": {
+      "release-type": "simple"
     },
-    "frontend": {
+    "client": {
       "release-type": "node"
     }
   },
