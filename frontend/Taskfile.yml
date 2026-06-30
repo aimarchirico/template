@@ -1,15 +1,18 @@
 version: '3'
 
 tasks:
-  run:
-    desc: Start dev server
+  install:
+    internal: true
+    desc: Install npm dependencies
     cmds:
       - pnpm install
-      - pnpm --filter @template/expo start
+      - task: api
+    if: '[ -n "$CI" ]'
 
   check:
     desc: Run lint and type checks
     cmds:
+      - task: install
       - pnpm turbo run check
 
   fix:
@@ -17,42 +20,33 @@ tasks:
     cmds:
       - pnpm turbo run fix
 
+  run:
+    desc: Start dev server
+    cmds:
+      - pnpm --filter @template/expo dev
+
   build:
     desc: Build development apk
     cmds:
-      - pnpm install
-      - pnpm turbo run build --filter=@template/expo
+      - pnpm --filter=@template/expo build
 
   api:
     desc: Generate OpenAPI client code and docs
+    env:
+      API_DOCS_OUTPUT_DIR: '{{.TASKFILE_DIR}}/../docs'
     cmds:
-      - task: :api
+      - pnpm --filter @template/api-client api
 
-  ci:check:
-    desc: Run CI checks
+  build:android:
+    desc: Build release for android
     cmds:
-      - pnpm install --frozen-lockfile
-      - pnpm turbo run api
-      - pnpm turbo run check
-
-  ci:android:
-    desc: Run CI build for android
-    cmds:
-      - task: ci:check
+      - task: install
+      - pnpm --filter @template/expo prebuild
       - pnpm --filter @template/expo build
-      - cd apps/expo/android && bash gradlew assembleRelease
 
-  ci:web:
-    desc: Run CI build for web
+  build:web:
+    desc: Build release for web
     cmds:
-      - task: ci:check
-      - pnpm --filter @template/expo export:web
-      # Fix node modules asset paths for Cloudflare Pages
-      - |
-        if [ -d apps/expo/dist/assets/node_modules ]; then
-          mv apps/expo/dist/assets/node_modules/* apps/expo/dist/assets/ || true
-          rm -rf apps/expo/dist/assets/node_modules
-        fi
-        find apps/expo/dist/_expo/static/js/web/ -type f -print0 | xargs -0 sed -i 's/assets\/node_modules/assets/g'
-      - cp -r functions apps/expo/dist/functions
-      - cp public/_routes.json apps/expo/dist/_routes.json
+      - task: install
+      - pnpm --filter @template/expo export
+      - pnpm --filter @template/expo cloudflare:fix

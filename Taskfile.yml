@@ -1,5 +1,7 @@
 version: '3'
 
+dotenv: ['.env']
+
 includes:
   backend:
     taskfile: ./backend/Taskfile.yml
@@ -10,49 +12,9 @@ includes:
   tools:
     taskfile: ./tools/Taskfile.yml
     dir: ./tools
+    flatten: true
 
 tasks:
-  check:
-    desc: Run check across backend, frontend, and tools
+  default:
     cmds:
-      - task: backend:check
-      - task: frontend:check
-      - task: tools:check
-
-  run:
-    desc: Run backend and frontend servers
-    cmds:
-      - task: backend:run
-      - task: frontend:run
-
-  fix:
-    desc: Fix formatting/linting across backend, frontend, and tools
-    cmds:
-      - task: backend:fix
-      - task: frontend:fix
-      - task: tools:fix
-
-  api:
-    desc: Generate API client
-    cmds:
-      - task: tools:api
-
-  up:
-    desc: Start local containers
-    cmds:
-      - task: backend:up
-
-  "docker:down":
-    desc: Stop local containers
-    cmds:
-      - task: backend:down
-
-  "ci:android":
-    desc: Run CI Android build
-    cmds:
-      - task: frontend:ci:android
-
-  "ci:web":
-    desc: Run CI Web build
-    cmds:
-      - task: frontend:ci:web
+      - task --list
