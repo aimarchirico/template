@@ -1,10 +1,12 @@
 {
   "packages": {
     "api": {
-      "release-type": "simple"
+      "release-type": "java",
+      "extra-files": ["app/src/main/resources/application.yml"]
     },
     "client": {
-      "release-type": "node"
+      "release-type": "node",
+      "extra-files": ["apps/expo/app.config.js"]
     }
   },
   "plugins": []
