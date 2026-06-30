@@ -121,7 +121,9 @@ jobs:
   deploy-api:
     name: Deploy API
     needs: api-release
-    uses: ./.github/workflows/deploy-api.yml
+    uses: ./.github/workflows/deploy.yml
+    with:
+      deploy-api: true
     secrets: inherit
 
   # ==========================================
@@ -130,5 +132,7 @@ jobs:
   deploy-web:
     name: Deploy Web
     needs: android-release
-    uses: ./.github/workflows/deploy-web.yml
+    uses: ./.github/workflows/deploy.yml
+    with:
+      deploy-web: true
     secrets: inherit
