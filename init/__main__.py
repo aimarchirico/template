@@ -1,8 +1,8 @@
 import os
 import shutil
 from fs import load_json
-from api import setup_api
-from client import setup_client
+from backend import setup_backend
+from frontend import setup_frontend
 from gh import setup_github_project
 
 def main():
@@ -29,9 +29,9 @@ def main():
             config_mod = config_modules[mod_name]
             print(f"Configuring module: {mod_name}")
             if mod_name == "backend" or mod_name == "api":
-                setup_api(default_mod, config_mod)
+                setup_backend(default_mod, config_mod)
             elif mod_name == "frontend" or mod_name == "client":
-                setup_client(default_mod, config_mod)
+                setup_frontend(default_mod, config_mod)
         else:
             print(f"Skipping module (delete logic removed): {mod_name}")
 
