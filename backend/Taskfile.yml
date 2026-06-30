@@ -1,20 +1,20 @@
 version: '3'
 
 tasks:
-  run:
-    desc: Start API server
-    cmds:
-      - bash gradlew bootRun
-
   check:
-    desc: Compile and run tests for the Kotlin backend
+    desc: Run tests and lint
     cmds:
       - bash gradlew check
 
   fix:
-    desc: Fix formatting problems
+    desc: Format Kotlin files
     cmds:
       - bash gradlew ktfmtFormat
+
+  run:
+    desc: Start API server
+    cmds:
+      - bash gradlew bootRun
 
   up:
     desc: Start the database container

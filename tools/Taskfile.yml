@@ -1,45 +1,41 @@
 version: '3'
 
 tasks:
-  check:
-    desc: Run markdown lint check
+  install:
+    internal: true
+    desc: Install npm dependencies
     cmds:
       - pnpm install
-      - pnpm run lint:markdown
+    if: '[ -n "$CI" ]'
 
-  fix:
-    desc: Fix markdown lint issues
+  docs:check:
+    desc: Lint Markdown files
     cmds:
-      - pnpm install
-      - pnpm run lint:markdown:fix
+      - task: install
+      - pnpm exec markdownlint-cli2
 
-  api:
-    desc: Delegate to core:openapi:run with project output targets
-    preconditions:
-      - sh: "node --version"
-        msg: "Missing dependency: Node.js is required for API generation"
+  docs:fix:
+    desc: Fix Markdown issues
     cmds:
-      - sh: "[ -f ../../core/Taskfile.yml ] && task core:npm:core-openapi:openapi:run || echo 'Skipping API client regeneration (core repository not found)'"
-        env:
-          API_CLIENT_OUTPUT_DIR: '{{.ROOT_DIR}}/frontend/packages/api-client/src/generated'
-          API_DOCS_OUTPUT_DIR: '{{.ROOT_DIR}}/docs'
+      - pnpm exec markdownlint-cli2 --fix
 
-  "sync:skills":
-    desc: Orchestrate automated skill loading sequence for the core agent skills
-    preconditions:
-      - sh: "npx --version"
-        msg: "Missing dependency: npx/node is required to sync skills"
-      - sh: "python3 -c \"import os; exit(0 if os.path.isdir('../../core/skills') else 1)\""
-        msg: "Missing dependency: Core repository is not cloned at sibling path ../core"
-    cmds:
-      - npx skills add ../../core/skills/commit
-      - npx skills add ../../core/skills/docs
-      - npx skills add ../../core/skills/implement
-      - npx skills add ../../core/skills/issues
-      - npx skills add ../../core/skills/pr
-
-  "lint:commit":
+  commit:check:
     desc: Lint commit messages
+    vars:
+      EDIT:
+        sh: |
+          if [ -n "$EDIT_FILE" ]; then
+            echo "--edit $EDIT_FILE"
+          fi
+      COMMIT_RANGE:
+        sh: |
+          if [ -n "$FROM_SHA" ] && [ -n "$TO_SHA" ]; then
+            echo "--from $FROM_SHA --to $TO_SHA"
+          fi
     cmds:
-      - pnpm install
-      - pnpm run lint:commit --from HEAD~1
+      - task: install
+      - pnpm exec commitlint {{.COMMIT_RANGE}} {{.EDIT}}
+
+  skills:
+    cmds:
+      - gh skill install aimarchirico/core --all --scope project --agent antigravity
