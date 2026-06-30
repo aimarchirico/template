@@ -92,11 +92,10 @@ importers:
         version: 6.0.3
 
   packages/api-client:
-    dependencies:
-      axios:
-        specifier: ^1.7.9
-        version: 1.18.1
     devDependencies:
+      '@aimarchirico/core-expo':
+        specifier: ^0.1.0
+        version: 0.1.1(eslint@9.39.4)(expo@56.0.12)(react@19.2.3)(typescript@6.0.3)
       '@aimarchirico/core-openapi':
         specifier: ^0.0.2
         version: 0.0.2(ajv@6.15.0)(mkdirp@1.0.4)
