@@ -3,12 +3,13 @@
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
-    "start": "expo start --dev-client",
+    "check": "eslint",
+    "fix": "eslint --fix",
     "dev": "expo start --dev-client",
-    "check": "eslint src && tsc --noEmit",
-    "fix": "eslint src --fix",
-    "build": "expo prebuild --platform android",
-    "export:web": "expo export --platform web"
+    "prebuild": "expo prebuild --platform android",
+    "build": "cd android && bash gradlew assembleDebug",
+    "export": "expo export --platform web",
+    "cloudflare:fix": "node scripts/fix-cloudflare.js"
   },
   "dependencies": {
     "@template/api-client": "workspace:*",
@@ -30,12 +31,13 @@
     "react-native-web": "~0.21.0"
   },
   "devDependencies": {
+    "@aimarchirico/core-expo": "^0.1.0",
     "@babel/core": "^7.26.0",
-    "@aimarchirico/core-eslint": "^0.0.1",
-    "@aimarchirico/core-typescript": "^0.0.1",
     "@types/react": "~19.2.14",
     "dotenv": "^17.4.2",
     "eslint": "^9.39.2",
+    "replace-in-file": "^8.4.0",
+    "shelljs": "^0.10.0",
     "typescript": "~6.0.3"
   },
   "private": true

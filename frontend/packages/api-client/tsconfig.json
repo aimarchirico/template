@@ -2,7 +2,6 @@
   "extends": "@aimarchirico/core-expo/tsconfig.json",
   "include": [
     "**/*.ts",
-    "**/*.tsx",
-    "**/*.js",
+    "**/*.tsx"
   ]
 }

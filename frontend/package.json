@@ -1,29 +1,26 @@
 {
-  "name": "template-monorepo",
+  "name": "@aimarchirico/template",
   "version": "1.0.0",
   "private": true,
-  "packageManager": "pnpm@9.15.9",
+  "packageManager": "pnpm@11.9.0",
   "scripts": {
-    "build": "turbo run build",
     "check": "turbo run check",
-    "fix": "turbo run fix",
-    "api": "turbo run api",
-    "dev": "turbo run dev"
+    "fix": "turbo run fix"
   },
   "devDependencies": {
     "turbo": "^2.3.3"
   },
   "overrides": {
-    "jsonpointer": "^5.0.1",
-    "postcss": "^8.5.10",
-    "tmp": "^0.2.6",
-    "uuid": "^11.1.1",
-    "oas-validator": {
-      "ajv": "^8.18.0"
-    },
     "httpsnippet": {
       "form-data": "^3.0.4"
     },
+    "jsonpointer": "^5.0.1",
+    "oas-validator": {
+      "ajv": "^8.18.0"
+    },
+    "postcss": "^8.5.10",
+    "tmp": "^0.2.6",
+    "uuid": "^11.1.1",
     "widdershins": {
       "markdown-it": "^12.3.2",
       "yargs": {
