@@ -16,8 +16,8 @@ jobs:
     name: Detect Changed Paths
     runs-on: ubuntu-latest
     outputs:
-      api: ${{ steps.filter.outputs.api }}
-      client: ${{ steps.filter.outputs.client }}
+      backend: ${{ steps.filter.outputs.backend }}
+      frontend: ${{ steps.filter.outputs.frontend }}
       docs: ${{ steps.filter.outputs.docs }}
     steps:
       - name: Check Out Repo
@@ -28,23 +28,23 @@ jobs:
         id: filter
         with:
           filters: |
-            api:
-              - 'api/**'
+            backend:
+              - 'backend/**'
               - '.github/workflows/ci.yml'
-            client:
-              - 'client/**'
+            frontend:
+              - 'frontend/**'
               - '.github/workflows/ci.yml'
             docs:
               - '**/*.md'
               - '.github/workflows/ci.yml'
 
   # ==========================================
-  # API CI JOB
+  # BACKEND CI JOB
   # ==========================================
-  api-ci:
-    name: API CI
+  backend-ci:
+    name: Backend CI
     needs: changes
-    if: needs.changes.outputs.api == 'true'
+    if: needs.changes.outputs.backend == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
@@ -54,15 +54,15 @@ jobs:
         uses: aimarchirico/core/.github/actions/setup-java@dev
 
       - name: Run Check
-        run: task api:check
+        run: task backend:check
 
   # ==========================================
-  # CLIENT CI JOB
+  # FRONTEND CI JOB
   # ==========================================
-  client-ci:
-    name: Client CI
+  frontend-ci:
+    name: Frontend CI
     needs: changes
-    if: needs.changes.outputs.client == 'true'
+    if: needs.changes.outputs.frontend == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
@@ -71,10 +71,10 @@ jobs:
       - name: Set Up Node
         uses: aimarchirico/core/.github/actions/setup-node@dev
         with:
-          cache-dependency-path: ./client/pnpm-lock.yaml
+          cache-dependency-path: ./frontend/pnpm-lock.yaml
 
       - name: Run Check
-        run: task client:check
+        run: task frontend:check
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           API_URL: ${{ vars.API_URL }}
