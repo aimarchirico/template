@@ -116,14 +116,19 @@ jobs:
           asset_content_type: application/vnd.android.package-archive
 
   # ==========================================
-  # TRIGGER DEPLOY
+  # DEPLOY API -> VPS
   # ==========================================
-  deploy:
-    name: Deploy
-    needs: [api-release, android-release]
-    if: ${{ !cancelled() && (needs.api-release.result == 'success' || needs.android-release.result == 'success') }}
-    uses: ./.github/workflows/deploy.yml
-    with:
-      deploy-api: ${{ needs.api-release.result == 'success' }}
-      deploy-web: ${{ needs.android-release.result == 'success' }}
+  deploy-api:
+    name: Deploy API
+    needs: api-release
+    uses: ./.github/workflows/deploy-api.yml
+    secrets: inherit
+
+  # ==========================================
+  # DEPLOY WEB -> Cloudflare Pages
+  # ==========================================
+  deploy-web:
+    name: Deploy Web
+    needs: android-release
+    uses: ./.github/workflows/deploy-web.yml
     secrets: inherit
