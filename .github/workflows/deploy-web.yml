@@ -1,51 +1,15 @@
-name: Deploy
+name: Deploy Web
 
 on:
   workflow_call:
-    inputs:
-      deploy-api:
-        type: boolean
-        default: false
-      deploy-web:
-        type: boolean
-        default: false
 
 permissions:
   contents: read
   deployments: write
 
 jobs:
-  # ==========================================
-  # API -> VPS
-  # ==========================================
-  deploy-api:
-    name: Deploy API
-    if: ${{ inputs.deploy-api }}
-    runs-on: ubuntu-latest
-    environment:
-      name: api-production
-      url: ${{ vars.API_URL }}
-    steps:
-      - name: Set Up SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/key
-          chmod 600 ~/.ssh/key
-          ssh-keyscan -H ${{ vars.VPS_HOST }} >> ~/.ssh/known_hosts
-
-      - name: Deploy to VPS
-        run: |
-          ssh -i ~/.ssh/key ${{ vars.VPS_USER }}@${{ vars.VPS_HOST }} 'bash -s' <<'EOF'
-          cd ~/docker/template
-          docker compose -f compose.yml -f compose.prod.yml up -d --pull always template-api
-          EOF
-
-  # ==========================================
-  # WEB -> Cloudflare Pages
-  # ==========================================
   deploy-web:
     name: Deploy Web
-    if: ${{ inputs.deploy-web }}
     runs-on: ubuntu-latest
     environment:
       name: web-production
