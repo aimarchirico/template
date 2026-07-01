@@ -18,17 +18,17 @@
     "tags": {
       "type:app": {
         "dependencies": {
-          "allow": ["type:feature", "type:shared"]
+          "allow": ["feature", "shared"]
         }
       },
       "type:feature": {
         "dependencies": {
-          "allow": ["type:shared"]
+          "allow": ["shared"]
         }
       },
       "type:shared": {
         "dependencies": {
-          "allow": ["type:shared"]
+          "allow": ["shared"]
         }
       }
     }
