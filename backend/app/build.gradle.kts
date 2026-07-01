@@ -1,5 +1,6 @@
 plugins {
-  alias(libs.plugins.template.kotlin)
+  alias(libs.plugins.core.kotlin)
+  alias(libs.plugins.core.spring)
   alias(libs.plugins.spring.boot)
 }
 
@@ -30,4 +31,3 @@ dependencies {
   testImplementation(libs.archunit)
   testImplementation(libs.core.test)
 }
-

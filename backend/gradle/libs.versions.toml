@@ -7,6 +7,7 @@ ktfmt = "0.26.0"
 archunit = "1.4.2"
 core-security = "0.2.1"
 core-test = "0.2.0"
+core-build-logic="0.2.0"
 
 [libraries]
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -19,11 +20,12 @@ hypersistence-utils = { module = "io.hypersistence:hypersistence-utils-hibernate
 springdoc-openapi = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc" }
 ktfmt-gradlePlugin = { module = "com.ncorti.ktfmt.gradle:com.ncorti.ktfmt.gradle.gradle.plugin", version.ref = "ktfmt" }
 archunit = { module = "com.tngtech.archunit:archunit-junit5", version.ref = "archunit" }
-core-security = { module = "no.chirico.core:core-security", version = "core-security" }
-core-test = { module = "no.chirico.core:core-test", version = "core-test" }
+core-security = { module = "no.chirico.core:core-security", version.ref = "core-security" }
+core-test = { module = "no.chirico.core:core-test", version.ref = "core-test" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
 ktfmt = { id = "com.ncorti.ktfmt.gradle", version.ref = "ktfmt" }
-template-kotlin = { id = "no.chirico.core.buildlogic", version = "0.2.0" }
+core-kotlin = { id = "no.chirico.core.buildlogic.kotlin", version.ref = "core-build-logic" }
+core-spring = { id = "no.chirico.core.buildlogic.spring", version.ref = "core-build-logic" }
