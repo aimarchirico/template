@@ -67,8 +67,8 @@ importers:
         version: 0.21.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
     devDependencies:
       '@aimarchirico/core-expo':
-        specifier: ^0.1.1
-        version: 0.1.1(eslint@9.39.4)(expo@56.0.12)(react@19.2.3)(typescript@6.0.3)
+        specifier: ^0.1.2
+        version: 0.1.2(@typescript-eslint/parser@8.62.0(eslint@9.39.4)(typescript@6.0.3))(eslint@9.39.4)(expo@56.0.12)(react@19.2.3)(typescript@6.0.3)
       '@babel/core':
         specifier: ^7.26.0
         version: 7.29.7
@@ -116,12 +116,26 @@ packages:
       react: '*'
       typescript: ^5.0.0
 
+  '@aimarchirico/core-expo@0.1.2':
+    resolution: {integrity: sha512-HjhiJbmop1TVyOYBIP6+eUQMdSgc/by+DMu9uH5vAXBq6OqVP7win+khj068yRwifYOumA/l/7EFrlTNVOcbKA==, tarball: https://npm.pkg.github.com/download/@aimarchirico/core-expo/0.1.2/678eedd4d9ba9601d1efd65f84f552a5695d80f0}
+    peerDependencies:
+      eslint: ^9.39.2
+      expo: '*'
+      react: '*'
+      typescript: ^5.0.0
+
   '@aimarchirico/core-openapi@0.0.3':
     resolution: {integrity: sha512-3QTD+sKB62u0lMVv1THPQZCa/UdQmwyb+ADkdsi+FCqSs/1CoiTtzWW6guf4+HCeDHbE+nZv5oIP+ltMC1gb3A==, tarball: https://npm.pkg.github.com/download/@aimarchirico/core-openapi/0.0.3/73c151324203c0e744d3510be666f4ef1f8ae4f0}
     hasBin: true
 
   '@aimarchirico/core-ts@0.1.1':
     resolution: {integrity: sha512-KpbUhOpWjr4y6rAsv8Ae0ZXp75NMR/uF8iHpVXHqJNtiYpLF6rRl+fQfPYp14AuOfzQ+UDF4rDBAnA48S6ItFA==, tarball: https://npm.pkg.github.com/download/@aimarchirico/core-ts/0.1.1/2b5d7680efc4a54dbc043da0526b8ec1accec7c3}
+    peerDependencies:
+      eslint: ^9.39.2
+      typescript: ^5.0.0
+
+  '@aimarchirico/core-ts@0.1.2':
+    resolution: {integrity: sha512-ttrXApIeNth1iG3mvmirwddPtid0lrCxX2cNaJ3I0jMmdN79tBbDv5ozSwkML5V/NrbRMQe+k7AumbpEO1/Nig==, tarball: https://npm.pkg.github.com/download/@aimarchirico/core-ts/0.1.2/28d39a4612075dc209417d12a758b6cc57286f74}
     peerDependencies:
       eslint: ^9.39.2
       typescript: ^5.0.0
@@ -5206,6 +5220,23 @@ snapshots:
       - jiti
       - supports-color
 
+  '@aimarchirico/core-expo@0.1.2(@typescript-eslint/parser@8.62.0(eslint@9.39.4)(typescript@6.0.3))(eslint@9.39.4)(expo@56.0.12)(react@19.2.3)(typescript@6.0.3)':
+    dependencies:
+      '@aimarchirico/core-ts': 0.1.2(@typescript-eslint/parser@8.62.0(eslint@9.39.4)(typescript@6.0.3))(eslint@9.39.4)(typescript@6.0.3)
+      eslint: 9.39.4
+      eslint-config-expo: 56.0.4(eslint@9.39.4)(typescript@6.0.3)
+      expo: 56.0.12(@babel/core@7.29.7)(@expo/dom-webview@56.0.5)(@expo/metro-runtime@56.0.15)(expo-router@56.2.11)(react-dom@19.2.3(react@19.2.3))(react-native-web@0.21.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-native-worklets@0.8.3(@babel/core@7.29.7)(@react-native/metro-config@0.86.0(@babel/core@7.29.7))(react-native@0.85.3(@babel/core@7.29.7)(@react-native/metro-config@0.86.0(@babel/core@7.29.7))(@types/react@19.2.17)(react@19.2.3))(react@19.2.3))(react-native@0.85.3(@babel/core@7.29.7)(@react-native/metro-config@0.86.0(@babel/core@7.29.7))(@types/react@19.2.17)(react@19.2.3))(react@19.2.3)(typescript@6.0.3)
+      react: 19.2.3
+      typescript: 6.0.3
+    transitivePeerDependencies:
+      - '@types/eslint'
+      - '@typescript-eslint/parser'
+      - eslint-import-resolver-typescript
+      - eslint-import-resolver-webpack
+      - eslint-plugin-import-x
+      - jiti
+      - supports-color
+
   '@aimarchirico/core-openapi@0.0.3(ajv@6.15.0)(mkdirp@1.0.4)':
     dependencies:
       '@openapitools/openapi-generator-cli': 2.39.0
@@ -5231,6 +5262,22 @@ snapshots:
       typescript: 6.0.3
     transitivePeerDependencies:
       - '@types/eslint'
+      - jiti
+      - supports-color
+
+  '@aimarchirico/core-ts@0.1.2(@typescript-eslint/parser@8.62.0(eslint@9.39.4)(typescript@6.0.3))(eslint@9.39.4)(typescript@6.0.3)':
+    dependencies:
+      eslint: 9.39.4
+      eslint-plugin-check-file: 3.3.1(eslint@9.39.4)
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.62.0(eslint@9.39.4)(typescript@6.0.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.4)
+      globals: 16.5.0
+      gts: 7.0.0(typescript@6.0.3)
+      typescript: 6.0.3
+    transitivePeerDependencies:
+      - '@types/eslint'
+      - '@typescript-eslint/parser'
+      - eslint-import-resolver-typescript
+      - eslint-import-resolver-webpack
       - jiti
       - supports-color
 
