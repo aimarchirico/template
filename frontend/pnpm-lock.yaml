@@ -67,7 +67,7 @@ importers:
         version: 0.21.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
     devDependencies:
       '@aimarchirico/core-expo':
-        specifier: ^0.1.0
+        specifier: ^0.1.1
         version: 0.1.1(eslint@9.39.4)(expo@56.0.12)(react@19.2.3)(typescript@6.0.3)
       '@babel/core':
         specifier: ^7.26.0
@@ -94,11 +94,14 @@ importers:
   packages/shared/template-api-client:
     devDependencies:
       '@aimarchirico/core-expo':
-        specifier: ^0.1.0
+        specifier: ^0.1.1
         version: 0.1.1(eslint@9.39.4)(expo@56.0.12)(react@19.2.3)(typescript@6.0.3)
       '@aimarchirico/core-openapi':
-        specifier: ^0.0.2
-        version: 0.0.2(ajv@6.15.0)(mkdirp@1.0.4)
+        specifier: ^0.0.3
+        version: 0.0.3(ajv@6.15.0)(mkdirp@1.0.4)
+      '@aimarchirico/core-ts':
+        specifier: ^0.1.1
+        version: 0.1.1(eslint@9.39.4)(typescript@6.0.3)
 
 packages:
 
@@ -113,8 +116,8 @@ packages:
       react: '*'
       typescript: ^5.0.0
 
-  '@aimarchirico/core-openapi@0.0.2':
-    resolution: {integrity: sha512-4DS2Q+Tz0E23CPBUuvuiEJtH0QBgaks9EKXkdmIc0v/6EX1AYC35TUJybwEIp0fwZsllGrqsNDVe5Ns1A9FM2w==, tarball: https://npm.pkg.github.com/download/@aimarchirico/core-openapi/0.0.2/4a7bd303c285a9530f1bc66ed1dd9aafa3d985b3}
+  '@aimarchirico/core-openapi@0.0.3':
+    resolution: {integrity: sha512-3QTD+sKB62u0lMVv1THPQZCa/UdQmwyb+ADkdsi+FCqSs/1CoiTtzWW6guf4+HCeDHbE+nZv5oIP+ltMC1gb3A==, tarball: https://npm.pkg.github.com/download/@aimarchirico/core-openapi/0.0.3/73c151324203c0e744d3510be666f4ef1f8ae4f0}
     hasBin: true
 
   '@aimarchirico/core-ts@0.1.1':
@@ -5203,10 +5206,9 @@ snapshots:
       - jiti
       - supports-color
 
-  '@aimarchirico/core-openapi@0.0.2(ajv@6.15.0)(mkdirp@1.0.4)':
+  '@aimarchirico/core-openapi@0.0.3(ajv@6.15.0)(mkdirp@1.0.4)':
     dependencies:
       '@openapitools/openapi-generator-cli': 2.39.0
-      dotenv: 17.4.2
       widdershins: 4.0.1(ajv@6.15.0)(mkdirp@1.0.4)
     transitivePeerDependencies:
       - '@nestjs/microservices'

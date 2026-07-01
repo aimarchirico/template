@@ -4,7 +4,11 @@ const replace = require('replace-in-file');
 // Move directory and replace paths
 if (shell.test('-d', 'dist/assets/node_modules')) {
   shell.mv('dist/assets/node_modules', 'dist/assets/nodemodules');
-  replace.sync({ files: 'dist/**/*', from: /assets\/node_modules/g, to: 'assets/nodemodules' });
+  replace.sync({
+    files: 'dist/**/*',
+    from: /assets\/node_modules/g,
+    to: 'assets/nodemodules',
+  });
 }
 
 // Copy functions and routes

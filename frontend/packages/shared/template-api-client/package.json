@@ -8,7 +8,8 @@
     "fix": "eslint . --no-error-on-unmatched-pattern --fix"
   },
   "devDependencies": {
-    "@aimarchirico/core-expo": "^0.1.0",
-    "@aimarchirico/core-openapi": "^0.0.2"
+    "@aimarchirico/core-expo": "^0.1.1",
+    "@aimarchirico/core-openapi": "^0.0.3",
+    "@aimarchirico/core-ts": "^0.1.1"
   }
 }
