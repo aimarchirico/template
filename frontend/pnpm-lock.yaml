@@ -14,9 +14,9 @@ importers:
 
   apps/expo:
     dependencies:
-      '@template/api-client':
+      '@aimarchirico/template-api-client':
         specifier: workspace:*
-        version: link:../../packages/shared/api-client
+        version: link:../../packages/shared/template-api-client
       expo:
         specifier: ~56.0.11
         version: 56.0.12(@babel/core@7.29.7)(@expo/dom-webview@56.0.5)(@expo/metro-runtime@56.0.15)(expo-router@56.2.11)(react-dom@19.2.3(react@19.2.3))(react-native-web@0.21.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-native-worklets@0.8.3(@babel/core@7.29.7)(@react-native/metro-config@0.86.0(@babel/core@7.29.7))(react-native@0.85.3(@babel/core@7.29.7)(@react-native/metro-config@0.86.0(@babel/core@7.29.7))(@types/react@19.2.17)(react@19.2.3))(react@19.2.3))(react-native@0.85.3(@babel/core@7.29.7)(@react-native/metro-config@0.86.0(@babel/core@7.29.7))(@types/react@19.2.17)(react@19.2.3))(react@19.2.3)(typescript@6.0.3)
@@ -92,6 +92,15 @@ importers:
         version: 6.0.3
 
   packages/shared/api-client:
+    devDependencies:
+      '@aimarchirico/core-expo':
+        specifier: ^0.1.0
+        version: 0.1.1(eslint@9.39.4)(expo@56.0.12)(react@19.2.3)(typescript@6.0.3)
+      '@aimarchirico/core-openapi':
+        specifier: ^0.0.2
+        version: 0.0.2(ajv@6.15.0)(mkdirp@1.0.4)
+
+  packages/shared/template-api-client:
     devDependencies:
       '@aimarchirico/core-expo':
         specifier: ^0.1.0
