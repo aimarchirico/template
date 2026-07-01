@@ -6,7 +6,7 @@ springdoc = "3.0.3"
 ktfmt = "0.26.0"
 archunit = "1.4.2"
 core-security = "0.2.1"
-core-test = "0.2.0"
+core-test = "0.2.1"
 core-build-logic="0.2.0"
 
 [libraries]
