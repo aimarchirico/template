@@ -36,7 +36,8 @@ tasks:
       API_CLIENT_OUTPUT_DIR: '{{.TASKFILE_DIR}}/apps/expo/src/generated'
       API_DOCS_OUTPUT_DIR: '{{.TASKFILE_DIR}}/../docs'
     cmds:
-      - pnpm --filter api-client api
+      - cmd: pnpm --filter api-client api
+        ignore_error: true
 
   build:android:
     desc: Build release for android
