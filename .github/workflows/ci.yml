@@ -55,6 +55,8 @@ jobs:
 
       - name: Run Check
         run: task backend:check
+        env:
+          GH_PACKAGES_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
 
   # ==========================================
   # FRONTEND CI JOB
