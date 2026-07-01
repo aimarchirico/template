@@ -15,4 +15,14 @@ export default defineConfig([
       'check-file/filename-naming-convention': 'off',
     },
   },
+  {
+    files: ['app.config.js'],
+    languageOptions: {
+      sourceType: 'module',
+    },
+    rules: {
+      'import/no-default-export': 'off',
+      'check-file/filename-naming-convention': 'off',
+    },
+  },
 ]);
