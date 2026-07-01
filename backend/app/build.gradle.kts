@@ -1,5 +1,6 @@
 plugins {
-  alias(libs.plugins.template.kotlin)
+  alias(libs.plugins.core.kotlin)
+  alias(libs.plugins.core.spring)
   alias(libs.plugins.spring.boot)
 }
 
@@ -18,6 +19,7 @@ dependencies {
   implementation("org.springframework.boot:spring-boot-starter-web")
   implementation(libs.springdoc.openapi)
   implementation(libs.hypersistence.utils)
+  implementation(libs.core.security)
 
   runtimeOnly("org.postgresql:postgresql")
   implementation("org.flywaydb:flyway-core")
@@ -27,25 +29,5 @@ dependencies {
   testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
   testRuntimeOnly("org.junit.platform:junit-platform-launcher")
   testImplementation(libs.archunit)
-}
-
-tasks.withType<org.springframework.boot.gradle.tasks.run.BootRun>().configureEach {
-  val envFile = project.file("../.env")
-  if (envFile.exists()) {
-    envFile.readLines().forEach { line ->
-      val trimmed = line.trim()
-      if (trimmed.isNotEmpty() && !trimmed.startsWith("#") && trimmed.contains("=")) {
-        val parts = trimmed.split("=", limit = 2)
-        val key = parts[0].trim()
-        var value = parts[1].trim()
-        if (
-          (value.startsWith("\"") && value.endsWith("\"")) ||
-            (value.startsWith("'") && value.endsWith("'"))
-        ) {
-          value = value.substring(1, value.length - 1)
-        }
-        environment(key, value)
-      }
-    }
-  }
+  testImplementation(libs.core.test)
 }

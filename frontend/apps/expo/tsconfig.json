@@ -1,0 +1,13 @@
+{
+  "extends": "@aimarchirico/core-expo/tsconfig",
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts"
+  ],
+  "exclude": [
+    "scripts"
+  ]
+}

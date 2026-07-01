@@ -1,6 +1,6 @@
 import glob
-from text import pascal, lower, path
-from fs import replace_text, move_files, delete_files, remove_dependabot_ecosystem
+from .text import pascal, lower, path
+from .fs import replace_text, move_files
 
 def setup_backend(default_mod, config_mod):
     def_name = default_mod["name"]
@@ -17,15 +17,12 @@ def setup_backend(default_mod, config_mod):
     def_lower = lower(def_name)
     cfg_lower = lower(cfg_name)
 
-    # Replace package
-    pkg_files = [
-        "backend/build-logic/convention/build.gradle.kts",
-        "backend/app/build.gradle.kts",
-        f"backend/app/src/test/kotlin/{def_pkg_path}/ArchitectureTest.kt",
-        f"backend/app/src/main/kotlin/{def_pkg_path}/{def_pascal}Application.kt",
-        f"backend/app/src/main/kotlin/{def_pkg_path}/config/CorsConfig.kt",
-        f"backend/app/src/main/kotlin/{def_pkg_path}/security/ProxyValidationFilter.kt"
-    ]
+    # Replace package declarations
+    pkg_files = ["backend/app/build.gradle.kts"]
+    for base in ("main", "test"):
+        pkg_files.extend(
+            glob.glob(f"backend/app/src/{base}/kotlin/{def_pkg_path}/**/*.kt", recursive=True)
+        )
     for f in pkg_files:
         replace_text(f, def_pkg, cfg_pkg)
 
@@ -39,7 +36,6 @@ def setup_backend(default_mod, config_mod):
 
     # Replace lower case name
     lower_files = [
-        ".github/workflows/backend-deploy.yml",
         "backend/app/src/main/resources/application.yml",
         "backend/compose.yml",
         "backend/compose.prod.yml",
@@ -62,21 +58,8 @@ def setup_backend(default_mod, config_mod):
         f"backend/app/src/test/kotlin/{cfg_pkg_path}"
     )
 
-    # Move build-logic file
-    move_files(
-        f"backend/build-logic/convention/src/main/kotlin/{def_lower}.kotlin.gradle.kts",
-        f"backend/build-logic/convention/src/main/kotlin/{cfg_lower}.kotlin.gradle.kts"
-    )
-
     # move Application file
     move_files(
         f"backend/app/src/main/kotlin/{cfg_pkg_path}/{def_pascal}Application.kt",
         f"backend/app/src/main/kotlin/{cfg_pkg_path}/{cfg_pascal}Application.kt"
     )
-
-def delete_backend():
-    delete_files("backend")
-    # Delete GitHub workflows
-    for f in glob.glob(".github/workflows/backend-*.yml"):
-        delete_files(f)
-    remove_dependabot_ecosystem("/backend")

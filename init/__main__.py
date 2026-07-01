@@ -1,9 +1,10 @@
 import os
 import shutil
-from fs import load_json
-from backend import setup_backend, delete_backend
-from frontend import setup_frontend, delete_frontend
-from gh import setup_github_project
+from .fs import load_json
+from .backend import setup_backend
+from .frontend import setup_frontend
+from .gh import setup_github_project
+from .repo import setup_repo
 
 def main():
     default_path = "init/default.json"
@@ -28,16 +29,16 @@ def main():
         if mod_name in config_modules:
             config_mod = config_modules[mod_name]
             print(f"Configuring module: {mod_name}")
-            if mod_name == "backend":
+            if mod_name == "backend" or mod_name == "api":
                 setup_backend(default_mod, config_mod)
-            elif mod_name == "frontend":
+            elif mod_name == "frontend" or mod_name == "client":
                 setup_frontend(default_mod, config_mod)
         else:
-            print(f"Removing module: {mod_name}")
-            if mod_name == "backend":
-                delete_backend()
-            elif mod_name == "frontend":
-                delete_frontend()
+            print(f"Skipping module (delete logic removed): {mod_name}")
+
+    # Configure repo-level files (CI/CD workflows)
+    print("Configuring repo-level workflow files")
+    setup_repo(default_data, config_data)
 
     # Delete the root README.md file
     if os.path.exists("README.md"):

@@ -1,6 +1,8 @@
 spring:
   application:
     name: template
+  config:
+    import: optional:file:../.env[.properties]
 
   datasource:
     url: jdbc:postgresql://${DB_HOST}/template
@@ -30,7 +32,7 @@ management:
         include: health,info
 
 info:
-  version: ${VERSION_NAME:unknown}
+  version: "0.1.0" # x-release-please-version
 
 server:
   servlet:
@@ -40,14 +42,14 @@ server:
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
+  show-actuator: true
   api-docs: 
     path: /v3/api-docs
   openapi:
     info:
       title: Template API
-      version: ${VERSION_NAME:unknown}
+      version: "0.1.0" # x-release-please-version
 
 client:
-  url: ${CLIENT_URL}
   proxy-secret: ${PROXY_SECRET:}
 

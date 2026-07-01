@@ -1,60 +1,55 @@
 version: '3'
 
 tasks:
-  run:
-    desc: Start dev server
+  install:
+    internal: true
+    desc: Install npm dependencies
     cmds:
-      - npm install
-      - npx expo start --dev-client
+      - pnpm install
+      - task: api
+    if: '[ -n "$CI" ]'
 
   check:
     desc: Run lint and type checks
     cmds:
-      - npx eslint src
-      - npx tsc --noEmit
+      - task: install
+      - pnpm turbo run check
 
   fix:
     desc: Fix lint problems
-    cmds: 
-      - npx eslint src --fix
-      
-  build: 
+    cmds:
+      - pnpm turbo run fix
+
+  run:
+    desc: Start dev server
+    cmds:
+      - pnpm --filter expo dev
+
+  build:
     desc: Build development apk
-    cmds: 
-      - npm install
-      - npx expo prebuild --platform android
-      - cd android && bash gradlew assembleDebug
+    cmds:
+      - pnpm --filter=expo build:debug
 
   api:
     desc: Generate OpenAPI client code and docs
+    env:
+      API_CLIENT_OUTPUT_DIR: '{{.TASKFILE_DIR}}/apps/expo/src/generated'
+      API_DOCS_OUTPUT_DIR: '{{.TASKFILE_DIR}}/../docs'
     cmds:
-      - node scripts/generate-api.js
+      - cmd: pnpm --filter api-client api
+        ignore_error: true
 
-  ci:check:
-    desc: Run CI checks
+  build:android:
+    desc: Build release for android
     cmds:
-      - npm ci
+      - task: install
       - task: api
-      - task: check
+      - pnpm --filter expo prebuild
+      - pnpm --filter expo build:release
 
-  ci:android:
-    desc: Run CI build for android
+  build:web:
+    desc: Build release for web
     cmds:
-      - task: ci:check
-      - npx expo prebuild --platform android
-      - cd android && bash gradlew assembleRelease
-
-  ci:web:
-    desc: Run CI build for web
-    cmds:
-      - task: ci:check
-      - npx expo export --platform web
-      # Fix node modules asset paths for Cloudflare Pages
-      - |
-        if [ -d dist/assets/node_modules ]; then
-          mv dist/assets/node_modules/* dist/assets/ || true
-          rm -rf dist/assets/node_modules
-        fi
-        find dist/_expo/static/js/web/ -type f -print0 | xargs -0 sed -i 's/assets\/node_modules/assets/g'
-      - cp -r functions dist/functions
-      - cp public/_routes.json dist/_routes.json
+      - task: install
+      - pnpm --filter expo export
+      - pnpm --filter expo cloudflare:fix
