@@ -7,7 +7,7 @@ pluginManagement {
             url = uri("https://maven.pkg.github.com/aimarchirico/core")
             credentials {
                 username = System.getenv("GITHUB_ACTOR") ?: providers.gradleProperty("gpr.user").orNull
-                password = System.getenv("GITHUB_TOKEN") ?: providers.gradleProperty("gpr.key").orNull
+                password = System.getenv("GH_PACKAGES_TOKEN") ?: providers.gradleProperty("gpr.key").orNull
             }
         }
     }
