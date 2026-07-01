@@ -16,17 +16,17 @@
   },
   "boundaries": {
     "tags": {
-      "type:app": {
+      "app": {
         "dependencies": {
           "allow": ["feature", "shared"]
         }
       },
-      "type:feature": {
+      "feature": {
         "dependencies": {
           "allow": ["shared"]
         }
       },
-      "type:shared": {
+      "shared": {
         "dependencies": {
           "allow": ["shared"]
         }
