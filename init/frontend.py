@@ -1,6 +1,5 @@
-import glob
-from text import lower
-from fs import replace_text
+from .text import lower
+from .fs import replace_text
 
 def setup_frontend(default_mod, config_mod):
     def_name = default_mod["name"]
@@ -11,19 +10,11 @@ def setup_frontend(default_mod, config_mod):
     def_lower = lower(def_name)
     cfg_lower = lower(cfg_name)
 
-    # Replacements for app.config.js
+    # app.config.js: package id, display name, slug and scheme
     config_file = "frontend/apps/expo/app.config.js"
     replace_text(config_file, def_pkg, cfg_pkg)
     replace_text(config_file, def_name, cfg_name)
     replace_text(config_file, def_lower, cfg_lower)
 
-    # Replace lower case name in all workspace configurations and workflows
-    other_files = [
-        "frontend/package.json",
-        "frontend/apps/expo/package.json",
-        "frontend/apps/expo/tsconfig.json",
-        "frontend/apps/expo/eslint.config.mjs",
-        "frontend/packages/shared/api-client/package.json"
-    ]
-    for f in other_files:
-        replace_text(f, def_lower, cfg_lower)
+    # Workspace root package name
+    replace_text("frontend/package.json", def_lower, cfg_lower)

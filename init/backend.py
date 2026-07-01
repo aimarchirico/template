@@ -1,6 +1,6 @@
 import glob
-from text import pascal, lower, path
-from fs import replace_text, move_files
+from .text import pascal, lower, path
+from .fs import replace_text, move_files
 
 def setup_backend(default_mod, config_mod):
     def_name = default_mod["name"]
@@ -17,13 +17,12 @@ def setup_backend(default_mod, config_mod):
     def_lower = lower(def_name)
     cfg_lower = lower(cfg_name)
 
-    # Replace package
-    pkg_files = [
-        "backend/app/build.gradle.kts",
-        f"backend/app/src/test/kotlin/{def_pkg_path}/ArchitectureTest.kt",
-        f"backend/app/src/test/kotlin/{def_pkg_path}/DependencyArchitectureTest.kt",
-        f"backend/app/src/main/kotlin/{def_pkg_path}/{def_pascal}Application.kt"
-    ]
+    # Replace package declarations
+    pkg_files = ["backend/app/build.gradle.kts"]
+    for base in ("main", "test"):
+        pkg_files.extend(
+            glob.glob(f"backend/app/src/{base}/kotlin/{def_pkg_path}/**/*.kt", recursive=True)
+        )
     for f in pkg_files:
         replace_text(f, def_pkg, cfg_pkg)
 
