@@ -1,5 +1,5 @@
 {
-  "name": "@aimarchirico/template-expo",
+  "name": "expo",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
@@ -13,7 +13,7 @@
     "cloudflare:fix": "node scripts/fix-cloudflare.js"
   },
   "dependencies": {
-    "@aimarchirico/template-api-client": "workspace:*",
+    "api-client": "workspace:*",
     "expo": "~56.0.11",
     "expo-constants": "~56.0.18",
     "expo-dev-client": "~56.0.20",
@@ -32,7 +32,8 @@
     "react-native-web": "~0.21.0"
   },
   "devDependencies": {
-    "@aimarchirico/core-expo": "^0.1.2",
+    "@aimarchirico/core-expo": "^0.1.3",
+    "@aimarchirico/core-ts": "^0.1.4",
     "@babel/core": "^7.26.0",
     "@types/react": "~19.2.14",
     "dotenv": "^17.4.2",
