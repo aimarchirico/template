@@ -91,15 +91,6 @@ importers:
         specifier: ~6.0.3
         version: 6.0.3
 
-  packages/shared/api-client:
-    devDependencies:
-      '@aimarchirico/core-expo':
-        specifier: ^0.1.0
-        version: 0.1.1(eslint@9.39.4)(expo@56.0.12)(react@19.2.3)(typescript@6.0.3)
-      '@aimarchirico/core-openapi':
-        specifier: ^0.0.2
-        version: 0.0.2(ajv@6.15.0)(mkdirp@1.0.4)
-
   packages/shared/template-api-client:
     devDependencies:
       '@aimarchirico/core-expo':
