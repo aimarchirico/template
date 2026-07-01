@@ -35,6 +35,7 @@
     "@aimarchirico/core-expo": "^0.1.3",
     "@aimarchirico/core-ts": "^0.1.4",
     "@babel/core": "^7.26.0",
+    "@types/node": "^26.0.1",
     "@types/react": "~19.2.14",
     "dotenv": "^17.4.2",
     "eslint": "^9.39.2",

@@ -6,5 +6,8 @@
     "**/*.js",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
+  ],
+  "exclude": [
+    "scripts"
   ]
 }
