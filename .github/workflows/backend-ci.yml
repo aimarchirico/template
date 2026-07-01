@@ -27,7 +27,7 @@ jobs:
           cache: gradle
 
       - name: Set Up Task
-        uses: arduino/setup-task@v2
+        uses: arduino/setup-task@v3
         with:
           version: 3.x
 
