@@ -2,7 +2,6 @@ packages:
   - "apps/*"
   - "packages/features/*"
   - "packages/shared/*"
-  - "tooling/*"
 allowBuilds:
   '@openapitools/openapi-generator-cli': true
   core-js: true
