@@ -4,7 +4,7 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
         maven {
-            url = uri("https://maven.pkg.github.com/aimarchirico/core")
+            url = uri("https://maven.pkg.github.com/aimarchirico/commons")
             credentials {
                 username = System.getenv("GITHUB_ACTOR") ?: providers.gradleProperty("gpr.user").orNull
                 password = System.getenv("GH_PACKAGES_TOKEN") ?: providers.gradleProperty("gpr.key").orNull
@@ -19,7 +19,7 @@ dependencyResolutionManagement {
         mavenLocal()
         mavenCentral()
         maven {
-            url = uri("https://maven.pkg.github.com/aimarchirico/core")
+            url = uri("https://maven.pkg.github.com/aimarchirico/commons")
             credentials {
                 username = System.getenv("GITHUB_ACTOR") ?: providers.gradleProperty("gpr.user").orNull
                 password = System.getenv("GH_PACKAGES_TOKEN") ?: providers.gradleProperty("gpr.key").orNull

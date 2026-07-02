@@ -1,6 +1,6 @@
 plugins {
-  alias(libs.plugins.core.kotlin)
-  alias(libs.plugins.core.spring)
+  alias(libs.plugins.commons.kotlin)
+  alias(libs.plugins.commons.spring)
   alias(libs.plugins.spring.boot)
 }
 
@@ -19,7 +19,7 @@ dependencies {
   implementation("org.springframework.boot:spring-boot-starter-web")
   implementation(libs.springdoc.openapi)
   implementation(libs.hypersistence.utils)
-  implementation(libs.core.security)
+  implementation(libs.commons.security)
 
   runtimeOnly("org.postgresql:postgresql")
   implementation("org.flywaydb:flyway-core")
@@ -29,5 +29,5 @@ dependencies {
   testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
   testRuntimeOnly("org.junit.platform:junit-platform-launcher")
   testImplementation(libs.archunit)
-  testImplementation(libs.core.test)
+  testImplementation(libs.commons.test)
 }
