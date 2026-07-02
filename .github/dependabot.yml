@@ -6,8 +6,9 @@ registries:
     token: ${{secrets.GH_PACKAGES_TOKEN}}
   github-maven:
     type: maven-repository
-    url: https://maven.pkg.github.com
-    token: ${{secrets.GH_PACKAGES_TOKEN}}
+    url: https://maven.pkg.github.com/aimarchirico
+    username: x-access-token
+    password: ${{secrets.GH_PACKAGES_TOKEN}}
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
