@@ -57,7 +57,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set Up Node
-        uses: aimarchirico/core/.github/actions/setup-node@dev
+        uses: aimarchirico/commons/.github/actions/setup-node@dev
         with:
           cache-dependency-path: ./frontend/pnpm-lock.yaml
 

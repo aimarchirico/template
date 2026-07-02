@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "api": "core-openapi",
+    "api": "commons-openapi",
     "check": "eslint . --no-error-on-unmatched-pattern",
     "fix": "eslint . --no-error-on-unmatched-pattern --fix"
   },
   "devDependencies": {
-    "@aimarchirico/core-expo": "^0.1.3",
-    "@aimarchirico/core-openapi": "^0.0.3",
-    "@aimarchirico/core-ts": "^0.1.4",
+    "@aimarchirico/commons-expo": "^1.1.0",
+    "@aimarchirico/commons-openapi": "^1.1.0",
+    "@aimarchirico/commons-ts": "^1.1.0",
     "eslint": "^9.39.2"
   }
 }

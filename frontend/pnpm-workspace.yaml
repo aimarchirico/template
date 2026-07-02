@@ -7,5 +7,6 @@ allowBuilds:
   core-js: true
   unrs-resolver: true
 minimumReleaseAgeExclude:
-  - '@aimarchirico/core-expo@0.1.1 || 0.1.2 || 0.1.3'
-  - '@aimarchirico/core-ts@0.1.1 || 0.1.2 || 0.1.3 || 0.1.4'
+  - '@aimarchirico/commons-expo@0.1.1 || 0.1.2 || 0.1.3 || 1.1.0'
+  - '@aimarchirico/commons-ts@0.1.1 || 0.1.2 || 0.1.3 || 0.1.4 || 1.1.0'
+  - '@aimarchirico/commons-openapi@1.1.0'

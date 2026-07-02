@@ -90,12 +90,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set Up Node
-        uses: aimarchirico/core/.github/actions/setup-node@dev
+        uses: aimarchirico/commons/.github/actions/setup-node@dev
         with:
           cache-dependency-path: ./frontend/pnpm-lock.yaml
 
       - name: Set Up Gradle/Java
-        uses: aimarchirico/core/.github/actions/setup-java@dev
+        uses: aimarchirico/commons/.github/actions/setup-java@dev
 
       - name: JDK 17 for Android native build
         uses: actions/setup-java@v5

@@ -1,5 +1,5 @@
 package no.chirico.template
 
-import no.chirico.core.test.BaseConventionTest
+import no.chirico.commons.test.BaseConventionTest
 
 class ConventionTest : BaseConventionTest()

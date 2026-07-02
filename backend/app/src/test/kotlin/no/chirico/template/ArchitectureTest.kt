@@ -1,5 +1,5 @@
 package no.chirico.template
 
-import no.chirico.core.test.BaseArchitectureTest
+import no.chirico.commons.test.BaseArchitectureTest
 
 class ArchitectureTest : BaseArchitectureTest()

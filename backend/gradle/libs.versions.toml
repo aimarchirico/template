@@ -5,9 +5,9 @@ hypersistence = "3.15.3"
 springdoc = "3.0.3"
 ktfmt = "0.26.0"
 archunit = "1.4.2"
-core-security = "0.2.1"
-core-test = "0.2.1"
-core-build-logic="0.2.0"
+commons-security = "1.1.2"
+commons-test = "1.1.2"
+commons-convention="1.1.0"
 
 [libraries]
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -20,12 +20,12 @@ hypersistence-utils = { module = "io.hypersistence:hypersistence-utils-hibernate
 springdoc-openapi = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc" }
 ktfmt-gradlePlugin = { module = "com.ncorti.ktfmt.gradle:com.ncorti.ktfmt.gradle.gradle.plugin", version.ref = "ktfmt" }
 archunit = { module = "com.tngtech.archunit:archunit-junit5", version.ref = "archunit" }
-core-security = { module = "no.chirico.core:core-security", version.ref = "core-security" }
-core-test = { module = "no.chirico.core:core-test", version.ref = "core-test" }
+commons-security = { module = "no.chirico.commons:commons-security", version.ref = "commons-security" }
+commons-test = { module = "no.chirico.commons:commons-test", version.ref = "commons-test" }
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
 ktfmt = { id = "com.ncorti.ktfmt.gradle", version.ref = "ktfmt" }
-core-kotlin = { id = "no.chirico.core.buildlogic.kotlin", version.ref = "core-build-logic" }
-core-spring = { id = "no.chirico.core.buildlogic.spring", version.ref = "core-build-logic" }
+commons-kotlin = { id = "no.chirico.commons.convention.kotlin", version.ref = "commons-convention" }
+commons-spring = { id = "no.chirico.commons.convention.spring", version.ref = "commons-convention" }
