@@ -10,6 +10,5 @@
       "component": "app",
       "extra-files": ["apps/expo/app.config.js"]
     }
-  },
-  "plugins": []
+  }
 }
