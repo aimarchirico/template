@@ -73,7 +73,7 @@ jobs:
           build-args: |
             GITHUB_ACTOR=${{ github.actor }}
           secrets: |
-            github_token=${{ secrets.GITHUB_TOKEN }}
+            gh_packages_token=${{ secrets.GH_PACKAGES_TOKEN }}
 
   # ==========================================
   # ANDROID APK
