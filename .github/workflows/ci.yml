@@ -21,7 +21,7 @@ jobs:
       docs: ${{ steps.filter.outputs.docs }}
     steps:
       - name: Check Out Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Detect Changes
         uses: dorny/paths-filter@v3
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set Up Java
         uses: aimarchirico/commons/.github/actions/setup-java@main
@@ -68,7 +68,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set Up Node
         uses: aimarchirico/commons/.github/actions/setup-node@main
@@ -93,7 +93,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set Up Node
         uses: aimarchirico/commons/.github/actions/setup-node@main
@@ -114,7 +114,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 

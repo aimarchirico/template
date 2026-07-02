@@ -54,7 +54,7 @@ jobs:
       NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
     steps:
       - name: Check Out Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set Up Node
         uses: aimarchirico/commons/.github/actions/setup-node@dev
