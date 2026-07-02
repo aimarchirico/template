@@ -5,9 +5,9 @@ hypersistence = "3.15.3"
 springdoc = "3.0.3"
 ktfmt = "0.26.0"
 archunit = "1.4.2"
-commons-security = "0.2.1"
-commons-test = "0.2.1"
-commons-convention="0.2.0"
+commons-security = "1.1.0"
+commons-test = "1.1.0"
+commons-convention="1.1.0"
 
 [libraries]
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
