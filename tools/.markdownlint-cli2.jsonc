@@ -20,6 +20,7 @@
     "../backend/**/.gradle/**",
     "../**/tmp/**",
     "node_modules/**",
-    ".turbo/**"
+    ".turbo/**",
+    "../**/CHANGELOG.md"
   ]
 }
