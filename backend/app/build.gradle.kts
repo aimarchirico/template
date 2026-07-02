@@ -1,7 +1,6 @@
 plugins {
   alias(libs.plugins.commons.kotlin)
   alias(libs.plugins.commons.spring)
-  alias(libs.plugins.spring.boot)
 }
 
 group = "no.chirico.template"
