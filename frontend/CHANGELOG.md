@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/aimarchirico/template/compare/app-v1.1.0...app-v1.1.1) (2026-07-02)
+
+
+### Bug Fixes
+
+* change core references to commons ([857d53d](https://github.com/aimarchirico/template/commit/857d53dc113afb010ba94ab942a18b501fdd3385))
+
 ## [1.1.0](https://github.com/aimarchirico/template/compare/app-v1.0.0...app-v1.1.0) (2026-07-02)
 
 
