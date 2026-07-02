@@ -17,15 +17,21 @@ updates:
 
   - package-ecosystem: "gradle"
     directory: "/backend"
+    registries:
+      - github-maven
     schedule:
       interval: "weekly"
 
   - package-ecosystem: "npm"
     directory: "/frontend"
+    registries:
+      - github-npm
     schedule:
       interval: "weekly"
 
   - package-ecosystem: "npm"
     directory: "/tools"
+    registries:
+      - github-npm
     schedule:
       interval: "weekly"
