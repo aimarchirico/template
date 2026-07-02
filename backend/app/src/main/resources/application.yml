@@ -1,4 +1,3 @@
-# Base application configuration; profile-specific overrides live alongside this file.
 spring:
   application:
     name: template

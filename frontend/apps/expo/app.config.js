@@ -1,4 +1,3 @@
-// Environment flag toggles dev-specific app identity (name, bundle id, package).
 const IS_DEV = process.env.IS_DEV === 'true';
 
 export default {

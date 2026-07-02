@@ -2,10 +2,12 @@
   "packages": {
     "backend": {
       "release-type": "simple",
+      "component": "backend",
       "extra-files": ["app/src/main/resources/application.yml"]
     },
     "frontend": {
       "release-type": "simple",
+      "component": "frontend",
       "extra-files": ["apps/expo/app.config.js"]
     }
   },
