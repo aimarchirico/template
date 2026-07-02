@@ -97,6 +97,12 @@ jobs:
       - name: Set Up Gradle/Java
         uses: aimarchirico/core/.github/actions/setup-java@dev
 
+      - name: JDK 17 for Android native build
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+
       - name: Run CI Build for Android
         run: task build:android
         working-directory: ./frontend
