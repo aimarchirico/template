@@ -6,7 +6,7 @@ registries:
     token: ${{secrets.GH_PACKAGES_TOKEN}}
   github-maven:
     type: maven-repository
-    url: https://maven.pkg.github.com/aimarchirico
+    url: https://maven.pkg.github.com/aimarchirico/commons
     username: x-access-token
     password: ${{secrets.GH_PACKAGES_TOKEN}}
 updates:
