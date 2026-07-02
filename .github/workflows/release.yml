@@ -29,7 +29,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           config-file: tools/release-please-config.json
-          manifest-file: tools/release-please-manifest.json
+          manifest-file: tools/.release-please-manifest.json
 
   # ==========================================
   # API IMAGE
