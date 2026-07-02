@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/aimarchirico/template/compare/frontend-v1.1.0...frontend-v1.1.1) (2026-07-02)
+
+
+### Bug Fixes
+
+* **workflow:** add JDK 17 setup for Android native build ([402176d](https://github.com/aimarchirico/template/commit/402176d6dea81d3622120eed3547cd63ee6a23ab))
+
 ## [1.1.0](https://github.com/aimarchirico/template/compare/frontend-v1.0.0...frontend-v1.1.0) (2026-07-02)
 
 
