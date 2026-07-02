@@ -8,7 +8,7 @@
     "backend": {
       "name": "Template",
       "package": "no.chirico.template",
-      "image": "ghcr.io/aimarchirico/template"
+      "image": "ghcr.io/aimarchirico/template-api"
     }
   }
 }

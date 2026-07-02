@@ -1,7 +1,7 @@
 services:
   template-api:
     container_name: template-api
-    image: ghcr.io/aimarchirico/template:latest
+    image: ghcr.io/aimarchirico/template-api:latest
 
     ports:
       - "8080:8080"

@@ -54,7 +54,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v6
         with:
-          images: ghcr.io/${{ github.repository }}
+          images: ghcr.io/${{ github.repository }}-api
           tags: |
             type=raw,value=${{ needs.release-please.outputs.backend--version }}
             type=raw,value=latest
