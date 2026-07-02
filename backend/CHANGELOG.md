@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/aimarchirico/template/compare/api-v0.1.0...api-v0.1.1) (2026-07-02)
+
+
+### Reverts
+
+* use GH_PACKAGES_TOKEN for Gradle package fetching ([4cd5b01](https://github.com/aimarchirico/template/commit/4cd5b012351818e1d2b47f46961c55cf17509c13))
+
 ## [0.1.0](https://github.com/aimarchirico/template/compare/api-v0.0.1...api-v0.1.0) (2026-07-02)
 
 
