@@ -56,7 +56,7 @@ jobs:
       - name: Run Check
         run: task backend:check
         env:
-          GH_PACKAGES_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # ==========================================
   # FRONTEND CI JOB
@@ -78,7 +78,7 @@ jobs:
       - name: Run Check
         run: task frontend:check
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           API_URL: ${{ vars.API_URL }}
           CF_ACCESS_CLIENT_ID: ${{ vars.CF_ACCESS_CLIENT_ID }}
           CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
@@ -103,7 +103,7 @@ jobs:
       - name: Run Check
         run: task docs:check
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
   # ==========================================
@@ -126,6 +126,6 @@ jobs:
       - name: Run Check  
         run: task commit:check
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FROM_SHA: ${{ github.event.pull_request.base.sha }}
           TO_SHA: ${{ github.event.pull_request.head.sha }}
