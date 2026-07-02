@@ -49,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: web-production
-      url: ${{ vars.DEPLOYMENT_URL }}
+      url: ${{ vars.APP_URL }}
     env:
       NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
     steps:
