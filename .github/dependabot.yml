@@ -1,4 +1,4 @@
-version: 
+version: 2
 registries:
   github-npm:
   type: npm-registry
