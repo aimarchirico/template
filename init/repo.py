@@ -9,6 +9,7 @@ def setup_repo(default_data, config_data):
     workflow_files = [
         ".github/workflows/deploy.yml",
         ".github/workflows/release.yml",
+        "tools/release-please-config.json",
     ]
     for f in workflow_files:
         replace_text(f, def_lower, cfg_lower)
