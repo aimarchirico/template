@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.0](https://github.com/aimarchirico/template/compare/template-app-v1.2.0...template-app-v1.3.0) (2026-07-03)
+
+
+### Features
+
+* **expo:** add nativewind styling ([ff2f455](https://github.com/aimarchirico/template/commit/ff2f455d4de0338ec6b6a4eac39110546caf32e8))
+* **expo:** add nativewind styling ([80ef92c](https://github.com/aimarchirico/template/commit/80ef92c50b23b22d43ae46fff86972452e1f8d66))
+
+
+### Bug Fixes
+
+* **frontend:** relocate generated api client to api-client package ([35aa875](https://github.com/aimarchirico/template/commit/35aa875b6e7ca13d5641a2d5935180c24903b56b))
+
 ## [1.2.0](https://github.com/aimarchirico/template/compare/template-app-v1.1.1...template-app-v1.2.0) (2026-07-03)
 
 
