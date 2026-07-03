@@ -107,6 +107,10 @@ importers:
         version: 6.0.3
 
   packages/shared/api-client:
+    dependencies:
+      axios:
+        specifier: ^1.18.1
+        version: 1.18.1
     devDependencies:
       '@aimarchirico/commons-expo':
         specifier: ^1.1.0

@@ -3,7 +3,7 @@ import baseConfig from '@aimarchirico/commons-expo/eslint';
 
 export default defineConfig([
   {
-    ignores: ['expo-env.d.ts', 'src/generated/**'],
+    ignores: ['expo-env.d.ts'],
   },
   ...baseConfig,
   {
