@@ -33,7 +33,7 @@ tasks:
   api:
     desc: Generate OpenAPI client code and docs
     env:
-      API_CLIENT_OUTPUT_DIR: '{{.TASKFILE_DIR}}/apps/expo/src/generated'
+      API_CLIENT_OUTPUT_DIR: '{{.TASKFILE_DIR}}/packages/shared/api-client/src/generated'
       API_DOCS_OUTPUT_DIR: '{{.TASKFILE_DIR}}/../docs'
     cmds:
       - cmd: pnpm --filter api-client api

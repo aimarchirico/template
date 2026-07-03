@@ -28,4 +28,15 @@ export default defineConfig([
       'check-file/filename-naming-convention': 'off',
     },
   },
+  {
+    files: [
+      'babel.config.js',
+      'metro.config.js',
+      'tailwind.config.js',
+      'nativewind-env.d.ts',
+    ],
+    rules: {
+      'check-file/filename-naming-convention': 'off',
+    },
+  },
 ]);
