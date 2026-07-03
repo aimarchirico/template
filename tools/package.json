@@ -11,6 +11,6 @@
     "@commitlint/config-conventional": "^21.2.0",
     "husky": "^9.1.7",
     "markdownlint-cli2": "^0.13.0",
-    "turbo": "^2.10.2"
+    "turbo": "^2.10.3"
   }
 }
