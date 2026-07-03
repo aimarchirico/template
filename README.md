@@ -12,8 +12,8 @@ A full-stack monorepo template with a Kotlin/Spring Boot backend and an Expo/Rea
 - GitHub issue and pull request templates
 - Automated dependency updates using Dependabot
 - Contribution and documentation guidelines
-- Python initialization package for scaffolding new projects
 - Agent skills for the development workflow (bootstrap, issues, implement, commit, pr, docs)
+- Python initialization package for scaffolding new projects
 
 ## Getting Started
 
