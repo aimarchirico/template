@@ -1,4 +1,4 @@
-name: Cascade Close Sub-Issues
+name: Close Sub-Issues
 
 on:
   issues:
