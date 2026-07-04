@@ -1,6 +1,6 @@
-const NAME = "Template";
-const PACKAGE = "no.chirico.template";
-const LOWER_CASE = NAME.toLowerCase().replace(/\s+/g, "");
+const NAME = 'Template';
+const PACKAGE = 'no.chirico.template';
+const LOWER_CASE = NAME.toLowerCase().replace(/\s+/g, '');
 const IS_DEV = process.env.IS_DEV === 'true';
 
 export default {
