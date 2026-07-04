@@ -6,10 +6,9 @@ def setup_cicd(default_data, config_data):
     def_lower = lower(default_data["name"])
     cfg_lower = lower(config_data["name"])
 
-    # CI/CD files
+    # The deploy and release workflows derive names from the repository, so only
+    # the release-please config still carries the literal project name.
     cicd_files = [
-        ".github/workflows/deploy.yml",
-        ".github/workflows/release.yml",
         "tools/release-please-config.json",
     ]
     for f in cicd_files:
