@@ -21,9 +21,7 @@ export default {
     assetBundlePatterns: ['**/*'],
     ios: {
       supportsTablet: true,
-      bundleIdentifier: IS_DEV
-        ? `${PACKAGE}.dev`
-        : PACKAGE,
+      bundleIdentifier: IS_DEV ? `${PACKAGE}.dev` : PACKAGE,
     },
     android: {
       adaptiveIcon: {
