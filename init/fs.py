@@ -3,6 +3,7 @@ import shutil
 import json
 
 def replace_text(file_path: str, old_text: str, new_text: str):
+    """Replace all occurrences of old_text with new_text in file_path, if it exists."""
     if not os.path.exists(file_path):
         return
     with open(file_path, 'r', encoding='utf-8') as f:
@@ -13,6 +14,7 @@ def replace_text(file_path: str, old_text: str, new_text: str):
             f.write(new_content)
 
 def move_files(src_path: str, dest_path: str):
+    """Move src_path to dest_path, overwriting the destination and pruning emptied parents."""
     if not os.path.exists(src_path):
         return
     if os.path.abspath(src_path) == os.path.abspath(dest_path):
@@ -29,6 +31,7 @@ def move_files(src_path: str, dest_path: str):
     _clean_empty_parents(src_path, dest_path)
 
 def delete_files(path: str):
+    """Delete path, whether it is a file or a directory tree."""
     if not os.path.exists(path):
         return
     if os.path.isdir(path):
@@ -37,6 +40,7 @@ def delete_files(path: str):
         os.remove(path)
 
 def _clean_empty_parents(src_path: str, dest_path: str):
+    """Remove now-empty parent directories of src_path, stopping at the common ancestor or project root."""
     try:
         common = os.path.commonpath([os.path.abspath(src_path), os.path.abspath(dest_path)])
     except ValueError:
@@ -56,12 +60,14 @@ def _clean_empty_parents(src_path: str, dest_path: str):
             break
 
 def load_json(path: str) -> dict:
+    """Load and return JSON from path, or an empty dict if the file does not exist."""
     if not os.path.exists(path):
         return {}
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
 def remove_dependabot_ecosystem(directory_pattern: str):
+    """Remove the dependabot package-ecosystem block whose directory matches directory_pattern."""
     dependabot_path = ".github/dependabot.yml"
     if not os.path.exists(dependabot_path):
         return
