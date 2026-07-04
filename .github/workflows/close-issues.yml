@@ -13,4 +13,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Cascade Close Sub-Issues
-        uses: aimarchirico/commons/.github/actions/cascade-close@main
+        uses: aimarchirico/commons/.github/actions/close-issues@main
