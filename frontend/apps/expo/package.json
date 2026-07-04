@@ -10,7 +10,7 @@
     "build:debug": "cd android && bash gradlew assembleDebug",
     "build:release": "cd android && bash gradlew assembleRelease",
     "export": "expo export --platform web",
-    "cloudflare:fix": "node scripts/fix-cloudflare.js"
+    "cloudflare:fix": "commons-cloudflare-fix"
   },
   "dependencies": {
     "api-client": "workspace:*",
@@ -34,6 +34,7 @@
     "react-native-web": "~0.21.0"
   },
   "devDependencies": {
+    "@aimarchirico/commons-cloudflare": "^1.0.0",
     "@aimarchirico/commons-expo": "^1.1.0",
     "@aimarchirico/commons-ts": "^1.1.0",
     "@babel/core": "^8.0.1",
@@ -41,8 +42,6 @@
     "@types/react": "~19.2.14",
     "dotenv": "^17.4.2",
     "eslint": "^9.39.2",
-    "replace-in-file": "^8.4.0",
-    "shelljs": "^0.10.0",
     "tailwindcss": "^3.4.19",
     "typescript": "~6.0.3"
   },
