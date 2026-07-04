@@ -1,7 +1,8 @@
 const shell = require('shelljs');
 const replace = require('replace-in-file');
 
-// Move directory and replace paths
+// Cloudflare Pages rejects upload paths containing "node_modules", so rename
+// the exported directory and rewrite references to it.
 if (shell.test('-d', 'dist/assets/node_modules')) {
   shell.mv('dist/assets/node_modules', 'dist/assets/nodemodules');
   replace.sync({
@@ -10,7 +11,3 @@ if (shell.test('-d', 'dist/assets/node_modules')) {
     to: 'assets/nodemodules',
   });
 }
-
-// Copy functions and routes
-shell.cp('-r', 'functions', 'dist/functions');
-shell.cp('public/_routes.json', 'dist/_routes.json');
