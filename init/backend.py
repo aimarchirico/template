@@ -41,7 +41,6 @@ def setup_backend(default_mod, config_mod):
         "backend/compose.yml",
         "backend/compose.prod.yml",
         "backend/settings.gradle.kts",
-        "backend/gradle/libs.versions.toml",
         "backend/app/build.gradle.kts"
     ]
     for f in lower_files:

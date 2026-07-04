@@ -11,11 +11,10 @@ def setup_frontend(default_mod, config_mod):
     def_lower = lower(def_name)
     cfg_lower = lower(cfg_name)
 
-    # app.config.js: package id, display name, slug and scheme
+    # app.config.js: package id and display name
     config_file = "frontend/apps/expo/app.config.js"
     replace_text(config_file, def_pkg, cfg_pkg)
     replace_text(config_file, def_name, cfg_name)
-    replace_text(config_file, def_lower, cfg_lower)
 
     # Workspace root package name
     replace_text("frontend/package.json", def_lower, cfg_lower)
