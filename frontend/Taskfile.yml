@@ -28,7 +28,7 @@ tasks:
   build:
     desc: Build development apk
     cmds:
-      - pnpm --filter=./apps/expo build:debug
+      - pnpm --filter ./apps/expo build:debug
 
   api:
     desc: Generate OpenAPI client code and docs
