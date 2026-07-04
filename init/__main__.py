@@ -4,7 +4,7 @@ from .fs import load_json
 from .backend import setup_backend
 from .frontend import setup_frontend
 from .gh import setup_github_project
-from .repo import setup_repo
+from .workflows import setup_workflows
 
 def main():
     default_path = "init/default.json"
@@ -36,9 +36,9 @@ def main():
         else:
             print(f"Skipping missing module: {mod_name}")
 
-    # Configure repo-level files
-    print("Configuring repo-level workflow files")
-    setup_repo(default_data, config_data)
+    # Configure workflow files
+    print("Configuring workflow files")
+    setup_workflows(default_data, config_data)
 
     # Delete the root README.md file
     if os.path.exists("README.md"):
