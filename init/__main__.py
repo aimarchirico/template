@@ -34,9 +34,9 @@ def main():
             elif mod_name == "frontend" or mod_name == "client":
                 setup_frontend(default_mod, config_mod)
         else:
-            print(f"Skipping module (delete logic removed): {mod_name}")
+            print(f"Skipping missing module: {mod_name}")
 
-    # Configure repo-level files (CI/CD workflows)
+    # Configure repo-level files
     print("Configuring repo-level workflow files")
     setup_repo(default_data, config_data)
 
