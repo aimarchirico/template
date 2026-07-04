@@ -1,0 +1,16 @@
+name: Close Sub-Issues
+
+on:
+  issues:
+    types: [closed]
+
+permissions:
+  issues: write
+
+jobs:
+  cascade:
+    name: Close Sub-Issues
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close Sub-Issues
+        uses: aimarchirico/commons/.github/actions/close-issues@main

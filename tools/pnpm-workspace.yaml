@@ -1,2 +1,9 @@
 minimumReleaseAgeExclude:
-  - '@aimarchirico/commons-tools@1.1.0'
+  - '@aimarchirico/*'
+  - '@turbo/darwin-64@2.10.3'
+  - '@turbo/darwin-arm64@2.10.3'
+  - '@turbo/linux-64@2.10.3'
+  - '@turbo/linux-arm64@2.10.3'
+  - '@turbo/windows-64@2.10.3'
+  - '@turbo/windows-arm64@2.10.3'
+  - turbo@2.10.3

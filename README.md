@@ -1,19 +1,19 @@
 # Template
 
-A full-stack monorepo template with a Kotlin/Spring Boot backend and an Expo/React Native frontend, wired together with shared tooling, CI/CD, contribution guidelines, and agent skills.
+A full-stack monorepo template with a Spring Boot backend and an Expo frontend, wired together with shared tooling, CI/CD, contribution guidelines, and agent skills.
 
 ## Features
 
-- Kotlin/Spring Boot backend built with Gradle and convention plugins
-- Expo/React Native frontend as a pnpm/Turborepo workspace with NativeWind styling
-- Task-based command orchestration across the backend, frontend, and tools
-- Shared tooling for commit linting, formatting, and Release Please versioning
-- GitHub Actions workflows for CI, deployment, and releases
-- GitHub issue and pull request templates
-- Automated dependency updates using Dependabot
+- Spring Boot backend built with Gradle
+- Expo frontend built with PNPM
+- Python initialization package for scaffolding
+- Task-based command orchestration
+- Shared tooling for commits, docs and versioning
+- Workflows for CI, deployment, and releases
+- Automated dependency updates
+- Issue and pull request templates
 - Contribution and documentation guidelines
-- Agent skills for the development workflow (bootstrap, issues, implement, commit, pr, docs)
-- Python initialization package for scaffolding new projects
+- Agent skills for the development workflow
 
 ## Getting Started
 

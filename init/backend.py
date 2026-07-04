@@ -3,6 +3,7 @@ from .text import pascal, lower, path
 from .fs import replace_text, move_files
 
 def setup_backend(default_mod, config_mod):
+    """Rename the backend's package, image, and app names from the default to the configured values."""
     def_name = default_mod["name"]
     cfg_name = config_mod["name"]
     def_pkg = default_mod["package"]

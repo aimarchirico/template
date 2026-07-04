@@ -4,9 +4,10 @@ from .fs import load_json
 from .backend import setup_backend
 from .frontend import setup_frontend
 from .gh import setup_github_project
-from .repo import setup_repo
+from .cicd import setup_cicd
 
 def main():
+    """Run project initialization: set up the GitHub project, modules, and CI/CD, then self-delete init/."""
     default_path = "init/default.json"
     config_path = "init/config.json"
 
@@ -34,11 +35,11 @@ def main():
             elif mod_name == "frontend" or mod_name == "client":
                 setup_frontend(default_mod, config_mod)
         else:
-            print(f"Skipping module (delete logic removed): {mod_name}")
+            print(f"Skipping missing module: {mod_name}")
 
-    # Configure repo-level files (CI/CD workflows)
-    print("Configuring repo-level workflow files")
-    setup_repo(default_data, config_data)
+    # Configure CI/CD files
+    print("Configuring CI/CD files")
+    setup_cicd(default_data, config_data)
 
     # Delete the root README.md file
     if os.path.exists("README.md"):
