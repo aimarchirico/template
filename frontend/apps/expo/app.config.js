@@ -1,13 +1,16 @@
+const NAME = "Template";
+const PACKAGE = "no.chirico.template";
+const LOWER_CASE = NAME.toLowerCase().replace(/\s+/g, "");
 const IS_DEV = process.env.IS_DEV === 'true';
 
 export default {
   expo: {
-    name: IS_DEV ? 'Template (Dev)' : 'Template',
-    slug: 'template',
+    name: IS_DEV ? `${NAME} (Dev)` : NAME,
+    slug: LOWER_CASE,
     version: '1.3.0', // x-release-please-version
     orientation: 'portrait',
     icon: './src/assets/icons/icon.png',
-    scheme: 'template',
+    scheme: LOWER_CASE,
     userInterfaceStyle: 'dark',
     newArchEnabled: true,
     splash: {
@@ -19,15 +22,15 @@ export default {
     ios: {
       supportsTablet: true,
       bundleIdentifier: IS_DEV
-        ? 'no.chirico.template.dev'
-        : 'no.chirico.template',
+        ? `${PACKAGE}.dev`
+        : PACKAGE,
     },
     android: {
       adaptiveIcon: {
         foregroundImage: './src/assets/icons/adaptive-icon.png',
         backgroundColor: '#0f0f0f',
       },
-      package: IS_DEV ? 'no.chirico.template.dev' : 'no.chirico.template',
+      package: IS_DEV ? `${PACKAGE}.dev` : PACKAGE,
       minSdkVersion: 26,
     },
     web: {
