@@ -121,7 +121,7 @@ jobs:
         with:
           upload_url: ${{ needs.release-please.outputs.frontend--upload_url }}
           asset_path: ${{ github.workspace }}/app-release.apk
-          asset_name: template-${{ needs.release-please.outputs.frontend--version }}.apk
+          asset_name: ${{ github.event.repository.name }}-${{ needs.release-please.outputs.frontend--version }}.apk
           asset_content_type: application/vnd.android.package-archive
 
   # ==========================================
