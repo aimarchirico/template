@@ -43,7 +43,6 @@ tasks:
     desc: Build release for android
     cmds:
       - task: install
-      - task: api
       - pnpm --filter ./apps/expo prebuild
       - pnpm --filter ./apps/expo build:release
 
