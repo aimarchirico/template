@@ -27,3 +27,5 @@ def setup_frontend(default_mod, config_mod):
     ]
     for f in pkg_files:
         replace_text(f, f"{def_scope}/{def_lower}", f"{cfg_scope}/{cfg_lower}")
+
+    replace_text("frontend/.env.example", def_lower, cfg_lower)
