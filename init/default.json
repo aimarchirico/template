@@ -3,7 +3,8 @@
   "modules": {
     "frontend": {
       "name": "Template",
-      "package": "no.chirico.template"
+      "package": "no.chirico.template",
+      "scope": "@aimarchirico"
     },
     "backend": {
       "name": "Template",

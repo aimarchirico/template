@@ -23,12 +23,12 @@ tasks:
   run:
     desc: Start dev server
     cmds:
-      - pnpm --filter expo dev
+      - pnpm --filter ./apps/expo dev
 
   build:
     desc: Build development apk
     cmds:
-      - pnpm --filter=expo build:debug
+      - pnpm --filter ./apps/expo build:debug
 
   api:
     desc: Generate OpenAPI client code and docs
@@ -36,7 +36,7 @@ tasks:
       API_CLIENT_OUTPUT_DIR: '{{.TASKFILE_DIR}}/packages/shared/api-client/src/generated'
       API_DOCS_OUTPUT_DIR: '{{.TASKFILE_DIR}}/../docs'
     cmds:
-      - cmd: pnpm --filter api-client api
+      - cmd: pnpm --filter ./packages/shared/api-client api
         ignore_error: true
 
   build:android:
@@ -44,12 +44,12 @@ tasks:
     cmds:
       - task: install
       - task: api
-      - pnpm --filter expo prebuild
-      - pnpm --filter expo build:release
+      - pnpm --filter ./apps/expo prebuild
+      - pnpm --filter ./apps/expo build:release
 
   build:web:
     desc: Build release for web
     cmds:
       - task: install
-      - pnpm --filter expo export
-      - pnpm --filter expo cloudflare:fix
+      - pnpm --filter ./apps/expo export
+      - pnpm --filter ./apps/expo cloudflare:fix

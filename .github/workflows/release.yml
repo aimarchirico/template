@@ -83,8 +83,6 @@ jobs:
     needs: release-please
     if: contains(fromJSON(needs.release-please.outputs.paths_released), 'frontend')
     runs-on: ubuntu-latest
-    env:
-      NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
     steps:
       - name: Check Out Repo
         uses: actions/checkout@v4
@@ -94,7 +92,7 @@ jobs:
         with:
           cache-dependency-path: ./frontend/pnpm-lock.yaml
 
-      - name: Set Up Gradle/Java
+      - name: Set Up Java
         uses: aimarchirico/commons/.github/actions/setup-java@dev
 
       - name: JDK 17 for Android native build
@@ -107,6 +105,7 @@ jobs:
         run: task build:android
         working-directory: ./frontend
         env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
           API_URL: ${{ vars.API_URL }}
           CF_ACCESS_CLIENT_ID: ${{ vars.CF_ACCESS_CLIENT_ID }}
           CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}

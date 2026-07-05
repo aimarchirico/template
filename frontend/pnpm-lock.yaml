@@ -14,7 +14,7 @@ importers:
 
   apps/expo:
     dependencies:
-      api-client:
+      '@aimarchirico/template-api-client':
         specifier: workspace:*
         version: link:../../packages/shared/api-client
       expo:
