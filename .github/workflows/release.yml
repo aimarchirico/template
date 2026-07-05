@@ -94,7 +94,7 @@ jobs:
         with:
           cache-dependency-path: ./frontend/pnpm-lock.yaml
 
-      - name: Set Up Gradle/Java
+      - name: Set Up Java
         uses: aimarchirico/commons/.github/actions/setup-java@dev
 
       - name: JDK 17 for Android native build
