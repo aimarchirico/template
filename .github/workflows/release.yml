@@ -88,12 +88,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set Up Node
-        uses: aimarchirico/commons/.github/actions/setup-node@dev
+        uses: aimarchirico/commons/.github/actions/setup-node@main
         with:
           cache-dependency-path: ./frontend/pnpm-lock.yaml
 
       - name: Set Up Java
-        uses: aimarchirico/commons/.github/actions/setup-java@dev
+        uses: aimarchirico/commons/.github/actions/setup-java@main
 
       - name: JDK 17 for Android native build
         uses: actions/setup-java@v5
