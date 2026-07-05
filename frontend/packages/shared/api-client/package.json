@@ -7,8 +7,8 @@
   },
   "scripts": {
     "api": "commons-openapi",
-    "check": "eslint . --no-error-on-unmatched-pattern",
-    "fix": "eslint . --no-error-on-unmatched-pattern --fix"
+    "check": "eslint",
+    "fix": "eslint --fix"
   },
   "devDependencies": {
     "@aimarchirico/commons-expo": "^1.1.0",
