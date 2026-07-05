@@ -50,6 +50,8 @@ springdoc:
       title: Template API
       version: "1.2.0" # x-release-please-version
 
-client:
-  proxy-secret: ${PROXY_SECRET:}
+proxy-secret: ${PROXY_SECRET:}
+
+cors:
+  allowed-origins: ${CORS_ALLOWED_ORIGINS:}
 
