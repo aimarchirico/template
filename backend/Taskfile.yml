@@ -14,7 +14,7 @@ tasks:
   run:
     desc: Start API server
     cmds:
-      - bash gradlew bootRun
+      - bash gradlew :app:bootRun
 
   up:
     desc: Start the database container
