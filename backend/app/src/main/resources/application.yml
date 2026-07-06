@@ -1,8 +1,6 @@
 spring:
   application:
     name: template
-  config:
-    import: optional:file:../.env[.properties]
 
   datasource:
     url: jdbc:postgresql://${DB_HOST}/template

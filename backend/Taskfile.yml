@@ -13,6 +13,7 @@ tasks:
 
   run:
     desc: Start API server
+    dotenv: ['.env']
     cmds:
       - bash gradlew :app:bootRun
 
