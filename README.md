@@ -5,6 +5,7 @@ A full-stack monorepo template with a Spring Boot backend and an Expo frontend, 
 ## Features
 
 - Spring Boot backend built with Gradle
+- Enforced api/impl/core module boundaries via the `architecture` convention plugin
 - Expo frontend built with PNPM
 - Python initialization package for scaffolding
 - Task-based command orchestration
