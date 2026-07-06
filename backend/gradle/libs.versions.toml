@@ -6,8 +6,8 @@ springdoc = "3.0.3"
 ktfmt = "0.26.0"
 archunit = "1.4.2"
 commons-security = "2.0.0"
-commons-test = "1.1.2"
-commons-convention="1.1.0"
+commons-test = "1.1.4"
+commons-convention="1.1.1"
 
 [libraries]
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
