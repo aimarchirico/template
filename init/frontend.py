@@ -29,3 +29,6 @@ def setup_frontend(default_mod, config_mod):
 
     # .env.example: API context path
     replace_text("frontend/.env.example", def_lower, cfg_lower)
+
+    # Release please config component
+    replace_text("tools/release-please-config.json", "template-app", f"{cfg_lower}-app")

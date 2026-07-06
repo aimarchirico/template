@@ -1,6 +1,6 @@
 import os
 import shutil
-from .fs import load_json, replace_text
+from .fs import load_json
 from .backend import setup_backend
 from .frontend import setup_frontend
 from .gh import setup_github_project
@@ -19,11 +19,6 @@ def main():
 
     # Initialize GitHub Project
     project_title = config_data.get("name")
-    
-    # Update release-please-config component names
-    safe_title = project_title.lower().replace(" ", "-") if project_title else "app"
-    replace_text("tools/release-please-config.json", "template-", f"{safe_title}-")
-
     setup_github_project(project_title)
 
     # Configure modules
