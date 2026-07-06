@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.1](https://github.com/aimarchirico/template/compare/template-api-v1.4.0...template-api-v1.4.1) (2026-07-06)
+
+
+### Bug Fixes
+
+* **backend:** add spring-boot-flyway so migrations run on startup ([c7f0c20](https://github.com/aimarchirico/template/commit/c7f0c20ae4ba89bf0511dae2810e5bb09eb18a6a))
+* **backend:** load .env via task dotenv instead of Spring config import ([1c58e9b](https://github.com/aimarchirico/template/commit/1c58e9bf1f6ada33bc8f2ddf5b88db07f89fc03c))
+
 ## [1.4.0](https://github.com/aimarchirico/template/compare/template-api-v1.3.0...template-api-v1.4.0) (2026-07-06)
 
 
