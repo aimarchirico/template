@@ -22,6 +22,7 @@ dependencies {
   implementation(libs.commons.security)
 
   runtimeOnly("org.postgresql:postgresql")
+  implementation("org.springframework.boot:spring-boot-flyway")
   implementation("org.flywaydb:flyway-core")
   implementation("org.flywaydb:flyway-database-postgresql")
 
