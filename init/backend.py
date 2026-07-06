@@ -46,6 +46,7 @@ def setup_backend(default_mod, config_mod):
     for f in lower_files:
         replace_text(f, def_lower, cfg_lower)
 
+    # Release please config component
     replace_text("tools/release-please-config.json", "template-api", f"{cfg_lower}-api")
 
     # Move main package
