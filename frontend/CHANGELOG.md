@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/aimarchirico/template/compare/template-app-v1.5.0...template-app-v1.5.1) (2026-07-06)
+
+
+### Bug Fixes
+
+* **expo:** downgrade @babel/core to v7 for react-native-worklets compatibility ([bb5fb43](https://github.com/aimarchirico/template/commit/bb5fb430f9e045f4505983d017b481490a9f94d2))
+
 ## [1.5.0](https://github.com/aimarchirico/template/compare/template-app-v1.4.0...template-app-v1.5.0) (2026-07-06)
 
 
