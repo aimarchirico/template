@@ -61,6 +61,7 @@ jobs:
     needs: release-please
     if: contains(fromJSON(needs.release-please.outputs.paths_released), 'frontend')
     runs-on: ubuntu-latest
+    environment: android-production
     steps:
       - name: Check Out Repo
         uses: actions/checkout@v4
@@ -81,6 +82,10 @@ jobs:
           API_URL: ${{ vars.API_URL }}
           CF_ACCESS_CLIENT_ID: ${{ vars.CF_ACCESS_CLIENT_ID }}
           CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ vars.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
 
       - name: Copy APK
         run: cp ./frontend/apps/expo/android/app/build/outputs/apk/release/app-release.apk ${{ github.workspace }}/app-release.apk

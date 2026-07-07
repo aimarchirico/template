@@ -8,7 +8,7 @@
     "dev": "expo start --dev-client",
     "prebuild": "expo prebuild --platform android",
     "build:debug": "cd android && bash gradlew assembleDebug",
-    "build:release": "cd android && bash gradlew assembleRelease",
+    "build:release": "commons-expo-build-android",
     "export": "expo export --platform web",
     "cloudflare:fix": "commons-cloudflare-fix"
   },
@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@aimarchirico/commons-cloudflare": "^1.0.0",
-    "@aimarchirico/commons-expo": "^1.1.0",
+    "@aimarchirico/commons-expo": "^1.2.0",
     "@aimarchirico/commons-ts": "^1.1.0",
     "@babel/core": "^7.20.0",
     "@types/node": "^26.0.1",
