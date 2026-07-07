@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.6.0](https://github.com/aimarchirico/template/compare/template-app-v1.5.1...template-app-v1.6.0) (2026-07-07)
+
+
+### Features
+
+* **config:** add EAS project ID to app configuration ([0814a4b](https://github.com/aimarchirico/template/commit/0814a4b22abaf136566b64780d9d116e715f71a7))
+* **config:** add eas.json for Expo build configuration ([b7a3d3d](https://github.com/aimarchirico/template/commit/b7a3d3d1f2bcb1e5eaf2134509806f7e7c5ed3fa))
+* **frontend:** sign android release builds with a managed keystore ([f865db0](https://github.com/aimarchirico/template/commit/f865db07b697914988342239ef650643246c190c))
+* **frontend:** sign android release builds with a managed keystore ([9929a71](https://github.com/aimarchirico/template/commit/9929a71fcea32cc1da5f07e0c4e18f9417e7a3e0))
+
+
+### Bug Fixes
+
+* **config:** add missing comma in eas configuration ([e46b9f7](https://github.com/aimarchirico/template/commit/e46b9f74e972c9f9aaa54d6860002b9ff3bed097))
+* **deps:** update @aimarchirico/commons-expo to version 1.2.0 ([7aec892](https://github.com/aimarchirico/template/commit/7aec8929b6c269b4bb763ccde81cca9187dec07a))
+* **deps:** update @aimarchirico/commons-expo to version 1.2.0 ([840a86e](https://github.com/aimarchirico/template/commit/840a86e4fbbe3a1c83273db3c3473c3990e9ebad))
+
 ## [1.5.1](https://github.com/aimarchirico/template/compare/template-app-v1.5.0...template-app-v1.5.1) (2026-07-06)
 
 
