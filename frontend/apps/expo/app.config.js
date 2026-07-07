@@ -45,7 +45,7 @@ export default {
         origin: false,
       },
       eas: {
-        projectId: '1665a7a4-4be6-41ff-8bf2-6d13cba5baae'
+        projectId: '1665a7a4-4be6-41ff-8bf2-6d13cba5baae',
       },
       apiUrl: process.env.API_URL || '',
     },
