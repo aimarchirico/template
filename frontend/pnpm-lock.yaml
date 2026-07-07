@@ -76,8 +76,8 @@ importers:
         specifier: ^1.0.0
         version: 1.1.0
       '@aimarchirico/commons-expo':
-        specifier: ^1.1.0
-        version: 1.1.0(@typescript-eslint/parser@8.62.1(eslint@9.39.4(jiti@1.21.7))(typescript@6.0.3))(eslint@9.39.4(jiti@1.21.7))(expo@56.0.13)(jiti@1.21.7)(react@19.2.3)(typescript@6.0.3)
+        specifier: ^1.2.0
+        version: 1.2.0(@typescript-eslint/parser@8.62.1(eslint@9.39.4(jiti@1.21.7))(typescript@6.0.3))(eslint@9.39.4(jiti@1.21.7))(expo@56.0.13)(jiti@1.21.7)(react@19.2.3)(typescript@6.0.3)
       '@aimarchirico/commons-ts':
         specifier: ^1.1.0
         version: 1.1.0(@typescript-eslint/parser@8.62.1(eslint@9.39.4(jiti@1.21.7))(typescript@6.0.3))(eslint@9.39.4(jiti@1.21.7))(jiti@1.21.7)(typescript@6.0.3)
@@ -110,8 +110,8 @@ importers:
         version: 1.18.1
     devDependencies:
       '@aimarchirico/commons-expo':
-        specifier: ^1.1.0
-        version: 1.1.0(eslint@9.39.4(jiti@1.21.7))(expo@56.0.13)(jiti@1.21.7)(react@19.2.3)(typescript@6.0.3)
+        specifier: ^1.2.0
+        version: 1.2.0(eslint@9.39.4(jiti@1.21.7))(expo@56.0.13)(jiti@1.21.7)(react@19.2.3)(typescript@6.0.3)
       '@aimarchirico/commons-openapi':
         specifier: ^1.1.0
         version: 1.1.0(ajv@6.15.0)(mkdirp@1.0.4)
@@ -131,8 +131,9 @@ packages:
     resolution: {integrity: sha512-o2W6YyyrVaqCvwhjbsc80QmwnZw/HD9Biok/9K3z1i8PeFDRP4o2O1CG5fmuhe38T7XHiF46kHbpCiJJGSWMWQ==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-cloudflare/1.1.0/6fb78585959b247ac3a31aa0efab3fa499f15607}
     hasBin: true
 
-  '@aimarchirico/commons-expo@1.1.0':
-    resolution: {integrity: sha512-DbTpHvSDQXP3jDy+h9EGJi9Chx4RGw/xwz0cUX8ywx6hQF3THI58c8rU1nxWNo8TyTiRht/314uGpU0BCVArBA==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-expo/1.1.0/324741cea1ace1676dffd7c9086b98b55d3fe9eb}
+  '@aimarchirico/commons-expo@1.2.0':
+    resolution: {integrity: sha512-scTm9Zb0Ma2RXhNsfSmWnJyuPQk4fTpiFrKXjV1+oQYziXJRHbAKJADrxDlr/sDX7f3wkkJSV1lYIn5XMD9u3Q==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-expo/1.2.0/b94e18eb7c2e26111a602341857454e4eaf21bb3}
+    hasBin: true
     peerDependencies:
       eslint: ^9.39.2
       expo: '*'
@@ -145,6 +146,12 @@ packages:
 
   '@aimarchirico/commons-ts@1.1.0':
     resolution: {integrity: sha512-8iOLV4sf9vQb+NhH77qP0vO7cMVOUmRnrk4pxY9zmfINMiIqcZmMEDX9C5ccyWyt8ebqcBJdf1auT/fzJqtWdg==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-ts/1.1.0/d0e42f7e3f22a1cd845eccc202766c39f189abcc}
+    peerDependencies:
+      eslint: ^9.39.2
+      typescript: ^6.0.3
+
+  '@aimarchirico/commons-ts@1.1.1':
+    resolution: {integrity: sha512-RSTuzKpfXiTfQ02j6wThN5n7qOLr43QJfGCsHuCQetltsqsJf9kQGUB1Qy0Y6zCrrSc/0lFQxYmuOJpWYPgg1Q==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-ts/1.1.1/0b1054f4c67f837788af665283594ac0bd32688b}
     peerDependencies:
       eslint: ^9.39.2
       typescript: ^6.0.3
@@ -2412,8 +2419,8 @@ packages:
     peerDependencies:
       eslint: '>=6.0.0'
 
-  eslint-config-expo@56.0.4:
-    resolution: {integrity: sha512-1OD7rJMxCchKHxq+U+OQsAxVtzAxeUb9875g6+15KsSD9fqKTgq7DEEWYwunzU9r9E8kYJ+mh7+j86vF9m9NMw==}
+  eslint-config-expo@57.0.0:
+    resolution: {integrity: sha512-T7OTN9xrSZYjLw4qTkL1Mn2WfAUVmMGY38+OYAcraI1uiTFVH6jfkSkv84WLTqnneblLcb6AsMDV+SHcUj3hGw==}
     peerDependencies:
       eslint: '>=8.10'
 
@@ -3034,6 +3041,10 @@ packages:
 
   globals@16.5.0:
     resolution: {integrity: sha512-c/c15i26VrJ4IRt5Z89DnIzCGDn9EcebibhAOjw5ibqEHsE1wLUgkPn9RDmNcUKyU87GeaL633nyJ+pplFR2ZQ==}
+    engines: {node: '>=18'}
+
+  globals@17.7.0:
+    resolution: {integrity: sha512-Czmyns5dUsq4seFBR/Kdydhmo8y9kC79hiSkPn0YcGtNnYWnrgt0vjrSjx9tspoDGWm2CMarffRuLjM4xUz8xg==}
     engines: {node: '>=18'}
 
   globalthis@1.0.4:
@@ -5566,11 +5577,11 @@ snapshots:
       replace-in-file: 8.4.0
       shelljs: 0.10.0
 
-  '@aimarchirico/commons-expo@1.1.0(@typescript-eslint/parser@8.62.1(eslint@9.39.4(jiti@1.21.7))(typescript@6.0.3))(eslint@9.39.4(jiti@1.21.7))(expo@56.0.13)(jiti@1.21.7)(react@19.2.3)(typescript@6.0.3)':
+  '@aimarchirico/commons-expo@1.2.0(@typescript-eslint/parser@8.62.1(eslint@9.39.4(jiti@1.21.7))(typescript@6.0.3))(eslint@9.39.4(jiti@1.21.7))(expo@56.0.13)(jiti@1.21.7)(react@19.2.3)(typescript@6.0.3)':
     dependencies:
-      '@aimarchirico/commons-ts': 1.1.0(@typescript-eslint/parser@8.62.1(eslint@9.39.4(jiti@1.21.7))(typescript@6.0.3))(eslint@9.39.4(jiti@1.21.7))(jiti@1.21.7)(typescript@6.0.3)
+      '@aimarchirico/commons-ts': 1.1.1(@typescript-eslint/parser@8.62.1(eslint@9.39.4(jiti@1.21.7))(typescript@6.0.3))(eslint@9.39.4(jiti@1.21.7))(jiti@1.21.7)(typescript@6.0.3)
       eslint: 9.39.4(jiti@1.21.7)
-      eslint-config-expo: 56.0.4(eslint@9.39.4(jiti@1.21.7))(typescript@6.0.3)
+      eslint-config-expo: 57.0.0(eslint@9.39.4(jiti@1.21.7))(typescript@6.0.3)
       expo: 56.0.13(@babel/core@7.29.7)(@expo/dom-webview@56.0.6)(@expo/metro-runtime@56.0.16)(expo-router@56.2.12)(react-dom@19.2.3(react@19.2.3))(react-native-web@0.21.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-native-worklets@0.8.3(@babel/core@7.29.7)(@react-native/metro-config@0.86.0(@babel/core@7.29.7))(react-native@0.85.3(@babel/core@7.29.7)(@react-native/metro-config@0.86.0(@babel/core@7.29.7))(@types/react@19.2.17)(react@19.2.3))(react@19.2.3))(react-native@0.85.3(@babel/core@7.29.7)(@react-native/metro-config@0.86.0(@babel/core@7.29.7))(@types/react@19.2.17)(react@19.2.3))(react@19.2.3)(typescript@6.0.3)
       react: 19.2.3
       typescript: 6.0.3
@@ -5583,11 +5594,11 @@ snapshots:
       - jiti
       - supports-color
 
-  '@aimarchirico/commons-expo@1.1.0(eslint@9.39.4(jiti@1.21.7))(expo@56.0.13)(jiti@1.21.7)(react@19.2.3)(typescript@6.0.3)':
+  '@aimarchirico/commons-expo@1.2.0(eslint@9.39.4(jiti@1.21.7))(expo@56.0.13)(jiti@1.21.7)(react@19.2.3)(typescript@6.0.3)':
     dependencies:
-      '@aimarchirico/commons-ts': 1.1.0(eslint@9.39.4(jiti@1.21.7))(jiti@1.21.7)(typescript@6.0.3)
+      '@aimarchirico/commons-ts': 1.1.1(eslint@9.39.4(jiti@1.21.7))(jiti@1.21.7)(typescript@6.0.3)
       eslint: 9.39.4(jiti@1.21.7)
-      eslint-config-expo: 56.0.4(eslint@9.39.4(jiti@1.21.7))(typescript@6.0.3)
+      eslint-config-expo: 57.0.0(eslint@9.39.4(jiti@1.21.7))(typescript@6.0.3)
       expo: 56.0.13(@babel/core@8.0.1)(@expo/dom-webview@56.0.6)(@expo/metro-runtime@56.0.16)(expo-router@56.2.12)(react-dom@19.2.3(react@19.2.3))(react-native-web@0.21.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-native-worklets@0.8.3(@babel/core@8.0.1)(@react-native/metro-config@0.86.0(@babel/core@8.0.1))(react-native@0.85.3(@babel/core@8.0.1)(@react-native/metro-config@0.86.0(@babel/core@8.0.1))(@types/react@19.2.17)(react@19.2.3))(react@19.2.3))(react-native@0.85.3(@babel/core@8.0.1)(@react-native/metro-config@0.86.0(@babel/core@8.0.1))(@types/react@19.2.17)(react@19.2.3))(react@19.2.3)(typescript@6.0.3)
       react: 19.2.3
       typescript: 6.0.3
@@ -5639,6 +5650,38 @@ snapshots:
       eslint-plugin-check-file: 3.3.1(eslint@9.39.4(jiti@1.21.7))
       eslint-plugin-import: 2.32.0(eslint@9.39.4(jiti@1.21.7))
       globals: 16.5.0
+      gts: 7.0.0(jiti@1.21.7)(typescript@6.0.3)
+      typescript: 6.0.3
+    transitivePeerDependencies:
+      - '@types/eslint'
+      - '@typescript-eslint/parser'
+      - eslint-import-resolver-typescript
+      - eslint-import-resolver-webpack
+      - jiti
+      - supports-color
+
+  '@aimarchirico/commons-ts@1.1.1(@typescript-eslint/parser@8.62.1(eslint@9.39.4(jiti@1.21.7))(typescript@6.0.3))(eslint@9.39.4(jiti@1.21.7))(jiti@1.21.7)(typescript@6.0.3)':
+    dependencies:
+      eslint: 9.39.4(jiti@1.21.7)
+      eslint-plugin-check-file: 3.3.1(eslint@9.39.4(jiti@1.21.7))
+      eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.62.1(eslint@9.39.4(jiti@1.21.7))(typescript@6.0.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.4(jiti@1.21.7))
+      globals: 17.7.0
+      gts: 7.0.0(jiti@1.21.7)(typescript@6.0.3)
+      typescript: 6.0.3
+    transitivePeerDependencies:
+      - '@types/eslint'
+      - '@typescript-eslint/parser'
+      - eslint-import-resolver-typescript
+      - eslint-import-resolver-webpack
+      - jiti
+      - supports-color
+
+  '@aimarchirico/commons-ts@1.1.1(eslint@9.39.4(jiti@1.21.7))(jiti@1.21.7)(typescript@6.0.3)':
+    dependencies:
+      eslint: 9.39.4(jiti@1.21.7)
+      eslint-plugin-check-file: 3.3.1(eslint@9.39.4(jiti@1.21.7))
+      eslint-plugin-import: 2.32.0(eslint@9.39.4(jiti@1.21.7))
+      globals: 17.7.0
       gts: 7.0.0(jiti@1.21.7)(typescript@6.0.3)
       typescript: 6.0.3
     transitivePeerDependencies:
@@ -9168,7 +9211,7 @@ snapshots:
       eslint: 9.39.4(jiti@1.21.7)
       semver: 7.8.5
 
-  eslint-config-expo@56.0.4(eslint@9.39.4(jiti@1.21.7))(typescript@6.0.3):
+  eslint-config-expo@57.0.0(eslint@9.39.4(jiti@1.21.7))(typescript@6.0.3):
     dependencies:
       '@typescript-eslint/eslint-plugin': 8.62.1(@typescript-eslint/parser@8.62.1(eslint@9.39.4(jiti@1.21.7))(typescript@6.0.3))(eslint@9.39.4(jiti@1.21.7))(typescript@6.0.3)
       '@typescript-eslint/parser': 8.62.1(eslint@9.39.4(jiti@1.21.7))(typescript@6.0.3)
@@ -10168,6 +10211,8 @@ snapshots:
   globals@15.15.0: {}
 
   globals@16.5.0: {}
+
+  globals@17.7.0: {}
 
   globalthis@1.0.4:
     dependencies:
