@@ -4,8 +4,6 @@ plugins {
   alias(libs.plugins.commons.architecture)
 }
 
-group = "no.chirico.template"
-
 version = "0.0.1-SNAPSHOT"
 
 dependencies {
