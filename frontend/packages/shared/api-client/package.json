@@ -11,7 +11,7 @@
     "fix": "eslint --fix"
   },
   "devDependencies": {
-    "@aimarchirico/commons-expo": "^1.1.0",
+    "@aimarchirico/commons-expo": "^1.2.0",
     "@aimarchirico/commons-openapi": "^1.1.0",
     "@aimarchirico/commons-ts": "^1.1.0",
     "eslint": "^9.39.2"
