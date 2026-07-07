@@ -7,7 +7,7 @@ export default {
   expo: {
     name: IS_DEV ? `${NAME} (Dev)` : NAME,
     slug: LOWER_CASE,
-    version: '1.5.1', // x-release-please-version
+    version: '1.6.0', // x-release-please-version
     orientation: 'portrait',
     icon: './src/assets/icons/icon.png',
     scheme: LOWER_CASE,
