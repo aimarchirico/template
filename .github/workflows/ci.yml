@@ -50,7 +50,6 @@ jobs:
     needs: changes
     if: needs.changes.outputs.backend == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: aimarchirico/commons/.github/actions/java-ci@main
@@ -67,7 +66,6 @@ jobs:
     needs: changes
     if: needs.changes.outputs.frontend == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: aimarchirico/commons/.github/actions/node-ci@main
@@ -88,7 +86,6 @@ jobs:
     needs: changes
     if: needs.changes.outputs.docs == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: aimarchirico/commons/.github/actions/node-ci@main
@@ -105,7 +102,6 @@ jobs:
     name: Commit Check
     if: github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
-    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
