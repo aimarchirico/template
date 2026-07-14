@@ -4,6 +4,10 @@ on:
   pull_request:
     branches: [main, dev]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
   pull-requests: read
@@ -45,12 +49,15 @@ jobs:
     name: Backend CI
     needs: changes
     if: needs.changes.outputs.backend == 'true'
-    uses: aimarchirico/commons/.github/workflows/java-ci.yml@main
-    with:
-      command: backend:check
-    secrets:
-      TASK_ENV: |
-        GH_PACKAGES_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aimarchirico/commons/.github/actions/java-ci@main
+        with:
+          command: backend:check
+          TASK_ENV: |
+            GH_PACKAGES_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
 
   # ==========================================
   # FRONTEND CI JOB
@@ -59,16 +66,19 @@ jobs:
     name: Frontend CI
     needs: changes
     if: needs.changes.outputs.frontend == 'true'
-    uses: aimarchirico/commons/.github/workflows/node-ci.yml@main
-    with:
-      command: frontend:check
-      node_cache_path: ./frontend/pnpm-lock.yaml
-    secrets:
-      TASK_ENV: |
-        NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
-        API_URL=${{ vars.API_URL }}
-        CF_ACCESS_CLIENT_ID=${{ vars.CF_ACCESS_CLIENT_ID }}
-        CF_ACCESS_CLIENT_SECRET=${{ secrets.CF_ACCESS_CLIENT_SECRET }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aimarchirico/commons/.github/actions/node-ci@main
+        with:
+          command: frontend:check
+          node_cache_path: ./frontend/pnpm-lock.yaml
+          TASK_ENV: |
+            NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
+            API_URL=${{ vars.API_URL }}
+            CF_ACCESS_CLIENT_ID=${{ vars.CF_ACCESS_CLIENT_ID }}
+            CF_ACCESS_CLIENT_SECRET=${{ secrets.CF_ACCESS_CLIENT_SECRET }}
 
   # ==========================================
   # DOCUMENTATION CI JOB
@@ -77,13 +87,16 @@ jobs:
     name: Docs Check
     needs: changes
     if: needs.changes.outputs.docs == 'true'
-    uses: aimarchirico/commons/.github/workflows/node-ci.yml@main
-    with:
-      command: docs:check
-      node_cache_path: tools/pnpm-lock.yaml
-    secrets:
-      TASK_ENV: |
-        NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aimarchirico/commons/.github/actions/node-ci@main
+        with:
+          command: docs:check
+          node_cache_path: tools/pnpm-lock.yaml
+          TASK_ENV: |
+            NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
 
   # ==========================================
   # COMMIT CI JOB
@@ -91,12 +104,17 @@ jobs:
   commitlint:
     name: Commit Check
     if: github.actor != 'dependabot[bot]'
-    uses: aimarchirico/commons/.github/workflows/node-ci.yml@main
-    with:
-      command: commit:check
-      node_cache_path: tools/pnpm-lock.yaml
-    secrets:
-      TASK_ENV: |
-        NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
-        FROM_SHA=${{ github.event.pull_request.base.sha }}
-        TO_SHA=${{ github.event.pull_request.head.sha }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: aimarchirico/commons/.github/actions/node-ci@main
+        with:
+          command: commit:check
+          node_cache_path: tools/pnpm-lock.yaml
+          TASK_ENV: |
+            NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
+            FROM_SHA=${{ github.event.pull_request.base.sha }}
+            TO_SHA=${{ github.event.pull_request.head.sha }}

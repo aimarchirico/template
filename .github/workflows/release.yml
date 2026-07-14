@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 permissions:
   contents: write
   pull-requests: write
@@ -38,13 +42,16 @@ jobs:
     name: API Release
     needs: release-please
     if: contains(fromJSON(needs.release-please.outputs.paths_released), 'backend')
-    uses: aimarchirico/commons/.github/workflows/docker-release.yml@main
-    with:
-      image: ghcr.io/${{ github.repository }}-api
-      context: ./backend
-      version: ${{ needs.release-please.outputs.backend--version }}
-    secrets:
-      GH_PACKAGES_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aimarchirico/commons/.github/actions/docker-release@main
+        with:
+          image: ghcr.io/${{ github.repository }}-api
+          context: ./backend
+          version: ${{ needs.release-please.outputs.backend--version }}
+          GH_PACKAGES_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
 
   # ==========================================
   # ANDROID APK
@@ -53,20 +60,25 @@ jobs:
     name: Android Release
     needs: release-please
     if: contains(fromJSON(needs.release-please.outputs.paths_released), 'frontend')
-    uses: aimarchirico/commons/.github/workflows/android-release.yml@main
-    with:
-      version: ${{ needs.release-please.outputs.frontend--version }}
-      upload_url: ${{ needs.release-please.outputs.frontend--upload_url }}
-      android_key_alias: ${{ vars.ANDROID_KEY_ALIAS }}
-    secrets:
-      BUILD_ENV: |
-        NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
-        API_URL=${{ vars.API_URL }}
-        CF_ACCESS_CLIENT_ID=${{ vars.CF_ACCESS_CLIENT_ID }}
-        CF_ACCESS_CLIENT_SECRET=${{ secrets.CF_ACCESS_CLIENT_SECRET }}
-      ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
-      ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-      ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+    environment: android-production
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aimarchirico/commons/.github/actions/android-release@main
+        with:
+          version: ${{ needs.release-please.outputs.frontend--version }}
+          upload_url: ${{ needs.release-please.outputs.frontend--upload_url }}
+          android_key_alias: ${{ vars.ANDROID_KEY_ALIAS }}
+          BUILD_ENV: |
+            NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
+            API_URL=${{ vars.API_URL }}
+            CF_ACCESS_CLIENT_ID=${{ vars.CF_ACCESS_CLIENT_ID }}
+            CF_ACCESS_CLIENT_SECRET=${{ secrets.CF_ACCESS_CLIENT_SECRET }}
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # ==========================================
   # TRIGGER API DEPLOYMENT
@@ -74,13 +86,17 @@ jobs:
   deploy-api:
     name: Deploy API
     needs: api-release
-    uses: aimarchirico/commons/.github/workflows/vps-deploy.yml@main
-    with:
-      api_url: ${{ vars.API_URL }}
-      vps_host: ${{ vars.VPS_HOST }}
-      vps_user: ${{ vars.VPS_USER }}
-    secrets:
-      VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+    environment: api-production
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aimarchirico/commons/.github/actions/vps-deploy@main
+        with:
+          api_url: ${{ vars.API_URL }}
+          vps_host: ${{ vars.VPS_HOST }}
+          vps_user: ${{ vars.VPS_USER }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
 
   # ==========================================
   # TRIGGER WEB DEPLOYMENT
@@ -89,14 +105,18 @@ jobs:
     name: Deploy Web
     needs: release-please
     if: contains(fromJSON(needs.release-please.outputs.paths_released), 'frontend')
-    uses: aimarchirico/commons/.github/workflows/cloudflare-deploy.yml@main
-    with:
-      app_url: ${{ vars.APP_URL }}
-      cloudflare_account_id: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
-    secrets:
-      BUILD_ENV: |
-        NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
-        API_URL=${{ vars.API_URL }}
-        CF_ACCESS_CLIENT_ID=${{ vars.CF_ACCESS_CLIENT_ID }}
-        CF_ACCESS_CLIENT_SECRET=${{ secrets.CF_ACCESS_CLIENT_SECRET }}
-      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    environment: web-production
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aimarchirico/commons/.github/actions/cloudflare-deploy@main
+        with:
+          app_url: ${{ vars.APP_URL }}
+          cloudflare_account_id: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          BUILD_ENV: |
+            NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
+            API_URL=${{ vars.API_URL }}
+            CF_ACCESS_CLIENT_ID=${{ vars.CF_ACCESS_CLIENT_ID }}
+            CF_ACCESS_CLIENT_SECRET=${{ secrets.CF_ACCESS_CLIENT_SECRET }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
