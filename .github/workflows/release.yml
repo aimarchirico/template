@@ -50,6 +50,7 @@ jobs:
           image: ghcr.io/${{ github.repository }}-api
           context: ./backend
           version: ${{ needs.release-please.outputs.backend--version }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           gh_packages_token: ${{ secrets.GH_PACKAGES_TOKEN }}
 
   # ==========================================
