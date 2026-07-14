@@ -55,7 +55,7 @@ jobs:
       - uses: aimarchirico/commons/.github/actions/java-ci@main
         with:
           command: backend:check
-          TASK_ENV: |
+          task_env: |
             GH_PACKAGES_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
 
   # ==========================================
@@ -72,7 +72,7 @@ jobs:
         with:
           command: frontend:check
           node_cache_path: ./frontend/pnpm-lock.yaml
-          TASK_ENV: |
+          task_env: |
             NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
             API_URL=${{ vars.API_URL }}
             CF_ACCESS_CLIENT_ID=${{ vars.CF_ACCESS_CLIENT_ID }}
@@ -92,7 +92,7 @@ jobs:
         with:
           command: docs:check
           node_cache_path: tools/pnpm-lock.yaml
-          TASK_ENV: |
+          task_env: |
             NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
 
   # ==========================================
@@ -110,7 +110,7 @@ jobs:
         with:
           command: commit:check
           node_cache_path: tools/pnpm-lock.yaml
-          TASK_ENV: |
+          task_env: |
             NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
             FROM_SHA=${{ github.event.pull_request.base.sha }}
             TO_SHA=${{ github.event.pull_request.head.sha }}

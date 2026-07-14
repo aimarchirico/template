@@ -50,7 +50,7 @@ jobs:
           image: ghcr.io/${{ github.repository }}-api
           context: ./backend
           version: ${{ needs.release-please.outputs.backend--version }}
-          GH_PACKAGES_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+          gh_packages_token: ${{ secrets.GH_PACKAGES_TOKEN }}
 
   # ==========================================
   # ANDROID APK
@@ -68,16 +68,16 @@ jobs:
           version: ${{ needs.release-please.outputs.frontend--version }}
           upload_url: ${{ needs.release-please.outputs.frontend--upload_url }}
           android_key_alias: ${{ vars.ANDROID_KEY_ALIAS }}
-          BUILD_ENV: |
+          android_keystore_base64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          android_keystore_password: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          android_key_password: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+          build_env: |
             NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
             API_URL=${{ vars.API_URL }}
             CF_ACCESS_CLIENT_ID=${{ vars.CF_ACCESS_CLIENT_ID }}
             CF_ACCESS_CLIENT_SECRET=${{ secrets.CF_ACCESS_CLIENT_SECRET }}
-          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
-          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   # ==========================================
   # TRIGGER API DEPLOYMENT
   # ==========================================
@@ -93,7 +93,7 @@ jobs:
           api_url: ${{ vars.API_URL }}
           vps_host: ${{ vars.VPS_HOST }}
           vps_user: ${{ vars.VPS_USER }}
-          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          vps_ssh_key: ${{ secrets.VPS_SSH_KEY }}
 
   # ==========================================
   # TRIGGER WEB DEPLOYMENT
@@ -110,9 +110,10 @@ jobs:
         with:
           app_url: ${{ vars.APP_URL }}
           cloudflare_account_id: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
-          BUILD_ENV: |
+          cloudflare_api_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+          build_env: |
             NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
             API_URL=${{ vars.API_URL }}
             CF_ACCESS_CLIENT_ID=${{ vars.CF_ACCESS_CLIENT_ID }}
             CF_ACCESS_CLIENT_SECRET=${{ secrets.CF_ACCESS_CLIENT_SECRET }}
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
