@@ -52,7 +52,7 @@ jobs:
           version: ${{ needs.release-please.outputs.backend--version }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           build_secrets: |
-            maven_auth_token=${{ secrets.GH_PACKAGES_TOKEN }}
+            maven_password=${{ secrets.GH_PACKAGES_TOKEN }}
 
   # ==========================================
   # ANDROID APK

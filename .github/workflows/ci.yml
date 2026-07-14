@@ -56,7 +56,8 @@ jobs:
         with:
           command: backend:check
           task_env: |
-            GH_PACKAGES_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
+            MAVEN_USERNAME=${{ github.actor }}
+            MAVEN_PASSWORD=${{ secrets.GH_PACKAGES_TOKEN }}
 
   # ==========================================
   # FRONTEND CI JOB

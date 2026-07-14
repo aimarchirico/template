@@ -6,9 +6,9 @@ WORKDIR /app
 COPY . .
 RUN chmod +x ./gradlew
 ARG GITHUB_ACTOR
-RUN --mount=type=secret,id=maven_auth_token \
-    GITHUB_ACTOR="$GITHUB_ACTOR" \
-    GH_PACKAGES_TOKEN="$(cat /run/secrets/maven_auth_token)" \
+RUN --mount=type=secret,id=maven_password \
+    MAVEN_USERNAME="$GITHUB_ACTOR" \
+    MAVEN_PASSWORD="$(cat /run/secrets/maven_password)" \
     ./gradlew bootJar --no-daemon
 
 # Runtime stage
