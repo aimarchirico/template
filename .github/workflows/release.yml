@@ -51,7 +51,8 @@ jobs:
           context: ./backend
           version: ${{ needs.release-please.outputs.backend--version }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          gh_packages_token: ${{ secrets.GH_PACKAGES_TOKEN }}
+          build_secrets: |
+            gh_packages_token=${{ secrets.GH_PACKAGES_TOKEN }}
 
   # ==========================================
   # ANDROID APK
