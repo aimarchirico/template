@@ -43,7 +43,8 @@ jobs:
       image: ghcr.io/${{ github.repository }}-api
       context: ./backend
       version: ${{ needs.release-please.outputs.backend--version }}
-    secrets: inherit
+    secrets:
+      GH_PACKAGES_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
 
   # ==========================================
   # ANDROID APK
@@ -56,12 +57,15 @@ jobs:
     with:
       version: ${{ needs.release-please.outputs.frontend--version }}
       upload_url: ${{ needs.release-please.outputs.frontend--upload_url }}
-      build_env: |
+    secrets:
+      BUILD_ENV: |
         NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
         API_URL=${{ vars.API_URL }}
         CF_ACCESS_CLIENT_ID=${{ vars.CF_ACCESS_CLIENT_ID }}
         CF_ACCESS_CLIENT_SECRET=${{ secrets.CF_ACCESS_CLIENT_SECRET }}
-    secrets: inherit
+      ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+      ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+      ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
 
   # ==========================================
   # TRIGGER API DEPLOYMENT
@@ -70,7 +74,8 @@ jobs:
     name: Deploy API
     needs: api-release
     uses: aimarchirico/commons/.github/workflows/vps-deploy.yml@main
-    secrets: inherit
+    secrets:
+      VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
 
   # ==========================================
   # TRIGGER WEB DEPLOYMENT
@@ -80,10 +85,10 @@ jobs:
     needs: release-please
     if: contains(fromJSON(needs.release-please.outputs.paths_released), 'frontend')
     uses: aimarchirico/commons/.github/workflows/cloudflare-deploy.yml@main
-    with:
-      build_env: |
+    secrets:
+      BUILD_ENV: |
         NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
         API_URL=${{ vars.API_URL }}
         CF_ACCESS_CLIENT_ID=${{ vars.CF_ACCESS_CLIENT_ID }}
         CF_ACCESS_CLIENT_SECRET=${{ secrets.CF_ACCESS_CLIENT_SECRET }}
-    secrets: inherit
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

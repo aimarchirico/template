@@ -10,4 +10,3 @@ permissions:
 jobs:
   cascade:
     uses: aimarchirico/commons/.github/workflows/close-issues.yml@main
-    secrets: inherit
