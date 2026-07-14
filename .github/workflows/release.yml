@@ -57,6 +57,7 @@ jobs:
     with:
       version: ${{ needs.release-please.outputs.frontend--version }}
       upload_url: ${{ needs.release-please.outputs.frontend--upload_url }}
+      android_key_alias: ${{ vars.ANDROID_KEY_ALIAS }}
     secrets:
       BUILD_ENV: |
         NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
@@ -74,6 +75,10 @@ jobs:
     name: Deploy API
     needs: api-release
     uses: aimarchirico/commons/.github/workflows/vps-deploy.yml@main
+    with:
+      api_url: ${{ vars.API_URL }}
+      vps_host: ${{ vars.VPS_HOST }}
+      vps_user: ${{ vars.VPS_USER }}
     secrets:
       VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
 
@@ -85,6 +90,9 @@ jobs:
     needs: release-please
     if: contains(fromJSON(needs.release-please.outputs.paths_released), 'frontend')
     uses: aimarchirico/commons/.github/workflows/cloudflare-deploy.yml@main
+    with:
+      app_url: ${{ vars.APP_URL }}
+      cloudflare_account_id: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
     secrets:
       BUILD_ENV: |
         NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
