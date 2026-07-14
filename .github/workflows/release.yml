@@ -72,7 +72,6 @@ jobs:
           android_keystore_password: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           android_key_password: ${{ secrets.ANDROID_KEY_PASSWORD }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-
           build_env: |
             NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
             API_URL=${{ vars.API_URL }}
@@ -111,7 +110,6 @@ jobs:
           app_url: ${{ vars.APP_URL }}
           cloudflare_account_id: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
           cloudflare_api_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-
           build_env: |
             NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
             API_URL=${{ vars.API_URL }}
