@@ -39,8 +39,8 @@ jobs:
   # ==========================================
   # API IMAGE
   # ==========================================
-  api-release:
-    name: API Release
+  release-api:
+    name: Release API
     needs: release-please
     if: contains(fromJSON(needs.release-please.outputs.paths_released), 'backend')
     runs-on: ubuntu-latest
@@ -59,7 +59,7 @@ jobs:
   # ANDROID APK
   # ==========================================
   android-release:
-    name: Android Release
+    name: Release Android
     needs: release-please
     if: contains(fromJSON(needs.release-please.outputs.paths_released), 'frontend')
     environment:
@@ -91,7 +91,7 @@ jobs:
   # ==========================================
   deploy-api:
     name: Deploy API
-    needs: api-release
+    needs: release-api
     environment:
       name: api-production
       url: ${{ vars.API_URL }}
