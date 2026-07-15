@@ -26,6 +26,7 @@ jobs:
       backend--version: ${{ steps.release.outputs.backend--version }}
       frontend--version: ${{ steps.release.outputs.frontend--version }}
       frontend--upload_url: ${{ steps.release.outputs.frontend--upload_url }}
+      frontend--html_url: ${{ steps.release.outputs.frontend--html_url }}
     steps:
       - name: Run Release Please
         id: release
@@ -61,20 +62,24 @@ jobs:
     name: Android Release
     needs: release-please
     if: contains(fromJSON(needs.release-please.outputs.paths_released), 'frontend')
-    environment: android-production
+    environment:
+      name: android-production
+      url: ${{ needs.release-please.outputs.frontend--html_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: aimarchirico/commons/.github/actions/android-release@main
         with:
-          upload_url: ${{ needs.release-please.outputs.frontend--upload_url }}
+          command: frontend:build:android
+          node_cache_path: frontend/pnpm-lock.yaml
+          output_directory: frontend/apps/expo
           version: ${{ needs.release-please.outputs.frontend--version }}
+          upload_url: ${{ needs.release-please.outputs.frontend--upload_url }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           android_key_alias: ${{ vars.ANDROID_KEY_ALIAS }}
           android_key_password: ${{ secrets.ANDROID_KEY_PASSWORD }}
           android_keystore_base64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
           android_keystore_password: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          working_directory: frontend
           build_env: |
             NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
             API_URL=${{ vars.API_URL }}
@@ -86,7 +91,9 @@ jobs:
   deploy-api:
     name: Deploy API
     needs: api-release
-    environment: api-production
+    environment:
+      name: api-production
+      url: ${{ vars.API_URL }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -103,16 +110,19 @@ jobs:
     name: Deploy Web
     needs: release-please
     if: contains(fromJSON(needs.release-please.outputs.paths_released), 'frontend')
-    environment: web-production
+    environment:
+      name: web-production
+      url: ${{ vars.APP_URL }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: aimarchirico/commons/.github/actions/cloudflare-deploy@main
         with:
+          command: frontend:build:web
+          node_cache_path: frontend/pnpm-lock.yaml
+          output_directory: frontend/apps/expo/dist
           cloudflare_account_id: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
           cloudflare_api_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          working_directory: frontend
-          output_directory: frontend/apps/web/dist
           build_env: |
             NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
             API_URL=${{ vars.API_URL }}
