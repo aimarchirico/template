@@ -91,7 +91,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: aimarchirico/commons/.github/actions/vps-deploy@main
         with:
-          api_url: ${{ vars.API_URL }}
           vps_host: ${{ vars.VPS_HOST }}
           vps_user: ${{ vars.VPS_USER }}
           vps_ssh_key: ${{ secrets.VPS_SSH_KEY }}
