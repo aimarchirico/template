@@ -2,9 +2,9 @@
 description: Create a standardized pull request
 metadata:
     github-path: skills/pr
-    github-ref: refs/tags/commons-docs-v0.1.1
+    github-ref: refs/tags/commons-docs-v1.3.1
     github-repo: https://github.com/aimarchirico/commons
-    github-tree-sha: cf3b98d3521d191916c8924cd62389c1e21c93f6
+    github-tree-sha: 5455372b696be6704a81c82f0e09d9193d4667ba
 name: pr
 ---
 ## When to Use
@@ -13,20 +13,31 @@ Use when the user asks to create a pull request.
 
 ## Execution Steps
 
-1. Preflight: Verify that `CONTRIBUTING.md` exists in the repository root and `.github/PULL_REQUEST_TEMPLATE.md` exists. If any are missing, run `npx @aimarchirico/commons-docs` to materialize the documentation.
-2. Verify GitHub CLI (`gh`) authentication (`gh auth status`). If not logged in, provide instructions for `gh auth login` and exit.
+1. Preflight: Verify that `CONTRIBUTING.md` exists in the repository root and
+   `.github/PULL_REQUEST_TEMPLATE.md` exists. If any are missing, run
+   `npx @aimarchirico/commons-docs` to materialize the documentation.
+2. Verify GitHub CLI (`gh`) authentication (`gh auth status`). If not logged in,
+   provide instructions for `gh auth login` and exit.
 3. Analyze the current branch and recent commits:
 
-   - **Branch Naming**: Extract the type and issue ID from the branch name according to `CONTRIBUTING.md#branching`.
-   - **PR Title**: Format the PR title according to `CONTRIBUTING.md#pull-requests`.
+   - **Branch Naming**: Extract the type and issue ID from the branch name
+     according to `CONTRIBUTING.md#branching`.
+   - **PR Title**: Format the PR title according to
+     `CONTRIBUTING.md#pull-requests`.
    - **PR Commits**: Summarize recent commits on the branch using `git log`.
-4. Request related issue IDs if they were not successfully extracted in the previous step.
-5. Draft the PR description by populating `.github/PULL_REQUEST_TEMPLATE.md` using the gathered context.
+
+4. Request related issue IDs if they were not successfully extracted in the
+   previous step.
+5. Draft the PR description by populating `.github/PULL_REQUEST_TEMPLATE.md`
+   using the gathered context.
 6. Verify remote state:
 
-   - Check if the local branch is pushed to remote. If not, execute `git push -u origin <branch-name>` to set upstream.
+   - Check if the local branch is pushed to remote. If not, execute
+     `git push -u origin <branch-name>` to set upstream.
+
 7. Present the proposed PR Title and Body, and wait for explicit user approval.
-8. Execute `gh pr create --title "<title>" --body "<body>"` (supporting `--draft` to create a draft PR).
+8. Execute `gh pr create --title "<title>" --body "<body>"` (supporting
+   `--draft` to create a draft PR).
 
 ## Supported Flags
 
