@@ -6,9 +6,9 @@
     "axios": "^1.18.1"
   },
   "scripts": {
-    "api": "commons-openapi",
     "check": "eslint",
-    "fix": "eslint --fix"
+    "fix": "eslint --fix",
+    "api": "commons-openapi"
   },
   "devDependencies": {
     "@aimarchirico/commons-expo": "^1.2.0",
