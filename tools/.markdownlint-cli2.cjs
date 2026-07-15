@@ -9,8 +9,6 @@ module.exports = {
     '../**/build/**',
     '../**/target/**',
     '../**/CHANGELOG.md',
-    '../**/src/generated/**',
-    '../**/docs/API.md',
     '../**/SKILL.md',
     '../**/PULL_REQUEST_TEMPLATE.md',
   ],
