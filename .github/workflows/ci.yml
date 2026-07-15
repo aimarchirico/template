@@ -4,6 +4,10 @@ on:
   pull_request:
     branches: [main, dev]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
   pull-requests: read
@@ -42,46 +46,38 @@ jobs:
   # BACKEND CI JOB
   # ==========================================
   backend-ci:
-    name: Backend CI
+    name: Backend Check
     needs: changes
     if: needs.changes.outputs.backend == 'true'
     runs-on: ubuntu-latest
     steps:
-      - name: Check Out Repo
-        uses: actions/checkout@v4
-
-      - name: Set Up Java
-        uses: aimarchirico/commons/.github/actions/setup-java@main
-
-      - name: Run Check
-        run: task backend:check
-        env:
-          GH_PACKAGES_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+      - uses: actions/checkout@v4
+      - uses: aimarchirico/commons/.github/actions/java-task@main
+        with:
+          command: backend:check
+          task_env: |
+            MAVEN_USERNAME=${{ github.actor }}
+            MAVEN_PASSWORD=${{ secrets.GH_PACKAGES_TOKEN }}
 
   # ==========================================
   # FRONTEND CI JOB
   # ==========================================
   frontend-ci:
-    name: Frontend CI
+    name: Frontend Check
     needs: changes
     if: needs.changes.outputs.frontend == 'true'
     runs-on: ubuntu-latest
     steps:
-      - name: Check Out Repo
-        uses: actions/checkout@v4
-
-      - name: Set Up Node
-        uses: aimarchirico/commons/.github/actions/setup-node@main
+      - uses: actions/checkout@v4
+      - uses: aimarchirico/commons/.github/actions/node-task@main
         with:
-          cache-dependency-path: ./frontend/pnpm-lock.yaml
-
-      - name: Run Check
-        run: task frontend:check
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
-          API_URL: ${{ vars.API_URL }}
-          CF_ACCESS_CLIENT_ID: ${{ vars.CF_ACCESS_CLIENT_ID }}
-          CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
+          command: frontend:check
+          node_cache_path: frontend/pnpm-lock.yaml
+          task_env: |
+            NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
+            API_URL=${{ vars.API_URL }}
+            CF_ACCESS_CLIENT_ID=${{ vars.CF_ACCESS_CLIENT_ID }}
+            CF_ACCESS_CLIENT_SECRET=${{ secrets.CF_ACCESS_CLIENT_SECRET }}
 
   # ==========================================
   # DOCUMENTATION CI JOB
@@ -92,19 +88,13 @@ jobs:
     if: needs.changes.outputs.docs == 'true'
     runs-on: ubuntu-latest
     steps:
-      - name: Check Out Repo
-        uses: actions/checkout@v4
-
-      - name: Set Up Node
-        uses: aimarchirico/commons/.github/actions/setup-node@main
+      - uses: actions/checkout@v4
+      - uses: aimarchirico/commons/.github/actions/node-task@main
         with:
-          cache-dependency-path: tools/pnpm-lock.yaml
-
-      - name: Run Check
-        run: task docs:check
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
-
+          command: docs:check
+          node_cache_path: tools/pnpm-lock.yaml
+          task_env: |
+            NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
 
   # ==========================================
   # COMMIT CI JOB
@@ -114,19 +104,14 @@ jobs:
     if: github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
-      - name: Check Out Repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Set Up Node
-        uses: aimarchirico/commons/.github/actions/setup-node@main
+      - uses: aimarchirico/commons/.github/actions/node-task@main
         with:
-          cache-dependency-path: tools/pnpm-lock.yaml
-
-      - name: Run Check  
-        run: task commit:check
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
-          FROM_SHA: ${{ github.event.pull_request.base.sha }}
-          TO_SHA: ${{ github.event.pull_request.head.sha }}
+          command: commit:check
+          node_cache_path: tools/pnpm-lock.yaml
+          task_env: |
+            NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
+            FROM_SHA=${{ github.event.pull_request.base.sha }}
+            TO_SHA=${{ github.event.pull_request.head.sha }}

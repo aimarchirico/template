@@ -6,8 +6,8 @@ pluginManagement {
         maven {
             url = uri("https://maven.pkg.github.com/aimarchirico/commons")
             credentials {
-                username = System.getenv("GITHUB_ACTOR") ?: providers.gradleProperty("gpr.user").orNull
-                password = System.getenv("GH_PACKAGES_TOKEN") ?: providers.gradleProperty("gpr.key").orNull
+                username = System.getenv("MAVEN_USERNAME") ?: providers.gradleProperty("gpr.user").orNull
+                password = System.getenv("MAVEN_PASSWORD") ?: providers.gradleProperty("gpr.key").orNull
             }
         }
     }
@@ -21,8 +21,8 @@ dependencyResolutionManagement {
         maven {
             url = uri("https://maven.pkg.github.com/aimarchirico/commons")
             credentials {
-                username = System.getenv("GITHUB_ACTOR") ?: providers.gradleProperty("gpr.user").orNull
-                password = System.getenv("GH_PACKAGES_TOKEN") ?: providers.gradleProperty("gpr.key").orNull
+                username = System.getenv("MAVEN_USERNAME") ?: providers.gradleProperty("gpr.user").orNull
+                password = System.getenv("MAVEN_PASSWORD") ?: providers.gradleProperty("gpr.key").orNull
             }
         }
     }

@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 permissions:
   contents: write
   pull-requests: write
@@ -22,6 +26,7 @@ jobs:
       backend--version: ${{ steps.release.outputs.backend--version }}
       frontend--version: ${{ steps.release.outputs.frontend--version }}
       frontend--upload_url: ${{ steps.release.outputs.frontend--upload_url }}
+      frontend--html_url: ${{ steps.release.outputs.frontend--html_url }}
     steps:
       - name: Run Release Please
         id: release
@@ -40,18 +45,15 @@ jobs:
     if: contains(fromJSON(needs.release-please.outputs.paths_released), 'backend')
     runs-on: ubuntu-latest
     steps:
-      - name: Check Out Repo
-        uses: actions/checkout@v4
-
-      - name: Build and Push API Image
-        uses: aimarchirico/commons/.github/actions/docker-release@main
+      - uses: actions/checkout@v4
+      - uses: aimarchirico/commons/.github/actions/docker-release@main
         with:
           image: ghcr.io/${{ github.repository }}-api
-          context: ./backend
+          context: backend
           version: ${{ needs.release-please.outputs.backend--version }}
-          github-actor: ${{ github.actor }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          gh-packages-token: ${{ secrets.GH_PACKAGES_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          build_secrets: |
+            maven_password=${{ secrets.GH_PACKAGES_TOKEN }}
 
   # ==========================================
   # ANDROID APK
@@ -60,65 +62,70 @@ jobs:
     name: Android Release
     needs: release-please
     if: contains(fromJSON(needs.release-please.outputs.paths_released), 'frontend')
+    environment:
+      name: android-production
+      url: ${{ needs.release-please.outputs.frontend--html_url }}
     runs-on: ubuntu-latest
-    environment: android-production
     steps:
-      - name: Check Out Repo
-        uses: actions/checkout@v4
-
-      - name: Set Up Node
-        uses: aimarchirico/commons/.github/actions/setup-node@main
+      - uses: actions/checkout@v4
+      - uses: aimarchirico/commons/.github/actions/android-release@main
         with:
-          cache-dependency-path: ./frontend/pnpm-lock.yaml
-
-      - name: Set Up Android
-        uses: aimarchirico/commons/.github/actions/setup-android@main
-
-      - name: Run CI Build for Android
-        run: task build:android
-        working-directory: ./frontend
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
-          API_URL: ${{ vars.API_URL }}
-          CF_ACCESS_CLIENT_ID: ${{ vars.CF_ACCESS_CLIENT_ID }}
-          CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
-          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
-          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
-          ANDROID_KEY_ALIAS: ${{ vars.ANDROID_KEY_ALIAS }}
-          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
-
-      - name: Copy APK
-        run: cp ./frontend/apps/expo/android/app/build/outputs/apk/release/app-release.apk ${{ github.workspace }}/app-release.apk
-
-      - name: Upload Release Asset to GitHub
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
+          command: frontend:build:android
+          node_cache_path: frontend/pnpm-lock.yaml
+          output_directory: frontend/apps/expo
+          version: ${{ needs.release-please.outputs.frontend--version }}
           upload_url: ${{ needs.release-please.outputs.frontend--upload_url }}
-          asset_path: ${{ github.workspace }}/app-release.apk
-          asset_name: ${{ github.event.repository.name }}-${{ needs.release-please.outputs.frontend--version }}.apk
-          asset_content_type: application/vnd.android.package-archive
-
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          android_key_alias: ${{ vars.ANDROID_KEY_ALIAS }}
+          android_key_password: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          android_keystore_base64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          android_keystore_password: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          build_env: |
+            NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
+            API_URL=${{ vars.API_URL }}
+            CF_ACCESS_CLIENT_ID=${{ vars.CF_ACCESS_CLIENT_ID }}
+            CF_ACCESS_CLIENT_SECRET=${{ secrets.CF_ACCESS_CLIENT_SECRET }}
+            
   # ==========================================
-  # TRIGGER API DEPLOYMENT
+  # API DEPLOYMENT
   # ==========================================
   deploy-api:
     name: Deploy API
     needs: api-release
-    uses: ./.github/workflows/deploy.yml
-    with:
-      deploy-api: true
-    secrets: inherit
+    environment:
+      name: api-production
+      url: ${{ vars.API_URL }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aimarchirico/commons/.github/actions/vps-deploy@main
+        with:
+          vps_host: ${{ vars.VPS_HOST }}
+          vps_user: ${{ vars.VPS_USER }}
+          vps_ssh_key: ${{ secrets.VPS_SSH_KEY }}
 
   # ==========================================
-  # TRIGGER WEB DEPLOYMENT
+  # WEB DEPLOYMENT
   # ==========================================
   deploy-web:
     name: Deploy Web
     needs: release-please
     if: contains(fromJSON(needs.release-please.outputs.paths_released), 'frontend')
-    uses: ./.github/workflows/deploy.yml
-    with:
-      deploy-web: true
-    secrets: inherit
+    environment:
+      name: web-production
+      url: ${{ vars.APP_URL }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aimarchirico/commons/.github/actions/cloudflare-deploy@main
+        with:
+          command: frontend:build:web
+          node_cache_path: frontend/pnpm-lock.yaml
+          output_directory: frontend/apps/expo/dist
+          cloudflare_account_id: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          cloudflare_api_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          build_env: |
+            NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
+            API_URL=${{ vars.API_URL }}
+            CF_ACCESS_CLIENT_ID=${{ vars.CF_ACCESS_CLIENT_ID }}
+            CF_ACCESS_CLIENT_SECRET=${{ secrets.CF_ACCESS_CLIENT_SECRET }}

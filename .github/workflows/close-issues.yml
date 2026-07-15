@@ -12,5 +12,4 @@ jobs:
     name: Close Sub-Issues
     runs-on: ubuntu-latest
     steps:
-      - name: Close Sub-Issues
-        uses: aimarchirico/commons/.github/actions/close-issues@main
+      - uses: aimarchirico/commons/.github/actions/close-issues@main

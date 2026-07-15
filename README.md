@@ -1,6 +1,8 @@
 # Template
 
-A full-stack monorepo template with a Spring Boot backend and an Expo frontend, wired together with shared tooling, CI/CD, contribution guidelines, and agent skills.
+A full-stack monorepo template with a Spring Boot backend and an Expo
+frontend, wired together with shared tooling, CI/CD, contribution guidelines,
+and agent skills.
 
 ## Features
 
@@ -21,14 +23,16 @@ The project can be initialized either using the AI agent or manually:
 
 ### Agent Initialization
 
-Use this repository as a template on GitHub, then run the `/bootstrap` skill to initialize the project.
+Use this repository as a template on GitHub, then run the `/bootstrap` skill
+to initialize the project.
 
 ### Manual Initialization
 
-1. Configure [`init/config.json`](init/config.json) with the project's details. 
+1. Configure [`init/config.json`](init/config.json) with the project's details.
 2. Run the initialization script:
 
    ```bash
    python -m init
    ```
+
 3. Create documentation and issues according to the guidelines in [`CONTRIBUTING.md`](CONTRIBUTING.md).
