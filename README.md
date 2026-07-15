@@ -25,10 +25,11 @@ Use this repository as a template on GitHub, then run the `/bootstrap` skill to 
 
 ### Manual Initialization
 
-1. Configure [`init/config.json`](init/config.json) with the project's details. 
+1. Configure [`init/config.json`](init/config.json) with the project's details.
 2. Run the initialization script:
 
    ```bash
    python -m init
    ```
+
 3. Create documentation and issues according to the guidelines in [`CONTRIBUTING.md`](CONTRIBUTING.md).
