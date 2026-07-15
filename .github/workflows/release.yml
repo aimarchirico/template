@@ -58,7 +58,7 @@ jobs:
   # ==========================================
   # ANDROID APK
   # ==========================================
-  android-release:
+  release-android:
     name: Release Android
     needs: release-please
     if: contains(fromJSON(needs.release-please.outputs.paths_released), 'frontend')
