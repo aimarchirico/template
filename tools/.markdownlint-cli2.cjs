@@ -12,5 +12,6 @@ module.exports = {
     '../**/CHANGELOG.md',
     '../**/SKILL.md',
     '../**/PULL_REQUEST_TEMPLATE.md',
+    'README.md',
   ],
 };
