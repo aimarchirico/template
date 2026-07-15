@@ -4,5 +4,15 @@ module.exports = {
   ...baseConfig,
   gitignore: false,
   globs: ['../**/*.md'],
-  ignores: ['../**/CHANGELOG.md', '../**/node_modules/**']
+  ignores: [
+    '../**/node_modules/**',
+    '../**/dist/**',
+    '../**/build/**',
+    '../**/target/**',
+    '../**/CHANGELOG.md',
+    '../**/src/generated/**',
+    '../**/docs/API.md',
+    '../**/SKILL.md',
+    '../**/PULL_REQUEST_TEMPLATE.md',
+  ],
 };
