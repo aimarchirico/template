@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.6.1](https://github.com/aimarchirico/template/compare/template-app-v1.6.0...template-app-v1.6.1) (2026-07-15)
+
+
+### Bug Fixes
+
+* **api-client:** reorder scripts in package.json for clarity ([57d49eb](https://github.com/aimarchirico/template/commit/57d49eb4fabb1802424c0807f5c3790592002ffe))
+* **api-client:** update @aimarchirico/commons-openapi ([837e2b3](https://github.com/aimarchirico/template/commit/837e2b3020ed00e2a6bfe0e161038c8a30835c23))
+* **api-client:** update @aimarchirico/commons-openapi to version 1.1.3 ([898de14](https://github.com/aimarchirico/template/commit/898de142007338ae8f8f15a6236d0dc6e9c7d1d5))
+
 ## [1.6.0](https://github.com/aimarchirico/template/compare/template-app-v1.5.1...template-app-v1.6.0) (2026-07-07)
 
 
