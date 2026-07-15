@@ -113,8 +113,8 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0(eslint@9.39.4(jiti@1.21.7))(expo@56.0.13)(jiti@1.21.7)(react@19.2.3)(typescript@6.0.3)
       '@aimarchirico/commons-openapi':
-        specifier: ^1.1.0
-        version: 1.1.0(ajv@6.15.0)(mkdirp@1.0.4)
+        specifier: ^1.1.2
+        version: 1.1.2(ajv@6.15.0)(mkdirp@1.0.4)
       '@aimarchirico/commons-ts':
         specifier: ^1.1.0
         version: 1.1.0(eslint@9.39.4(jiti@1.21.7))(jiti@1.21.7)(typescript@6.0.3)
@@ -140,8 +140,8 @@ packages:
       react: '*'
       typescript: ^6.0.3
 
-  '@aimarchirico/commons-openapi@1.1.0':
-    resolution: {integrity: sha512-jYeneFwK1wHipF0zgb4pvZj/QNbfsl5f7TE7c+viuZGZ7afaulM4WoMqOFNEyFfnH/343llyLiXYWjXNacMaNg==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-openapi/1.1.0/af8f76309194b5590c0c7044d78a3c42a4d3fc65}
+  '@aimarchirico/commons-openapi@1.1.2':
+    resolution: {integrity: sha512-nW4Qt6/YJBNNAUG10RVaQtcU/fb9J+J+znyNt7KLqcI3+ePO+e/SU/5jF6yCoHUcBvQWZfoUsO2DJaF/vkzkfA==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-openapi/1.1.2/1d57fb1b8333eaca8724d73132534f65a5b72bdc}
     hasBin: true
 
   '@aimarchirico/commons-ts@1.1.0':
@@ -5611,7 +5611,7 @@ snapshots:
       - jiti
       - supports-color
 
-  '@aimarchirico/commons-openapi@1.1.0(ajv@6.15.0)(mkdirp@1.0.4)':
+  '@aimarchirico/commons-openapi@1.1.2(ajv@6.15.0)(mkdirp@1.0.4)':
     dependencies:
       '@openapitools/openapi-generator-cli': 2.39.1
       widdershins: 4.0.1(ajv@6.15.0)(mkdirp@1.0.4)
