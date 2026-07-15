@@ -85,8 +85,9 @@ jobs:
             API_URL=${{ vars.API_URL }}
             CF_ACCESS_CLIENT_ID=${{ vars.CF_ACCESS_CLIENT_ID }}
             CF_ACCESS_CLIENT_SECRET=${{ secrets.CF_ACCESS_CLIENT_SECRET }}
+            
   # ==========================================
-  # TRIGGER API DEPLOYMENT
+  # API DEPLOYMENT
   # ==========================================
   deploy-api:
     name: Deploy API
@@ -104,7 +105,7 @@ jobs:
           vps_ssh_key: ${{ secrets.VPS_SSH_KEY }}
 
   # ==========================================
-  # TRIGGER WEB DEPLOYMENT
+  # WEB DEPLOYMENT
   # ==========================================
   deploy-web:
     name: Deploy Web
