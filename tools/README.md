@@ -68,5 +68,5 @@ and run from the repository root:
 ## Deployment
 
 - **Releases**: [release-please](https://github.com/googleapis/release-please)
-  drives versioning and changelogs for releases via `release-please-config.json` and
-  `.release-please-manifest.json`.
+  drives versioning and changelogs for releases via
+  `release-please-config.json` and `.release-please-manifest.json`.
