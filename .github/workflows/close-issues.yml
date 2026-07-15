@@ -9,4 +9,7 @@ permissions:
 
 jobs:
   cascade:
-    uses: aimarchirico/commons/.github/workflows/close-issues.yml@main
+    name: Close Sub-Issues
+    runs-on: ubuntu-latest
+    steps:
+      - uses: aimarchirico/commons/.github/actions/close-issues@main

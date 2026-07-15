@@ -72,7 +72,7 @@ jobs:
       - uses: aimarchirico/commons/.github/actions/node-task@main
         with:
           command: frontend:check
-          node_cache_path: ./frontend/pnpm-lock.yaml
+          node_cache_path: frontend/pnpm-lock.yaml
           task_env: |
             NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
             API_URL=${{ vars.API_URL }}
