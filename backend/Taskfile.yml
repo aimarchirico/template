@@ -10,7 +10,7 @@ tasks:
   docker:check:
     desc: Lint Dockerfiles
     cmds:
-      - 'find . -type d \( -name "node_modules" -o -name ".git" \) -prune -o -name "Dockerfile" -print | xargs -r docker run --rm -v $(pwd):/repo --workdir /repo hadolint/hadolint:latest hadolint -c ../tools/node_modules/@aimarchirico/commons-tools/.hadolint.yaml'
+      - 'find . -type d \( -name "node_modules" -o -name ".git" \) -prune -o -name "Dockerfile" -print | xargs -r docker run --rm -v $(pwd):/repo --workdir /repo hadolint/hadolint:latest hadolint -c .hadolint.yaml'
 
   fix:
     desc: Format Kotlin files
