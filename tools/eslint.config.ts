@@ -1,4 +1,4 @@
-import tsConfig from '@aimarchirico/commons-eslint';
+import tsConfig from '@aimarchirico/commons-ts/eslint';
 import eslintPluginJsonc from 'eslint-plugin-jsonc';
 import eslintPluginToml from 'eslint-plugin-toml';
 import eslintPluginYml from 'eslint-plugin-yml';
