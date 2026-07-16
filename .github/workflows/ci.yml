@@ -57,10 +57,24 @@ jobs:
       - uses: actions/checkout@v4
       - uses: aimarchirico/commons/.github/actions/java-task@main
         with:
-          command: backend:check
+          command: backend:java:check
           task_env: |
             MAVEN_USERNAME=${{ github.actor }}
             MAVEN_PASSWORD=${{ secrets.GH_PACKAGES_TOKEN }}
+
+  # ==========================================
+  # DOCKER CI JOB
+  # ==========================================
+  docker-ci:
+    name: Docker Check
+    needs: changes
+    if: needs.changes.outputs.backend == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aimarchirico/commons/.github/actions/docker-task@main
+        with:
+          command: backend:docker:check
 
   # ==========================================
   # FRONTEND CI JOB

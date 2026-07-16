@@ -5,7 +5,7 @@ tasks:
     desc: Run tests and lint
     cmds:
       - task: docker:check
-      - bash gradlew check
+      - task: java:check
 
   docker:check:
     desc: Lint Dockerfiles
@@ -16,6 +16,10 @@ tasks:
     desc: Format Kotlin files
     cmds:
       - bash gradlew ktfmtFormat
+  java:check:
+    desc: Run Java tests and lint
+    cmds:
+      - bash gradlew check
 
   run:
     desc: Start API server
