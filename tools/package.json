@@ -10,11 +10,8 @@
     "@aimarchirico/commons-ts": "^1.1.1",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^21.2.0",
-    "actionlint": "^2.0.6",
     "eslint": "^9",
-    "hadolint": "^0.4.2",
     "husky": "^9.1.7",
-    "markdownlint-cli2": "^0.13.0",
-    "shellcheck": "^4.1.0"
+    "markdownlint-cli2": "^0.13.0"
   }
 }
