@@ -1,12 +1,17 @@
-let baseConfig;
+let tsConfig;
+let toolsConfig;
+
 try {
-  baseConfig = (await import('@aimarchirico/commons-ts/eslint')).default;
+  tsConfig = (await import('@aimarchirico/commons-ts/eslint')).default;
+  toolsConfig = (await import('@aimarchirico/commons-tools/eslint')).default;
 } catch {
-  baseConfig = [];
+  tsConfig = [];
+  toolsConfig = [];
 }
 
 export default [
-  ...baseConfig,
+  ...tsConfig,
+  ...toolsConfig,
   {
     ignores: [
       '../frontend/apps/**/*',
