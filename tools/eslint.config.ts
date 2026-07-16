@@ -5,8 +5,9 @@ try {
   tsConfig = (await import('@aimarchirico/commons-ts/eslint')).default;
   toolsConfig = (await import('@aimarchirico/commons-tools/eslint')).default;
 } catch {
-  tsConfig = (await import('./node_modules/@aimarchirico/commons-ts/eslint.ts')).default;
-  toolsConfig = (await import('./node_modules/@aimarchirico/commons-tools/eslint.ts')).default;
+  // Fallback for local development inside commons mono-repo
+  tsConfig = (await import('../npm/packages/commons-ts/eslint.ts')).default;
+  toolsConfig = (await import('../npm/packages/commons-tools/eslint.ts')).default;
 }
 
 export default [

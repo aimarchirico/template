@@ -3,6 +3,12 @@ version: '3'
 dotenv: ['.env']
 
 includes:
+  init:
+    taskfile: ./init/Taskfile.yml
+    dir: ./init
+  github:
+    taskfile: ./.github/Taskfile.yml
+    dir: ./.github
   backend:
     taskfile: ./backend/Taskfile.yml
     dir: ./backend
