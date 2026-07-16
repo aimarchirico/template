@@ -19,7 +19,7 @@ export default defineConfig([
     },
   },
   {
-    files: ['app.config.mjs'],
+    files: ['app.config.ts', 'metro.config.ts', 'tailwind.config.ts'],
     languageOptions: {
       sourceType: 'module',
     },
@@ -30,9 +30,9 @@ export default defineConfig([
   },
   {
     files: [
-      'babel.config.mjs',
-      'metro.config.mjs',
-      'tailwind.config.mjs',
+      'babel.config.js',
+      'metro.config.ts',
+      'tailwind.config.ts',
       'nativewind-env.d.ts',
     ],
     rules: {
