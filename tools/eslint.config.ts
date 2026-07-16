@@ -9,8 +9,9 @@ export default [
   ...baseConfig,
   {
     ignores: [
-      '../backend/**/*',
-      '../frontend/**/*',
+      '../frontend/apps/**/*',
+      '../frontend/packages/**/*',
+      '../frontend/functions/**/*',
       '../**/pnpm-lock.yaml',
       '**/pnpm-lock.yaml',
       '**/commitlint.config.js',
