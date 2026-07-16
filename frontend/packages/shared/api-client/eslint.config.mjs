@@ -1,5 +1,5 @@
 import {defineConfig} from 'eslint/config';
-import baseConfig from '@aimarchirico/commons-ts/eslint';
+import baseConfig from '@aimarchirico/commons-eslint';
 
 export default defineConfig([
   {

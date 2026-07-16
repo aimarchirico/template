@@ -23,6 +23,7 @@ jobs:
       backend: ${{ steps.filter.outputs.backend }}
       frontend: ${{ steps.filter.outputs.frontend }}
       docs: ${{ steps.filter.outputs.docs }}
+      github: ${{ steps.filter.outputs.github }}
     steps:
       - name: Check Out Repo
         uses: actions/checkout@v4
@@ -41,6 +42,8 @@ jobs:
             docs:
               - '**/*.md'
               - '.github/workflows/ci.yml'
+            github:
+              - '.github/**'
 
   # ==========================================
   # BACKEND CI JOB
@@ -115,3 +118,17 @@ jobs:
             NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
             FROM_SHA=${{ github.event.pull_request.base.sha }}
             TO_SHA=${{ github.event.pull_request.head.sha }}
+
+  # ==========================================
+  # GITHUB CI JOB
+  # ==========================================
+  github:
+    name: GitHub Check
+    needs: changes
+    if: needs.changes.outputs.github == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aimarchirico/commons/.github/actions/github-task@main
+        with:
+          command: github:check

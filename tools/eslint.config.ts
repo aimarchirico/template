@@ -1,18 +1,13 @@
-let tsConfig;
-let toolsConfig;
-
-try {
-  tsConfig = (await import('@aimarchirico/commons-ts/eslint')).default;
-  toolsConfig = (await import('@aimarchirico/commons-tools/eslint')).default;
-} catch {
-  // Fallback for local development inside commons mono-repo
-  tsConfig = (await import('../npm/packages/commons-ts/eslint.ts')).default;
-  toolsConfig = (await import('../npm/packages/commons-tools/eslint.ts')).default;
-}
+import tsConfig from '@aimarchirico/commons-eslint';
+import jsonConfig from '@aimarchirico/commons-eslint/json';
+import ymlConfig from '@aimarchirico/commons-eslint/yaml';
+import tomlConfig from '@aimarchirico/commons-eslint/toml';
 
 export default [
   ...tsConfig,
-  ...toolsConfig,
+  ...jsonConfig,
+  ...ymlConfig,
+  ...tomlConfig,
   {
     ignores: [
       '../npm/packages/**/*',
@@ -21,7 +16,9 @@ export default [
       '../frontend/**/*',
       '../**/.turbo/**',
       '../**/Taskfile.yml',
+      '**/pnpm-lock.yaml',
       '../**/pnpm-lock.yaml',
+      '**/commitlint.config.js',
       '../**/commitlint.config.js',
     ],
   },
