@@ -24,6 +24,7 @@ jobs:
       frontend: ${{ steps.filter.outputs.frontend }}
       docs: ${{ steps.filter.outputs.docs }}
       github: ${{ steps.filter.outputs.github }}
+      init: ${{ steps.filter.outputs.init }}
     steps:
       - name: Check Out Repo
         uses: actions/checkout@v4
@@ -44,6 +45,9 @@ jobs:
               - '.github/workflows/ci.yml'
             github:
               - '.github/**'
+            init:
+              - 'init/**'
+              - '.github/workflows/ci.yml'
 
   # ==========================================
   # BACKEND CI JOB
@@ -132,3 +136,17 @@ jobs:
       - uses: aimarchirico/commons/.github/actions/github-task@main
         with:
           command: github:check
+
+  # ==========================================
+  # INIT CI JOB
+  # ==========================================
+  init-ci:
+    name: Init Check
+    needs: changes
+    if: needs.changes.outputs.init == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aimarchirico/commons/.github/actions/python-task@main
+        with:
+          command: init:check
