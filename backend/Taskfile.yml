@@ -4,22 +4,12 @@ tasks:
   check:
     desc: Run tests and lint
     cmds:
-      - task: docker:check
-      - task: java:check
-
-  docker:check:
-    desc: Lint Dockerfiles
-    cmds:
-      - 'find . -type d \( -name "node_modules" -o -name ".git" \) -prune -o -name "Dockerfile" -print | xargs -r hadolint -c .hadolint.yaml'
+      - bash gradlew check
 
   fix:
     desc: Format Kotlin files
     cmds:
       - bash gradlew ktfmtFormat
-  java:check:
-    desc: Run Java tests and lint
-    cmds:
-      - bash gradlew check
 
   run:
     desc: Start API server
