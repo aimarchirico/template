@@ -16,10 +16,7 @@ export default [
       '../frontend/**/*',
       '../**/.turbo/**',
       '../**/Taskfile.yml',
-      '**/pnpm-lock.yaml',
       '../**/pnpm-lock.yaml',
-      '**/*config.ts',
-      '../**/*config.ts',
     ],
   },
   {
