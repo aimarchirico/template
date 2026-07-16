@@ -1,7 +1,7 @@
-module.exports = {
+export default {
   config: {
     default: true,
-    MD013: { code_blocks: false, tables: false },
+    MD013: {code_blocks: false, tables: false},
   },
   globs: ['../**/*.md'],
   ignores: [

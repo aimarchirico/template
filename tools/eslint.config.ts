@@ -18,8 +18,8 @@ export default [
       '../**/Taskfile.yml',
       '**/pnpm-lock.yaml',
       '../**/pnpm-lock.yaml',
-      '**/commitlint.config.js',
-      '../**/commitlint.config.js',
+      '**/*config.ts',
+      '../**/*config.ts',
     ],
   },
   {
