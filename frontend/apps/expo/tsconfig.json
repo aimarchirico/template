@@ -1,5 +1,8 @@
 {
-  "extends": "@aimarchirico/commons-tsconfig/expo.json",
+  "extends": [
+    "expo/tsconfig.base",
+    "@aimarchirico/commons-tsconfig/base.json"
+  ],
   "include": [
     "**/*.ts",
     "**/*.tsx",

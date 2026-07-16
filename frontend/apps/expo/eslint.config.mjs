@@ -1,42 +1,47 @@
 import {defineConfig} from 'eslint/config';
-import baseConfig from '@aimarchirico/commons-eslint/expo';
+import expoConfig from 'eslint-config-expo/flat.js';
+import baseConfig from '@aimarchirico/commons-eslint';
+
+const dedupedConfig = baseConfig.map(config => {
+  if (!config?.plugins) return config;
+  const { '@typescript-eslint': _tsPlugin, import: _importPlugin, ...plugins } = config.plugins;
+  return {...config, plugins};
+});
 
 export default defineConfig([
+  { ignores: ['android/**', 'ios/**', 'dist/**'] },
+  ...expoConfig,
+  ...dedupedConfig,
   {
-    ignores: ['expo-env.d.ts'],
+    settings: {
+      'import/resolver': {
+        typescript: {
+          project: './tsconfig.json',
+        },
+      },
+    },
   },
-  ...baseConfig,
   {
-    files: ['**/app/**/*.{js,ts,jsx,tsx}'],
+    files: ['**/*.js', '**/*.mjs'],
+    languageOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  },
+  {
+    files: ['*.js', '*.mjs', '*.ts', '*.d.ts', 'scripts/**/*.js', 'functions/**/*.js', 'scripts/**/*.mjs', 'functions/**/*.mjs'],
+    rules: { 'check-file/filename-naming-convention': 'off' },
+  },
+  {
+    files: ['app.config.ts', 'metro.config.ts'],
+    rules: { 'import/no-default-export': 'off' },
+  },
+  {
+    files: ['src/app/**/*.{js,ts,jsx,tsx}', 'src/lib/firebase.ts'],
     rules: {
       'import/no-default-export': 'off',
+      'import/no-unresolved': ['error', {ignore: ['^@/assets/google-services\\.json$']}],
     },
   },
   {
     files: ['**/_layout.{js,ts,jsx,tsx}'],
-    rules: {
-      'check-file/filename-naming-convention': 'off',
-    },
-  },
-  {
-    files: ['app.config.ts', 'metro.config.ts', 'tailwind.config.ts'],
-    languageOptions: {
-      sourceType: 'module',
-    },
-    rules: {
-      'import/no-default-export': 'off',
-      'check-file/filename-naming-convention': 'off',
-    },
-  },
-  {
-    files: [
-      'babel.config.js',
-      'metro.config.ts',
-      'tailwind.config.ts',
-      'nativewind-env.d.ts',
-    ],
-    rules: {
-      'check-file/filename-naming-convention': 'off',
-    },
+    rules: { 'check-file/filename-naming-convention': 'off' },
   },
 ]);
