@@ -48,3 +48,9 @@ tasks:
     dir: ..
     cmds:
       - ./tools/node_modules/.bin/eslint --config tools/eslint.config.ts --no-error-on-unmatched-pattern ".github/**/*" "tools/**/*" ".vscode/**/*" "init/**/*" "*.yml" "*.json"
+
+  root:fix:
+    desc: Fix global repository folders lint issues
+    dir: ..
+    cmds:
+      - ./tools/node_modules/.bin/eslint --config tools/eslint.config.ts --no-error-on-unmatched-pattern ".github/**/*" "tools/**/*" ".vscode/**/*" "init/**/*" "*.yml" "*.json" --fix
