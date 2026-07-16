@@ -7,8 +7,10 @@
   },
   "devDependencies": {
     "@aimarchirico/commons-tools": "^1.2.0",
+    "@aimarchirico/commons-ts": "^1.1.1",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^21.2.0",
+    "eslint": "^9",
     "husky": "^9.1.7",
     "markdownlint-cli2": "^0.13.0"
   }
