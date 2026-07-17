@@ -18,11 +18,4 @@ export default [
       '**/frontend/functions/**',
     ],
   },
-  {
-    files: ['**/*.config.ts'],
-    rules: {
-      'import/no-default-export': 'off',
-      'check-file/filename-naming-convention': 'off',
-    },
-  },
 ];

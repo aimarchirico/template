@@ -34,7 +34,7 @@
     "react-native-web": "~0.21.0"
   },
   "devDependencies": {
-    "@aimarchirico/commons-cloudflare": "^1.0.0",
+    "@aimarchirico/commons-cloudflare": "^1.1.1",
     "@aimarchirico/commons-expo": "^1.2.0",
     "@aimarchirico/commons-ts": "^1.0.0",
     "@babel/core": "^7.20.0",
