@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "prepare": "cd .. && husky tools/.husky",
-    "check": "cd .. && eslint -c tools/eslint.config.ts .",
-    "fix": "cd .. && eslint -c tools/eslint.config.ts . --fix"
+    "check": "cd .. && eslint -c tools/eslint.config.ts",
+    "fix": "cd .. && eslint -c tools/eslint.config.ts --fix"
   },
   "devDependencies": {
     "@aimarchirico/commons-ts": "^1.0.0",
