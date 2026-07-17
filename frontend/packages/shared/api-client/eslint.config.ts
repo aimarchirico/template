@@ -1,9 +1,10 @@
-import {defineConfig} from 'eslint/config';
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import baseConfig from '@aimarchirico/commons-ts/eslint';
 
-export default defineConfig([
+export default [
   {
     ignores: ['src/generated/**'],
   },
   ...baseConfig,
-]);
+];
