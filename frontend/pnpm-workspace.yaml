@@ -1,7 +1,7 @@
 packages:
-  - "apps/*"
-  - "packages/features/*"
-  - "packages/shared/*"
+  - 'apps/*'
+  - 'packages/features/*'
+  - 'packages/shared/*'
 nodeLinker: hoisted
 allowBuilds:
   '@openapitools/openapi-generator-cli': true

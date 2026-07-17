@@ -4,10 +4,13 @@
   "private": true,
   "packageManager": "pnpm@11.9.0",
   "scripts": {
-    "check": "turbo run check",
-    "fix": "turbo run fix"
+    "check": "eslint . && turbo run check",
+    "fix": "eslint . --fix && turbo run fix"
   },
   "devDependencies": {
+    "@aimarchirico/commons-ts": "^1.0.0",
+    "eslint": "^9.39.5",
+    "jiti": "^2.4.2",
     "turbo": "^2.3.3"
   },
   "overrides": {

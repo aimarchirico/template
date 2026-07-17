@@ -8,13 +8,13 @@ tasks:
       - pnpm install
     if: '[ -n "$CI" ]'
 
-  docs:check:
+  root:docs:check:
     desc: Lint Markdown files
     cmds:
       - task: install
       - pnpm exec markdownlint-cli2
 
-  docs:fix:
+  root:docs:fix:
     desc: Fix Markdown issues
     cmds:
       - pnpm exec markdownlint-cli2 --fix
