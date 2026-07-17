@@ -30,7 +30,7 @@ management:
         include: health,info
 
 info:
-  version: "1.4.1" # x-release-please-version
+  version: '1.4.1' # x-release-please-version
 
 server:
   servlet:
@@ -41,15 +41,14 @@ springdoc:
   swagger-ui:
     path: /swagger-ui.html
   show-actuator: true
-  api-docs: 
+  api-docs:
     path: /v3/api-docs
   openapi:
     info:
       title: Template API
-      version: "1.4.1" # x-release-please-version
+      version: '1.4.1' # x-release-please-version
 
 proxy-secret: ${PROXY_SECRET:}
 
 cors:
   allowed-origins: ${CORS_ALLOWED_ORIGINS:}
-
