@@ -15,8 +15,6 @@ export default [
       '**/.turbo/**',
       '**/pnpm-lock.yaml',
       '**/*.lock',
-      'frontend/eslint.config.ts',
-      'frontend/tsconfig.json',
       '**/frontend/functions/**',
     ],
   },
