@@ -4,19 +4,19 @@ dotenv: ['.env']
 
 includes:
   init:
-    taskfile: ./init/Taskfile.yml
+    taskfile: ./init/Taskfile.yaml
     dir: ./init
   github:
-    taskfile: ./.github/Taskfile.yml
+    taskfile: ./.github/Taskfile.yaml
     dir: ./.github
   backend:
-    taskfile: ./backend/Taskfile.yml
+    taskfile: ./backend/Taskfile.yaml
     dir: ./backend
   frontend:
-    taskfile: ./frontend/Taskfile.yml
+    taskfile: ./frontend/Taskfile.yaml
     dir: ./frontend
   tools:
-    taskfile: ./tools/Taskfile.yml
+    taskfile: ./tools/Taskfile.yaml
     dir: ./tools
     flatten: true
 

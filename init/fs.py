@@ -68,7 +68,7 @@ def load_json(path: str) -> dict:
 
 def remove_dependabot_ecosystem(directory_pattern: str):
     """Remove the dependabot package-ecosystem block whose directory matches directory_pattern."""
-    dependabot_path = ".github/dependabot.yml"
+    dependabot_path = ".github/dependabot.yaml"
     if not os.path.exists(dependabot_path):
         return
     with open(dependabot_path, "r", encoding="utf-8") as f:

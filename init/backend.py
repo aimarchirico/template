@@ -28,8 +28,8 @@ def setup_backend(default_mod, config_mod):
         replace_text(f, def_pkg, cfg_pkg)
 
     # Replace image and name
-    replace_text("backend/compose.prod.yml", def_img, cfg_img)
-    replace_text("backend/app/src/main/resources/application.yml", def_name, cfg_name)
+    replace_text("backend/compose.prod.yaml", def_img, cfg_img)
+    replace_text("backend/app/src/main/resources/application.yaml", def_name, cfg_name)
 
     # Replace pascal case name
     app_file = f"backend/app/src/main/kotlin/{def_pkg_path}/{def_pascal}Application.kt"
@@ -37,9 +37,9 @@ def setup_backend(default_mod, config_mod):
 
     # Replace lower case name
     lower_files = [
-        "backend/app/src/main/resources/application.yml",
-        "backend/compose.yml",
-        "backend/compose.prod.yml",
+        "backend/app/src/main/resources/application.yaml",
+        "backend/compose.yaml",
+        "backend/compose.prod.yaml",
         "backend/settings.gradle.kts",
         "backend/app/build.gradle.kts"
     ]

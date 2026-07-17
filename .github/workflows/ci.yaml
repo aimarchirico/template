@@ -36,18 +36,18 @@ jobs:
           filters: |
             backend:
               - 'backend/**'
-              - '.github/workflows/ci.yml'
+              - '.github/workflows/ci.yaml'
             frontend:
               - 'frontend/**'
-              - '.github/workflows/ci.yml'
+              - '.github/workflows/ci.yaml'
             docs:
               - '**/*.md'
-              - '.github/workflows/ci.yml'
+              - '.github/workflows/ci.yaml'
             github:
               - '.github/**'
             init:
               - 'init/**'
-              - '.github/workflows/ci.yml'
+              - '.github/workflows/ci.yaml'
 
   # ==========================================
   # BACKEND CI JOB
