@@ -2,9 +2,9 @@
 description: Update project documentation
 metadata:
     github-path: skills/docs
-    github-ref: refs/tags/commons-docs-v0.1.1
+    github-ref: refs/tags/commons-docs-v1.3.1
     github-repo: https://github.com/aimarchirico/commons
-    github-tree-sha: ca4bbcad24e00d43e22ce9acf89376750ef98597
+    github-tree-sha: 17aa25e9adcf990a462e16028fdac2fd9f1c25aa
 name: docs
 ---
 ## When to Use
