@@ -6,12 +6,8 @@
     "**/*.js",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "nativewind-env.d.ts"
-, "babel.config.cjs"  ],
-  "exclude": [
-    "scripts",
-    "babel.config.cjs",
-    "metro.config.js",
-    "tailwind.config.ts"
-  ]
+    "nativewind-env.d.ts",
+    "babel.config.cjs"
+  ],
+  "exclude": ["scripts", "babel.config.cjs", "metro.config.js"]
 }
