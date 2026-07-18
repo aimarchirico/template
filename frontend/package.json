@@ -9,6 +9,5 @@
   },
   "devDependencies": {
     "turbo": "^2.3.3"
-  },
-  "private": true
+  }
 }
