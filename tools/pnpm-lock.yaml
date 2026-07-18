@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@aimarchirico/commons-ts':
-        specifier: ^1.4.0
-        version: 1.4.0(@typescript-eslint/parser@8.64.0(eslint@9.39.5(jiti@2.6.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.6.1))(jiti@2.6.1)(typescript@6.0.3)
+        specifier: ^1.4.1
+        version: 1.4.1(@typescript-eslint/parser@8.64.0(eslint@9.39.5(jiti@2.6.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.6.1))(jiti@2.6.1)(typescript@6.0.3)
       '@commitlint/cli':
         specifier: ^19.0.0
         version: 19.8.1(@types/node@26.1.0)(typescript@6.0.3)
@@ -41,8 +41,8 @@ importers:
 
 packages:
 
-  '@aimarchirico/commons-ts@1.4.0':
-    resolution: {integrity: sha512-ROqY5Hsnc2svK9I3KSiEQoHSD+Ie/8GkPTpcYvUfExxVa4i03UjlhYFskYemnT1OEyWJmQTlVM5XYLJM7QXSng==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-ts/1.4.0/194298c0069d0260d8baf98cd8f91ea79b0750f4}
+  '@aimarchirico/commons-ts@1.4.1':
+    resolution: {integrity: sha512-mGHKCrO/ufp0hgUmBF0uaa46brPQ32aOF41aRdggFJxwlEOE9XisnWhOGhMtXgDHlyBz6KA3IbsSb9ZYJM08uQ==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-ts/1.4.1/18e46ea419ef39f137d88312d16fb4a6c2c0fe25}
     peerDependencies:
       eslint: ^9.39.2
       typescript: ^6.0.3
@@ -2068,7 +2068,7 @@ packages:
 
 snapshots:
 
-  '@aimarchirico/commons-ts@1.4.0(@typescript-eslint/parser@8.64.0(eslint@9.39.5(jiti@2.6.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.6.1))(jiti@2.6.1)(typescript@6.0.3)':
+  '@aimarchirico/commons-ts@1.4.1(@typescript-eslint/parser@8.64.0(eslint@9.39.5(jiti@2.6.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.6.1))(jiti@2.6.1)(typescript@6.0.3)':
     dependencies:
       eslint: 9.39.5(jiti@2.6.1)
       eslint-plugin-check-file: 3.3.1(eslint@9.39.5(jiti@2.6.1))
