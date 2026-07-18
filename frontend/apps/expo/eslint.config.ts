@@ -2,6 +2,4 @@
 // @ts-nocheck
 import expoConfig from '@aimarchirico/commons-expo/eslint';
 
-export default [
-  ...expoConfig
-];
+export default [...expoConfig];
