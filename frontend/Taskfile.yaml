@@ -3,20 +3,20 @@ version: '3'
 tasks:
   install:
     internal: true
-    desc: Install npm dependencies
+    desc: Install NPM dependencies
     cmds:
       - pnpm install
       - task: api
     if: '[ -n "$CI" ]'
 
   check:
-    desc: Run lint and type checks
+    desc: Check TypeScript files
     cmds:
       - task: install
       - pnpm turbo run check
 
   fix:
-    desc: Fix lint problems
+    desc: Fix TypeScript files
     cmds:
       - pnpm turbo run fix
 
@@ -26,7 +26,7 @@ tasks:
       - pnpm --filter ./apps/expo dev
 
   build:
-    desc: Build development apk
+    desc: Build development APK
     cmds:
       - pnpm --filter ./apps/expo build:debug
 
@@ -40,7 +40,7 @@ tasks:
         ignore_error: true
 
   build:android:
-    desc: Build release for android
+    desc: Build release for Android
     cmds:
       - task: install
       - pnpm --filter ./apps/expo prebuild

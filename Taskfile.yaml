@@ -3,9 +3,6 @@ version: '3'
 dotenv: ['.env']
 
 includes:
-  init:
-    taskfile: ./init/Taskfile.yaml
-    dir: ./init
   github:
     taskfile: ./.github/Taskfile.yaml
     dir: ./.github
