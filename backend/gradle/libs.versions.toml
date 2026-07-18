@@ -7,7 +7,7 @@ ktfmt = "0.26.0"
 archunit = "1.4.2"
 commons-security = "2.0.1"
 commons-test = "2.0.0"
-commons-convention="1.5.1"
+commons-convention="1.5.2"
 
 [libraries]
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
