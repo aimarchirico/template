@@ -1,13 +1,3 @@
 {
-  "extends": "@aimarchirico/commons-expo/tsconfig",
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js",
-    ".expo/types/**/*.ts",
-    "expo-env.d.ts",
-    "nativewind-env.d.ts",
-    "babel.config.cjs"
-  ],
-  "exclude": ["scripts", "babel.config.cjs", "metro.config.js"]
+  "extends": "@aimarchirico/commons-expo/tsconfig"
 }
