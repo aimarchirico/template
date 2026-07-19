@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.8.2](https://github.com/aimarchirico/template/compare/template-app-v1.8.1...template-app-v1.8.2) (2026-07-19)
+
+
+### Bug Fixes
+
+* add API task to install command in Taskfile ([d58ce91](https://github.com/aimarchirico/template/commit/d58ce9170ec4389313cb6e0653f8b88375d918b9))
+* temporarily remove API task from install command ([9a58e3f](https://github.com/aimarchirico/template/commit/9a58e3f79d49f9d82817df1a00a719ffd19e2c22))
+
 ## [1.8.1](https://github.com/aimarchirico/template/compare/template-app-v1.8.0...template-app-v1.8.1) (2026-07-19)
 
 
