@@ -6,7 +6,6 @@ tasks:
     desc: Install NPM dependencies
     cmds:
       - pnpm install
-      - task: api
     if: '[ -n "$CI" ]'
 
   check:
