@@ -1,7 +1,7 @@
 packages:
-  - "apps/*"
-  - "packages/features/*"
-  - "packages/shared/*"
+  - 'apps/*'
+  - 'packages/features/*'
+  - 'packages/shared/*'
 nodeLinker: hoisted
 allowBuilds:
   '@openapitools/openapi-generator-cli': true
@@ -9,3 +9,14 @@ allowBuilds:
   unrs-resolver: true
 minimumReleaseAgeExclude:
   - '@aimarchirico/*'
+
+overrides:
+  jiti: ^2.7.0
+  jsonpointer: ^5.0.1
+  postcss: ^8.5.10
+  tmp: ^0.2.6
+  uuid: ^11.1.1
+  httpsnippet>form-data: ^3.0.4
+  oas-validator>ajv: ^8.18.0
+  widdershins>markdown-it: ^12.3.2
+  yargs-parser: ^13.1.2

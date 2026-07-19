@@ -2,9 +2,9 @@
 description: Create a standardized pull request
 metadata:
     github-path: skills/pr
-    github-ref: refs/tags/commons-docs-v1.3.1
+    github-ref: refs/tags/commons-convention-v1.5.2
     github-repo: https://github.com/aimarchirico/commons
-    github-tree-sha: 5455372b696be6704a81c82f0e09d9193d4667ba
+    github-tree-sha: 43e86596ec06395d98062bea82948c0fae197d0d
 name: pr
 ---
 ## When to Use
@@ -15,7 +15,7 @@ Use when the user asks to create a pull request.
 
 1. Preflight: Verify that `CONTRIBUTING.md` exists in the repository root and
    `.github/PULL_REQUEST_TEMPLATE.md` exists. If any are missing, run
-   `npx @aimarchirico/commons-docs` to materialize the documentation.
+   `npx @aimarchirico/commons-docs materialize-templates` to materialize the documentation.
 2. Verify GitHub CLI (`gh`) authentication (`gh auth status`). If not logged in,
    provide instructions for `gh auth login` and exit.
 3. Analyze the current branch and recent commits:

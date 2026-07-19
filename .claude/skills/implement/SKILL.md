@@ -2,9 +2,9 @@
 description: Orchestrate the development lifecycle starting from an existing issue
 metadata:
     github-path: skills/implement
-    github-ref: refs/tags/commons-docs-v1.3.1
+    github-ref: refs/tags/commons-convention-v1.5.2
     github-repo: https://github.com/aimarchirico/commons
-    github-tree-sha: e27e23a1b99c95b5bb968abc83fa1a332116201b
+    github-tree-sha: f170fddac3835e18e991703c060ac9982c88301a
 name: implement
 ---
 ## When to Use
@@ -14,8 +14,8 @@ Use when the user asks to implement an issue.
 ## Execution Steps
 
 1. Preflight: Verify that `CONTRIBUTING.md` exists in the repository root. If it
-   is missing, run `npx @aimarchirico/commons-docs` to materialize the
-   documentation.
+   is missing, run `npx @aimarchirico/commons-docs materialize-templates` to
+   materialize the documentation.
 2. Parse the `--issue` flag to extract the `<issue-id>`. Prompt the user if the
    flag is missing.
 3. Execute `gh issue view <issue-id> --json title,labels` to fetch the issue

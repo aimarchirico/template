@@ -3,7 +3,7 @@
     "backend": {
       "release-type": "simple",
       "component": "template-api",
-      "extra-files": ["app/src/main/resources/application.yml"]
+      "extra-files": ["app/src/main/resources/application.yaml"]
     },
     "frontend": {
       "release-type": "simple",

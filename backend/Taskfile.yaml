@@ -2,12 +2,12 @@ version: '3'
 
 tasks:
   check:
-    desc: Run tests and lint
+    desc: Check Kotlin files
     cmds:
       - bash gradlew check
 
   fix:
-    desc: Format Kotlin files
+    desc: Fix Kotlin files
     cmds:
       - bash gradlew ktfmtFormat
 
@@ -18,11 +18,11 @@ tasks:
       - bash gradlew :app:bootRun
 
   up:
-    desc: Start the database container
+    desc: Start database container
     cmds:
       - docker compose up -d
 
   down:
-    desc: Stop the database container
+    desc: Stop database container
     cmds:
       - docker compose down

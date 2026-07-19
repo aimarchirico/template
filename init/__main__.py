@@ -6,7 +6,7 @@ from .frontend import setup_frontend
 from .gh import setup_github_project
 
 def main():
-    """Run project initialization: set up the GitHub project, modules, and CI/CD, then self-delete init/."""
+    """Set up the GitHub project, modules, and CI/CD, then self-delete init/."""
     default_path = "init/default.json"
     config_path = "init/config.json"
 
@@ -14,7 +14,10 @@ def main():
     config_data = load_json(config_path)
 
     if not default_data or not config_data:
-        print("Required configuration files default.json or config.json are missing or empty in init/")
+        print(
+            "Required configuration files default.json or config.json "
+            "are missing or empty in init/"
+        )
         return
 
     # Initialize GitHub Project

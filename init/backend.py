@@ -3,7 +3,7 @@ from .text import pascal, lower, path
 from .fs import replace_text, move_files
 
 def setup_backend(default_mod, config_mod):
-    """Rename the backend's package, image, and app names from the default to the configured values."""
+    """Rename the backend's package, image, and app names to the configured values."""
     def_name = default_mod["name"]
     cfg_name = config_mod["name"]
     def_pkg = default_mod["package"]
@@ -22,14 +22,16 @@ def setup_backend(default_mod, config_mod):
     pkg_files = ["backend/app/build.gradle.kts"]
     for base in ("main", "test"):
         pkg_files.extend(
-            glob.glob(f"backend/app/src/{base}/kotlin/{def_pkg_path}/**/*.kt", recursive=True)
+            glob.glob(
+                f"backend/app/src/{base}/kotlin/{def_pkg_path}/**/*.kt", recursive=True
+            )
         )
     for f in pkg_files:
         replace_text(f, def_pkg, cfg_pkg)
 
     # Replace image and name
-    replace_text("backend/compose.prod.yml", def_img, cfg_img)
-    replace_text("backend/app/src/main/resources/application.yml", def_name, cfg_name)
+    replace_text("backend/compose.prod.yaml", def_img, cfg_img)
+    replace_text("backend/app/src/main/resources/application.yaml", def_name, cfg_name)
 
     # Replace pascal case name
     app_file = f"backend/app/src/main/kotlin/{def_pkg_path}/{def_pascal}Application.kt"
@@ -37,9 +39,9 @@ def setup_backend(default_mod, config_mod):
 
     # Replace lower case name
     lower_files = [
-        "backend/app/src/main/resources/application.yml",
-        "backend/compose.yml",
-        "backend/compose.prod.yml",
+        "backend/app/src/main/resources/application.yaml",
+        "backend/compose.yaml",
+        "backend/compose.prod.yaml",
         "backend/settings.gradle.kts",
         "backend/app/build.gradle.kts"
     ]

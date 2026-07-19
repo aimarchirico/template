@@ -2,9 +2,9 @@
 description: Create new hierarchical issues
 metadata:
     github-path: skills/issues
-    github-ref: refs/tags/commons-docs-v1.3.1
+    github-ref: refs/tags/commons-convention-v1.5.2
     github-repo: https://github.com/aimarchirico/commons
-    github-tree-sha: ac5d4c69b456326dc3a08b1692d79dadacf4db03
+    github-tree-sha: 01f5f317bc01fc5b93704be46aace6811d923d9d
 name: issues
 ---
 ## When to Use
@@ -15,7 +15,7 @@ Use when the user asks to create new issues.
 
 1. Preflight: Verify that `CONTRIBUTING.md` exists in the repository root and
    the `.github/ISSUE_TEMPLATE/` directory exists. If any are missing, run
-   `npx @aimarchirico/commons-docs` to materialize the documentation.
+   `npx @aimarchirico/commons-docs materialize-templates` to materialize the documentation.
 2. Identify the details and context of the issues to create. If these details
    are not already clear from the user's prompt or context, ask the user for
    clarification.

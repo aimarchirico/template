@@ -8,7 +8,7 @@ def run_cmd(args):
     return result.stdout.strip()
 
 def get_github_context():
-    """Return the (owner, repo) of the current repository, or (None, None) on failure."""
+    """Return the (owner, repo) of the current repo, or (None, None) on failure."""
     try:
         output = run_cmd(["gh", "repo", "view", "--json", "owner,name"])
         data = json.loads(output)
@@ -29,21 +29,33 @@ def get_template_project():
         return None, None
 
     if not template:
-        print("Warning: Repository was not generated from a template. Skipping GitHub Project initialization.")
+        print(
+            "Warning: Repository was not generated from a template. "
+            "Skipping GitHub Project initialization."
+        )
         return None, None
 
     template_owner = template.get("owner", {}).get("login")
     template_name = template.get("name")
 
     try:
-        output = run_cmd(["gh", "repo", "view", f"{template_owner}/{template_name}", "--json", "projectsV2"])
+        output = run_cmd(
+            ["gh", "repo", "view", f"{template_owner}/{template_name}",
+             "--json", "projectsV2"]
+        )
         nodes = json.loads(output).get("projectsV2", {}).get("Nodes", [])
     except Exception as e:
-        print(f"Warning: Could not retrieve projects for template '{template_owner}/{template_name}'. Error: {e}")
+        print(
+            f"Warning: Could not retrieve projects for template "
+            f"'{template_owner}/{template_name}'. Error: {e}"
+        )
         return None, None
 
     if not nodes:
-        print(f"Warning: Template repository '{template_owner}/{template_name}' has no linked project.")
+        print(
+            f"Warning: Template repository '{template_owner}/{template_name}' "
+            "has no linked project."
+        )
         return None, None
 
     return template_owner, nodes[0].get("number")
@@ -51,7 +63,10 @@ def get_template_project():
 def copy_template_project(source_owner, source_number, target_owner, project_title):
     """Copy the template project, duplicating all views and custom fields."""
     try:
-        print(f"Copying template project #{source_number} from '{source_owner}' as '{project_title}'...")
+        print(
+            f"Copying template project #{source_number} from "
+            f"'{source_owner}' as '{project_title}'..."
+        )
         output = run_cmd([
             "gh", "project", "copy", str(source_number),
             "--source-owner", source_owner,
@@ -70,30 +85,47 @@ def link_project_to_repo(owner, repo, project_number):
     """Link the copied project to the repository."""
     try:
         print(f"Linking repository '{owner}/{repo}' to project #{project_number}...")
-        run_cmd(["gh", "project", "link", str(project_number), "--owner", owner, "-R", f"{owner}/{repo}"])
+        run_cmd(
+            ["gh", "project", "link", str(project_number),
+             "--owner", owner, "-R", f"{owner}/{repo}"]
+        )
         print("Successfully linked repository to project.")
     except Exception as e:
-        print(f"Warning: Failed to link repository to project #{project_number}. Error: {e}")
+        print(
+            f"Warning: Failed to link repository to project "
+            f"#{project_number}. Error: {e}"
+        )
 
 def setup_github_project(project_title):
     """Copy the template's GitHub Project into this repository and link it."""
     if not shutil.which("gh"):
-        print("Warning: GitHub CLI 'gh' is not installed or not in PATH. Skipping GitHub Project initialization.")
+        print(
+            "Warning: GitHub CLI 'gh' is not installed or not in PATH. "
+            "Skipping GitHub Project initialization."
+        )
         return
 
     owner, repo = get_github_context()
     if not owner or not repo:
-        print("Warning: Skipping GitHub Project initialization due to missing repo context.")
+        print(
+            "Warning: Skipping GitHub Project initialization due to "
+            "missing repo context."
+        )
         return
 
     source_owner, source_number = get_template_project()
     if not source_owner or not source_number:
-        print("Warning: Skipping GitHub Project initialization due to missing template project.")
+        print(
+            "Warning: Skipping GitHub Project initialization due to "
+            "missing template project."
+        )
         return
 
     print(f"Initializing GitHub Project for owner: {owner}, repo: {repo}")
 
-    project_number = copy_template_project(source_owner, source_number, owner, project_title)
+    project_number = copy_template_project(
+        source_owner, source_number, owner, project_title
+    )
     if not project_number:
         return
 

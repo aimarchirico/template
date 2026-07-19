@@ -2,7 +2,7 @@ from .text import lower
 from .fs import replace_text
 
 def setup_frontend(default_mod, config_mod):
-    """Rename the frontend's package id, display name, and slug from the default to the configured values."""
+    """Rename the frontend's package id, name, and slug to the configured values."""
     def_name = default_mod["name"]
     cfg_name = config_mod["name"]
     def_pkg = default_mod["package"]
