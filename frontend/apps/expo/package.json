@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@aimarchirico/template-api-client": "workspace:*",
-    "expo": "~56.0.11",
+    "expo": "~57.0.7",
     "expo-constants": "~57.0.2",
     "expo-dev-client": "~57.0.4",
     "expo-linking": "~57.0.1",
