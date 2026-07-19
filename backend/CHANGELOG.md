@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.2](https://github.com/aimarchirico/template/compare/template-api-v1.4.1...template-api-v1.4.2) (2026-07-19)
+
+
+### Bug Fixes
+
+* update commons dependencies to latest versions ([c7cf468](https://github.com/aimarchirico/template/commit/c7cf468ff4df5b6a85436f609611a7b82e0f87f5))
+* update commons-convention version to 1.5.2 ([605f838](https://github.com/aimarchirico/template/commit/605f838d4be3a07f0df0019342237f15d611fa92))
+
 ## [1.4.1](https://github.com/aimarchirico/template/compare/template-api-v1.4.0...template-api-v1.4.1) (2026-07-06)
 
 
