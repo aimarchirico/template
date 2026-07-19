@@ -29,4 +29,10 @@ export default [
       'prettier/prettier': 'off',
     },
   },
+  {
+    files: ['**/\\[\\[path\\]\\].ts'],
+    rules: {
+      'check-file/filename-naming-convention': 'off',
+    },
+  },
 ];
