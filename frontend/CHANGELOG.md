@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.1](https://github.com/aimarchirico/template/compare/template-app-v1.7.0...template-app-v1.7.1) (2026-07-19)
+
+
+### Bug Fixes
+
+* change Cloudflare Pages function to ts ([be7b551](https://github.com/aimarchirico/template/commit/be7b55197a565a5a9aaa9fea64cc309c621bf00b))
+
 ## [1.7.0](https://github.com/aimarchirico/template/compare/template-app-v1.6.1...template-app-v1.7.0) (2026-07-19)
 
 
