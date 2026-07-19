@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.8.1](https://github.com/aimarchirico/template/compare/template-app-v1.8.0...template-app-v1.8.1) (2026-07-19)
+
+
+### Bug Fixes
+
+* move Cloudflare Pages function and environment configuration ([aedbcd4](https://github.com/aimarchirico/template/commit/aedbcd4dbffd8c862c2be3da6fd7b5e9c85f0794))
+* move Cloudflare Pages function and update ESLint configuration ([8f85e6d](https://github.com/aimarchirico/template/commit/8f85e6df465afb668ddd9f1a524f4628ada709f5))
+* update ESLint configuration to include specific file rules ([cedeb81](https://github.com/aimarchirico/template/commit/cedeb81e84aef7f1490b49ebac927a7ca3c905fa))
+
 ## [1.8.0](https://github.com/aimarchirico/template/compare/template-app-v1.7.1...template-app-v1.8.0) (2026-07-19)
 
 
