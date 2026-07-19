@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.8.0](https://github.com/aimarchirico/template/compare/template-app-v1.7.1...template-app-v1.8.0) (2026-07-19)
+
+
+### Features
+
+* add Cloudflare Pages function and environment configuration ([729d026](https://github.com/aimarchirico/template/commit/729d026f01b7ead471a8989c3ae56cb675c2f23a))
+
+
+### Bug Fixes
+
+* update ESLint configuration and format export statement in Cloudflare function ([839406f](https://github.com/aimarchirico/template/commit/839406fed1c0549dbd4b86b157a4e1eafa34b41f))
+
 ## [1.7.1](https://github.com/aimarchirico/template/compare/template-app-v1.7.0...template-app-v1.7.1) (2026-07-19)
 
 
