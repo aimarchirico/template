@@ -2,9 +2,9 @@
 description: Analyze unstaged changes and create logical, atomic git commits
 metadata:
     github-path: skills/commit
-    github-ref: refs/tags/commons-docs-v1.3.1
+    github-ref: refs/tags/commons-convention-v1.5.2
     github-repo: https://github.com/aimarchirico/commons
-    github-tree-sha: b5f4b565a5d3d8e2b20539a7d1a22550811fe348
+    github-tree-sha: 1819e282b3f3ea3f107978a9d98cadf38e8c3bdf
 name: commit
 ---
 ## When to Use
@@ -14,8 +14,11 @@ for committing, or run the commit skill.
 
 ## Execution Steps
 
-1. Preflight: Verify that `CONTRIBUTING.md` exists in the repository root. If it is missing, run `npx @aimarchirico/commons-docs materialize-templates` to materialize the documentation.
-2. Execute `git status` and `git diff` to analyze all unstaged changes (including untracked files).
+1. Preflight: Verify that `CONTRIBUTING.md` exists in the repository root. If it
+   is missing, run `npx @aimarchirico/commons-docs materialize-templates` to
+   materialize the documentation.
+2. Execute `git status` and `git diff` to analyze all unstaged changes
+   (including untracked files).
 3. If there are no changes to commit, notify the user and exit.
 4. Group the changes into logical, atomic units and draft a commit message for
    each group strictly following the rules in `CONTRIBUTING.md#commits`.

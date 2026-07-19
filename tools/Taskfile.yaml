@@ -50,5 +50,5 @@ tasks:
   skills:install:
     desc: Install skills
     cmds:
-      - gh skill install aimarchirico/template --all --scope project --agent antigravity
-      - gh skill install aimarchirico/template --all --scope project --agent claude-code
+      - gh skill install aimarchirico/commons --all --scope project --agent antigravity
+      - gh skill install aimarchirico/commons --all --scope project --agent claude-code
