@@ -52,3 +52,4 @@ tasks:
       - task: install
       - pnpm --filter ./apps/expo export
       - pnpm --filter ./apps/expo cloudflare:fix
+      - cp -r apps/expo/functions apps/expo/dist/functions
