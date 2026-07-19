@@ -84,14 +84,14 @@ importers:
         version: 0.21.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
     devDependencies:
       '@aimarchirico/commons-cloudflare':
-        specifier: ^2.0.0
-        version: 2.0.0
+        specifier: ^2.1.0
+        version: 2.1.0
       '@aimarchirico/commons-expo':
-        specifier: ^2.0.1
-        version: 2.0.1(@typescript-eslint/parser@8.62.1(eslint@9.39.4(jiti@2.7.0))(typescript@6.0.3))(eslint@9.39.4(jiti@2.7.0))(expo@56.0.13)(jiti@2.7.0)(react@19.2.3)(typescript@6.0.3)
+        specifier: ^2.1.0
+        version: 2.1.0(@typescript-eslint/parser@8.62.1(eslint@9.39.4(jiti@2.7.0))(typescript@6.0.3))(eslint@9.39.4(jiti@2.7.0))(expo@56.0.13)(jiti@2.7.0)(react@19.2.3)(typescript@6.0.3)
       '@aimarchirico/commons-ts':
-        specifier: ^1.4.1
-        version: 1.4.1(@typescript-eslint/parser@8.62.1(eslint@9.39.4(jiti@2.7.0))(typescript@6.0.3))(eslint@9.39.4(jiti@2.7.0))(jiti@2.7.0)(typescript@6.0.3)
+        specifier: ^1.5.0
+        version: 1.5.0(@typescript-eslint/parser@8.62.1(eslint@9.39.4(jiti@2.7.0))(typescript@6.0.3))(eslint@9.39.4(jiti@2.7.0))(jiti@2.7.0)(typescript@6.0.3)
       '@babel/core':
         specifier: ^7.20.0
         version: 7.29.7
@@ -121,11 +121,11 @@ importers:
         version: 1.18.1
     devDependencies:
       '@aimarchirico/commons-openapi':
-        specifier: ^2.0.0
-        version: 2.0.0(ajv@8.20.0)(mkdirp@1.0.4)
+        specifier: ^2.1.0
+        version: 2.1.0(ajv@8.20.0)(mkdirp@1.0.4)
       '@aimarchirico/commons-ts':
-        specifier: ^1.4.1
-        version: 1.4.1(eslint@9.39.4(jiti@2.7.0))(jiti@2.7.0)(typescript@6.0.3)
+        specifier: ^1.5.0
+        version: 1.5.0(eslint@9.39.4(jiti@2.7.0))(jiti@2.7.0)(typescript@6.0.3)
       eslint:
         specifier: ^9.39.2
         version: 9.39.4(jiti@2.7.0)
@@ -135,12 +135,12 @@ packages:
   '@adobe/css-tools@4.5.0':
     resolution: {integrity: sha512-6OzddxPio9UiWTCemp4N8cYLV2ZN1ncRnV1cVGtve7dhPOtRkleRyx32GQCYSwDYgaHU3USMm84tNsvKzRCa1Q==}
 
-  '@aimarchirico/commons-cloudflare@2.0.0':
-    resolution: {integrity: sha512-4Ebf9CQS/IgTpV95z6WxFWua4T1VqpqJw7ENH3OFuJZvwNzornz+QrhW9pOPSGIsrA+Zt+wmJBYS5Ak5OH7j2w==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-cloudflare/2.0.0/8894e2a570473237d83be0004c1fed0adea6bc61}
+  '@aimarchirico/commons-cloudflare@2.1.0':
+    resolution: {integrity: sha512-A6JxmNBjk3VZwoGbxqvgro4MBQJ3XeORpgHNdSiO5PoWPMPkg3+kR0667J3D1fhJGRXo/3YkOCiLBeyBEnWfmA==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-cloudflare/2.1.0/b143337d124169b72ce99a71c82af11e9f1ffe71}
     hasBin: true
 
-  '@aimarchirico/commons-expo@2.0.1':
-    resolution: {integrity: sha512-PUsNhHAJP4iiV6VYBGLE1qwzGpD9ZbkIaHbTpAsTostywRqRm34WaWXYwpdGs4V2p0a94p1jf1VVqO4S4REvQg==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-expo/2.0.1/b96a88ea71f4d41f7bf4f1fcc22d8d71830edadd}
+  '@aimarchirico/commons-expo@2.1.0':
+    resolution: {integrity: sha512-KvFcEqm58q/9yjogDavKa7z0+jwdFB22X6W42NhnywNl50RfPydSpo9ougqBQgP3GF+HeLSkuxoU81BzhY4hmw==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-expo/2.1.0/3c668958103a9d6812d21575642cf809e869d42d}
     hasBin: true
     peerDependencies:
       eslint: ^9.39.2
@@ -148,12 +148,12 @@ packages:
       react: '*'
       typescript: ^6.0.3
 
-  '@aimarchirico/commons-openapi@2.0.0':
-    resolution: {integrity: sha512-k1rYRxrGL9nHKBH6FZKBh5zJuvIlGfnhKp4WIZkPCYC6gjItYP4Z9L5Dv5X4QrgqU9kLfLWg2+g9bL9/MZHxkQ==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-openapi/2.0.0/e1698b270d08560bea3c0e0ff93b0606ac79526f}
+  '@aimarchirico/commons-openapi@2.1.0':
+    resolution: {integrity: sha512-V/l13BedfqkjYPEBMKM6kPaE8+rUr5moMYPa51G1R+4/l7c76/eupXwrvkCRmqmg8v7T9cXVEJnYcvew0bBa3w==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-openapi/2.1.0/3e95d89ffa76913501108fa3c002e220e3769ae6}
     hasBin: true
 
-  '@aimarchirico/commons-ts@1.4.1':
-    resolution: {integrity: sha512-mGHKCrO/ufp0hgUmBF0uaa46brPQ32aOF41aRdggFJxwlEOE9XisnWhOGhMtXgDHlyBz6KA3IbsSb9ZYJM08uQ==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-ts/1.4.1/18e46ea419ef39f137d88312d16fb4a6c2c0fe25}
+  '@aimarchirico/commons-ts@1.5.0':
+    resolution: {integrity: sha512-JiApCi3Tng8PnFDZVwq5LKpIyglRYyoKz73i03KK0CjMiXmceT5uLTbhb1ZRSUgLq38zZaptS2bsmaXcEZiZww==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-ts/1.5.0/a690b1dc91ae7fd9b7c175b878c01044dae81604}
     peerDependencies:
       eslint: ^9.39.2
       typescript: ^6.0.3
@@ -5523,14 +5523,14 @@ snapshots:
 
   '@adobe/css-tools@4.5.0': {}
 
-  '@aimarchirico/commons-cloudflare@2.0.0':
+  '@aimarchirico/commons-cloudflare@2.1.0':
     dependencies:
       replace-in-file: 8.4.0
       shelljs: 0.10.0
 
-  '@aimarchirico/commons-expo@2.0.1(@typescript-eslint/parser@8.62.1(eslint@9.39.4(jiti@2.7.0))(typescript@6.0.3))(eslint@9.39.4(jiti@2.7.0))(expo@56.0.13)(jiti@2.7.0)(react@19.2.3)(typescript@6.0.3)':
+  '@aimarchirico/commons-expo@2.1.0(@typescript-eslint/parser@8.62.1(eslint@9.39.4(jiti@2.7.0))(typescript@6.0.3))(eslint@9.39.4(jiti@2.7.0))(expo@56.0.13)(jiti@2.7.0)(react@19.2.3)(typescript@6.0.3)':
     dependencies:
-      '@aimarchirico/commons-ts': 1.4.1(@typescript-eslint/parser@8.62.1(eslint@9.39.4(jiti@2.7.0))(typescript@6.0.3))(eslint@9.39.4(jiti@2.7.0))(jiti@2.7.0)(typescript@6.0.3)
+      '@aimarchirico/commons-ts': 1.5.0(@typescript-eslint/parser@8.62.1(eslint@9.39.4(jiti@2.7.0))(typescript@6.0.3))(eslint@9.39.4(jiti@2.7.0))(jiti@2.7.0)(typescript@6.0.3)
       eslint: 9.39.4(jiti@2.7.0)
       eslint-config-expo: 57.0.0(eslint@9.39.4(jiti@2.7.0))(typescript@6.0.3)
       expo: 56.0.13(@babel/core@7.29.7)(@expo/dom-webview@56.0.6)(@expo/metro-runtime@56.0.16)(expo-router@56.2.12)(react-dom@19.2.3(react@19.2.3))(react-native-web@0.21.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-native-worklets@0.8.3(@babel/core@7.29.7)(@react-native/metro-config@0.86.0(@babel/core@7.29.7))(react-native@0.85.3(@babel/core@7.29.7)(@react-native/metro-config@0.86.0(@babel/core@7.29.7))(@types/react@19.2.17)(react@19.2.3))(react@19.2.3))(react-native@0.85.3(@babel/core@7.29.7)(@react-native/metro-config@0.86.0(@babel/core@7.29.7))(@types/react@19.2.17)(react@19.2.3))(react@19.2.3)(typescript@6.0.3)
@@ -5546,7 +5546,7 @@ snapshots:
       - jiti
       - supports-color
 
-  '@aimarchirico/commons-openapi@2.0.0(ajv@8.20.0)(mkdirp@1.0.4)':
+  '@aimarchirico/commons-openapi@2.1.0(ajv@8.20.0)(mkdirp@1.0.4)':
     dependencies:
       '@openapitools/openapi-generator-cli': 2.39.1
       widdershins: 4.0.1(ajv@8.20.0)(mkdirp@1.0.4)
@@ -5563,7 +5563,7 @@ snapshots:
       - mkdirp
       - supports-color
 
-  '@aimarchirico/commons-ts@1.4.1(@typescript-eslint/parser@8.62.1(eslint@9.39.4(jiti@2.7.0))(typescript@6.0.3))(eslint@9.39.4(jiti@2.7.0))(jiti@2.7.0)(typescript@6.0.3)':
+  '@aimarchirico/commons-ts@1.5.0(@typescript-eslint/parser@8.62.1(eslint@9.39.4(jiti@2.7.0))(typescript@6.0.3))(eslint@9.39.4(jiti@2.7.0))(jiti@2.7.0)(typescript@6.0.3)':
     dependencies:
       eslint: 9.39.4(jiti@2.7.0)
       eslint-plugin-check-file: 3.3.1(eslint@9.39.4(jiti@2.7.0))
@@ -5581,7 +5581,7 @@ snapshots:
       - jiti
       - supports-color
 
-  '@aimarchirico/commons-ts@1.4.1(eslint@9.39.4(jiti@2.7.0))(jiti@2.7.0)(typescript@6.0.3)':
+  '@aimarchirico/commons-ts@1.5.0(eslint@9.39.4(jiti@2.7.0))(jiti@2.7.0)(typescript@6.0.3)':
     dependencies:
       eslint: 9.39.4(jiti@2.7.0)
       eslint-plugin-check-file: 3.3.1(eslint@9.39.4(jiti@2.7.0))
