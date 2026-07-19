@@ -13,8 +13,8 @@ def setup_frontend(default_mod, config_mod):
     def_lower = lower(def_name)
     cfg_lower = lower(cfg_name)
 
-    # app.config.js: package id and display name
-    config_file = "frontend/apps/expo/app.config.js"
+    # app.config.ts: package id and display name
+    config_file = "frontend/apps/expo/app.config.ts"
     replace_text(config_file, def_pkg, cfg_pkg)
     replace_text(config_file, def_name, cfg_name)
 

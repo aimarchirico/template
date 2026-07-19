@@ -8,7 +8,7 @@
     "frontend": {
       "release-type": "simple",
       "component": "template-app",
-      "extra-files": ["apps/expo/app.config.js"]
+      "extra-files": ["apps/expo/app.config.ts"]
     }
   }
 }

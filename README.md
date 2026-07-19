@@ -35,4 +35,4 @@ to initialize the project.
    python -m init
    ```
 
-3. Create documentation and issues according to the guidelines in [`CONTRIBUTING.md`](CONTRIBUTING.md).
+3. Create documentation and issues according to the guidelines in [`CONTRIBUTING.md`](CONTRIBUTING.md).
