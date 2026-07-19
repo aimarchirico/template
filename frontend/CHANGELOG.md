@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.7.0](https://github.com/aimarchirico/template/compare/template-app-v1.6.1...template-app-v1.7.0) (2026-07-19)
+
+
+### Features
+
+* **expo:** restore commons-expo for configuration deduplication ([121c6f8](https://github.com/aimarchirico/template/commit/121c6f8b130a2bd8767972af4fde52caabed0d42))
+
+
+### Bug Fixes
+
+* **dependencies:** update @aimarchirico/commons-ts to version 1.1.1 ([7f489ad](https://github.com/aimarchirico/template/commit/7f489ad08e587b715434fc441dcd3b691d209814))
+* streamline eslint configuration by removing unnecessary line breaks ([6ee726c](https://github.com/aimarchirico/template/commit/6ee726ccf2cb1bf0379a1c21fc226a7ea73f3d86))
+* update commons dependencies to latest versions ([c7cf468](https://github.com/aimarchirico/template/commit/c7cf468ff4df5b6a85436f609611a7b82e0f87f5))
+* update dependencies to latest versions for commons packages ([b20e837](https://github.com/aimarchirico/template/commit/b20e837092d837e825bc334db888417e63c0b254))
+
 ## [1.6.1](https://github.com/aimarchirico/template/compare/template-app-v1.6.0...template-app-v1.6.1) (2026-07-15)
 
 
