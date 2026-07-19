@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.3](https://github.com/aimarchirico/template/compare/template-app-v1.8.2...template-app-v1.8.3) (2026-07-19)
+
+
+### Bug Fixes
+
+* add wrangler dep ([16220df](https://github.com/aimarchirico/template/commit/16220dfcb8961ec4af70ed4e8f49e42c63811155))
+
 ## [1.8.2](https://github.com/aimarchirico/template/compare/template-app-v1.8.1...template-app-v1.8.2) (2026-07-19)
 
 
