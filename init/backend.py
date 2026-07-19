@@ -3,7 +3,7 @@ from .text import pascal, lower, path
 from .fs import replace_text, move_files
 
 def setup_backend(default_mod, config_mod):
-    """Rename the backend's package, image, and app names from the default to the configured values."""
+    """Rename the backend's package, image, and app names to the configured values."""
     def_name = default_mod["name"]
     cfg_name = config_mod["name"]
     def_pkg = default_mod["package"]
@@ -22,7 +22,9 @@ def setup_backend(default_mod, config_mod):
     pkg_files = ["backend/app/build.gradle.kts"]
     for base in ("main", "test"):
         pkg_files.extend(
-            glob.glob(f"backend/app/src/{base}/kotlin/{def_pkg_path}/**/*.kt", recursive=True)
+            glob.glob(
+                f"backend/app/src/{base}/kotlin/{def_pkg_path}/**/*.kt", recursive=True
+            )
         )
     for f in pkg_files:
         replace_text(f, def_pkg, cfg_pkg)

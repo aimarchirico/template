@@ -14,7 +14,7 @@ def replace_text(file_path: str, old_text: str, new_text: str):
             f.write(new_content)
 
 def move_files(src_path: str, dest_path: str):
-    """Move src_path to dest_path, overwriting the destination and pruning emptied parents."""
+    """Move src_path to dest_path, overwriting it and pruning emptied parents."""
     if not os.path.exists(src_path):
         return
     if os.path.abspath(src_path) == os.path.abspath(dest_path):
@@ -40,9 +40,11 @@ def delete_files(path: str):
         os.remove(path)
 
 def _clean_empty_parents(src_path: str, dest_path: str):
-    """Remove now-empty parent directories of src_path, stopping at the common ancestor or project root."""
+    """Remove emptied parent dirs of src_path, up to the common ancestor or root."""
     try:
-        common = os.path.commonpath([os.path.abspath(src_path), os.path.abspath(dest_path)])
+        common = os.path.commonpath(
+            [os.path.abspath(src_path), os.path.abspath(dest_path)]
+        )
     except ValueError:
         common = os.path.abspath(".")
 
@@ -67,7 +69,7 @@ def load_json(path: str) -> dict:
         return json.load(f)
 
 def remove_dependabot_ecosystem(directory_pattern: str):
-    """Remove the dependabot package-ecosystem block whose directory matches directory_pattern."""
+    """Remove the dependabot package-ecosystem block matching directory_pattern."""
     dependabot_path = ".github/dependabot.yaml"
     if not os.path.exists(dependabot_path):
         return
@@ -83,9 +85,14 @@ def remove_dependabot_ecosystem(directory_pattern: str):
             block_lines = [line]
             j = i + 1
             is_target = False
-            while j < len(lines) and not lines[j].strip().startswith("- package-ecosystem:"):
+            while j < len(lines) and not lines[j].strip().startswith(
+                "- package-ecosystem:"
+            ):
                 block_lines.append(lines[j])
-                if f'directory: "{directory_pattern}"' in lines[j] or f'directory: {directory_pattern}' in lines[j]:
+                if (
+                    f'directory: "{directory_pattern}"' in lines[j]
+                    or f'directory: {directory_pattern}' in lines[j]
+                ):
                     is_target = True
                 j += 1
             
