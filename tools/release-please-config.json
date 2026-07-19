@@ -1,4 +1,5 @@
 {
+  "separate-pull-requests": true,
   "packages": {
     "backend": {
       "release-type": "simple",
