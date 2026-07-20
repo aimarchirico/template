@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.4](https://github.com/aimarchirico/template/compare/template-app-v1.8.3...template-app-v1.8.4) (2026-07-20)
+
+
+### Bug Fixes
+
+* **frontend:** remove yargs-parser override breaking Android codegen ([6f78abc](https://github.com/aimarchirico/template/commit/6f78abc5e6406c092094ef725da99860ab52b367))
+
 ## [1.8.3](https://github.com/aimarchirico/template/compare/template-app-v1.8.2...template-app-v1.8.3) (2026-07-19)
 
 
