@@ -32,7 +32,7 @@ updates:
       - github-maven
 
   - package-ecosystem: 'npm'
-    directory: ['/frontend', '/tools']
+    directories: ['/frontend', '/tools']
     schedule:
       interval: 'weekly'
     groups:
