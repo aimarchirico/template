@@ -1,31 +1,25 @@
 version: 2
 registries:
-  github-npm:
-    type: npm-registry
-    url: https://npm.pkg.github.com
-    scope: '@aimarchirico'
-    token: ${{secrets.GH_PACKAGES_TOKEN}}
-
   github-maven:
     type: maven-repository
     url: https://maven.pkg.github.com/aimarchirico/commons
     username: x-access-token
     password: ${{secrets.GH_PACKAGES_TOKEN}}
 
-updates:
-  - package-ecosystem: 'npm'
-    directory: '/tools'
-    registries:
-      - github-npm
-    schedule:
-      interval: 'weekly'
-    cooldown:
-      default-days: 1
+  github-npm:
+    type: npm-registry
+    url: https://npm.pkg.github.com
+    scope: '@aimarchirico'
+    token: ${{secrets.GH_PACKAGES_TOKEN}}
 
+updates:
   - package-ecosystem: 'github-actions'
     directory: '/.github'
     schedule:
       interval: 'weekly'
+    groups:
+      actions:
+        patterns: ["*"]
 
   - package-ecosystem: 'gradle'
     directory: '/backend'
@@ -33,12 +27,18 @@ updates:
       - github-maven
     schedule:
       interval: 'weekly'
+    groups:
+      gradle-minor-patch:
+        update-types: ["minor", "patch"]
 
   - package-ecosystem: 'npm'
-    directory: '/frontend'
+    directory: ["/frontend", "/tools"]
     registries:
       - github-npm
     schedule:
       interval: 'weekly'
+    groups:
+      npm-minor-patch:
+        update-types: ["minor", "patch"]
     cooldown:
       default-days: 1
