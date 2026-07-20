@@ -22,4 +22,3 @@ overrides:
   httpsnippet>form-data: ^3.0.4
   oas-validator>ajv: ^8.18.0
   widdershins>markdown-it: ^12.3.2
-  yargs-parser: ^13.1.2
