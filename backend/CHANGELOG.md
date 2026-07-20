@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.3](https://github.com/aimarchirico/template/compare/template-api-v1.4.2...template-api-v1.4.3) (2026-07-20)
+
+
+### Bug Fixes
+
+* update database credentials in .env.example ([ad323d9](https://github.com/aimarchirico/template/commit/ad323d99e9e4514fc3f6b6d3ae2f1d3f78e6e897))
+
 ## [1.4.2](https://github.com/aimarchirico/template/compare/template-api-v1.4.1...template-api-v1.4.2) (2026-07-19)
 
 
