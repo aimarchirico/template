@@ -28,7 +28,12 @@ def setup_frontend(default_mod, config_mod):
         replace_text(f, f"{def_scope}/{def_lower}", f"{cfg_scope}/{cfg_lower}")
 
     # .env.example: API context path
-    replace_text("frontend/.env.example", def_lower, cfg_lower)
+    env_files = [
+        "frontend/.env.example",
+        "frontend/apps/expo/functions/api/.env.example"
+    ]
+    for f in env_files:
+        replace_text(f, def_lower, cfg_lower)
 
     # Release please config component
     replace_text("tools/release-please-config.json", "template-app", f"{cfg_lower}-app")
