@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.4](https://github.com/aimarchirico/template/compare/template-api-v1.4.3...template-api-v1.4.4) (2026-07-21)
+
+
+### Bug Fixes
+
+* bump commons-convention to 1.6.1 for mapstruct java-parameters fix ([4f961fd](https://github.com/aimarchirico/template/commit/4f961fddf5ee0acb2b558711df00cb61d41a180f))
+* bump commons-convention to 1.6.1 for mapstruct java-parameters fix ([4ae11f9](https://github.com/aimarchirico/template/commit/4ae11f9c1a950b5df5bfec353bac6a4d086eb903))
+
 ## [1.4.3](https://github.com/aimarchirico/template/compare/template-api-v1.4.2...template-api-v1.4.3) (2026-07-20)
 
 
