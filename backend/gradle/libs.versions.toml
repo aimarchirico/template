@@ -6,7 +6,7 @@ springdoc = "3.0.3"
 ktfmt = "0.26.0"
 archunit = "1.4.2"
 commons-security = "2.0.1"
-commons-test = "2.0.0"
+commons-test = "2.1.0"
 commons-convention="1.6.1"
 
 [libraries]
