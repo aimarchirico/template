@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # Build stage
-FROM eclipse-temurin:25-jdk AS builder
+FROM --platform=$BUILDPLATFORM eclipse-temurin:25-jdk AS builder
 WORKDIR /app
 COPY . .
 RUN chmod +x ./gradlew
