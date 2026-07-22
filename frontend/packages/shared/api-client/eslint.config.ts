@@ -1,8 +1,10 @@
 import baseConfig from '@aimarchirico/commons-ts/eslint';
+import architectureConfig from '@aimarchirico/commons-ts/eslint-architecture';
 
 export default [
   ...baseConfig,
+  ...architectureConfig,
   {
-    ignores: ['src/generated/**'],
+    ignores: ['src/services/generated/**'],
   },
 ];
