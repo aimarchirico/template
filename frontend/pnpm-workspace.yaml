@@ -7,6 +7,9 @@ allowBuilds:
   '@openapitools/openapi-generator-cli': true
   core-js: true
   unrs-resolver: true
+overrides:
+  jiti: ^2.7.0
+minimumReleaseAgeStrict: true
 minimumReleaseAgeExclude:
   - '@aimarchirico/*'
   - '@expo/cli@57.0.10'
@@ -32,4 +35,3 @@ minimumReleaseAgeExclude:
   - expo-router@57.0.8
   - expo-splash-screen@57.0.5
   - '@expo/metro-runtime@57.0.7'
-minimumReleaseAgeStrict: true
