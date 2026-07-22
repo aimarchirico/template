@@ -31,4 +31,5 @@ minimumReleaseAgeExclude:
   - expo-linking@57.0.4
   - expo-router@57.0.8
   - expo-splash-screen@57.0.5
+  - '@expo/metro-runtime@57.0.7'
 minimumReleaseAgeStrict: true
