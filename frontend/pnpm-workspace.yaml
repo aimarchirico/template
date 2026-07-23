@@ -5,11 +5,11 @@ packacges:
 nodeLinker: 'hoisted'
 allowBuilds:
   '@openapitools/openapi-generator-cli': true
-  core-js: true
-  unrs-resolver: true
+  'core-js': true
+  'unrs-resolver': true
 overrides:
-  jiti: '^2.7.0'
-  uuid: '^11.1.1'
+  'jiti': '^2.7.0'
+  'uuid': '^11.1.1'
 minimumReleaseAgeStrict: true
 minimumReleaseAgeExclude:
   - '@aimarchirico/*'
