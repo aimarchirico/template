@@ -1,4 +1,4 @@
-import baseConfig from '@aimarchirico/commons-ts/eslint-architecture';
+import baseConfig from '@aimarchirico/commons-ts/eslint-folders';
 
 export default [
   ...baseConfig,
