@@ -13,8 +13,8 @@ def setup_frontend(default_mod, config_mod):
     def_lower = lower(def_name)
     cfg_lower = lower(cfg_name)
 
-    # app.config.js: package id and display name
-    config_file = "frontend/apps/expo/app.config.js"
+    # app.config.ts: package id and display name
+    config_file = "frontend/apps/expo/app.config.ts"
     replace_text(config_file, def_pkg, cfg_pkg)
     replace_text(config_file, def_name, cfg_name)
 
@@ -28,7 +28,12 @@ def setup_frontend(default_mod, config_mod):
         replace_text(f, f"{def_scope}/{def_lower}", f"{cfg_scope}/{cfg_lower}")
 
     # .env.example: API context path
-    replace_text("frontend/.env.example", def_lower, cfg_lower)
+    env_files = [
+        "frontend/.env.example",
+        "frontend/apps/expo/functions/api/.env.example"
+    ]
+    for f in env_files:
+        replace_text(f, def_lower, cfg_lower)
 
     # Release please config component
     replace_text("tools/release-please-config.json", "template-app", f"{cfg_lower}-app")

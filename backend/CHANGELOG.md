@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.4.4](https://github.com/aimarchirico/template/compare/template-api-v1.4.3...template-api-v1.4.4) (2026-07-21)
+
+
+### Bug Fixes
+
+* bump commons-convention to 1.6.1 for mapstruct java-parameters fix ([4f961fd](https://github.com/aimarchirico/template/commit/4f961fddf5ee0acb2b558711df00cb61d41a180f))
+* bump commons-convention to 1.6.1 for mapstruct java-parameters fix ([4ae11f9](https://github.com/aimarchirico/template/commit/4ae11f9c1a950b5df5bfec353bac6a4d086eb903))
+
+## [1.4.3](https://github.com/aimarchirico/template/compare/template-api-v1.4.2...template-api-v1.4.3) (2026-07-20)
+
+
+### Bug Fixes
+
+* update database credentials in .env.example ([ad323d9](https://github.com/aimarchirico/template/commit/ad323d99e9e4514fc3f6b6d3ae2f1d3f78e6e897))
+
+## [1.4.2](https://github.com/aimarchirico/template/compare/template-api-v1.4.1...template-api-v1.4.2) (2026-07-19)
+
+
+### Bug Fixes
+
+* update commons dependencies to latest versions ([c7cf468](https://github.com/aimarchirico/template/commit/c7cf468ff4df5b6a85436f609611a7b82e0f87f5))
+* update commons-convention version to 1.5.2 ([605f838](https://github.com/aimarchirico/template/commit/605f838d4be3a07f0df0019342237f15d611fa92))
+
 ## [1.4.1](https://github.com/aimarchirico/template/compare/template-api-v1.4.0...template-api-v1.4.1) (2026-07-06)
 
 

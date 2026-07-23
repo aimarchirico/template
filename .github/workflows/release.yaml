@@ -121,7 +121,7 @@ jobs:
         with:
           command: frontend:build:web
           node_cache_path: frontend/pnpm-lock.yaml
-          output_directory: frontend/apps/expo/dist
+          working_directory: frontend/apps/expo
           cloudflare_account_id: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
           cloudflare_api_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           build_env: |

@@ -1,5 +1,70 @@
 # Changelog
 
+## [1.8.4](https://github.com/aimarchirico/template/compare/template-app-v1.8.3...template-app-v1.8.4) (2026-07-20)
+
+
+### Bug Fixes
+
+* **frontend:** remove yargs-parser override breaking Android codegen ([6f78abc](https://github.com/aimarchirico/template/commit/6f78abc5e6406c092094ef725da99860ab52b367))
+
+## [1.8.3](https://github.com/aimarchirico/template/compare/template-app-v1.8.2...template-app-v1.8.3) (2026-07-19)
+
+
+### Bug Fixes
+
+* add wrangler dep ([16220df](https://github.com/aimarchirico/template/commit/16220dfcb8961ec4af70ed4e8f49e42c63811155))
+
+## [1.8.2](https://github.com/aimarchirico/template/compare/template-app-v1.8.1...template-app-v1.8.2) (2026-07-19)
+
+
+### Bug Fixes
+
+* add API task to install command in Taskfile ([d58ce91](https://github.com/aimarchirico/template/commit/d58ce9170ec4389313cb6e0653f8b88375d918b9))
+* temporarily remove API task from install command ([9a58e3f](https://github.com/aimarchirico/template/commit/9a58e3f79d49f9d82817df1a00a719ffd19e2c22))
+
+## [1.8.1](https://github.com/aimarchirico/template/compare/template-app-v1.8.0...template-app-v1.8.1) (2026-07-19)
+
+
+### Bug Fixes
+
+* move Cloudflare Pages function and environment configuration ([aedbcd4](https://github.com/aimarchirico/template/commit/aedbcd4dbffd8c862c2be3da6fd7b5e9c85f0794))
+* move Cloudflare Pages function and update ESLint configuration ([8f85e6d](https://github.com/aimarchirico/template/commit/8f85e6df465afb668ddd9f1a524f4628ada709f5))
+* update ESLint configuration to include specific file rules ([cedeb81](https://github.com/aimarchirico/template/commit/cedeb81e84aef7f1490b49ebac927a7ca3c905fa))
+
+## [1.8.0](https://github.com/aimarchirico/template/compare/template-app-v1.7.1...template-app-v1.8.0) (2026-07-19)
+
+
+### Features
+
+* add Cloudflare Pages function and environment configuration ([729d026](https://github.com/aimarchirico/template/commit/729d026f01b7ead471a8989c3ae56cb675c2f23a))
+
+
+### Bug Fixes
+
+* update ESLint configuration and format export statement in Cloudflare function ([839406f](https://github.com/aimarchirico/template/commit/839406fed1c0549dbd4b86b157a4e1eafa34b41f))
+
+## [1.7.1](https://github.com/aimarchirico/template/compare/template-app-v1.7.0...template-app-v1.7.1) (2026-07-19)
+
+
+### Bug Fixes
+
+* change Cloudflare Pages function to ts ([be7b551](https://github.com/aimarchirico/template/commit/be7b55197a565a5a9aaa9fea64cc309c621bf00b))
+
+## [1.7.0](https://github.com/aimarchirico/template/compare/template-app-v1.6.1...template-app-v1.7.0) (2026-07-19)
+
+
+### Features
+
+* **expo:** restore commons-expo for configuration deduplication ([121c6f8](https://github.com/aimarchirico/template/commit/121c6f8b130a2bd8767972af4fde52caabed0d42))
+
+
+### Bug Fixes
+
+* **dependencies:** update @aimarchirico/commons-ts to version 1.1.1 ([7f489ad](https://github.com/aimarchirico/template/commit/7f489ad08e587b715434fc441dcd3b691d209814))
+* streamline eslint configuration by removing unnecessary line breaks ([6ee726c](https://github.com/aimarchirico/template/commit/6ee726ccf2cb1bf0379a1c21fc226a7ea73f3d86))
+* update commons dependencies to latest versions ([c7cf468](https://github.com/aimarchirico/template/commit/c7cf468ff4df5b6a85436f609611a7b82e0f87f5))
+* update dependencies to latest versions for commons packages ([b20e837](https://github.com/aimarchirico/template/commit/b20e837092d837e825bc334db888417e63c0b254))
+
 ## [1.6.1](https://github.com/aimarchirico/template/compare/template-app-v1.6.0...template-app-v1.6.1) (2026-07-15)
 
 
