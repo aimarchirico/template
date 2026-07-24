@@ -38,7 +38,7 @@
   "devDependencies": {
     "@aimarchirico/commons-cloudflare": "^2.1.1",
     "@aimarchirico/commons-expo": "^3.0.2",
-    "@aimarchirico/commons-ts": "^2.0.1",
+    "@aimarchirico/commons-ts": "^2.0.2",
     "@babel/core": "^7.20.0",
     "@types/node": "^26.0.1",
     "@types/react": "~19.2.14",
