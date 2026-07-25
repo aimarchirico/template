@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.6](https://github.com/aimarchirico/template/compare/template-app-v1.8.5...template-app-v1.8.6) (2026-07-25)
+
+
+### Bug Fixes
+
+* **_layout.tsx:** remove @ alias ([3336b37](https://github.com/aimarchirico/template/commit/3336b374f1f1331cc91756b238e06ee14a29ee81))
+
 ## [1.8.5](https://github.com/aimarchirico/template/compare/template-app-v1.8.4...template-app-v1.8.5) (2026-07-25)
 
 
