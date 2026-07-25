@@ -30,7 +30,7 @@ management:
         include: health,info
 
 info:
-  version: '1.4.4' # x-release-please-version
+  version: '1.4.5' # x-release-please-version
 
 server:
   servlet:
@@ -46,7 +46,7 @@ springdoc:
   openapi:
     info:
       title: Template API
-      version: '1.4.4' # x-release-please-version
+      version: '1.4.5' # x-release-please-version
 
 proxy-secret: ${PROXY_SECRET:}
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.5](https://github.com/aimarchirico/template/compare/template-api-v1.4.4...template-api-v1.4.5) (2026-07-25)
+
+
+### Performance Improvements
+
+* **backend:** build jar on native platform to avoid arm64 emulation ([ca04ecf](https://github.com/aimarchirico/template/commit/ca04ecfab1dd7444ffe2dbc47bbd958148defe61))
+
 ## [1.4.4](https://github.com/aimarchirico/template/compare/template-api-v1.4.3...template-api-v1.4.4) (2026-07-21)
 
 
