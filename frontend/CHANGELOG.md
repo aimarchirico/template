@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.8.5](https://github.com/aimarchirico/template/compare/template-app-v1.8.4...template-app-v1.8.5) (2026-07-25)
+
+
+### Bug Fixes
+
+* update eslint config import to use eslint-app ([c30940a](https://github.com/aimarchirico/template/commit/c30940aa70dd2b1df2931c7c915b4e5010b942c0))
+* update lockfile ([a359170](https://github.com/aimarchirico/template/commit/a3591708687745ed8f9a5de38a32257f9b1019f2))
+
 ## [1.8.4](https://github.com/aimarchirico/template/compare/template-app-v1.8.3...template-app-v1.8.4) (2026-07-20)
 
 
