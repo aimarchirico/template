@@ -13,3 +13,6 @@ expo-env.d.ts
 # Turborepo & pnpm
 .turbo/
 pnpm-debug.log*
+
+# Generated API client
+**/src/services/generated/

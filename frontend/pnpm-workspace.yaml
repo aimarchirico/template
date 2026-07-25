@@ -2,18 +2,39 @@ packages:
   - 'apps/*'
   - 'packages/features/*'
   - 'packages/shared/*'
-nodeLinker: hoisted
+nodeLinker: 'hoisted'
 allowBuilds:
   '@openapitools/openapi-generator-cli': true
-  core-js: true
-  esbuild: true
-  sharp: true
-  unrs-resolver: true
-  workerd: true
+  'core-js': true
+  'esbuild': true
+  'sharp': true
+  'unrs-resolver': true
+  'workerd': true
+overrides:
+  'uuid': '^11.1.1'
+minimumReleaseAgeStrict: true
 minimumReleaseAgeExclude:
   - '@aimarchirico/*'
-
-overrides:
-  jiti: ^2.7.0
-  tmp: ^0.2.6
-  uuid: ^11.1.1
+  - '@expo/cli@57.0.10'
+  - '@expo/config-plugins@57.0.6'
+  - '@expo/config@57.0.6'
+  - '@expo/fingerprint@0.20.6'
+  - '@expo/image-utils@0.11.4'
+  - '@expo/metro-config@57.0.7'
+  - '@expo/prebuild-config@57.0.9'
+  - '@expo/require-utils@57.0.4'
+  - '@expo/router-server@57.0.4'
+  - 'babel-preset-expo@57.0.4'
+  - 'expo-asset@57.0.7'
+  - 'expo-constants@57.0.7'
+  - 'expo-modules-autolinking@57.0.9'
+  - 'expo-modules-core@57.0.7'
+  - 'expo-modules-jsi@57.0.4'
+  - 'expo@57.0.8'
+  - 'expo-dev-client@57.0.8'
+  - 'expo-dev-launcher@57.0.8'
+  - 'expo-dev-menu@57.0.8'
+  - 'expo-linking@57.0.4'
+  - 'expo-router@57.0.8'
+  - 'expo-splash-screen@57.0.5'
+  - '@expo/metro-runtime@57.0.7'
