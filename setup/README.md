@@ -40,7 +40,9 @@ setup/
 
 Three files are generated and gitignored: `.env` (your credentials),
 `manifest.resolved.json` (the manifest handed to Commons), and `.outputs.env`
-(the values one command produces for the next).
+(the values one command produces for the next). Nothing else is written here —
+the signing keystore deliberately lives outside the repository, at the path
+`ANDROID_KEYSTORE_FILE` names.
 
 ## Prerequisites
 
@@ -72,7 +74,9 @@ The deploy token only ever publishes a Pages build, so it gets nothing else.
 ### Finding the Access policy
 
 `ACCESS_POLICY_ID` is the reusable policy the shared API Access application
-uses; every project attaches its service token to the same one. List the
+uses; every project attaches its service token to the same one. Its value is not
+recorded in this repository — like every other account, zone, and tunnel
+identifier it belongs in `setup/.env`, not in version control. List the
 account's policies and take the id of the one the API application references:
 
 ```bash
@@ -124,6 +128,7 @@ gets pushed to GitHub — every value in it ends up there.
 | `VPS_HOST`                | VPS the API is deployed to.                                           |
 | `VPS_USER`                | User the deploy and this module connect as.                           |
 | `VPS_SSH_KEY_FILE`        | Path to that user's private key. Its contents become the secret.      |
+| `ANDROID_KEYSTORE_FILE`   | Path to the signing keystore, created if absent. Outside the repo.    |
 | `CLOUDFLARE_SETUP_TOKEN`  | Token this module provisions with.                                    |
 | `CLOUDFLARE_DEPLOY_TOKEN` | Token CI deploys Pages with.                                          |
 | `GH_PACKAGES_TOKEN`       | Reads `@aimarchirico` packages, here and in CI.                       |
@@ -212,12 +217,24 @@ three therefore run before the steps that consume them.
 Three values cannot be regenerated without consequence. Back them up when
 `task setup` reports them.
 
-- **The Android keystore** (`setup/release.keystore`, plus its passwords).
-  Replacing signing keys breaks updates for every installed copy of the app —
-  Play and any sideloaded install will refuse the new APK. `create-keystore`
-  never regenerates an existing keystore, and fails rather than replacing one
-  whose passwords it cannot verify. This file is gitignored; store it and the
-  two passwords in a password manager.
+- **The Android keystore**, at the path `ANDROID_KEYSTORE_FILE` names, plus its
+  two passwords. Replacing signing keys breaks updates for every installed copy
+  of the app — Play and any sideloaded install will refuse the new APK.
+  `create-keystore` never regenerates an existing keystore, and fails rather
+  than replacing one whose passwords it cannot verify.
+
+  This is the value with the weakest recovery story, so it is worth being
+  precise about where it lives. `create-keystore` generates it with `keytool`
+  into `ANDROID_KEYSTORE_FILE`, which must point **outside the repository** —
+  `task setup:check` refuses a path inside it, because a signing key in the
+  working tree is one `git add -f` or stray archive away from being published.
+  The base64 copy pushed to the `android-production` secret is *not* a backup:
+  GitHub never lets a secret be read back. So on the first run the local file is
+  the only readable copy in existence.
+
+  Copy it and both passwords into a password manager, or somewhere else durable
+  and off this machine, the moment `task setup` reports the keystore as created.
+  The run's summary prints the path and reminds you.
 - **The Access service token secret.** Cloudflare returns it only at creation.
   On a re-run the command reports the token as already present and leaves it
   alone, so keep the stored value. Rotating means deleting the token first and

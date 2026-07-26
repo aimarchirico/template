@@ -1,3 +1,8 @@
 .env
 .outputs.env
 manifest.resolved.json
+
+# Belt and braces: the keystore is configured to live outside the repository,
+# and task setup:check refuses a path inside it.
+*.keystore
+*.jks
