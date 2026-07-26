@@ -12,7 +12,7 @@ initialize documentation, or set up the issue backlog.
 
 ### 1. Preflight
 
-Verify that the `init/` directory and `CONTRIBUTING.md` exist in the repository
+Verify that the `setup/` directory and `CONTRIBUTING.md` exist in the repository
 root. If any are missing, halt execution and notify the user.
 
 ### 2. Parse Flags
@@ -25,10 +25,17 @@ Determine which initialization steps to run:
 
 ### 3. Project Initialization
 
-1. Read `init/default.json` to understand the default settings.
-2. Prompt the user to customize these settings.
-3. Save the customized configuration to `init/config.json`.
-4. Execute `python -m init`.
+1. Read `setup/default.json` to understand the default settings, and
+   `setup/README.md` for what each configuration value means.
+2. Prompt the user to customize these settings, including the backend host port,
+   which must be unique across projects on the VPS.
+3. Save the customized configuration to `setup/config.json`.
+4. Confirm the user has filled `setup/.env` from `setup/.env.example` and that
+   the browser-only prerequisites in `setup/README.md` exist. Run
+   `task setup:check` and report anything missing.
+5. Execute `task setup:init`, which renames the project and chains into
+   provisioning. Both it and `task setup` are idempotent and remain in the
+   repository afterwards.
 
 ### 4. Documentation Initialization
 
