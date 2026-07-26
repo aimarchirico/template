@@ -16,6 +16,8 @@ vars:
     sh: node scripts/config-value.mjs modules.backend.port
   EAS_PROJECT_ID:
     sh: node scripts/config-value.mjs modules.frontend.easProjectId
+  ANDROID_APPLICATION_ID:
+    sh: node scripts/config-value.mjs modules.frontend.package
   OUTPUTS: '{{.TASKFILE_DIR}}/.outputs.env'
   ENVIRONMENTS: 'api-production,android-production,web-production'
 
@@ -66,22 +68,12 @@ tasks:
         gh auth status >/dev/null 2>&1 || missing="$missing\n  - gh is not authenticated (run: gh auth login)"
         for key in CLOUDFLARE_ACCOUNT_ID CLOUDFLARE_SETUP_TOKEN CLOUDFLARE_DEPLOY_TOKEN \
                    CLOUDFLARE_ZONE_ID BASE_DOMAIN API_HOST TUNNEL_ID ACCESS_POLICY_ID \
-                   VPS_HOST VPS_USER VPS_SSH_KEY_FILE GH_PACKAGES_TOKEN EXPO_TOKEN \
-                   ANDROID_KEYSTORE_FILE; do
+                   VPS_HOST VPS_USER VPS_SSH_KEY_FILE GH_PACKAGES_TOKEN EXPO_TOKEN; do
           eval "value=\$$key"
           [ -n "$value" ] || missing="$missing\n  - $key is not set in setup/.env"
         done
         [ -n "$VPS_SSH_KEY_FILE" ] && [ ! -f "$VPS_SSH_KEY_FILE" ] &&
           missing="$missing\n  - VPS_SSH_KEY_FILE does not point at a file"
-        # A signing key inside the working tree is one stray `git add -f` from
-        # being published, so refuse the path outright rather than rely on
-        # .gitignore.
-        case "$(cd "$(dirname "$ANDROID_KEYSTORE_FILE")" 2>/dev/null && pwd)" in
-          "$(cd .. && pwd)"*)
-            missing="$missing\n  - ANDROID_KEYSTORE_FILE must point outside the repository" ;;
-          '')
-            missing="$missing\n  - ANDROID_KEYSTORE_FILE's directory does not exist" ;;
-        esac
         if [ -n "$missing" ]; then
           printf 'setup cannot run yet:%b\n' "$missing"
           exit 1
@@ -148,11 +140,11 @@ tasks:
 
   android:keystore:
     desc: Ensure the Android signing keystore exists and read back its values
-    # ANDROID_KEYSTORE_FILE comes from setup/.env and points outside the
-    # repository: it is a signing key, and a path inside the tree is one
-    # `git add -f` or stray archive away from leaking.
+    # The keystore is stored in EAS and read back from there, so no signing key
+    # is ever written into the repository or left on this machine.
     env:
       EAS_PROJECT_ID: '{{.EAS_PROJECT_ID}}'
+      ANDROID_APPLICATION_ID: '{{.ANDROID_APPLICATION_ID}}'
       ANDROID_KEY_ALIAS: '{{.SLUG}}'
       OUTPUT_FILE: '{{.OUTPUTS}}'
     cmds:
@@ -236,7 +228,7 @@ tasks:
         echo "  api url          https://$API_HOST/$SLUG"
         echo "  tunnel route     $API_HOST -> http://localhost:{{.BACKEND_PORT}}"
         echo "  backend env      $VPS_USER@$VPS_HOST:~/docker/$REPO/.env"
-        echo "  keystore         $ANDROID_KEYSTORE_FILE"
+        echo "  keystore         EAS, build credentials \"production\""
         echo
         if [ -f '{{.OUTPUTS}}' ]; then
           echo 'Values produced during this run and chained onward:'

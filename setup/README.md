@@ -41,8 +41,7 @@ setup/
 Three files are generated and gitignored: `.env` (your credentials),
 `manifest.resolved.json` (the manifest handed to Commons), and `.outputs.env`
 (the values one command produces for the next). Nothing else is written here —
-the signing keystore deliberately lives outside the repository, at the path
-`ANDROID_KEYSTORE_FILE` names.
+the signing keystore is stored in EAS, never in this repository.
 
 ## Prerequisites
 
@@ -128,11 +127,10 @@ gets pushed to GitHub — every value in it ends up there.
 | `VPS_HOST`                | VPS the API is deployed to.                                           |
 | `VPS_USER`                | User the deploy and this module connect as.                           |
 | `VPS_SSH_KEY_FILE`        | Path to that user's private key. Its contents become the secret.      |
-| `ANDROID_KEYSTORE_FILE`   | Path to the signing keystore, created if absent. Outside the repo.    |
 | `CLOUDFLARE_SETUP_TOKEN`  | Token this module provisions with.                                    |
 | `CLOUDFLARE_DEPLOY_TOKEN` | Token CI deploys Pages with.                                          |
 | `GH_PACKAGES_TOKEN`       | Reads `@aimarchirico` packages, here and in CI.                       |
-| `EXPO_TOKEN`              | Expo credentials for the EAS project.                                 |
+| `EXPO_TOKEN`              | Expo credentials. Also stores and reads back the keystore.            |
 
 ### What gets pushed to GitHub
 
@@ -200,7 +198,7 @@ Individual steps, for when one value rotates:
 | `task setup:cloudflare:pages`     | The Pages project and its custom domain.          |
 | `task setup:cloudflare:tunnel`    | The tunnel ingress route for `API_HOST`.          |
 | `task setup:cloudflare:token`     | The Access service token, attached to the policy. |
-| `task setup:android:keystore`     | The Android signing keystore.                     |
+| `task setup:android:keystore`     | The Android signing keystore, stored in EAS.      |
 | `task setup:backend:env`          | The backend `.env` and compose files on the VPS.  |
 | `task setup:cloudflare:pages-env` | The Pages runtime environment.                    |
 | `task setup:github:variables`     | The repository and environment variables.         |
@@ -217,43 +215,26 @@ three therefore run before the steps that consume them.
 Three values cannot be regenerated without consequence. Back them up when
 `task setup` reports them.
 
-- **The Android keystore**, at the path `ANDROID_KEYSTORE_FILE` names, plus its
-  two passwords. Replacing signing keys breaks updates for every installed copy
-  of the app — Play and any sideloaded install will refuse the new APK.
-  `create-keystore` never regenerates an existing keystore, and fails rather
-  than replacing one whose passwords it cannot verify.
+- **The Android keystore.** Replacing signing keys breaks updates for every
+  installed copy of the app — Play and any sideloaded install will refuse the new
+  APK.
 
-  This is the value with the weakest recovery story, so it is worth being
-  precise about where it lives. `create-keystore` generates it with `keytool`
-  into `ANDROID_KEYSTORE_FILE`, which must point **outside the repository** —
-  `task setup:check` refuses a path inside it, because a signing key in the
-  working tree is one `git add -f` or stray archive away from being published.
-  The base64 copy pushed to the `android-production` secret is *not* a backup:
-  GitHub never lets a secret be read back. So on the first run the local file is
-  the only readable copy in existence.
+  This one needs the least of you, because EAS holds it. `create-keystore`
+  generates the keystore with `keytool`, stores it in EAS as the
+  `production` build credentials for the app, and reads it back on every later
+  run — so no signing key is ever written into this repository or left on the
+  machine that ran setup. An existing keystore is never regenerated; the command
+  reports it as already present and returns the stored values.
 
-  Copy it and both passwords into a password manager, or somewhere else durable
-  and off this machine, the moment `task setup` reports the keystore as created.
-  The run's summary prints the path and reminds you.
+  It is the same record the interactive `eas credentials` flow creates, so it is
+  visible on the project's credentials page at
+  [expo.dev](https://expo.dev) and can be downloaded from there or with
+  `npx eas-cli credentials --platform android` if you ever need the file itself.
 
-  **Storing it in EAS as well is worth the one manual step.** EAS is where
-  Android credentials are expected to live, and a keystore held there is
-  readable back from any machine, so it is a real backup rather than a copy you
-  have to remember to make. Uploading it cannot be scripted — `eas credentials`
-  hardcodes interactive mode and exposes no keystore flags, and driving its menus
-  from a script risks selecting "generate", which would replace the key — so do
-  it by hand once, after the first `task setup`:
-
-  ```bash
-  cd frontend/apps/expo
-  npx eas-cli credentials --platform android
-  # → the production build profile → Keystore → Set up a new keystore
-  #   → choose to upload, and give it the file at ANDROID_KEYSTORE_FILE
-  ```
-
-  From then on the same keystore exists in two places, and `eas credentials` can
-  download it if the local copy is ever lost. `task setup` keeps reading the
-  local file, so nothing about the automated flow changes.
+  Note that the base64 copy pushed to the `android-production` secret is *not* a
+  backup — GitHub never lets a secret be read back. EAS is the copy that matters,
+  which means the thing to protect is **access to the EAS account**. Keep
+  `EXPO_TOKEN` and that account's recovery intact.
 - **The Access service token secret.** Cloudflare returns it only at creation.
   On a re-run the command reports the token as already present and leaves it
   alone, so keep the stored value. Rotating means deleting the token first and

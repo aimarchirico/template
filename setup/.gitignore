@@ -2,7 +2,7 @@
 .outputs.env
 manifest.resolved.json
 
-# Belt and braces: the keystore is configured to live outside the repository,
-# and task setup:check refuses a path inside it.
+# Belt and braces. No keystore should ever land here — create-keystore stores it
+# in EAS and removes the temporary file keytool needs.
 *.keystore
 *.jks
