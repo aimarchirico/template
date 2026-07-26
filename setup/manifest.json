@@ -1,0 +1,94 @@
+{
+  "values": {
+    "frontendName": {"path": "modules.frontend.name"},
+    "frontendPackage": {"path": "modules.frontend.package"},
+    "frontendScope": {"path": "modules.frontend.scope"},
+    "easProjectId": {"path": "modules.frontend.easProjectId"},
+    "backendName": {"path": "modules.backend.name"},
+    "backendPackage": {"path": "modules.backend.package"},
+    "backendImage": {"path": "modules.backend.image"},
+    "backendPort": {"path": "modules.backend.port", "format": "'{}:8080'"}
+  },
+  "replacements": [
+    {
+      "value": "backendPackage",
+      "files": ["backend/app/build.gradle.kts", "backend/app/src/**/*.kt"]
+    },
+    {
+      "value": "backendName",
+      "transforms": ["pascal"],
+      "files": ["backend/app/src/**/*.kt"]
+    },
+    {
+      "value": "backendImage",
+      "files": ["backend/compose.prod.yaml"]
+    },
+    {
+      "value": "backendPort",
+      "files": ["backend/compose.prod.yaml"]
+    },
+    {
+      "value": "backendName",
+      "files": ["backend/app/src/main/resources/application.yaml"]
+    },
+    {
+      "value": "backendName",
+      "transforms": ["lower"],
+      "files": [
+        "backend/app/src/main/resources/application.yaml",
+        "backend/compose.yaml",
+        "backend/compose.prod.yaml",
+        "backend/settings.gradle.kts",
+        "backend/app/build.gradle.kts",
+        "backend/.env.example",
+        "tools/release-please-config.json"
+      ]
+    },
+    {
+      "value": "frontendPackage",
+      "files": ["frontend/apps/expo/app.config.ts"]
+    },
+    {
+      "value": "easProjectId",
+      "files": ["frontend/apps/expo/app.config.ts"]
+    },
+    {
+      "value": "frontendName",
+      "files": ["frontend/apps/expo/app.config.ts"]
+    },
+    {
+      "value": "frontendScope",
+      "files": [
+        "frontend/package.json",
+        "frontend/apps/expo/package.json",
+        "frontend/packages/shared/api-client/package.json"
+      ]
+    },
+    {
+      "value": "frontendName",
+      "transforms": ["lower"],
+      "files": [
+        "frontend/package.json",
+        "frontend/apps/expo/package.json",
+        "frontend/packages/shared/api-client/package.json",
+        "frontend/apps/expo/functions/api/.env.example",
+        "tools/release-please-config.json"
+      ]
+    }
+  ],
+  "moves": [
+    {
+      "from": "backend/app/src/main/kotlin/{{backendPackage|path}}",
+      "to": "backend/app/src/main/kotlin/{{backendPackage|path}}"
+    },
+    {
+      "from": "backend/app/src/test/kotlin/{{backendPackage|path}}",
+      "to": "backend/app/src/test/kotlin/{{backendPackage|path}}"
+    },
+    {
+      "from": "backend/app/src/main/kotlin/{{backendPackage.to|path}}/{{backendName.from|pascal}}Application.kt",
+      "to": "backend/app/src/main/kotlin/{{backendPackage.to|path}}/{{backendName.to|pascal}}Application.kt"
+    }
+  ],
+  "deletes": ["README.md"]
+}

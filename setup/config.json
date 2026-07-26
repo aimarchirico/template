@@ -4,12 +4,14 @@
     "frontend": {
       "name": "Template",
       "package": "no.chirico.template",
-      "scope": "@aimarchirico"
+      "scope": "@aimarchirico",
+      "easProjectId": "1665a7a4-4be6-41ff-8bf2-6d13cba5baae"
     },
     "backend": {
       "name": "Template",
       "package": "no.chirico.template",
-      "image": "ghcr.io/aimarchirico/template-api"
+      "image": "ghcr.io/aimarchirico/template-api",
+      "port": 8080
     }
   }
 }

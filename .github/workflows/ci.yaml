@@ -24,7 +24,6 @@ jobs:
       frontend: ${{ steps.filter.outputs.frontend }}
       docs: ${{ steps.filter.outputs.docs }}
       github: ${{ steps.filter.outputs.github }}
-      init: ${{ steps.filter.outputs.init }}
       tools: ${{ steps.filter.outputs.config }}
     steps:
       - name: Check Out Repo
@@ -52,9 +51,6 @@ jobs:
               - '.github/workflows/ci.yaml'
             frontend:
               - 'frontend/**'
-              - '.github/workflows/ci.yaml'
-            init:
-              - 'init/**'
               - '.github/workflows/ci.yaml'
 
   # ==========================================
@@ -161,17 +157,3 @@ jobs:
             API_URL=${{ vars.API_URL }}
             CF_ACCESS_CLIENT_ID=${{ vars.CF_ACCESS_CLIENT_ID }}
             CF_ACCESS_CLIENT_SECRET=${{ secrets.CF_ACCESS_CLIENT_SECRET }}
-
-  # ==========================================
-  # INIT CI JOB
-  # ==========================================
-  init-ci:
-    name: Init Check
-    needs: changes
-    if: needs.changes.outputs.init == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: aimarchirico/commons/.github/actions/python-task@main
-        with:
-          command: init:check

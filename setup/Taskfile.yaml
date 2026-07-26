@@ -1,0 +1,242 @@
+version: '3'
+
+# setup/.env is loaded by the root Taskfile: Task rejects dotenv declarations in
+# included Taskfiles.
+
+# The commands report their own outcomes, so echoing each shell block would bury
+# the summary this flow exists to produce.
+silent: true
+
+vars:
+  NAME:
+    sh: node scripts/config-value.mjs name
+  SLUG:
+    sh: node scripts/config-value.mjs slug
+  BACKEND_PORT:
+    sh: node scripts/config-value.mjs modules.backend.port
+  EAS_PROJECT_ID:
+    sh: node scripts/config-value.mjs modules.frontend.easProjectId
+  OUTPUTS: '{{.TASKFILE_DIR}}/.outputs.env'
+  KEYSTORE: '{{.TASKFILE_DIR}}/release.keystore'
+  ENVIRONMENTS: 'api-production,android-production,web-production'
+
+tasks:
+  init:
+    desc: Rename the project from the template values, then provision it
+    env:
+      MANIFEST_PATH: '{{.TASKFILE_DIR}}/manifest.resolved.json'
+    cmds:
+      - node scripts/build-manifest.mjs
+      - |
+        export NODE_AUTH_TOKEN="$GH_PACKAGES_TOKEN"
+        npx --yes @aimarchirico/commons-project rename-project
+      # The lockfile records the workspace package names the rename just
+      # changed, and CI installs with --frozen-lockfile. Replacing the names
+      # textually would corrupt unrelated entries such as @babel/template, so
+      # the lockfile is regenerated instead.
+      - |
+        export NODE_AUTH_TOKEN="$GH_PACKAGES_TOKEN"
+        pnpm --dir ../frontend install --lockfile-only
+      - task: default
+
+  default:
+    desc: Provision every external resource the project needs
+    cmds:
+      - task: check
+      - task: github:project
+      - task: github:environments
+      - task: cloudflare:pages
+      - task: cloudflare:tunnel
+      - task: cloudflare:token
+      - task: android:keystore
+      - task: backend:env
+      - task: cloudflare:pages-env
+      - task: github:variables
+      - task: github:secrets
+      - task: summary
+
+  check:
+    desc: Verify the required tools and credentials are present
+    cmds:
+      - rm -f '{{.OUTPUTS}}'
+      - |
+        missing=""
+        for tool in node npx pnpm gh ssh scp keytool; do
+          command -v "$tool" >/dev/null 2>&1 || missing="$missing\n  - $tool is not on PATH"
+        done
+        gh auth status >/dev/null 2>&1 || missing="$missing\n  - gh is not authenticated (run: gh auth login)"
+        for key in CLOUDFLARE_ACCOUNT_ID CLOUDFLARE_SETUP_TOKEN CLOUDFLARE_DEPLOY_TOKEN \
+                   CLOUDFLARE_ZONE_ID BASE_DOMAIN API_HOST TUNNEL_ID ACCESS_POLICY_ID \
+                   VPS_HOST VPS_USER VPS_SSH_KEY_FILE GH_PACKAGES_TOKEN EXPO_TOKEN; do
+          eval "value=\$$key"
+          [ -n "$value" ] || missing="$missing\n  - $key is not set in setup/.env"
+        done
+        [ -n "$VPS_SSH_KEY_FILE" ] && [ ! -f "$VPS_SSH_KEY_FILE" ] &&
+          missing="$missing\n  - VPS_SSH_KEY_FILE does not point at a file"
+        if [ -n "$missing" ]; then
+          printf 'setup cannot run yet:%b\n' "$missing"
+          exit 1
+        fi
+        echo '= prerequisites: already present'
+      - |
+        cat <<'NOTE'
+
+        Browser-only prerequisites setup cannot automate. Confirm each exists
+        before continuing — setup/README.md documents how to mint them:
+
+          - the two Cloudflare API tokens, the tunnel, and the Access
+            application and policy this project reuses
+          - the EAS project the app links to
+          - the VPS user, its SSH key, and ~/docker on the VPS
+          - the GitHub packages token and the Expo token
+
+        NOTE
+
+  github:project:
+    desc: Copy the template's project board and link it
+    env:
+      PROJECT_TITLE: '{{.NAME}}'
+    cmds:
+      - npx --yes @aimarchirico/commons-github create-project
+
+  github:environments:
+    desc: Create the deployment environments
+    env:
+      GITHUB_ENVIRONMENTS: '{{.ENVIRONMENTS}}'
+    cmds:
+      - npx --yes @aimarchirico/commons-github create-environments
+
+  cloudflare:pages:
+    desc: Create the Pages project and attach its custom domain
+    cmds:
+      - |
+        export NODE_AUTH_TOKEN="$GH_PACKAGES_TOKEN"
+        export CLOUDFLARE_API_TOKEN="$CLOUDFLARE_SETUP_TOKEN"
+        export PAGES_PROJECT_NAME="$(gh repo view --json name -q .name)"
+        export PAGES_CUSTOM_DOMAIN="{{.SLUG}}.$BASE_DOMAIN"
+        npx --yes @aimarchirico/commons-cloudflare create-pages-project
+
+  cloudflare:tunnel:
+    desc: Route the project's API hostname through the shared tunnel
+    cmds:
+      - |
+        export NODE_AUTH_TOKEN="$GH_PACKAGES_TOKEN"
+        export CLOUDFLARE_API_TOKEN="$CLOUDFLARE_SETUP_TOKEN"
+        export TUNNEL_HOSTNAME="$API_HOST"
+        export TUNNEL_SERVICE="http://localhost:{{.BACKEND_PORT}}"
+        npx --yes @aimarchirico/commons-cloudflare add-tunnel-route
+
+  cloudflare:token:
+    desc: Create the Access service token CI uses to reach the API
+    env:
+      OUTPUT_FILE: '{{.OUTPUTS}}'
+      SERVICE_TOKEN_NAME: '{{.SLUG}}-ci'
+    cmds:
+      - |
+        export NODE_AUTH_TOKEN="$GH_PACKAGES_TOKEN"
+        export CLOUDFLARE_API_TOKEN="$CLOUDFLARE_SETUP_TOKEN"
+        npx --yes @aimarchirico/commons-cloudflare create-service-token
+
+  android:keystore:
+    desc: Ensure the Android signing keystore exists and read back its values
+    env:
+      EAS_PROJECT_ID: '{{.EAS_PROJECT_ID}}'
+      ANDROID_KEYSTORE_FILE: '{{.KEYSTORE}}'
+      ANDROID_KEY_ALIAS: '{{.SLUG}}'
+      OUTPUT_FILE: '{{.OUTPUTS}}'
+    cmds:
+      - |
+        export NODE_AUTH_TOKEN="$GH_PACKAGES_TOKEN"
+        set -a; [ -f '{{.OUTPUTS}}' ] && . '{{.OUTPUTS}}'; set +a
+        npx --yes @aimarchirico/commons-expo create-keystore
+
+  backend:env:
+    desc: Place the backend's production env and compose files on the VPS
+    env:
+      SLUG: '{{.SLUG}}'
+      BACKEND_PORT: '{{.BACKEND_PORT}}'
+      OUTPUT_FILE: '{{.OUTPUTS}}'
+    cmds:
+      - |
+        set -a; [ -f '{{.OUTPUTS}}' ] && . '{{.OUTPUTS}}'; set +a
+        export REPO="$(gh repo view --json name -q .name)"
+        node scripts/backend-env.mjs
+        scp -i "$VPS_SSH_KEY_FILE" -o StrictHostKeyChecking=accept-new \
+          ../backend/compose.yaml ../backend/compose.prod.yaml \
+          "$VPS_USER@$VPS_HOST:~/docker/$REPO/"
+        echo "* $VPS_USER@$VPS_HOST:~/docker/$REPO/compose.yaml, compose.prod.yaml: written"
+
+  cloudflare:pages-env:
+    desc: Set the Pages runtime environment
+    env:
+      PAGES_VARIABLES: 'API_URL,PROXY_SECRET'
+    cmds:
+      - |
+        export NODE_AUTH_TOKEN="$GH_PACKAGES_TOKEN"
+        set -a; [ -f '{{.OUTPUTS}}' ] && . '{{.OUTPUTS}}'; set +a
+        export CLOUDFLARE_API_TOKEN="$CLOUDFLARE_SETUP_TOKEN"
+        export PAGES_PROJECT_NAME="$(gh repo view --json name -q .name)"
+        export API_URL="https://$API_HOST/{{.SLUG}}"
+        npx --yes @aimarchirico/commons-cloudflare set-pages-env
+
+  github:variables:
+    desc: Push the repository and environment variables
+    env:
+      GITHUB_VARIABLES: 'API_URL,CF_ACCESS_CLIENT_ID'
+      GITHUB_ENVIRONMENT_VARIABLES: >-
+        api-production=VPS_USER,VPS_HOST;
+        android-production=ANDROID_KEY_ALIAS;
+        web-production=APP_URL,CLOUDFLARE_ACCOUNT_ID
+    cmds:
+      - |
+        export NODE_AUTH_TOKEN="$GH_PACKAGES_TOKEN"
+        set -a; [ -f '{{.OUTPUTS}}' ] && . '{{.OUTPUTS}}'; set +a
+        export API_URL="https://$API_HOST/{{.SLUG}}"
+        export APP_URL="https://{{.SLUG}}.$BASE_DOMAIN"
+        npx --yes @aimarchirico/commons-github sync-variables
+
+  github:secrets:
+    desc: Push the repository and environment secrets
+    env:
+      GITHUB_SECRETS: 'CF_ACCESS_CLIENT_SECRET,GH_PACKAGES_TOKEN'
+      GITHUB_ENVIRONMENT_SECRETS: >-
+        api-production=VPS_SSH_KEY;
+        android-production=ANDROID_KEYSTORE_BASE64,ANDROID_KEYSTORE_PASSWORD,ANDROID_KEY_PASSWORD;
+        web-production=CLOUDFLARE_API_TOKEN
+    cmds:
+      - |
+        export NODE_AUTH_TOKEN="$GH_PACKAGES_TOKEN"
+        set -a; [ -f '{{.OUTPUTS}}' ] && . '{{.OUTPUTS}}'; set +a
+        export VPS_SSH_KEY="$(cat "$VPS_SSH_KEY_FILE")"
+        export CLOUDFLARE_API_TOKEN="$CLOUDFLARE_DEPLOY_TOKEN"
+        npx --yes @aimarchirico/commons-github set-secrets
+
+  summary:
+    desc: Print every provisioned resource and the values that were set
+    cmds:
+      - |
+        SLUG='{{.SLUG}}'
+        REPO="$(gh repo view --json name -q .name)"
+        echo
+        echo "Provisioned $(gh repo view --json nameWithOwner -q .nameWithOwner)"
+        echo "  project board    {{.NAME}}"
+        echo "  environments     {{.ENVIRONMENTS}}"
+        echo "  app url          https://$SLUG.$BASE_DOMAIN"
+        echo "  api url          https://$API_HOST/$SLUG"
+        echo "  tunnel route     $API_HOST -> http://localhost:{{.BACKEND_PORT}}"
+        echo "  backend env      $VPS_USER@$VPS_HOST:~/docker/$REPO/.env"
+        echo "  keystore         {{.KEYSTORE}}"
+        echo
+        if [ -f '{{.OUTPUTS}}' ]; then
+          echo 'Values produced during this run and chained onward:'
+          while IFS='=' read -r key value; do
+            [ -n "$key" ] || continue
+            case "$key" in
+              *SECRET*|*PASSWORD*|*TOKEN*|*BASE64*)
+                echo "  $key=<${#value} characters>" ;;
+              *) echo "  $key=$value" ;;
+            esac
+          done < '{{.OUTPUTS}}'
+          echo
+          echo 'Back these up now — see setup/README.md#backup-and-recovery.'
+        fi
