@@ -2,5 +2,9 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "@aimarchirico/commons-ts/tsconfig-base",
   "include": ["../**/*.ts", "../**/*.tsx", "../**/*.json"],
-  "exclude": ["../**/frontend/apps/**", "../**/frontend/packages/**"]
+  "exclude": [
+    "../**/frontend/apps/**",
+    "../**/frontend/packages/**",
+    "../**/setup/**"
+  ]
 }

@@ -1,0 +1,5 @@
+minimumReleaseAgeExclude:
+  - '@aimarchirico/commons-ts'
+packages: []
+allowBuilds:
+  esbuild: true

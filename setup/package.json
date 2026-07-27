@@ -1,0 +1,16 @@
+{
+  "name": "setup",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "check": "eslint && tsc",
+    "fix": "eslint --fix"
+  },
+  "devDependencies": {
+    "@aimarchirico/commons-ts": "^2.0.2",
+    "@types/node": "^26.0.1",
+    "eslint": "^9.39.2",
+    "tsx": "^4.7.0",
+    "typescript": "~6.0.3"
+  }
+}

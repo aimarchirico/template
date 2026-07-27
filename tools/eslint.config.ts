@@ -1,4 +1,3 @@
-import globals from 'globals';
 import eslintPluginToml from 'eslint-plugin-toml';
 import eslintPluginYml from 'eslint-plugin-yml';
 import tsConfig from '@aimarchirico/commons-ts/eslint-base';
@@ -12,6 +11,7 @@ export default [
       '**/frontend/apps/**',
       '**/frontend/packages/**',
       '**/frontend/functions/**',
+      '**/setup/**',
       '**/pnpm-lock.yaml',
     ],
   },
@@ -28,12 +28,6 @@ export default [
     files: ['**/*.toml'],
     rules: {
       'prettier/prettier': 'off',
-    },
-  },
-  {
-    files: ['**/*.mjs'],
-    languageOptions: {
-      globals: globals.node,
     },
   },
 ];

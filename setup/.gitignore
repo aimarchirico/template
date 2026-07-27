@@ -1,6 +1,7 @@
 .env
 .outputs.env
 manifest.resolved.json
+node_modules/
 
 # Belt and braces. No keystore should ever land here — create-keystore stores it
 # in EAS and removes the temporary file keytool needs.

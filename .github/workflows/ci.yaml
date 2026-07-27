@@ -25,6 +25,7 @@ jobs:
       docs: ${{ steps.filter.outputs.docs }}
       github: ${{ steps.filter.outputs.github }}
       tools: ${{ steps.filter.outputs.config }}
+      setup: ${{ steps.filter.outputs.setup }}
     steps:
       - name: Check Out Repo
         uses: actions/checkout@v4
@@ -41,6 +42,10 @@ jobs:
               - '**/*.toml'
               - '!frontend/apps/**'
               - '!frontend/packages/**'
+              - '!setup/**'
+            setup:
+              - 'setup/**'
+              - '.github/workflows/ci.yaml'
             docs:
               - '**/*.md'
               - '.github/workflows/ci.yaml'
@@ -157,3 +162,20 @@ jobs:
             API_URL=${{ vars.API_URL }}
             CF_ACCESS_CLIENT_ID=${{ vars.CF_ACCESS_CLIENT_ID }}
             CF_ACCESS_CLIENT_SECRET=${{ secrets.CF_ACCESS_CLIENT_SECRET }}
+
+  # ==========================================
+  # SETUP CI JOB
+  # ==========================================
+  setup-ci:
+    name: Setup Check
+    needs: changes
+    if: needs.changes.outputs.setup == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aimarchirico/commons/.github/actions/node-task@main
+        with:
+          command: setup:check
+          node_cache_path: setup/pnpm-lock.yaml
+          task_env: |
+            NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}

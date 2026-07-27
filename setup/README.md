@@ -32,10 +32,11 @@ setup/
 ├── manifest.json     # what the rename touches; all layout knowledge
 ├── .env.example      # the infrastructure constants and credentials needed here
 ├── .npmrc            # resolves @aimarchirico packages from GitHub Packages
+├── package.json      # this module's own pnpm workspace and its dependencies
 └── scripts/
-    ├── build-manifest.mjs  # marries the manifest with both configs
-    ├── config-value.mjs    # reads one config value for a task variable
-    └── backend-env.mjs     # builds and places the backend's production .env
+    ├── build-manifest.ts  # marries the manifest with both configs
+    ├── config-value.ts    # reads one config value for a task variable
+    └── backend-env.ts     # builds and places the backend's production .env
 ```
 
 Three files are generated and gitignored: `.env` (your credentials),
@@ -185,8 +186,8 @@ means editing `default.json` to the current values first.
 Provisioning alone, which is what you run for the rest of the project's life:
 
 ```bash
-task setup           # every step, in dependency order
-task setup:check     # prerequisites and credentials only
+task setup                # every step, in dependency order
+task setup:prerequisites  # prerequisites and credentials only
 ```
 
 Individual steps, for when one value rotates:
@@ -251,9 +252,13 @@ restoring the volume.
 
 ## Code Quality
 
-The `.mjs` scripts and the JSON and YAML in this module are covered by
-`task config:check`, which lints them with the shared ESLint config. There is no
-module-specific check task; nothing here is compiled.
+This module is its own pnpm workspace, so it owns its checks:
+`task setup:check` lints and type-checks the scripts, and `task setup:fix`
+applies what ESLint can fix. It deliberately sits outside the frontend
+workspace — provisioning runs before the frontend's dependencies are installed,
+and a rename that rewrites the frontend's package names must not be able to
+invalidate the tooling performing it. Nothing here is compiled; `tsx` runs the
+scripts directly.
 
 ## Deployment
 

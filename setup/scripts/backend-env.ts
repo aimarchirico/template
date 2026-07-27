@@ -10,6 +10,15 @@
 import crypto from 'crypto';
 import fs from 'fs';
 import {spawnSync} from 'child_process';
+import {loadEnvs, getConfigString, getRepoName} from './utils.js';
+
+loadEnvs();
+
+// Dynamically load variables if not already set in process.env
+process.env.SLUG = process.env.SLUG || getConfigString('slug');
+process.env.BACKEND_PORT =
+  process.env.BACKEND_PORT || getConfigString('modules.backend.port');
+process.env.REPO = process.env.REPO || getRepoName();
 
 const required = [
   'SLUG',
@@ -31,12 +40,12 @@ const {SLUG, VPS_HOST, VPS_USER, VPS_SSH_KEY_FILE, REPO} = process.env;
 const remoteDir = `~/docker/${REPO}`;
 const secret = () => crypto.randomBytes(32).toString('base64url');
 
-const ssh = (command, input) => {
+const ssh = (command: string, input?: string) => {
   const result = spawnSync(
     'ssh',
     [
       '-i',
-      VPS_SSH_KEY_FILE,
+      VPS_SSH_KEY_FILE!,
       '-o',
       'StrictHostKeyChecking=accept-new',
       `${VPS_USER}@${VPS_HOST}`,
@@ -55,15 +64,18 @@ const ssh = (command, input) => {
   };
 };
 
-const parse = text =>
+const parse = (text: string): Record<string, string> =>
   Object.fromEntries(
     text
       .split('\n')
       .map(line => line.trim())
       .filter(line => line && !line.startsWith('#'))
       .map(line => {
-        const at = line.indexOf('=');
-        return [line.slice(0, at), line.slice(at + 1).replace(/^"|"$/g, '')];
+        const atIndex = line.indexOf('=');
+        return [
+          line.slice(0, atIndex),
+          line.slice(atIndex + 1).replace(/^"|"$/g, ''),
+        ];
       })
       .filter(([name]) => name),
   );
@@ -80,7 +92,7 @@ const values = {
 };
 
 const reused = Object.keys(values).filter(
-  name => existing[name] === values[name],
+  name => existing[name] === values[name as keyof typeof values],
 );
 const contents = `${Object.entries(values)
   .map(([name, value]) => `${name}="${value}"`)
@@ -104,6 +116,30 @@ console.log(
 for (const name of Object.keys(values)) {
   console.log(`  ${name}: ${existing[name] ? 'reused' : 'generated'}`);
 }
+
+// Copy Docker compose files via scp
+const scpResult = spawnSync(
+  'scp',
+  [
+    '-i',
+    VPS_SSH_KEY_FILE!,
+    '-o',
+    'StrictHostKeyChecking=accept-new',
+    '../backend/compose.yaml',
+    '../backend/compose.prod.yaml',
+    `${VPS_USER}@${VPS_HOST}:${remoteDir}/`,
+  ],
+  {stdio: 'inherit'},
+);
+if (scpResult.status !== 0) {
+  console.error(
+    `Could not copy docker compose files to remote VPS:\n${scpResult.stderr || ''}`,
+  );
+  process.exit(scpResult.status ?? 1);
+}
+console.log(
+  `* ${VPS_USER}@${VPS_HOST}:${remoteDir}/compose.yaml, compose.prod.yaml: written`,
+);
 
 // The proxy secret is emitted so the Pages runtime environment can be given the
 // same value.

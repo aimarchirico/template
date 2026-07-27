@@ -32,7 +32,7 @@ Determine which initialization steps to run:
 3. Save the customized configuration to `setup/config.json`.
 4. Confirm the user has filled `setup/.env` from `setup/.env.example` and that
    the browser-only prerequisites in `setup/README.md` exist. Run
-   `task setup:check` and report anything missing.
+   `task setup:prerequisites` and report anything missing.
 5. Execute `task setup:init`, which renames the project and chains into
    provisioning. Both it and `task setup` are idempotent and remain in the
    repository afterwards.
