@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.9.0](https://github.com/aimarchirico/template/compare/template-app-v1.8.6...template-app-v1.9.0) (2026-07-29)
+
+
+### Features
+
+* automate post-scaffold provisioning through commons commands ([44dd34b](https://github.com/aimarchirico/template/commit/44dd34b3f0b94ef9058e4afd88b15cd70b64f318))
+* **setup:** add initial settings.json for enabled plugins configuration ([de84f6f](https://github.com/aimarchirico/template/commit/de84f6ff05b348a399daeffc4c3918d67cf565ea))
+* **setup:** rename Cloudflare pages environment task and script ([d73d29b](https://github.com/aimarchirico/template/commit/d73d29bc83c32b807b12e6c8af26a16f34db1c99))
+
+
+### Bug Fixes
+
+* **setup:** update dtrace-provider and unrs-resolver settings in pnpm-workspace.yaml ([cda6be2](https://github.com/aimarchirico/template/commit/cda6be2c65ec43255c19aa44816c6cc963b2770c))
+
 ## [1.8.6](https://github.com/aimarchirico/template/compare/template-app-v1.8.5...template-app-v1.8.6) (2026-07-25)
 
 
