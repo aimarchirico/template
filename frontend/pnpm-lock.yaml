@@ -89,8 +89,8 @@ importers:
         specifier: ^4.1.0
         version: 4.1.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eas-cli@21.4.0(@types/node@26.1.1)(supports-color@8.1.1)(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(expo@57.0.8)(react@19.2.3)(supports-color@8.1.1)(typescript@6.0.3)
       '@aimarchirico/commons-ts':
-        specifier: ^3.1.0
-        version: 3.1.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3)
+        specifier: ^3.1.1
+        version: 3.1.1(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3)
       '@babel/core':
         specifier: ^7.20.0
         version: 7.29.7
@@ -129,8 +129,8 @@ importers:
         specifier: ^2.3.0
         version: 2.3.0(@types/json-schema@7.0.15)(supports-color@8.1.1)
       '@aimarchirico/commons-ts':
-        specifier: ^3.1.0
-        version: 3.1.0(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3)
+        specifier: ^3.1.1
+        version: 3.1.1(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3)
       eslint:
         specifier: ^9.39.2
         version: 9.39.5(jiti@2.7.0)(supports-color@8.1.1)
@@ -170,8 +170,8 @@ packages:
     resolution: {integrity: sha512-tsOsZNc1fRvyUKGHUdQBcGFWVeZ0u14KJcD0JaBkd7PjXhwqoQO8pVelGxMMVl7DTTfDNyqTQ0uhMXJi4UImPw==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-project/1.0.0/42ac3dd8d21040b5cabaff48477816446772c212}
     hasBin: true
 
-  '@aimarchirico/commons-ts@3.1.0':
-    resolution: {integrity: sha512-VKl4qQ+wLiEmaR4vTb8dnOR/kHDuZa4jepOcmbUsxfXPsz42a3JkZdeMcdJcFKr/Mzj9LRfcjeHCcdAlFEe4og==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-ts/3.1.0/27abed723aa7d53c328858a6987ead8323dec415}
+  '@aimarchirico/commons-ts@3.1.1':
+    resolution: {integrity: sha512-gZGsHA15WOuWj7dWBNWCZ6fCHIeciHOck4GjnTwDTVQknH/RfwsAH4z7OPlCtHGxx/vxea7YcNfxyXIz01FFkQ==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-ts/3.1.1/04085091dff2834562a75196276dfe12ae688af3}
     peerDependencies:
       eslint: ^9.39.2
       typescript: ^6.0.3
@@ -6440,7 +6440,7 @@ snapshots:
   '@aimarchirico/commons-expo@4.1.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eas-cli@21.4.0(@types/node@26.1.1)(supports-color@8.1.1)(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(expo@57.0.8)(react@19.2.3)(supports-color@8.1.1)(typescript@6.0.3)':
     dependencies:
       '@aimarchirico/commons-project': 1.0.0
-      '@aimarchirico/commons-ts': 3.1.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3)
+      '@aimarchirico/commons-ts': 3.1.1(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3)
       eas-cli: 21.4.0(@types/node@26.1.1)(supports-color@8.1.1)(typescript@6.0.3)
       eslint: 9.39.5(jiti@2.7.0)(supports-color@8.1.1)
       eslint-config-expo: 57.0.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)
@@ -6477,7 +6477,7 @@ snapshots:
     dependencies:
       tinyglobby: 0.2.17
 
-  '@aimarchirico/commons-ts@3.1.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3)':
+  '@aimarchirico/commons-ts@3.1.1(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3)':
     dependencies:
       eslint: 9.39.5(jiti@2.7.0)(supports-color@8.1.1)
       eslint-plugin-check-file: 3.3.2(eslint@9.39.5(jiti@2.7.0))
@@ -6496,7 +6496,7 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  '@aimarchirico/commons-ts@3.1.0(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3)':
+  '@aimarchirico/commons-ts@3.1.1(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3)':
     dependencies:
       eslint: 9.39.5(jiti@2.7.0)(supports-color@8.1.1)
       eslint-plugin-check-file: 3.3.2(eslint@9.39.5(jiti@2.7.0))
