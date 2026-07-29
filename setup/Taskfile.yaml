@@ -47,7 +47,7 @@ tasks:
       - task: cloudflare:token
       - task: android:keystore
       - task: backend:env
-      - task: cloudflare:pages-env
+      - task: cloudflare:env
       - task: github:variables
       - task: github:secrets
       - task: summary
@@ -95,10 +95,10 @@ tasks:
     cmds:
       - pnpm exec tsx scripts/backend-env.ts
 
-  cloudflare:pages-env:
+  cloudflare:env:
     desc: Set the Pages runtime environment
     cmds:
-      - pnpm exec tsx scripts/cloudflare-pages-env.ts
+      - pnpm exec tsx scripts/cloudflare-env.ts
 
   github:variables:
     desc: Push the repository and environment variables

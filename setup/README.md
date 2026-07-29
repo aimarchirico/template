@@ -201,7 +201,7 @@ Individual steps, for when one value rotates:
 | `task setup:cloudflare:token`     | The Access service token, attached to the policy. |
 | `task setup:android:keystore`     | The Android signing keystore, stored in EAS.      |
 | `task setup:backend:env`          | The backend `.env` and compose files on the VPS.  |
-| `task setup:cloudflare:pages-env` | The Pages runtime environment.                    |
+| `task setup:cloudflare:env`       | The Pages runtime environment.                    |
 | `task setup:github:variables`     | The repository and environment variables.         |
 | `task setup:github:secrets`       | The repository and environment secrets.           |
 

@@ -7,7 +7,7 @@
     "fix": "eslint --fix"
   },
   "devDependencies": {
-    "@aimarchirico/commons-cloudflare": "^3.1.0",
+    "@aimarchirico/commons-cloudflare": "^3.2.0",
     "@aimarchirico/commons-expo": "^4.1.0",
     "@aimarchirico/commons-github": "^1.0.0",
     "@aimarchirico/commons-project": "^1.0.0",
