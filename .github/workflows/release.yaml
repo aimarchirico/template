@@ -45,7 +45,7 @@ jobs:
     if: contains(fromJSON(needs.release-please.outputs.paths_released), 'backend')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: aimarchirico/commons/.github/actions/docker-release@main
         with:
           image: ghcr.io/${{ github.repository }}-api
@@ -67,7 +67,7 @@ jobs:
       url: ${{ needs.release-please.outputs.frontend--html_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: aimarchirico/commons/.github/actions/android-release@main
         with:
           command: frontend:build:android
@@ -97,7 +97,7 @@ jobs:
       url: ${{ vars.API_URL }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: aimarchirico/commons/.github/actions/vps-deploy@main
         with:
           vps_host: ${{ vars.VPS_HOST }}
@@ -116,7 +116,7 @@ jobs:
       url: ${{ vars.APP_URL }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: aimarchirico/commons/.github/actions/cloudflare-deploy@main
         with:
           command: frontend:build:web

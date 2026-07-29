@@ -36,9 +36,10 @@
     "react-native-worklets": "0.10.0"
   },
   "devDependencies": {
-    "@aimarchirico/commons-cloudflare": "^2.1.1",
-    "@aimarchirico/commons-expo": "^3.0.2",
-    "@aimarchirico/commons-ts": "^2.0.2",
+    "@aimarchirico/commons-cloudflare": "^3.0.0",
+    "@aimarchirico/commons-expo": "^4.0.0",
+    "@aimarchirico/commons-ts": "^3.0.0",
+    "eas-cli": "^21.0.0",
     "@babel/core": "^7.20.0",
     "@types/node": "^26.0.1",
     "@types/react": "~19.2.14",

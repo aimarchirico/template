@@ -1,11 +1,12 @@
 #!/usr/bin/env node
-
-// Builds the backend's production .env and places it on the VPS.
-//
-// The database credentials and the proxy secret must survive a re-run: the
-// proxy secret has to match the value in the Pages runtime environment, and
-// regenerating either would break a running deployment. So the remote file is
-// read first and its values reused; only what is genuinely absent is generated.
+/**
+ * Builds the backend's production .env and places it on the VPS.
+ *
+ * The database credentials and the proxy secret must survive a re-run: the
+ * proxy secret has to match the value in the Pages runtime environment, and
+ * regenerating either would break a running deployment. So the remote file is
+ * read first and its values reused; only what is genuinely absent is generated.
+ */
 
 import crypto from 'crypto';
 import fs from 'fs';
@@ -14,7 +15,6 @@ import {loadEnvs, getConfigString, getRepoName} from './utils.js';
 
 loadEnvs();
 
-// Dynamically load variables if not already set in process.env
 process.env.SLUG = process.env.SLUG || getConfigString('slug');
 process.env.BACKEND_PORT =
   process.env.BACKEND_PORT || getConfigString('modules.backend.port');
@@ -86,8 +86,6 @@ const values = {
   DB_HOST: `${SLUG}-db:5432`,
   DB_USER: existing.DB_USER || SLUG,
   DB_PASSWORD: existing.DB_PASSWORD || secret(),
-  // Falls back to the value already in the Pages environment, which is the
-  // other half of the pair and may have been set on an earlier partial run.
   PROXY_SECRET: existing.PROXY_SECRET || process.env.PROXY_SECRET || secret(),
 };
 
@@ -117,7 +115,6 @@ for (const name of Object.keys(values)) {
   console.log(`  ${name}: ${existing[name] ? 'reused' : 'generated'}`);
 }
 
-// Copy Docker compose files via scp
 const scpResult = spawnSync(
   'scp',
   [
@@ -141,8 +138,6 @@ console.log(
   `* ${VPS_USER}@${VPS_HOST}:${remoteDir}/compose.yaml, compose.prod.yaml: written`,
 );
 
-// The proxy secret is emitted so the Pages runtime environment can be given the
-// same value.
 if (process.env.OUTPUT_FILE) {
   fs.appendFileSync(
     process.env.OUTPUT_FILE,

@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "commons": {
+      "source": {
+        "source": "github",
+        "repo": "aimarchirico/commons"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "commons@commons": true
+  }
+}

@@ -7,7 +7,7 @@
     "fix": "eslint --fix"
   },
   "devDependencies": {
-    "@aimarchirico/commons-ts": "^2.0.2",
+    "@aimarchirico/commons-ts": "^3.0.0",
     "@types/node": "^26.0.1",
     "eslint": "^9.39.2",
     "tsx": "^4.7.0",

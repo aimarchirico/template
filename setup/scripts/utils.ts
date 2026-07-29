@@ -11,10 +11,23 @@ export const rootDir = path.resolve(here, '../..');
 export type JsonValue =
   string | number | boolean | null | JsonValue[] | {[key: string]: JsonValue};
 
+/**
+ * Reads and parses a JSON file.
+ *
+ * @param file Path to the JSON file.
+ * @returns The parsed JSON object.
+ */
 export function readJson<T>(file: string): T {
   return JSON.parse(fs.readFileSync(file, 'utf8')) as T;
 }
 
+/**
+ * Accesses a nested property in a JSON object using a dot-separated path.
+ *
+ * @param data The JSON data object.
+ * @param dotted The dot-separated property path.
+ * @returns The property value, or undefined if not found.
+ */
 export function atPath(
   data: JsonValue | undefined,
   dotted: string,
@@ -30,6 +43,9 @@ export function atPath(
     );
 }
 
+/**
+ * Loads environment variables from .env files.
+ */
 export function loadEnvs(): void {
   const envFiles = [
     path.join(rootDir, '.env'),
@@ -55,6 +71,14 @@ export function loadEnvs(): void {
   }
 }
 
+/**
+ * Runs a shell command synchronously and exits if the command fails.
+ *
+ * @param command The command to execute.
+ * @param args Arguments to pass to the command.
+ * @param options Options for spawning the process.
+ * @returns The spawn sync result.
+ */
 export function runCommand(
   command: string,
   args: string[] = [],
@@ -72,6 +96,11 @@ export function runCommand(
   return result;
 }
 
+/**
+ * Retrieves the repository name using the GitHub CLI.
+ *
+ * @returns The name of the repository.
+ */
 export function getRepoName(): string {
   const result = spawnSync(
     'gh',
@@ -87,6 +116,12 @@ export function getRepoName(): string {
   return result.stdout.trim();
 }
 
+/**
+ * Retrieves a configuration value by key from config.json.
+ *
+ * @param key The key to retrieve.
+ * @returns The configuration value, or undefined.
+ */
 export function getConfigValue(key: string): JsonValue | undefined {
   const configPath = path.resolve(setupDir, 'config.json');
   if (!fs.existsSync(configPath)) {
@@ -102,6 +137,12 @@ export function getConfigValue(key: string): JsonValue | undefined {
   return atPath(config, key);
 }
 
+/**
+ * Retrieves a configuration value as a string from config.json.
+ *
+ * @param key The key to retrieve.
+ * @returns The configuration value as a string.
+ */
 export function getConfigString(key: string): string {
   const value = getConfigValue(key);
   if (value === undefined || value === null || typeof value === 'object') {
@@ -111,6 +152,11 @@ export function getConfigString(key: string): string {
   return String(value);
 }
 
+/**
+ * Gets the path to the environment output variables file.
+ *
+ * @returns The path to the outputs file.
+ */
 export function getOutputsPath(): string {
   return path.join(setupDir, '.outputs.env');
 }

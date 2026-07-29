@@ -50,12 +50,12 @@ Requires Node.js, pnpm, and [go-task](https://taskfile.dev). Install
 dependencies with `pnpm install`. Tasks are flattened into the root Taskfile
 and run from the repository root:
 
-| Command             | Description          |
-| :------------------ | :------------------- |
-| `task docs:check`   | Lint Markdown files  |
-| `task docs:fix`     | Fix Markdown issues  |
-| `task commit:check` | Lint commit messages |
-| `task skills`       | Install agent skills |
+| Command               | Description           |
+| :-------------------- | :-------------------- |
+| `task docs:check`     | Lint Markdown files   |
+| `task docs:fix`       | Fix Markdown issues   |
+| `task commit:check`   | Lint commit messages  |
+| `task skills:install` | Install agent plugins |
 
 ## Code Quality
 

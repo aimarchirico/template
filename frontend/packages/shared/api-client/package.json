@@ -11,8 +11,8 @@
     "api": "commons-openapi generate-client"
   },
   "devDependencies": {
-    "@aimarchirico/commons-openapi": "^2.2.1",
-    "@aimarchirico/commons-ts": "^2.0.2",
+    "@aimarchirico/commons-openapi": "^2.3.0",
+    "@aimarchirico/commons-ts": "^3.0.0",
     "eslint": "^9.39.2"
   }
 }

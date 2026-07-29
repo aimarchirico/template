@@ -3,7 +3,6 @@ import fs from 'fs';
 import {spawnSync} from 'child_process';
 import {loadEnvs, getOutputsPath} from './utils.js';
 
-// Delete outputs file
 const outputsPath = getOutputsPath();
 if (fs.existsSync(outputsPath)) {
   fs.unlinkSync(outputsPath);
@@ -13,7 +12,6 @@ loadEnvs();
 
 const missing: string[] = [];
 
-// 1. Check tools on PATH
 const tools = ['node', 'npx', 'pnpm', 'gh', 'ssh', 'scp', 'keytool'];
 for (const tool of tools) {
   const isWindows = process.platform === 'win32';
@@ -24,13 +22,11 @@ for (const tool of tools) {
   }
 }
 
-// 2. Check gh auth status
 const ghAuth = spawnSync('gh', ['auth', 'status']);
 if (ghAuth.status !== 0) {
   missing.push('gh is not authenticated (run: gh auth login)');
 }
 
-// 3. Check env variables
 const requiredEnv = [
   'CLOUDFLARE_ACCOUNT_ID',
   'CLOUDFLARE_SETUP_TOKEN',
@@ -53,7 +49,6 @@ for (const key of requiredEnv) {
   }
 }
 
-// 4. Check VPS_SSH_KEY_FILE exists
 const sshKeyPath = process.env.VPS_SSH_KEY_FILE;
 if (sshKeyPath && !fs.existsSync(sshKeyPath)) {
   missing.push(`VPS_SSH_KEY_FILE does not point at a file (${sshKeyPath})`);

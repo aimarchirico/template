@@ -148,10 +148,10 @@ provisioning command produced it and the Taskfile chained it onward.
 | `VPS_USER`                  | api-production     | variable | `setup/.env`                           |
 | `VPS_HOST`                  | api-production     | variable | `setup/.env`                           |
 | `VPS_SSH_KEY`               | api-production     | secret   | contents of `VPS_SSH_KEY_FILE`         |
-| `ANDROID_KEY_ALIAS`         | android-production | variable | `create-keystore`                      |
-| `ANDROID_KEYSTORE_BASE64`   | android-production | secret   | `create-keystore`                      |
-| `ANDROID_KEYSTORE_PASSWORD` | android-production | secret   | `create-keystore`                      |
-| `ANDROID_KEY_PASSWORD`      | android-production | secret   | `create-keystore`                      |
+| `ANDROID_KEY_ALIAS`         | android-production | variable | `import-keystore`                      |
+| `ANDROID_KEYSTORE_BASE64`   | android-production | secret   | `import-keystore`                      |
+| `ANDROID_KEYSTORE_PASSWORD` | android-production | secret   | `import-keystore`                      |
+| `ANDROID_KEY_PASSWORD`      | android-production | secret   | `import-keystore`                      |
 | `APP_URL`                   | web-production     | variable | `config.json` slug + `BASE_DOMAIN`     |
 | `CLOUDFLARE_ACCOUNT_ID`     | web-production     | variable | `setup/.env`                           |
 | `CLOUDFLARE_API_TOKEN`      | web-production     | secret   | `setup/.env` `CLOUDFLARE_DEPLOY_TOKEN` |
@@ -166,8 +166,7 @@ CI nor the repository, and the database credentials, which live only in the VPS
 Order of operations for a freshly generated repository:
 
 1. Fill [`config.json`](config.json) with the project's details — its name, the
-   Kotlin and npm identifiers, the container image, the EAS project id, and the
-   host port.
+   Kotlin and npm identifiers, the container image, and the host port.
 2. Copy [`.env.example`](.env.example) to `.env` and fill it in.
 3. Run the rename and provisioning in one step:
 
@@ -207,7 +206,8 @@ Individual steps, for when one value rotates:
 
 Order matters when running the whole flow, because outputs chain:
 `create-service-token` produces the credentials that become repository variables
-and secrets, `create-keystore` produces the `android-production` signing values,
+and secrets, `create-project` and `import-keystore` produce the
+`android-production` signing values,
 and `backend:env` produces the proxy secret the Pages environment needs. All
 three therefore run before the steps that consume them.
 
@@ -220,12 +220,12 @@ Three values cannot be regenerated without consequence. Back them up when
   installed copy of the app — Play and any sideloaded install will refuse the new
   APK.
 
-  This one needs the least of you, because EAS holds it. `create-keystore`
-  generates the keystore with `keytool`, stores it in EAS as the
-  `production` build credentials for the app, and reads it back on every later
-  run — so no signing key is ever written into this repository or left on the
-  machine that ran setup. An existing keystore is never regenerated; the command
-  reports it as already present and returns the stored values.
+  This one needs the least of you, because EAS holds it. First, `create-project`
+  resolves the project on EAS and registers the project ID. Then,
+  `import-keystore` imports the credentials from `credentials.json` into EAS,
+  and reads them back to push to GitHub — so no signing key is ever written
+  into this repository. An existing setup is never regenerated; the commands
+  report them as already present and return the stored values.
 
   It is the same record the interactive `eas credentials` flow creates, so it is
   visible on the project's credentials page at
