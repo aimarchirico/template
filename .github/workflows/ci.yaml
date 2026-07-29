@@ -24,14 +24,14 @@ jobs:
       frontend: ${{ steps.filter.outputs.frontend }}
       docs: ${{ steps.filter.outputs.docs }}
       github: ${{ steps.filter.outputs.github }}
-      init: ${{ steps.filter.outputs.init }}
       tools: ${{ steps.filter.outputs.config }}
+      setup: ${{ steps.filter.outputs.setup }}
     steps:
       - name: Check Out Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Detect Changes
-        uses: dorny/paths-filter@v3
+        uses: dorny/paths-filter@v4
         id: filter
         with:
           filters: |
@@ -42,6 +42,10 @@ jobs:
               - '**/*.toml'
               - '!frontend/apps/**'
               - '!frontend/packages/**'
+              - '!setup/**'
+            setup:
+              - 'setup/**'
+              - '.github/workflows/ci.yaml'
             docs:
               - '**/*.md'
               - '.github/workflows/ci.yaml'
@@ -53,9 +57,6 @@ jobs:
             frontend:
               - 'frontend/**'
               - '.github/workflows/ci.yaml'
-            init:
-              - 'init/**'
-              - '.github/workflows/ci.yaml'
 
   # ==========================================
   # COMMIT CI JOB
@@ -65,7 +66,7 @@ jobs:
     if: github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - uses: aimarchirico/commons/.github/actions/node-task@main
@@ -86,7 +87,7 @@ jobs:
     if: needs.changes.outputs.tools == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: aimarchirico/commons/.github/actions/node-task@main
         with:
           command: config:check
@@ -103,7 +104,7 @@ jobs:
     if: needs.changes.outputs.docs == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: aimarchirico/commons/.github/actions/node-task@main
         with:
           command: docs:check
@@ -120,7 +121,7 @@ jobs:
     if: needs.changes.outputs.github == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: aimarchirico/commons/.github/actions/github-task@main
         with:
           command: github:check
@@ -134,7 +135,7 @@ jobs:
     if: needs.changes.outputs.backend == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: aimarchirico/commons/.github/actions/java-task@main
         with:
           command: backend:check
@@ -151,7 +152,7 @@ jobs:
     if: needs.changes.outputs.frontend == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: aimarchirico/commons/.github/actions/node-task@main
         with:
           command: frontend:check
@@ -163,15 +164,18 @@ jobs:
             CF_ACCESS_CLIENT_SECRET=${{ secrets.CF_ACCESS_CLIENT_SECRET }}
 
   # ==========================================
-  # INIT CI JOB
+  # SETUP CI JOB
   # ==========================================
-  init-ci:
-    name: Init Check
+  setup-ci:
+    name: Setup Check
     needs: changes
-    if: needs.changes.outputs.init == 'true'
+    if: needs.changes.outputs.setup == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: aimarchirico/commons/.github/actions/python-task@main
+      - uses: actions/checkout@v7
+      - uses: aimarchirico/commons/.github/actions/node-task@main
         with:
-          command: init:check
+          command: setup:check
+          node_cache_path: setup/pnpm-lock.yaml
+          task_env: |
+            NODE_AUTH_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}

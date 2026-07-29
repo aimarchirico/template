@@ -50,5 +50,5 @@ tasks:
   skills:install:
     desc: Install skills
     cmds:
-      - gh skill install aimarchirico/commons --all --scope project --agent antigravity
-      - gh skill install aimarchirico/commons --all --scope project --agent claude-code
+      - claude plugin marketplace add aimarchirico/commons --scope project
+      - claude plugin install commons@commons --scope project

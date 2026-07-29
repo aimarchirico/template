@@ -7,6 +7,7 @@ export default {
   expo: {
     name: IS_DEV ? `${NAME} (Dev)` : NAME,
     slug: LOWER_CASE,
+    /* eslint-disable-next-line commons/no-non-jsdoc-comment */
     version: '1.8.6', // x-release-please-version
     orientation: 'portrait',
     icon: './src/assets/icons/icon.png',

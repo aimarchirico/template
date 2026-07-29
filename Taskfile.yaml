@@ -1,6 +1,8 @@
 version: '3'
 
-dotenv: ['.env']
+# Included Taskfiles cannot declare their own dotenv, so setup/.env is loaded
+# here. It stays inside setup/, which gitignores it.
+dotenv: ['.env', 'setup/.env']
 
 includes:
   tools:
@@ -16,9 +18,9 @@ includes:
   frontend:
     taskfile: ./frontend/Taskfile.yaml
     dir: ./frontend
-  init:
-    taskfile: ./init/Taskfile.yaml
-    dir: ./init
+  setup:
+    taskfile: ./setup/Taskfile.yaml
+    dir: ./setup
 
 tasks:
   default:
