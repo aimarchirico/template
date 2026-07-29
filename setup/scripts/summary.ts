@@ -11,8 +11,13 @@ const environments = process.env.ENVIRONMENTS || '';
 const backendPort = process.env.BACKEND_PORT || '';
 const outputsFile = process.env.OUTPUTS || '';
 
-const repo = execSync('gh repo view --json name -q .name', {encoding: 'utf8'}).trim();
-const nameWithOwner = execSync('gh repo view --json nameWithOwner -q .nameWithOwner', {encoding: 'utf8'}).trim();
+const repo = execSync('gh repo view --json name -q .name', {
+  encoding: 'utf8',
+}).trim();
+const nameWithOwner = execSync(
+  'gh repo view --json nameWithOwner -q .nameWithOwner',
+  {encoding: 'utf8'},
+).trim();
 
 console.log();
 console.log(`Provisioned ${nameWithOwner}`);
@@ -20,9 +25,13 @@ console.log(`  project board    ${name}`);
 console.log(`  environments     ${environments}`);
 console.log(`  app url          https://${slug}.${process.env.BASE_DOMAIN}`);
 console.log(`  api url          https://${process.env.API_HOST}/${slug}`);
-console.log(`  tunnel route     ${process.env.API_HOST} -> http://localhost:${backendPort}`);
-console.log(`  backend env      ${process.env.VPS_USER}@${process.env.VPS_HOST}:~/docker/${repo}/.env`);
-console.log(`  keystore         EAS, build credentials "production"`);
+console.log(
+  `  tunnel route     ${process.env.API_HOST} -> http://localhost:${backendPort}`,
+);
+console.log(
+  `  backend env      ${process.env.VPS_USER}@${process.env.VPS_HOST}:~/docker/${repo}/.env`,
+);
+console.log('  keystore         EAS, build credentials "production"');
 console.log();
 
 if (outputsFile && fs.existsSync(outputsFile)) {
