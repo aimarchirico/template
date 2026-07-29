@@ -4,7 +4,7 @@ import {
   runCommand,
   getConfigString,
   getOutputsPath,
-} from './utils.js';
+} from './lib/utils.js';
 
 loadEnvs();
 

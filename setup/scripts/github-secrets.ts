@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import fs from 'fs';
-import {loadEnvs, runCommand} from './utils.js';
+import {loadEnvs, runCommand} from './lib/utils.js';
 
 loadEnvs();
 

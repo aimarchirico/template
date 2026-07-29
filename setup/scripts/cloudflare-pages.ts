@@ -1,5 +1,10 @@
 #!/usr/bin/env node
-import {loadEnvs, runCommand, getConfigString, getRepoName} from './utils.js';
+import {
+  loadEnvs,
+  runCommand,
+  getConfigString,
+  getRepoName,
+} from './lib/utils.js';
 
 loadEnvs();
 

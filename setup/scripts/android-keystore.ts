@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import {loadEnvs, runCommand, getOutputsPath} from './utils.js';
+import {loadEnvs, runCommand, getOutputsPath} from './lib/utils.js';
 
 loadEnvs();
 

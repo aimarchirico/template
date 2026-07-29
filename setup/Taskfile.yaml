@@ -116,11 +116,11 @@ tasks:
     # invocation anywhere in the repository, before the module is installed.
     vars:
       NAME:
-        sh: pnpm exec tsx scripts/config-value.ts name
+        sh: pnpm exec tsx scripts/lib/config-value.ts name
       SLUG:
-        sh: pnpm exec tsx scripts/config-value.ts slug
+        sh: pnpm exec tsx scripts/lib/config-value.ts slug
       BACKEND_PORT:
-        sh: pnpm exec tsx scripts/config-value.ts modules.backend.port
+        sh: pnpm exec tsx scripts/lib/config-value.ts modules.backend.port
     cmds:
       - |
         SLUG='{{.SLUG}}'

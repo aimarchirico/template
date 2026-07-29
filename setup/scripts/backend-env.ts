@@ -11,7 +11,7 @@
 import crypto from 'crypto';
 import fs from 'fs';
 import {spawnSync} from 'child_process';
-import {loadEnvs, getConfigString, getRepoName} from './utils.js';
+import {loadEnvs, getConfigString, getRepoName} from './lib/utils.js';
 
 loadEnvs();
 

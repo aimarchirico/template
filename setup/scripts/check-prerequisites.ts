@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import fs from 'fs';
 import {spawnSync} from 'child_process';
-import {loadEnvs, getOutputsPath} from './utils.js';
+import {loadEnvs, getOutputsPath} from './lib/utils.js';
 
 const outputsPath = getOutputsPath();
 if (fs.existsSync(outputsPath)) {

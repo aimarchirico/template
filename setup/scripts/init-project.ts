@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 import path from 'path';
-import {loadEnvs, runCommand, rootDir, setupDir} from './utils.js';
+import {loadEnvs, runCommand, rootDir, setupDir} from './lib/utils.js';
 
 loadEnvs();
 
-runCommand('pnpm', ['exec', 'tsx', 'scripts/build-manifest.ts'], {
+runCommand('pnpm', ['exec', 'tsx', 'scripts/lib/build-manifest.ts'], {
   cwd: setupDir,
 });
 

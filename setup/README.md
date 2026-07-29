@@ -34,9 +34,11 @@ setup/
 ├── .npmrc            # resolves @aimarchirico packages from GitHub Packages
 ├── package.json      # this module's own pnpm workspace and its dependencies
 └── scripts/
-    ├── build-manifest.ts  # marries the manifest with both configs
-    ├── config-value.ts    # reads one config value for a task variable
-    └── backend-env.ts     # builds and places the backend's production .env
+    ├── *.ts          # entry points — one per provisioning task in Taskfile.yaml
+    └── lib/
+        ├── utils.ts          # shared helpers (runCommand, loadEnvs, config access…)
+        ├── build-manifest.ts # marries manifest.json with both configs
+        └── config-value.ts   # reads one config value for a task variable
 ```
 
 Three files are generated and gitignored: `.env` (your credentials),
