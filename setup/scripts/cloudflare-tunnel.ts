@@ -1,5 +1,5 @@
-#!/usr/bin/env node
-import {loadEnvs, runCommand, getConfigString} from './lib/utils.js';
+﻿#!/usr/bin/env node
+import {loadEnvs, runCommand, getConfigString} from './utils/common.js';
 
 loadEnvs();
 

@@ -9,7 +9,6 @@ silent: true
 
 vars:
   OUTPUTS: '{{.TASKFILE_DIR}}/.outputs.env'
-  ENVIRONMENTS: 'api-production,android-production,web-production'
 
 tasks:
   install:
@@ -85,8 +84,6 @@ tasks:
 
   android:keystore:
     desc: Ensure the Android signing keystore exists and read back its values
-    # The keystore is stored in EAS and read back from there, so no signing key
-    # is ever written into the repository or left on this machine.
     cmds:
       - pnpm exec tsx scripts/android-keystore.ts
 
@@ -112,39 +109,15 @@ tasks:
 
   summary:
     desc: Print every provisioned resource and the values that were set
-    # Task-local, not global: as global vars these would run on every `task`
-    # invocation anywhere in the repository, before the module is installed.
-    vars:
+    env:
       NAME:
-        sh: pnpm exec tsx scripts/lib/config-value.ts name
+        sh: pnpm exec tsx scripts/utils/config-value.ts name
       SLUG:
-        sh: pnpm exec tsx scripts/lib/config-value.ts slug
+        sh: pnpm exec tsx scripts/utils/config-value.ts slug
       BACKEND_PORT:
-        sh: pnpm exec tsx scripts/lib/config-value.ts modules.backend.port
+        sh: pnpm exec tsx scripts/utils/config-value.ts modules.backend.port
+      ENVIRONMENTS:
+        sh: pnpm exec tsx scripts/utils/environments-list.ts
+      OUTPUTS: '{{.OUTPUTS}}'
     cmds:
-      - |
-        SLUG='{{.SLUG}}'
-        REPO="$(gh repo view --json name -q .name)"
-        echo
-        echo "Provisioned $(gh repo view --json nameWithOwner -q .nameWithOwner)"
-        echo "  project board    {{.NAME}}"
-        echo "  environments     {{.ENVIRONMENTS}}"
-        echo "  app url          https://$SLUG.$BASE_DOMAIN"
-        echo "  api url          https://$API_HOST/$SLUG"
-        echo "  tunnel route     $API_HOST -> http://localhost:{{.BACKEND_PORT}}"
-        echo "  backend env      $VPS_USER@$VPS_HOST:~/docker/$REPO/.env"
-        echo "  keystore         EAS, build credentials \"production\""
-        echo
-        if [ -f '{{.OUTPUTS}}' ]; then
-          echo 'Values produced during this run and chained onward:'
-          while IFS='=' read -r key value; do
-            [ -n "$key" ] || continue
-            case "$key" in
-              *SECRET*|*PASSWORD*|*TOKEN*|*BASE64*)
-                echo "  $key=<${#value} characters>" ;;
-              *) echo "  $key=$value" ;;
-            esac
-          done < '{{.OUTPUTS}}'
-          echo
-          echo 'Back these up now — see setup/README.md#backup-and-recovery.'
-        fi
+      - pnpm exec tsx scripts/summary.ts

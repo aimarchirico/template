@@ -1,10 +1,10 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 import {
   loadEnvs,
   runCommand,
   getConfigString,
   getRepoName,
-} from './lib/utils.js';
+} from './utils/common.js';
 
 loadEnvs();
 

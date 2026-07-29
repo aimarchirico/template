@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
  * Builds the backend's production .env and places it on the VPS.
  *
@@ -11,7 +11,7 @@
 import crypto from 'crypto';
 import fs from 'fs';
 import {spawnSync} from 'child_process';
-import {loadEnvs, getConfigString, getRepoName} from './lib/utils.js';
+import {loadEnvs, getConfigString, getRepoName} from './utils/common.js';
 
 loadEnvs();
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import {getConfigValue} from './utils.js';
+import {getConfigValue} from './common.js';
 
 const key = process.argv[2];
 if (!key) {

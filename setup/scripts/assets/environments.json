@@ -1,0 +1,19 @@
+{
+  "environments": [
+    {
+      "name": "api-production",
+      "variables": ["VPS_USER", "VPS_HOST"],
+      "secrets": ["VPS_SSH_KEY"]
+    },
+    {
+      "name": "android-production",
+      "variables": ["ANDROID_KEY_ALIAS"],
+      "secrets": ["ANDROID_KEYSTORE_BASE64", "ANDROID_KEYSTORE_PASSWORD", "ANDROID_KEY_PASSWORD"]
+    },
+    {
+      "name": "web-production",
+      "variables": ["APP_URL", "CLOUDFLARE_ACCOUNT_ID"],
+      "secrets": ["CLOUDFLARE_API_TOKEN"]
+    }
+  ]
+}

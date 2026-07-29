@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import fs from 'fs';
 import path from 'path';
-import {atPath, readJson, setupDir as setup, type JsonValue} from './utils.js';
+import {atPath, readJson, setupDir as setup, type JsonValue} from './common.js';
 
 type ValueSpec = {path: string; format?: string};
 
