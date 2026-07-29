@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@aimarchirico/commons-ts':
-        specifier: ^3.0.0
-        version: 3.0.0(@typescript-eslint/parser@8.64.0(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3)
+        specifier: ^3.1.0
+        version: 3.1.0(@typescript-eslint/parser@8.64.0(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3)
       '@commitlint/cli':
         specifier: ^19.0.0
         version: 19.8.1(@types/node@26.1.0)(typescript@6.0.3)
@@ -41,8 +41,8 @@ importers:
 
 packages:
 
-  '@aimarchirico/commons-ts@3.0.0':
-    resolution: {integrity: sha512-Hr4NjcynFjkSsN2XmGiCMCSxg4HhIMYgOu7aT6wPdW3SeYCFsbghNPDcwoMgyzdr66C6DYzHjJkP4Z+/Rm92aA==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-ts/3.0.0/9a2df4b9dc9e5dfdb50a850416778b26a359d0b2}
+  '@aimarchirico/commons-ts@3.1.0':
+    resolution: {integrity: sha512-VKl4qQ+wLiEmaR4vTb8dnOR/kHDuZa4jepOcmbUsxfXPsz42a3JkZdeMcdJcFKr/Mzj9LRfcjeHCcdAlFEe4og==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-ts/3.1.0/27abed723aa7d53c328858a6987ead8323dec415}
     peerDependencies:
       eslint: ^9.39.2
       typescript: ^6.0.3
@@ -2142,7 +2142,7 @@ packages:
 
 snapshots:
 
-  '@aimarchirico/commons-ts@3.0.0(@typescript-eslint/parser@8.64.0(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3)':
+  '@aimarchirico/commons-ts@3.1.0(@typescript-eslint/parser@8.64.0(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3)':
     dependencies:
       eslint: 9.39.5(jiti@2.7.0)
       eslint-plugin-check-file: 3.3.1(eslint@9.39.5(jiti@2.7.0))
@@ -2441,7 +2441,7 @@ snapshots:
   '@typescript-eslint/project-service@8.64.0(typescript@6.0.3)':
     dependencies:
       '@typescript-eslint/tsconfig-utils': 8.64.0(typescript@6.0.3)
-      '@typescript-eslint/types': 8.64.0
+      '@typescript-eslint/types': 8.65.0
       debug: 4.4.3
       typescript: 6.0.3
     transitivePeerDependencies:
