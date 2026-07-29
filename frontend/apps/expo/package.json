@@ -38,7 +38,7 @@
   "devDependencies": {
     "@aimarchirico/commons-cloudflare": "^3.2.0",
     "@aimarchirico/commons-expo": "^4.1.0",
-    "@aimarchirico/commons-ts": "^3.1.0",
+    "@aimarchirico/commons-ts": "^3.1.1",
     "eas-cli": "^21.0.0",
     "@babel/core": "^7.20.0",
     "@types/node": "^26.0.1",
