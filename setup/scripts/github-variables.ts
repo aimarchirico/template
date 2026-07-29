@@ -12,4 +12,4 @@ process.env.GITHUB_VARIABLES = 'API_URL,CF_ACCESS_CLIENT_ID';
 process.env.GITHUB_ENVIRONMENT_VARIABLES =
   'api-production=VPS_USER,VPS_HOST;android-production=ANDROID_KEY_ALIAS;web-production=APP_URL,CLOUDFLARE_ACCOUNT_ID';
 
-runCommand('npx', ['--yes', '@aimarchirico/commons-github', 'sync-variables']);
+runCommand('pnpm', ['exec', 'commons-github', 'sync-variables']);

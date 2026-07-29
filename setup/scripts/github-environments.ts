@@ -6,8 +6,4 @@ loadEnvs();
 process.env.GITHUB_ENVIRONMENTS =
   'api-production,android-production,web-production';
 
-runCommand('npx', [
-  '--yes',
-  '@aimarchirico/commons-github',
-  'create-environments',
-]);
+runCommand('pnpm', ['exec', 'commons-github', 'create-environments']);

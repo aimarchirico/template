@@ -10,7 +10,7 @@ runCommand('pnpm', ['exec', 'tsx', 'scripts/build-manifest.ts'], {
 
 process.env.NODE_AUTH_TOKEN = process.env.GH_PACKAGES_TOKEN;
 process.env.MANIFEST_PATH = path.join(setupDir, 'manifest.resolved.json');
-runCommand('npx', ['--yes', '@aimarchirico/commons-project', 'rename-project']);
+runCommand('pnpm', ['exec', 'commons-project', 'rename-project']);
 
 runCommand('pnpm', [
   '--dir',

@@ -5,4 +5,4 @@ loadEnvs();
 
 process.env.PROJECT_TITLE = getConfigString('name');
 
-runCommand('npx', ['--yes', '@aimarchirico/commons-github', 'create-project']);
+runCommand('pnpm', ['exec', 'commons-github', 'create-project']);

@@ -16,7 +16,7 @@ the commands run in.
 
 ## Tech Stack
 
-- **Node** 20+ — runs the commands via `npx` and the three helper scripts
+- **Node** 20+ — runs the commands via `pnpm exec` and the three helper scripts
 - **Task** 3 — orchestration, and the only place configuration becomes
   environment
 - **GitHub CLI** — resolves the repository and performs the GitHub writes

@@ -11,8 +11,4 @@ process.env.PAGES_PROJECT_NAME = getRepoName();
 process.env.API_URL = `https://${process.env.API_HOST}/${slug}`;
 process.env.PAGES_VARIABLES = 'API_URL,PROXY_SECRET';
 
-runCommand('npx', [
-  '--yes',
-  '@aimarchirico/commons-cloudflare',
-  'set-pages-env',
-]);
+runCommand('pnpm', ['exec', 'commons-cloudflare', 'set-pages-env']);

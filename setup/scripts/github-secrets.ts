@@ -20,4 +20,4 @@ process.env.GITHUB_SECRETS = 'CF_ACCESS_CLIENT_SECRET,GH_PACKAGES_TOKEN';
 process.env.GITHUB_ENVIRONMENT_SECRETS =
   'api-production=VPS_SSH_KEY;android-production=ANDROID_KEYSTORE_BASE64,ANDROID_KEYSTORE_PASSWORD,ANDROID_KEY_PASSWORD;web-production=CLOUDFLARE_API_TOKEN';
 
-runCommand('npx', ['--yes', '@aimarchirico/commons-github', 'set-secrets']);
+runCommand('pnpm', ['exec', 'commons-github', 'set-secrets']);

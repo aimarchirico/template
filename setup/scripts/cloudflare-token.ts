@@ -15,8 +15,4 @@ process.env.CLOUDFLARE_API_TOKEN = process.env.CLOUDFLARE_SETUP_TOKEN;
 process.env.OUTPUT_FILE = getOutputsPath();
 process.env.SERVICE_TOKEN_NAME = `${slug}-ci`;
 
-runCommand('npx', [
-  '--yes',
-  '@aimarchirico/commons-cloudflare',
-  'create-service-token',
-]);
+runCommand('pnpm', ['exec', 'commons-cloudflare', 'create-service-token']);

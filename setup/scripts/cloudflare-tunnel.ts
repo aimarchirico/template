@@ -10,8 +10,4 @@ process.env.CLOUDFLARE_API_TOKEN = process.env.CLOUDFLARE_SETUP_TOKEN;
 process.env.TUNNEL_HOSTNAME = process.env.API_HOST;
 process.env.TUNNEL_SERVICE = `http://localhost:${backendPort}`;
 
-runCommand('npx', [
-  '--yes',
-  '@aimarchirico/commons-cloudflare',
-  'add-tunnel-route',
-]);
+runCommand('pnpm', ['exec', 'commons-cloudflare', 'add-tunnel-route']);

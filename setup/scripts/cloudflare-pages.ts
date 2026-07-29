@@ -8,8 +8,4 @@ process.env.CLOUDFLARE_API_TOKEN = process.env.CLOUDFLARE_SETUP_TOKEN;
 process.env.PAGES_PROJECT_NAME = getRepoName();
 process.env.PAGES_CUSTOM_DOMAIN = `${getConfigString('slug')}.${process.env.BASE_DOMAIN}`;
 
-runCommand('npx', [
-  '--yes',
-  '@aimarchirico/commons-cloudflare',
-  'create-pages-project',
-]);
+runCommand('pnpm', ['exec', 'commons-cloudflare', 'create-pages-project']);

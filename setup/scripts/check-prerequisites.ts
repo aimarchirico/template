@@ -12,7 +12,7 @@ loadEnvs();
 
 const missing: string[] = [];
 
-const tools = ['node', 'npx', 'pnpm', 'gh', 'ssh', 'scp', 'keytool'];
+const tools = ['node', 'pnpm', 'gh', 'ssh', 'scp', 'keytool'];
 for (const tool of tools) {
   const isWindows = process.platform === 'win32';
   const checkCmd = isWindows ? 'where' : 'which';
