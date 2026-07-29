@@ -8,7 +8,7 @@ export default {
     name: IS_DEV ? `${NAME} (Dev)` : NAME,
     slug: LOWER_CASE,
     /* eslint-disable-next-line commons/no-non-jsdoc-comment */
-    version: '1.8.6', // x-release-please-version
+    version: '1.9.0', // x-release-please-version
     orientation: 'portrait',
     icon: './src/assets/icons/icon.png',
     scheme: LOWER_CASE,
