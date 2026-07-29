@@ -6,6 +6,6 @@ minimumReleaseAgeExclude:
   - '@aimarchirico/commons-project@1.0.0'
 packages: []
 allowBuilds:
-  dtrace-provider: false
+  dtrace-provider: true
   esbuild: true
-  unrs-resolver: false
+  unrs-resolver: true
