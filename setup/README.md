@@ -122,7 +122,6 @@ gets pushed to GitHub — every value in it ends up there.
 | Key                       | Meaning                                                               |
 | :------------------------ | :-------------------------------------------------------------------- |
 | `CLOUDFLARE_ACCOUNT_ID`   | Account owning the Pages project, tunnel, and Access resources.       |
-| `CLOUDFLARE_ZONE_ID`      | Zone the custom domain belongs to.                                    |
 | `BASE_DOMAIN`             | Domain the web app's custom domain is a subdomain of.                 |
 | `API_HOST`                | Public hostname this project's API is reached on. Unique per project. |
 | `TUNNEL_ID`               | Existing Cloudflare Tunnel the VPS runs.                              |
