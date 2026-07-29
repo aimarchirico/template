@@ -8,6 +8,6 @@
     "fix": "turbo run fix"
   },
   "devDependencies": {
-    "turbo": "^2.3.3"
+    "turbo": "^2.10.7"
   }
 }
