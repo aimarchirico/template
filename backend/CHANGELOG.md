@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/aimarchirico/template/compare/template-api-v1.4.5...template-api-v1.5.0) (2026-07-29)
+
+
+### Features
+
+* automate post-scaffold provisioning through commons commands ([44dd34b](https://github.com/aimarchirico/template/commit/44dd34b3f0b94ef9058e4afd88b15cd70b64f318))
+
 ## [1.4.5](https://github.com/aimarchirico/template/compare/template-api-v1.4.4...template-api-v1.4.5) (2026-07-25)
 
 
