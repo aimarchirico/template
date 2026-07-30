@@ -7,8 +7,6 @@ module.exports = function (api) {
       ['babel-preset-expo', {jsxImportSource: 'nativewind'}],
       'nativewind/babel',
     ],
-    plugins: [
-      'babel-plugin-react-compiler',
-    ],
+    plugins: ['babel-plugin-react-compiler'],
   };
 };
