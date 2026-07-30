@@ -1,12 +1,4 @@
-﻿#!/usr/bin/env node
-/**
- * Builds the backend's production .env and places it on the VPS.
- *
- * The database credentials and the proxy secret must survive a re-run: the
- * proxy secret has to match the value in the Pages runtime environment, and
- * regenerating either would break a running deployment. So the remote file is
- * read first and its values reused; only what is genuinely absent is generated.
- */
+#!/usr/bin/env node
 
 import crypto from 'crypto';
 import fs from 'fs';
