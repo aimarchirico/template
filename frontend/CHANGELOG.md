@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.9.1](https://github.com/aimarchirico/template/compare/template-app-v1.9.0...template-app-v1.9.1) (2026-07-30)
+
+
+### Bug Fixes
+
+* **expo:** enable react compiler via app config instead of manual babel plugin ([c7d2cd4](https://github.com/aimarchirico/template/commit/c7d2cd43f911d42dd7b92ec5f429c91da99a83fb))
+* **expo:** enable react compiler via app config instead of manual babel plugin ([dc259cd](https://github.com/aimarchirico/template/commit/dc259cdb41727630050d8531e28df739d096ef5f))
+* **package:** add comment to trigger release ([a8cf878](https://github.com/aimarchirico/template/commit/a8cf8787d4eadc88b951871950b454d152dfa7e8))
+
 ## [1.9.0](https://github.com/aimarchirico/template/compare/template-app-v1.8.6...template-app-v1.9.0) (2026-07-29)
 
 
