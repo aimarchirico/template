@@ -39,6 +39,7 @@ export default {
     plugins: ['expo-router', 'expo-splash-screen', 'expo-status-bar'],
     experiments: {
       typedRoutes: true,
+      reactCompiler: true,
     },
     extra: {
       router: {
