@@ -1,7 +1,6 @@
 // @ts-expect-error - nativewind/preset types are empty/not a module in this version
 import nativewindPreset from 'nativewind/preset';
 
-/** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   presets: [nativewindPreset],
