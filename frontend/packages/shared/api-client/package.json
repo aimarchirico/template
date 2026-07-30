@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@aimarchirico/commons-openapi": "^2.3.0",
-    "@aimarchirico/commons-ts": "^3.1.1",
+    "@aimarchirico/commons-ts": "^3.2.0",
     "eslint": "^9.39.2"
   }
 }
