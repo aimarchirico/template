@@ -1,4 +1,4 @@
-/* eslint-disable check-file/filename-naming-convention */
+/* eslint-disable check-file/filename-naming-convention -- Babel config requires fixed filename */
 /**
  * @param {any} api
  * @returns {any} The Babel configuration object.
