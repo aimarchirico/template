@@ -38,7 +38,7 @@ to initialize the project.
    task setup:init
    ```
 
-3. Create documentation and issues according to the guidelines in [`CONTRIBUTING.md`](CONTRIBUTING.md).
+3. Create documentation and issues according to the guidelines in [`CONTRIBUTING.md`](.github/CONTRIBUTING.md).
 
 Module documentation: [`setup/README.md`](setup/README.md) covers the
 prerequisites, both environment files, every variable and secret, and what must
