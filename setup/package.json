@@ -9,7 +9,7 @@
   "devDependencies": {
     "@aimarchirico/commons-cloudflare": "^3.3.0",
     "@aimarchirico/commons-expo": "^4.2.0",
-    "@aimarchirico/commons-github": "^1.1.0",
+    "@aimarchirico/commons-github": "^1.1.1",
     "@aimarchirico/commons-project": "^1.1.0",
     "@aimarchirico/commons-ts": "^3.2.0",
     "@types/node": "^26.0.1",
