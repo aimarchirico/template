@@ -1,4 +1,8 @@
 {
+  "includeCoAuthoredBy": false,
+  "enabledPlugins": {
+    "commons@commons": true
+  },
   "extraKnownMarketplaces": {
     "commons": {
       "source": {
@@ -6,8 +10,5 @@
         "repo": "aimarchirico/commons"
       }
     }
-  },
-  "enabledPlugins": {
-    "commons@commons": true
   }
 }
