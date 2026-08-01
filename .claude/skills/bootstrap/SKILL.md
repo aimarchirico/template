@@ -1,9 +1,9 @@
 ---
 name: bootstrap
 description:
-  Initialize project documentation and the issue backlog. Use when the user
-  asks to bootstrap or initialize the project, initialize documentation, or set
-  up the issue backlog.
+  Initialize project documentation and issues. Use when the user asks to
+  bootstrap or initialize the project, initialize documentation, or set up
+  initial issues.
 argument-hint: "[--no-project] [--no-docs] [--no-issues]"
 ---
 
@@ -13,7 +13,7 @@ argument-hint: "[--no-project] [--no-docs] [--no-issues]"
 | :-------------- | :------- | :------------------------------------------- |
 | `--no-project`  | No       | Skip the project initialization step.        |
 | `--no-docs`     | No       | Skip the documentation initialization step.  |
-| `--no-issues`   | No       | Skip the issue backlog initialization step.  |
+| `--no-issues`   | No       | Skip the issue initialization step.          |
 
 ## Workflow
 
@@ -38,8 +38,9 @@ argument-hint: "[--no-project] [--no-docs] [--no-issues]"
       clarification.
    3. Execute the `commons:docs` skill to generate documentation, supplying
       the full context.
-4. **Issue Backlog Initialization** (skip if `--no-issues` is passed):
-   1. Read `README.md`, `docs/` files, and inspect any modules and CI/CD
-      workflows to map requirements to backlog issues.
+4. **Issue Initialization** (skip if `--no-issues` is passed):
+   1. Inspect the codebase, including the documentation from the previous
+      step, to identify concrete, actionable units of work not yet tracked
+      as issues.
    2. Execute the `commons:issue` skill to draft and create the hierarchical
-      backlog issues for the identified requirements.
+      issues for the work identified.
