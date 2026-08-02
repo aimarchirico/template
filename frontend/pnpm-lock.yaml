@@ -89,8 +89,8 @@ importers:
         specifier: ^4.4.0
         version: 4.4.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eas-cli@21.4.0(@types/node@26.1.1)(supports-color@8.1.1)(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(expo@57.0.8)(react@19.2.3)(supports-color@8.1.1)(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(yaml@2.9.0))
       '@aimarchirico/commons-ts':
-        specifier: ^3.4.2
-        version: 3.4.2(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(yaml@2.9.0))
+        specifier: ^3.4.3
+        version: 3.4.3(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(yaml@2.9.0))
       '@aimarchirico/template-expo-test-utils':
         specifier: workspace:*
         version: link:../../packages/shared/expo-test-utils
@@ -138,8 +138,8 @@ importers:
         specifier: ^2.5.0
         version: 2.5.0(@types/json-schema@7.0.15)(supports-color@8.1.1)
       '@aimarchirico/commons-ts':
-        specifier: ^3.4.0
-        version: 3.4.0(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(terser@5.49.0)(yaml@2.9.0))
+        specifier: ^3.4.3
+        version: 3.4.3(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(terser@5.49.0)(yaml@2.9.0))
       '@vitest/coverage-v8':
         specifier: ^3.2.4
         version: 3.2.7(supports-color@8.1.1)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(yaml@2.9.0))
@@ -153,8 +153,8 @@ importers:
   packages/shared/expo-test-utils:
     dependencies:
       '@aimarchirico/commons-ts':
-        specifier: ^3.4.2
-        version: 3.4.2(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.2)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(terser@5.49.0)(yaml@2.9.0))
+        specifier: ^3.4.3
+        version: 3.4.3(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.2)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(terser@5.49.0)(yaml@2.9.0))
       jsdom:
         specifier: ^30.0.1
         version: 30.0.1
@@ -204,15 +204,8 @@ packages:
     resolution: {integrity: sha512-1cyISW3zNo5w+gqCItvgSJMetal4WFJp53CrgsWGn4tSazE8I795ytx8sc+PuW5t2PBZ6XML4erO6ANOZo9FUA==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-project/1.3.0/191a0ddac4573093c076dc4047170e712ffac565}
     hasBin: true
 
-  '@aimarchirico/commons-ts@3.4.0':
-    resolution: {integrity: sha512-OxEFu8eF4xycJwcNWNTiWClTLl20p71hN2FT6y+8+XyByyyBr4GMhL9cyVHi9YW1bGEdFL6lthjfn+YLyUgcKA==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-ts/3.4.0/c6e584d4974e6cd38bc1c48e0abfb527afb4dcce}
-    peerDependencies:
-      eslint: ^9.39.2
-      typescript: ^6.0.3
-      vitest: ^3.2.4
-
-  '@aimarchirico/commons-ts@3.4.2':
-    resolution: {integrity: sha512-R+BWgw/Ky6h9AqPNCtKIwfJxGJkawfTm8dZxFAkhvKfMKFkBKtsnPrYm4Sv/kHAve79LebKI3MTWl4D0jeNCSA==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-ts/3.4.2/156774815ec2d726d4b98f503e077f03c9bcf731}
+  '@aimarchirico/commons-ts@3.4.3':
+    resolution: {integrity: sha512-Xa1fM5blEvw3hMHOqWC+hp7Mmwo/Vu/qJEZ5T5LYMgSwV7wW2Z+NDdyBnU7Ne5WrXeU+uMBvEADMBSfSwzi7nw==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-ts/3.4.3/030b61d399a7876537813807a0a8fd8f83f2addc}
     peerDependencies:
       eslint: ^9.39.2
       typescript: ^6.0.3
@@ -7225,7 +7218,7 @@ snapshots:
   '@aimarchirico/commons-expo@4.4.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eas-cli@21.4.0(@types/node@26.1.1)(supports-color@8.1.1)(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(expo@57.0.8)(react@19.2.3)(supports-color@8.1.1)(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(yaml@2.9.0))':
     dependencies:
       '@aimarchirico/commons-project': 1.3.0
-      '@aimarchirico/commons-ts': 3.4.2(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(yaml@2.9.0))
+      '@aimarchirico/commons-ts': 3.4.3(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(yaml@2.9.0))
       eas-cli: 21.4.0(@types/node@26.1.1)(supports-color@8.1.1)(typescript@6.0.3)
       eslint: 9.39.5(jiti@2.7.0)(supports-color@8.1.1)
       eslint-config-expo: 57.0.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)
@@ -7263,29 +7256,7 @@ snapshots:
     dependencies:
       tinyglobby: 0.2.17
 
-  '@aimarchirico/commons-ts@3.4.0(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(terser@5.49.0)(yaml@2.9.0))':
-    dependencies:
-      '@es-joy/jsdoccomment': 0.90.0
-      '@eslint-community/eslint-plugin-eslint-comments': 4.7.2(eslint@9.39.5(jiti@2.7.0))
-      eslint: 9.39.5(jiti@2.7.0)(supports-color@8.1.1)
-      eslint-plugin-check-file: 3.3.2(eslint@9.39.5(jiti@2.7.0))
-      eslint-plugin-import: 2.32.0(eslint@9.39.5(jiti@2.7.0))
-      eslint-plugin-jsdoc: 63.3.2(eslint@9.39.5(jiti@2.7.0))
-      eslint-plugin-jsonc: 3.3.0(eslint@9.39.5(jiti@2.7.0))
-      globals: 17.7.0
-      gts: 7.0.0(jiti@2.7.0)(typescript@6.0.3)
-      jiti: 2.7.0
-      typescript: 6.0.3
-      vitest: 3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(yaml@2.9.0)
-    transitivePeerDependencies:
-      - '@eslint/json'
-      - '@types/eslint'
-      - '@typescript-eslint/parser'
-      - eslint-import-resolver-typescript
-      - eslint-import-resolver-webpack
-      - supports-color
-
-  '@aimarchirico/commons-ts@3.4.2(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(yaml@2.9.0))':
+  '@aimarchirico/commons-ts@3.4.3(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(yaml@2.9.0))':
     dependencies:
       '@es-joy/jsdoccomment': 0.90.0
       '@eslint-community/eslint-plugin-eslint-comments': 4.7.2(eslint@9.39.5(jiti@2.7.0))
@@ -7307,7 +7278,29 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  '@aimarchirico/commons-ts@3.4.2(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.2)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(terser@5.49.0)(yaml@2.9.0))':
+  '@aimarchirico/commons-ts@3.4.3(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(terser@5.49.0)(yaml@2.9.0))':
+    dependencies:
+      '@es-joy/jsdoccomment': 0.90.0
+      '@eslint-community/eslint-plugin-eslint-comments': 4.7.2(eslint@9.39.5(jiti@2.7.0))
+      eslint: 9.39.5(jiti@2.7.0)(supports-color@8.1.1)
+      eslint-plugin-check-file: 3.3.2(eslint@9.39.5(jiti@2.7.0))
+      eslint-plugin-import: 2.32.0(eslint@9.39.5(jiti@2.7.0))
+      eslint-plugin-jsdoc: 63.3.2(eslint@9.39.5(jiti@2.7.0))
+      eslint-plugin-jsonc: 3.3.0(eslint@9.39.5(jiti@2.7.0))
+      globals: 17.7.0
+      gts: 7.0.0(jiti@2.7.0)(typescript@6.0.3)
+      jiti: 2.7.0
+      typescript: 6.0.3
+      vitest: 3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(yaml@2.9.0)
+    transitivePeerDependencies:
+      - '@eslint/json'
+      - '@types/eslint'
+      - '@typescript-eslint/parser'
+      - eslint-import-resolver-typescript
+      - eslint-import-resolver-webpack
+      - supports-color
+
+  '@aimarchirico/commons-ts@3.4.3(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.2)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(terser@5.49.0)(yaml@2.9.0))':
     dependencies:
       '@es-joy/jsdoccomment': 0.90.0
       '@eslint-community/eslint-plugin-eslint-comments': 4.7.2(eslint@9.39.5(jiti@2.7.0))
@@ -10123,6 +10116,10 @@ snapshots:
     dependencies:
       acorn: 8.17.0
 
+  acorn-jsx@5.3.2(acorn@8.18.0):
+    dependencies:
+      acorn: 8.18.0
+
   acorn-walk@8.3.2: {}
 
   acorn@8.14.0: {}
@@ -11585,8 +11582,8 @@ snapshots:
 
   espree@11.2.0:
     dependencies:
-      acorn: 8.17.0
-      acorn-jsx: 5.3.2(acorn@8.17.0)
+      acorn: 8.18.0
+      acorn-jsx: 5.3.2(acorn@8.18.0)
       eslint-visitor-keys: 5.0.1
 
   esprima@4.0.1: {}
@@ -12750,7 +12747,7 @@ snapshots:
 
   jsonc-eslint-parser@3.1.0:
     dependencies:
-      acorn: 8.17.0
+      acorn: 8.18.0
       eslint-visitor-keys: 5.0.1
       semver: 7.8.5
 
@@ -14800,7 +14797,7 @@ snapshots:
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
       '@types/node': 26.1.1
-      acorn: 8.17.0
+      acorn: 8.18.0
       acorn-walk: 8.3.2
       arg: 4.1.3
       create-require: 1.1.1
