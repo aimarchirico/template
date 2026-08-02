@@ -1,3 +1,4 @@
+/* eslint-disable jsdoc/require-jsdoc -- Babel config exports default CJS function */
 // @ts-expect-error - CJS function with optional Babel API type
 module.exports = function (api) {
   api.cache(true);

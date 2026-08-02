@@ -3,16 +3,19 @@ node_modules/
 
 # Expo
 .expo/
-dist/
 android/
 expo-env.d.ts
+**/dist/
 
 # Environment
 .env
 
-# Turborepo & pnpm
+# Turborepo & PNPM
 .turbo/
 pnpm-debug.log*
 
 # Generated API client
 **/src/services/generated/
+
+# Test files
+**/coverage/
