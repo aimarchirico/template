@@ -1,8 +1,10 @@
+import {defineConfig} from 'eslint/config';
 import baseConfig from '@aimarchirico/commons-ts/eslint-core';
 
-export default [
+/** ESLint configuration. */
+export default defineConfig([
   ...baseConfig,
   {
     ignores: ['src/services/generated/**'],
   },
-];
+]);

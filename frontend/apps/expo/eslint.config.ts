@@ -1,5 +1,8 @@
+import {defineConfig} from 'eslint/config';
 import baseConfig from '@aimarchirico/commons-expo/eslint-app';
-export default [
+
+/** ESLint configuration. */
+export default defineConfig([
   ...baseConfig,
   {
     files: ['**/\\[\\[path\\]\\].ts'],
@@ -7,4 +10,4 @@ export default [
       'check-file/filename-naming-convention': 'off',
     },
   },
-];
+]);

@@ -1,10 +1,10 @@
-import { describe, expect, it, vi } from 'vitest';
+import {describe, expect, it, vi} from 'vitest';
+
+import RootLayout from '../_layout';
 
 vi.mock('expo-router', () => ({
   Stack: () => null,
 }));
-
-import RootLayout from '../_layout';
 
 describe('RootLayout', () => {
   it('is a function', () => {

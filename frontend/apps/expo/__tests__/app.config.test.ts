@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import {describe, expect, it} from 'vitest';
 import appConfig from '../app.config';
 
 describe('app.config', () => {
