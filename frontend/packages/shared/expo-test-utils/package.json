@@ -8,7 +8,7 @@
       "types": "./dist/lib/vitest-base.d.ts",
       "default": "./dist/lib/vitest-base.js"
     },
-    "./setup": "./src/lib/setup.ts"
+    "./setup-base": "./src/lib/setup-base.ts"
   },
   "files": [
     "src",
