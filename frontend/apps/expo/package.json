@@ -3,7 +3,7 @@
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
-    "check": "eslint && tsc",
+    "check": "eslint && tsc && vitest run",
     "fix": "eslint --fix",
     "dev": "expo start --dev-client",
     "prebuild": "expo prebuild --platform android",
@@ -36,9 +36,11 @@
     "react-native-worklets": "0.10.0"
   },
   "devDependencies": {
-    "@aimarchirico/commons-cloudflare": "^3.3.0",
-    "@aimarchirico/commons-expo": "^4.2.0",
-    "@aimarchirico/commons-ts": "^3.2.0",
+    "@aimarchirico/commons-cloudflare": "^3.4.0",
+    "@aimarchirico/commons-expo": "^4.3.0",
+    "@aimarchirico/commons-ts": "^3.3.0",
+    "@vitest/coverage-v8": "^3.2.4",
+    "vitest": "^3.2.4",
     "@babel/core": "^7.20.0",
     "@types/node": "^26.0.1",
     "@types/react": "~19.2.14",
