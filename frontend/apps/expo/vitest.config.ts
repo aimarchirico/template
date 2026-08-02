@@ -1,3 +1,3 @@
-import config from '@aimarchirico/commons-ts/vitest-coverage';
+import config from '@aimarchirico/commons-ts/vitest-base';
 
 export default config;
