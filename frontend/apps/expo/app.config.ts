@@ -13,7 +13,7 @@ export function buildExpoConfig(isDev: boolean, apiUrl: string) {
     expo: {
       name: isDev ? `${NAME} (Dev)` : NAME,
       slug: LOWER_CASE,
-      version: '1.10.0', // x-release-please-version
+      version: '1.10.1', // x-release-please-version
       orientation: 'portrait',
       icon: './src/assets/icons/icon.png',
       scheme: LOWER_CASE,

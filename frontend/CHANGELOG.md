@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.10.1](https://github.com/aimarchirico/template/compare/template-app-v1.10.0...template-app-v1.10.1) (2026-08-03)
+
+
+### Bug Fixes
+
+* **frontend:** repair corrupted app icons breaking Expo web/android builds ([37ef29f](https://github.com/aimarchirico/template/commit/37ef29f91f5ac06cbddc503a9b6920e0f0845b50))
+* **frontend:** repair corrupted app icons breaking Expo web/android builds ([7e0e73f](https://github.com/aimarchirico/template/commit/7e0e73f1d24ffb14be53bda031cd46781a5be9ee))
+
 ## [1.10.0](https://github.com/aimarchirico/template/compare/template-app-v1.9.1...template-app-v1.10.0) (2026-08-03)
 
 
