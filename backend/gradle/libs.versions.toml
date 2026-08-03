@@ -7,7 +7,7 @@ ktfmt = "0.26.0"
 archunit = "1.4.2"
 commons-security = "3.2.0"
 commons-test = "3.2.0"
-commons-convention = "2.3.0"
+commons-convention = "3.0.0"
 
 [libraries]
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -29,4 +29,6 @@ spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
 ktfmt = { id = "com.ncorti.ktfmt.gradle", version.ref = "ktfmt" }
 commons-kotlin = { id = "no.chirico.commons.convention.kotlin", version.ref = "commons-convention" }
 commons-spring = { id = "no.chirico.commons.convention.spring", version.ref = "commons-convention" }
+commons-postgresql = { id = "no.chirico.commons.convention.postgresql", version.ref = "commons-convention" }
+commons-web = { id = "no.chirico.commons.convention.web", version.ref = "commons-convention" }
 commons-architecture = { id = "no.chirico.commons.convention.architecture", version.ref = "commons-convention" }
