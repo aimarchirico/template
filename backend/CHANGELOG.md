@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.6.0](https://github.com/aimarchirico/template/compare/template-api-v1.5.0...template-api-v1.6.0) (2026-08-03)
+
+
+### Features
+
+* adopt 80% test-coverage enforcement from commons ([3e9673e](https://github.com/aimarchirico/template/commit/3e9673ed2b056ea1095ed4a20c49608611c033f9))
+* adopt 80% test-coverage threshold from commons ([19ed520](https://github.com/aimarchirico/template/commit/19ed520801cfe4ada4f6d72c36958829e27b3d90))
+
+
+### Bug Fixes
+
+* cover main() with a testcontainers-backed integration test ([92560bd](https://github.com/aimarchirico/template/commit/92560bd0c3618667c1da1db479931d4479403191))
+* replace corrupt gradle-wrapper.jar ([f06f23b](https://github.com/aimarchirico/template/commit/f06f23bbcc43bdeceba7532a6552011fef5a5802))
+
 ## [1.5.0](https://github.com/aimarchirico/template/compare/template-api-v1.4.5...template-api-v1.5.0) (2026-07-29)
 
 
