@@ -1,6 +1,8 @@
-/* eslint-disable check-file/filename-naming-convention -- Babel config requires fixed filename */
-/* eslint-disable jsdoc/require-jsdoc -- Babel config exports default CJS function */
-// @ts-expect-error - CJS function with optional Babel API type
+/**
+ * Babel configuration.
+ * @param api
+ * @returns The babel configuration object.
+ */
 module.exports = function (api) {
   api.cache(true);
   return {

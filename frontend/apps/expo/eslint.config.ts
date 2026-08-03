@@ -8,9 +8,15 @@ export default defineConfig([
     ignores: ['**/coverage/**'],
   },
   {
-    files: ['**/babel.config.cjs', '**/\\[\\[path\\]\\].ts'],
+    files: ['babel.config.cjs', 'functions/api/\\[\\[path\\]\\].ts'],
     rules: {
       'check-file/filename-naming-convention': 'off',
+    },
+  },
+  {
+    files: ['nativewind-env.d.ts'],
+    rules: {
+      'commons/public-jsdoc-only': 'off',
     },
   },
 ]);
