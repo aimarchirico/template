@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 import fs from 'fs';
 import {execSync} from 'child_process';
 import {loadEnvs} from './utils/common.js';

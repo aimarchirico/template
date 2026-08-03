@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 import path from 'path';
 import {loadEnvs, runCommand, rootDir, setupDir} from './utils/common.js';
 

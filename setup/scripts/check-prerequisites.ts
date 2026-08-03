@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 import fs from 'fs';
 import {spawnSync} from 'child_process';
 import {loadEnvs, getOutputsPath} from './utils/common.js';

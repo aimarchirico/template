@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 import fs from 'fs';
 import {loadEnvs, runCommand} from './utils/common.js';
 
