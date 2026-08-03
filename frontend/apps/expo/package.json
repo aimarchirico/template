@@ -2,6 +2,7 @@
   "name": "@aimarchirico/template-expo",
   "main": "expo-router/entry",
   "version": "1.0.0",
+  "private": true,
   "scripts": {
     "check": "eslint && tsc && vitest run",
     "fix": "eslint --fix",
@@ -51,6 +52,5 @@
     "typescript": "~6.0.3",
     "vitest": "^3.2.4",
     "wrangler": "^3.90.0"
-  },
-  "private": true
+  }
 }
