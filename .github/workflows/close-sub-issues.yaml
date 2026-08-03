@@ -13,4 +13,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: aimarchirico/commons/.github/actions/close-issues@main
+      - uses: aimarchirico/commons/.github/actions/close-sub-issues@main
