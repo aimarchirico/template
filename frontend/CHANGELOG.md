@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.10.0](https://github.com/aimarchirico/template/compare/template-app-v1.9.1...template-app-v1.10.0) (2026-08-03)
+
+
+### Features
+
+* add expo-test-utils package for react-native vitest support ([2ad211f](https://github.com/aimarchirico/template/commit/2ad211f40cddb6748e06cbce18a0f3b4de850f8a))
+* adopt 80% test-coverage enforcement from commons ([3e9673e](https://github.com/aimarchirico/template/commit/3e9673ed2b056ea1095ed4a20c49608611c033f9))
+* adopt 80% test-coverage threshold from commons ([19ed520](https://github.com/aimarchirico/template/commit/19ed520801cfe4ada4f6d72c36958829e27b3d90))
+
+
+### Bug Fixes
+
+* resolve frontend ESLint and test configuration ([d25a859](https://github.com/aimarchirico/template/commit/d25a8590282698899634954aa0009f278dad8ba6))
+* update frontend config files for defineConfig pattern ([d14f193](https://github.com/aimarchirico/template/commit/d14f193524dfab96cbdec491b364ee82a96678be))
+
 ## [1.9.1](https://github.com/aimarchirico/template/compare/template-app-v1.9.0...template-app-v1.9.1) (2026-07-30)
 
 
