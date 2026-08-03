@@ -1,38 +1,35 @@
+import {defineConfig} from 'eslint/config';
 import eslintPluginToml from 'eslint-plugin-toml';
 import eslintPluginYml from 'eslint-plugin-yml';
 import tsConfig from '@aimarchirico/commons-ts/eslint-base';
 
-function createConfig() {
-  return [
-    ...tsConfig,
-    ...eslintPluginToml.configs['flat/recommended'],
-    ...eslintPluginYml.configs['flat/recommended'],
-    {
-      ignores: [
-        '**/frontend/apps/**',
-        '**/frontend/packages/**',
-        '**/frontend/functions/**',
-        '**/setup/**',
-        '**/pnpm-lock.yaml',
-      ],
-    },
-    {
-      files: ['**/*.ts'],
-      languageOptions: {
-        parserOptions: {
-          project: 'tsconfig.json',
-          tsconfigRootDir: import.meta.dirname,
-        },
+/** ESLint configuration. */
+export default defineConfig([
+  ...tsConfig,
+  ...eslintPluginToml.configs['flat/recommended'],
+  ...eslintPluginYml.configs['flat/recommended'],
+  {
+    ignores: [
+      '**/frontend/apps/**',
+      '**/frontend/packages/**',
+      '**/frontend/functions/**',
+      '**/setup/**',
+      '**/pnpm-lock.yaml',
+    ],
+  },
+  {
+    files: ['**/*.ts'],
+    languageOptions: {
+      parserOptions: {
+        project: 'tsconfig.json',
+        tsconfigRootDir: import.meta.dirname,
       },
     },
-    {
-      files: ['**/*.toml'],
-      rules: {
-        'prettier/prettier': 'off',
-      },
+  },
+  {
+    files: ['**/*.toml'],
+    rules: {
+      'prettier/prettier': 'off',
     },
-  ];
-}
-
-/** @type {any} */
-export default createConfig();
+  },
+]);
