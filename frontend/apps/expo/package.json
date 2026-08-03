@@ -42,6 +42,7 @@
     "@aimarchirico/commons-ts": "^3.4.3",
     "@aimarchirico/template-expo-test-utils": "workspace:*",
     "@babel/core": "^7.20.0",
+    "@types/babel__core": "^7.20.5",
     "@types/node": "^26.0.1",
     "@types/react": "~19.2.14",
     "@vitest/coverage-v8": "^3.2.4",
