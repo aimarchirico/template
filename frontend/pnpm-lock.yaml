@@ -83,11 +83,11 @@ importers:
         version: 0.10.0(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.86.0(@babel/core@7.29.7(supports-color@8.1.1)))(react-native@0.86.0(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.86.0(@babel/core@7.29.7(supports-color@8.1.1)))(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
     devDependencies:
       '@aimarchirico/commons-cloudflare':
-        specifier: ^3.5.0
-        version: 3.5.0
+        specifier: ^3.6.0
+        version: 3.6.0
       '@aimarchirico/commons-expo':
-        specifier: ^4.4.0
-        version: 4.4.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eas-cli@21.4.0(@types/node@26.1.1)(supports-color@8.1.1)(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(expo@57.0.8)(react@19.2.3)(supports-color@8.1.1)(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(yaml@2.9.0))
+        specifier: ^4.5.0
+        version: 4.5.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eas-cli@21.4.0(@types/node@26.1.1)(supports-color@8.1.1)(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(expo@57.0.8)(react@19.2.3)(supports-color@8.1.1)(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(yaml@2.9.0))
       '@aimarchirico/commons-ts':
         specifier: ^3.4.3
         version: 3.4.3(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(yaml@2.9.0))
@@ -135,8 +135,8 @@ importers:
         version: 1.18.1
     devDependencies:
       '@aimarchirico/commons-openapi':
-        specifier: ^2.5.0
-        version: 2.5.0(@types/json-schema@7.0.15)(supports-color@8.1.1)
+        specifier: ^2.6.0
+        version: 2.6.0(@types/json-schema@7.0.15)(supports-color@8.1.1)
       '@aimarchirico/commons-ts':
         specifier: ^3.4.3
         version: 3.4.3(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(terser@5.49.0)(yaml@2.9.0))
@@ -182,12 +182,12 @@ packages:
   '@adobe/css-tools@4.5.0':
     resolution: {integrity: sha512-6OzddxPio9UiWTCemp4N8cYLV2ZN1ncRnV1cVGtve7dhPOtRkleRyx32GQCYSwDYgaHU3USMm84tNsvKzRCa1Q==}
 
-  '@aimarchirico/commons-cloudflare@3.5.0':
-    resolution: {integrity: sha512-v+Om6ZO+BPhbKwbQTAG6ucJbSv8N8e4H6mGtX3hRvegJlqC9wxlXviSarjp40jz4lNRtCAmRNgA2QX55ykr1Og==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-cloudflare/3.5.0/c60e6097862d660ff914219a707d798c9c3e732f}
+  '@aimarchirico/commons-cloudflare@3.6.0':
+    resolution: {integrity: sha512-jVu+Z2Qu0AEni6KEYvvuP/wzOUTKae+skCpgJcdMrwcMf6i8l6X8302dKbFafoT1Ev+LgP4Ma/AFUJx4uO72nw==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-cloudflare/3.6.0/95a9894424f6f86aff3e86f7eb9b68de1254801f}
     hasBin: true
 
-  '@aimarchirico/commons-expo@4.4.0':
-    resolution: {integrity: sha512-CE5BHZ80ropqNzYPVSIP97FUGqdgKf6RcW7FlbqcgTitev0AeWShwxWeorVemVvGgRshYVJPtC+7mQKXoBuxBw==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-expo/4.4.0/18056735f208c98eb5d8874a169c1a01142ff116}
+  '@aimarchirico/commons-expo@4.5.0':
+    resolution: {integrity: sha512-e1iCHXDIwffSeooxrVFUpxLxoQPXiqOVWpXaxxozB3vaI0uj8X3Zt231Ll1u3T9VJd6s5A2ef866/KbvWvekUA==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-expo/4.5.0/9dfed6b01bed01481d0e0e7abb085902097111b3}
     hasBin: true
     peerDependencies:
       eas-cli: ^21.3.0
@@ -196,8 +196,8 @@ packages:
       react: '*'
       typescript: ^6.0.3
 
-  '@aimarchirico/commons-openapi@2.5.0':
-    resolution: {integrity: sha512-cpP58c8J4SNnFZqwST0mZR/Q01xQ0AEu6jM6i8i5ReF0gMbCaizaw3wMSgYjZM216qUSrUW4ku34ZUFocWk3Gw==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-openapi/2.5.0/5b0519d381fdfd89d43131f6cc1c312b7a0046be}
+  '@aimarchirico/commons-openapi@2.6.0':
+    resolution: {integrity: sha512-Br66fbxktAO0+IUz0uuMISLsNV3laITz4gEocMokiO7HfJ2Jmeap4PACEVRLierMwLD9V7Lxa1Ag7AeMkwQbIQ==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-openapi/2.6.0/162d7dad876095a9f307de4a40c2158fc991cc93}
     hasBin: true
 
   '@aimarchirico/commons-project@1.3.0':
@@ -245,8 +245,8 @@ packages:
     resolution: {integrity: sha512-mbhpPMmnw/kwW19aRNmSUl1QzLbdGo1SCuE49BT98MNwqF6zaHb3o2owssFc/PEO/4t2UjqtCNwocuDtJornzA==}
     engines: {node: ^22.13.0 || >=24.0.0}
 
-  '@asamuzakjp/dom-selector@8.3.0':
-    resolution: {integrity: sha512-UJLfKXBhrc8i1vH2eJXuYQMwlsLKWFw3O+CPqXSuVEiikeAim3UgrfWX0k4tA/X8cRFM8iZ7OaqBokFGbYusdg==}
+  '@asamuzakjp/dom-selector@8.3.2':
+    resolution: {integrity: sha512-93Z1N+BQNXysodoicpOIyNh2drHfz/CTf9nnT0FEx72GJcIiwgydD7tGAr78j41LsYn3hlRn+LdGPuBLn1Bl8Q==}
     engines: {node: ^22.13.0 || >=24.0.0}
 
   '@babel/code-frame@7.10.4':
@@ -7209,13 +7209,13 @@ snapshots:
 
   '@adobe/css-tools@4.5.0': {}
 
-  '@aimarchirico/commons-cloudflare@3.5.0':
+  '@aimarchirico/commons-cloudflare@3.6.0':
     dependencies:
       '@aimarchirico/commons-project': 1.3.0
       replace-in-file: 8.4.0
       shelljs: 0.10.0
 
-  '@aimarchirico/commons-expo@4.4.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eas-cli@21.4.0(@types/node@26.1.1)(supports-color@8.1.1)(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(expo@57.0.8)(react@19.2.3)(supports-color@8.1.1)(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(yaml@2.9.0))':
+  '@aimarchirico/commons-expo@4.5.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eas-cli@21.4.0(@types/node@26.1.1)(supports-color@8.1.1)(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(expo@57.0.8)(react@19.2.3)(supports-color@8.1.1)(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(yaml@2.9.0))':
     dependencies:
       '@aimarchirico/commons-project': 1.3.0
       '@aimarchirico/commons-ts': 3.4.3(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(yaml@2.9.0))
@@ -7235,7 +7235,7 @@ snapshots:
       - supports-color
       - vitest
 
-  '@aimarchirico/commons-openapi@2.5.0(@types/json-schema@7.0.15)(supports-color@8.1.1)':
+  '@aimarchirico/commons-openapi@2.6.0(@types/json-schema@7.0.15)(supports-color@8.1.1)':
     dependencies:
       '@aimarchirico/commons-project': 1.3.0
       '@openapitools/openapi-generator-cli': 2.40.0(supports-color@8.1.1)
@@ -7361,7 +7361,7 @@ snapshots:
       '@csstools/css-tokenizer': 4.0.0
       lru-cache: 11.5.2
 
-  '@asamuzakjp/dom-selector@8.3.0':
+  '@asamuzakjp/dom-selector@8.3.2':
     dependencies:
       bidi-js: 1.0.3
       css-tree: 3.2.1
@@ -11287,7 +11287,7 @@ snapshots:
       '@typescript-eslint/eslint-plugin': 8.65.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3)
       '@typescript-eslint/parser': 8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3)
       eslint: 9.39.5(jiti@2.7.0)(supports-color@8.1.1)
-      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0)(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)
+      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1)))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)
       eslint-plugin-expo: 1.1.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3)
       eslint-plugin-import: 2.32.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))
       eslint-plugin-react: 7.37.5(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))
@@ -11311,7 +11311,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0)(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1):
+  eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1)))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1):
     dependencies:
       '@nolyfill/is-core-module': 1.0.39
       debug: 4.4.3(supports-color@8.1.1)
@@ -11332,14 +11332,14 @@ snapshots:
       esquery: 1.7.0
       jsonc-eslint-parser: 3.1.0
 
-  eslint-module-utils@2.14.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint-import-resolver-node@0.3.10)(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1)):
+  eslint-module-utils@2.14.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint-import-resolver-node@0.3.10)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1)))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1)):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
       '@typescript-eslint/parser': 8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3)
       eslint: 9.39.5(jiti@2.7.0)(supports-color@8.1.1)
       eslint-import-resolver-node: 0.3.10
-      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0)(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)
+      eslint-import-resolver-typescript: 3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1)))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -11385,7 +11385,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 9.39.5(jiti@2.7.0)(supports-color@8.1.1)
       eslint-import-resolver-node: 0.3.10
-      eslint-module-utils: 2.14.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint-import-resolver-node@0.3.10)(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))
+      eslint-module-utils: 2.14.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint-import-resolver-node@0.3.10)(eslint-import-resolver-typescript@3.10.1(eslint-plugin-import@2.32.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1)))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))
       hasown: 2.0.4
       is-core-module: 2.16.2
       is-glob: 4.0.3
@@ -12700,7 +12700,7 @@ snapshots:
   jsdom@30.0.1:
     dependencies:
       '@asamuzakjp/css-color': 6.0.5
-      '@asamuzakjp/dom-selector': 8.3.0
+      '@asamuzakjp/dom-selector': 8.3.2
       '@bramus/specificity': 2.4.2
       '@csstools/css-syntax-patches-for-csstree': 1.1.7(css-tree@3.2.1)
       '@exodus/bytes': 1.15.1
