@@ -1,0 +1,17 @@
+# Normalize line endings to LF on checkout for all text files so tooling
+# behaves consistently regardless of core.autocrlf.
+* text=auto eol=lf
+
+# Explicitly mark binary assets so line-ending normalization never touches them.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.ttf binary
+*.otf binary
+*.woff binary
+*.woff2 binary
+*.jar binary
+*.keystore binary
