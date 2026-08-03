@@ -83,11 +83,11 @@ importers:
         version: 0.10.0(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.86.0(@babel/core@7.29.7(supports-color@8.1.1)))(react-native@0.86.0(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.86.0(@babel/core@7.29.7(supports-color@8.1.1)))(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
     devDependencies:
       '@aimarchirico/commons-cloudflare':
-        specifier: ^3.6.0
-        version: 3.6.0
+        specifier: ^3.6.1
+        version: 3.6.1
       '@aimarchirico/commons-expo':
-        specifier: ^4.5.0
-        version: 4.5.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eas-cli@21.4.0(@types/node@26.1.1)(supports-color@8.1.1)(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(expo@57.0.8)(react@19.2.3)(supports-color@8.1.1)(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(yaml@2.9.0))
+        specifier: ^4.5.1
+        version: 4.5.1(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eas-cli@21.4.0(@types/node@26.1.1)(supports-color@8.1.1)(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(expo@57.0.8)(react@19.2.3)(supports-color@8.1.1)(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(yaml@2.9.0))
       '@aimarchirico/commons-ts':
         specifier: ^3.4.3
         version: 3.4.3(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(yaml@2.9.0))
@@ -138,8 +138,8 @@ importers:
         version: 1.18.1
     devDependencies:
       '@aimarchirico/commons-openapi':
-        specifier: ^2.6.0
-        version: 2.6.0(@types/json-schema@7.0.15)(supports-color@8.1.1)
+        specifier: ^2.6.1
+        version: 2.6.1(@types/json-schema@7.0.15)(supports-color@8.1.1)
       '@aimarchirico/commons-ts':
         specifier: ^3.4.3
         version: 3.4.3(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(terser@5.49.0)(yaml@2.9.0))
@@ -185,12 +185,12 @@ packages:
   '@adobe/css-tools@4.5.0':
     resolution: {integrity: sha512-6OzddxPio9UiWTCemp4N8cYLV2ZN1ncRnV1cVGtve7dhPOtRkleRyx32GQCYSwDYgaHU3USMm84tNsvKzRCa1Q==}
 
-  '@aimarchirico/commons-cloudflare@3.6.0':
-    resolution: {integrity: sha512-jVu+Z2Qu0AEni6KEYvvuP/wzOUTKae+skCpgJcdMrwcMf6i8l6X8302dKbFafoT1Ev+LgP4Ma/AFUJx4uO72nw==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-cloudflare/3.6.0/95a9894424f6f86aff3e86f7eb9b68de1254801f}
+  '@aimarchirico/commons-cloudflare@3.6.1':
+    resolution: {integrity: sha512-Ov2A1tWjbH5T+28Q7XinbY4rzwGhlZ9A42TB9vxb8/4AlPLVSjkYXkPY8RHtMQNuquIUGTF7oLJgWuphJCjvWQ==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-cloudflare/3.6.1/5f7b05e5a111e354c922708e3dd00d3b05e7e610}
     hasBin: true
 
-  '@aimarchirico/commons-expo@4.5.0':
-    resolution: {integrity: sha512-e1iCHXDIwffSeooxrVFUpxLxoQPXiqOVWpXaxxozB3vaI0uj8X3Zt231Ll1u3T9VJd6s5A2ef866/KbvWvekUA==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-expo/4.5.0/9dfed6b01bed01481d0e0e7abb085902097111b3}
+  '@aimarchirico/commons-expo@4.5.1':
+    resolution: {integrity: sha512-S9dYCqrgevKhuNv/CguJPoF/zLPQfUElKnAlS6IT2sZqMngncTBRxY5nG0dswvqGjMnTRMvyvE6CsFS9vadI2Q==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-expo/4.5.1/bdfd31804a12557f7889f142ef51ba16075ecc6d}
     hasBin: true
     peerDependencies:
       eas-cli: ^21.3.0
@@ -199,8 +199,8 @@ packages:
       react: '*'
       typescript: ^6.0.3
 
-  '@aimarchirico/commons-openapi@2.6.0':
-    resolution: {integrity: sha512-Br66fbxktAO0+IUz0uuMISLsNV3laITz4gEocMokiO7HfJ2Jmeap4PACEVRLierMwLD9V7Lxa1Ag7AeMkwQbIQ==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-openapi/2.6.0/162d7dad876095a9f307de4a40c2158fc991cc93}
+  '@aimarchirico/commons-openapi@2.6.1':
+    resolution: {integrity: sha512-RaG/CLfr9LNRIVrJX+EcS7VDY+wiYZ0T3nD1W7ndyd97gosGXPlyx0hMjGjiPQF2bEEC6esupl1VnGzDfSB8QQ==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-openapi/2.6.1/c326a7ac4528f51ad065e2c1afa3cb3be096bc11}
     hasBin: true
 
   '@aimarchirico/commons-project@1.3.0':
@@ -7224,13 +7224,13 @@ snapshots:
 
   '@adobe/css-tools@4.5.0': {}
 
-  '@aimarchirico/commons-cloudflare@3.6.0':
+  '@aimarchirico/commons-cloudflare@3.6.1':
     dependencies:
       '@aimarchirico/commons-project': 1.3.0
       replace-in-file: 8.4.0
       shelljs: 0.10.0
 
-  '@aimarchirico/commons-expo@4.5.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eas-cli@21.4.0(@types/node@26.1.1)(supports-color@8.1.1)(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(expo@57.0.8)(react@19.2.3)(supports-color@8.1.1)(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(yaml@2.9.0))':
+  '@aimarchirico/commons-expo@4.5.1(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eas-cli@21.4.0(@types/node@26.1.1)(supports-color@8.1.1)(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(expo@57.0.8)(react@19.2.3)(supports-color@8.1.1)(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(yaml@2.9.0))':
     dependencies:
       '@aimarchirico/commons-project': 1.3.0
       '@aimarchirico/commons-ts': 3.4.3(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(jsdom@30.0.1)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(yaml@2.9.0))
@@ -7250,7 +7250,7 @@ snapshots:
       - supports-color
       - vitest
 
-  '@aimarchirico/commons-openapi@2.6.0(@types/json-schema@7.0.15)(supports-color@8.1.1)':
+  '@aimarchirico/commons-openapi@2.6.1(@types/json-schema@7.0.15)(supports-color@8.1.1)':
     dependencies:
       '@aimarchirico/commons-project': 1.3.0
       '@openapitools/openapi-generator-cli': 2.40.0(supports-color@8.1.1)
