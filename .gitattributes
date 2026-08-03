@@ -1,5 +1,5 @@
 # Normalize line endings to LF on checkout for all text files so tooling
-# (prettier/eslint) behaves consistently regardless of core.autocrlf.
+# behaves consistently regardless of core.autocrlf.
 * text=auto eol=lf
 
 # Explicitly mark binary assets so line-ending normalization never touches them.
