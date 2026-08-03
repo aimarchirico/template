@@ -7,18 +7,21 @@
     "config:check": "cd .. && eslint -c tools/eslint.config.ts && tsc -p tools/tsconfig.json",
     "config:fix": "cd .. && eslint -c tools/eslint.config.ts --fix",
     "docs:check": "cd .. && markdownlint-cli2 --config tools/.markdownlint-cli2.yaml",
-    "docs:fix": "cd .. && markdownlint-cli2 --config tools/.markdownlint-cli2.yaml --fix"
+    "docs:fix": "cd .. && markdownlint-cli2 --config tools/.markdownlint-cli2.yaml --fix",
+    "check": "pnpm config:check && pnpm docs:check && vitest run"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^19.0.0",
-    "@aimarchirico/commons-ts": "^3.2.0",
+    "@aimarchirico/commons-ts": "^3.4.3",
     "@commitlint/cli": "^19.0.0",
+    "@vitest/coverage-v8": "^3.2.4",
     "eslint": "^9.39.2",
     "husky": "^9.1.7",
     "markdownlint-cli2": "^0.23.0",
     "eslint-plugin-toml": "^0.11.1",
     "eslint-plugin-yml": "^1.14.0",
     "typescript": "^6.0.3",
+    "vitest": "^3.2.4",
     "@types/node": "^26.0.1"
   }
 }

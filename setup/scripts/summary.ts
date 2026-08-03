@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 import fs from 'fs';
 import {execSync} from 'child_process';
 import {loadEnvs} from './utils/common.js';
@@ -47,5 +47,5 @@ if (outputsFile && fs.existsSync(outputsFile)) {
     }
   }
   console.log();
-  console.log('Back these up now â€” see setup/README.md#backup-and-recovery.');
+  console.log('Back these up now - see setup/README.md#backup-and-recovery.');
 }

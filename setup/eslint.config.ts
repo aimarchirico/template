@@ -1,8 +1,10 @@
-import baseConfig from '@aimarchirico/commons-ts/eslint-core';
+import {defineConfig} from 'eslint/config';
+import eslintBaseConfig from '@aimarchirico/commons-ts/eslint-core';
 
-export default [
-  ...baseConfig,
+/** ESLint configuration. */
+export default defineConfig([
+  ...eslintBaseConfig,
   {
     ignores: ['manifest.resolved.json'],
   },
-];
+]);

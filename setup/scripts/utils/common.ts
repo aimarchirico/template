@@ -6,9 +6,9 @@ const here = path.dirname(
   new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1'),
 );
 /** Path to the setup directory. */
-export const setupDir = path.resolve(here, '..');
+export const setupDir = path.resolve(here, '../..');
 /** Path to the root directory. */
-export const rootDir = path.resolve(here, '../..');
+export const rootDir = path.resolve(here, '../../..');
 
 /** Represents any valid JSON value. */
 export type JsonValue =

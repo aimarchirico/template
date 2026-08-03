@@ -1,7 +1,10 @@
-/* eslint-disable check-file/filename-naming-convention -- Babel config requires fixed filename */
-/* eslint-disable jsdoc/require-jsdoc -- Babel config exports default CJS function */
+/**
+ * Babel configuration.
+ * @param {import('@babel/core').ConfigAPI} api
+ * @returns The babel configuration object.
+ */
 module.exports = function (api) {
-  api.cache(true);
+  api.cache.forever();
   return {
     presets: [
       ['babel-preset-expo', {jsxImportSource: 'nativewind'}],
