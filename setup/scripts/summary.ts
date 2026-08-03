@@ -47,5 +47,5 @@ if (outputsFile && fs.existsSync(outputsFile)) {
     }
   }
   console.log();
-  console.log('Back these up now â€” see setup/README.md#backup-and-recovery.');
+  console.log('Back these up now - see setup/README.md#backup-and-recovery.');
 }

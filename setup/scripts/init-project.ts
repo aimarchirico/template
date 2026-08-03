@@ -4,7 +4,7 @@ import {loadEnvs, runCommand, rootDir, setupDir} from './utils/common.js';
 
 loadEnvs();
 
-runCommand('pnpm', ['exec', 'tsx', 'scripts/lib/build-manifest.ts'], {
+runCommand('pnpm', ['exec', 'tsx', 'scripts/utils/build-manifest.ts'], {
   cwd: setupDir,
 });
 

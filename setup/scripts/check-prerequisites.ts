@@ -62,7 +62,7 @@ if (missing.length > 0) {
 console.log('= prerequisites: already present');
 console.log(`
 Browser-only prerequisites setup cannot automate. Confirm each exists
-before continuing â€” setup/README.md documents how to mint them:
+before continuing - setup/README.md documents how to mint them:
 
   - the two Cloudflare API tokens, the tunnel, and the Access
     application and policy this project reuses
