@@ -41,6 +41,8 @@ argument-hint: "[--no-project] [--no-spec] [--no-issues] [--auto]"
        and write the file set under `docs/specs/` (its own approval step
        surfaces normally unless `--auto` is set).
 1. **Issue Initialization** (skip if `--no-issues` is passed):
-    1. Inspect the file set `commons:spec` drafted as the work to turn into issues, with one top-level Epic per requirement.
-    2. Invoke the `commons:issue` skill, passing `--auto` through if it was provided, to draft and create the issues for the work identified (its own
-       hierarchy-approval step surfaces normally unless `--auto` is set).
+    1. Inspect the file set `commons:spec` drafted as the work to turn into
+       issues, with one top-level Epic per requirement.
+    2. Invoke the `commons:issue` skill, passing `--auto` through if it was
+       provided, to draft and create the issues for the work identified (its
+       own hierarchy-approval step surfaces normally unless `--auto` is set).
