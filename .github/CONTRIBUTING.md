@@ -81,20 +81,10 @@ implementation-specific.
 - **Project Structure**: Top-level directory tree explaining the purpose of each
   folder.
 
-### 3. docs/DESIGN.md
+### 3. docs/API.md (if applicable)
 
-Standards for UI, UX, and visual identity.
-
-- **Design System**: Definitions for the color palette, typography, spacing
-  scales, and component library usage.
-- **User Flows**: Logical maps or descriptions of the most critical user
-  journeys through the application.
-- **Assets**: Markdown illustrations, screenshots, or other visual assets used
-  in the design system.
-
-### 4. docs/API.md
-
-Technical reference for internal and external interfaces.
+Technical reference for internal and external interfaces. Applies only if the
+project exposes an API surface.
 
 - **Authentication**: Detailed security protocol. Instructions for obtaining and
   rotating credentials.
@@ -103,10 +93,27 @@ Technical reference for internal and external interfaces.
 - **Data Models**: Schema definitions or descriptions of core domain entities
   and their relationships.
 
+### 4. docs/DESIGN.md (if applicable)
+
+Standards for UI, UX, and visual identity. Applies only if the project has a
+UI.
+
+- **Design System**: Definitions for the color palette, typography, spacing
+  scales, and component library usage.
+- **User Flows**: Logical maps or descriptions of the most critical user
+  journeys through the application.
+- **Assets**: Markdown illustrations, screenshots, or other visual assets used
+  in the design system.
+
 ### 5. [module]/README.md
 
 Technical documentation specific to a project subsystem. All
-implementation-level detail lives here.
+implementation-level detail lives here. Prefer
+[Vertical Slice Architecture](https://deviq.com/architecture/vertical-slice-architecture/):
+draw boundaries by feature rather than technical layer, let each slice organize
+its own internals, and expose it only through a narrow public contract. Anything
+crossing a slice boundary goes through that contract, never around it; shared
+code never depends on a slice.
 
 - **Tech Stack**: Versioned list of major languages, frameworks, and libraries.
 - **Folder Structure**: Directory layout and module boundary rules.
@@ -129,13 +136,13 @@ for issues.
 
 Each issue type has has a provided template.
 
-| Type                                             | Purpose                                |
-| :----------------------------------------------- | :------------------------------------- |
-| [`Epic`](.github/ISSUE_TEMPLATE/epic.yaml)       | A high-level initiative.               |
-| [`Story`](.github/ISSUE_TEMPLATE/story.yaml)     | A user-facing feature.                 |
-| [`Task`](.github/ISSUE_TEMPLATE/task.yaml)       | A technical piece of work.             |
-| [`Bug`](.github/ISSUE_TEMPLATE/bug.yaml)         | A problem.                             |
-| [`Subtask`](.github/ISSUE_TEMPLATE/subtask.yaml) | A granular piece of work.              |
+| Type                                             | Purpose                   |
+| :----------------------------------------------- | :------------------------ |
+| [`Epic`](.github/ISSUE_TEMPLATE/epic.yaml)       | A high-level initiative   |
+| [`Story`](.github/ISSUE_TEMPLATE/story.yaml)     | A user-facing feature     |
+| [`Task`](.github/ISSUE_TEMPLATE/task.yaml)       | A technical piece of work |
+| [`Bug`](.github/ISSUE_TEMPLATE/bug.yaml)         | A problem                 |
+| [`Subtask`](.github/ISSUE_TEMPLATE/subtask.yaml) | A granular piece of work  |
 
 ### Hierarchy
 
@@ -158,22 +165,23 @@ graph TD
 
 ### Project Management
 
-| View         | Purpose                                            |
-| :----------- | :------------------------------------------------- |
-| **Backlog**  | A table for prioritizing stories, tasks, and bugs. |
-| **Board**    | A board for tracking stories, tasks, and bugs.     |
+| View        | Purpose                                           |
+| :---------- | :------------------------------------------------ |
+| **Backlog** | A table for prioritizing stories, tasks, and bugs |
+| **Board**   | A board for tracking stories, tasks, and bugs     |
+| **Roadmap** | An overview of ongoing and upcoming epics         |
 
-| Status        | Description                          |
-| :------------ | :----------------------------------- |
-| `Todo`        | Issues that are ready to be started. |
-| `In Progress` | Issues currently being addressed.    |
-| `Done`        | Issues that are completed.           |
+| Status        | Description                      |
+| :------------ | :------------------------------- |
+| `Todo`        | This item hasn't been started    |
+| `In Progress` | This is actively being worked on |
+| `Done`        | This has been completed          |
 
-| Priority | Description                |
-| :------- | :------------------------- |
-| `High`   | Critical or urgent issues. |
-| `Medium` | Standard priority issues.  |
-| `Low`    | Non-urgent issues.         |
+| Priority | Description               |
+| :------- | :------------------------ |
+| `Low`    | Non-urgent issues         |
+| `Medium` | Standard priority issues  |
+| `High`   | Critical or urgent issues |
 
 ### Issue Title
 
