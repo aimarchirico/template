@@ -40,6 +40,7 @@ argument-hint: "[--no-project] [--no-spec] [--no-issues] [--auto]"
        description, passing `--auto` through if it was provided, to draft
        and write the file set under `docs/specs/` (its own approval step
        surfaces normally unless `--auto` is set).
+    3. Invoke the `commons:commit` skill (or commit and push) to commit and push the drafted `docs/specs/` files so they are available on the remote repository before issue creation.
 1. **Issue Initialization** (skip if `--no-issues` is passed):
     1. Inspect the file set `commons:spec` drafted as the work to turn into
        issues, with one top-level Epic per requirement.
