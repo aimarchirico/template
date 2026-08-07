@@ -1,5 +1,5 @@
 import {getDefaultConfig} from 'expo/metro-config';
-import {withNativeWind} from 'nativewind/metro';
+import {withNativewind} from 'nativewind/metro';
 import path from 'path';
 
 const projectRoot = __dirname;
@@ -15,5 +15,5 @@ config.resolver.nodeModulesPaths = [
 Object.assign(config.resolver, {disableHierarchicalLookup: true});
 
 /** Metro configuration with NativeWind support and monorepo workspace resolution. */
-// @ts-expect-error - Mismatch between expo/metro-config and nativewind/metro types
-export default withNativeWind(config, {input: './src/global.css'});
+// @ts-expect-error - nativewind v5 withNativewind type mismatch with expo/metro-config
+export default withNativewind(config);

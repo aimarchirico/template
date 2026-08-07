@@ -1,5 +1,8 @@
 import {describe, expect, it} from 'vitest';
-import metroConfig from '../metro.config';
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- nativewind v5 withNativewind return type differs from expo/metro-config; cast needed for property access in tests
+import metroConfigModule from '../metro.config';
+const metroConfig = metroConfigModule as any;
+
 
 describe('metro.config', () => {
   it('exports valid Metro configuration', () => {

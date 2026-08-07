@@ -16,4 +16,11 @@ export default defineConfig([
       'commons/public-jsdoc-only': 'off',
     },
   },
+  {
+    files: ['postcss.config.mjs'],
+    rules: {
+      'commons/public-jsdoc-only': 'off',
+      'import/no-default-export': 'off',
+    },
+  },
 ]);
