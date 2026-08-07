@@ -20,7 +20,7 @@
     "fix": "eslint --fix"
   },
   "dependencies": {
-    "@aimarchirico/commons-ts": "^3.4.4",
+    "@aimarchirico/commons-ts": "^3.4.5",
     "jsdom": "^30.0.1"
   },
   "devDependencies": {

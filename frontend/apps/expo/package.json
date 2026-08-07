@@ -39,7 +39,7 @@
   "devDependencies": {
     "@aimarchirico/commons-cloudflare": "^3.6.1",
     "@aimarchirico/commons-expo": "^4.5.1",
-    "@aimarchirico/commons-ts": "^3.4.4",
+    "@aimarchirico/commons-ts": "^3.4.5",
     "@aimarchirico/template-expo-test-utils": "workspace:*",
     "@babel/core": "^7.20.0",
     "@tailwindcss/postcss": "^4.3.3",
