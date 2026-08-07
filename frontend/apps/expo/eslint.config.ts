@@ -5,7 +5,7 @@ import baseConfig from '@aimarchirico/commons-expo/eslint-app';
 export default defineConfig([
   ...baseConfig,
   {
-    files: ['babel.config.cjs', 'functions/api/\\[\\[path\\]\\].ts'],
+    files: ['functions/api/\\[\\[path\\]\\].ts'],
     rules: {
       'check-file/filename-naming-convention': 'off',
     },
@@ -14,13 +14,6 @@ export default defineConfig([
     files: ['nativewind-env.d.ts'],
     rules: {
       'commons/public-jsdoc-only': 'off',
-    },
-  },
-  {
-    files: ['postcss.config.mjs'],
-    rules: {
-      'commons/public-jsdoc-only': 'off',
-      'import/no-default-export': 'off',
     },
   },
 ]);
