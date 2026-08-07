@@ -38,5 +38,6 @@ minimumReleaseAgeExclude:
   - 'expo-router@57.0.8'
   - 'expo-splash-screen@57.0.5'
   - '@expo/metro-runtime@57.0.7'
+  - eas-cli@21.7.0
 patchedDependencies:
   '@expo/image-utils@0.11.4': patches/@expo__image-utils@0.11.4.patch
