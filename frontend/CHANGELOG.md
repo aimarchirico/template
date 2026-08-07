@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.10.3](https://github.com/aimarchirico/template/compare/template-app-v1.10.2...template-app-v1.10.3) (2026-08-07)
+
+
+### Bug Fixes
+
+* remove outdated patch for [@expo](https://github.com/expo)__image-utils ([0f03dee](https://github.com/aimarchirico/template/commit/0f03dee38dfcfc68e73d4ce412c1940457aef516))
+* remove patched dependency for @expo/image-utils ([231c39d](https://github.com/aimarchirico/template/commit/231c39d611f8dd00450b8f8f72f298496e5a76c0))
+* update TypeScript error comment for nativewind type mismatch ([c9c3fe2](https://github.com/aimarchirico/template/commit/c9c3fe27875dcd9a1e8906662cd9c3a11298bd24))
+
 ## [1.10.2](https://github.com/aimarchirico/template/compare/template-app-v1.10.1...template-app-v1.10.2) (2026-08-07)
 
 
