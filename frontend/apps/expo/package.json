@@ -41,7 +41,7 @@
     "@aimarchirico/commons-expo": "^4.5.1",
     "@aimarchirico/commons-ts": "^3.4.5",
     "@aimarchirico/template-expo-test-utils": "workspace:*",
-    "@babel/core": "^7.20.0",
+    "@babel/core": "^8.0.1",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/babel__core": "^7.20.5",
     "@types/node": "^26.0.1",
