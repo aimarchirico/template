@@ -15,5 +15,5 @@ config.resolver.nodeModulesPaths = [
 Object.assign(config.resolver, {disableHierarchicalLookup: true});
 
 /** Metro configuration with NativeWind support and monorepo workspace resolution. */
-// @ts-expect-error - nativewind v5 withNativewind type mismatch with expo/metro-config
+// @ts-expect-error - Mismatch between expo/metro-config and nativewind/metro types
 export default withNativewind(config);
