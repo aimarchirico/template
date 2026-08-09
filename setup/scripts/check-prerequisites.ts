@@ -40,6 +40,7 @@ const requiredEnv = [
   'VPS_SSH_KEY_FILE',
   'GH_PACKAGES_TOKEN',
   'EXPO_TOKEN',
+  'PROJECT_TOKEN',
 ];
 
 for (const key of requiredEnv) {
@@ -68,5 +69,5 @@ before continuing - setup/README.md documents how to mint them:
     application and policy this project reuses
   - the EAS project the app links to
   - the VPS user, its SSH key, and ~/docker on the VPS
-  - the GitHub packages token and the Expo token
+  - the GitHub packages token, the Expo token, and the Projects token
 `);
