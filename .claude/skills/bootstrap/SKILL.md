@@ -38,4 +38,4 @@ argument-hint: "[--no-project] [--no-issues] [--auto]"
        description, passing `--auto` through if provided (its approval steps
        surface normally unless `--auto` is set).
     3. `commons:plan` will prompt the user for approval before creating the
-       initial issue backlog via `commons:issue`.
+       initial issue backlog.
