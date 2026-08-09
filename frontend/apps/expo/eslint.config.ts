@@ -5,7 +5,7 @@ import baseConfig from '@aimarchirico/commons-expo/eslint-app';
 export default defineConfig([
   ...baseConfig,
   {
-    files: ['babel.config.cjs', 'functions/api/\\[\\[path\\]\\].ts'],
+    files: ['functions/api/\\[\\[path\\]\\].ts'],
     rules: {
       'check-file/filename-naming-convention': 'off',
     },

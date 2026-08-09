@@ -1,5 +1,31 @@
 # Changelog
 
+## [1.10.3](https://github.com/aimarchirico/template/compare/template-app-v1.10.2...template-app-v1.10.3) (2026-08-07)
+
+
+### Bug Fixes
+
+* remove outdated patch for [@expo](https://github.com/expo)__image-utils ([0f03dee](https://github.com/aimarchirico/template/commit/0f03dee38dfcfc68e73d4ce412c1940457aef516))
+* remove patched dependency for @expo/image-utils ([231c39d](https://github.com/aimarchirico/template/commit/231c39d611f8dd00450b8f8f72f298496e5a76c0))
+* update TypeScript error comment for nativewind type mismatch ([c9c3fe2](https://github.com/aimarchirico/template/commit/c9c3fe27875dcd9a1e8906662cd9c3a11298bd24))
+
+## [1.10.2](https://github.com/aimarchirico/template/compare/template-app-v1.10.1...template-app-v1.10.2) (2026-08-07)
+
+
+### Bug Fixes
+
+* **deps:** update @aimarchirico/commons-ts ([e7e65a8](https://github.com/aimarchirico/template/commit/e7e65a8289f07fcd443f39651ec44c6d3caaccad))
+* **deps:** update eas-cli to 21.6.0 ([69de27e](https://github.com/aimarchirico/template/commit/69de27e78b10aa2d85839cd250c4d39406deb2b5))
+* **deps:** update jiti devDependency across workspace packages ([2722f6f](https://github.com/aimarchirico/template/commit/2722f6f81d0a2d01b89e9451b4009d3b723bfd80))
+* **deps:** update jiti devDependency across workspace packages ([a65a1df](https://github.com/aimarchirico/template/commit/a65a1dff16e9a2eb7e26a9b61cf197543340f96d))
+* **deps:** update nativewind ([35804e3](https://github.com/aimarchirico/template/commit/35804e3d16db1e0b4b0bd591657d8d4697318d93))
+* **deps:** update nativewind and related dependencies to use caret versioning ([023c00e](https://github.com/aimarchirico/template/commit/023c00eee94791dde85c8104bcc1cead17578370))
+* **eslint.config.ts:** remove redundant ignores ([9c404a5](https://github.com/aimarchirico/template/commit/9c404a525bfd4823829c0d521698d86b84f62e8e))
+* resolve failing checks ([124a2ff](https://github.com/aimarchirico/template/commit/124a2ff8cb44f01957b162df89ece1213ca17134))
+* **types:** add CSS module declaration to nativewind-env.d.ts ([d5eb291](https://github.com/aimarchirico/template/commit/d5eb291845932be8a207bdec7b20bacc96f46f27))
+* **types:** ensure correct reference for react-native-css in nativewind-env.d.ts ([5f8b361](https://github.com/aimarchirico/template/commit/5f8b3616934c83390e5c890ec27d16c2256fcd04))
+* **types:** restore CSS module declaration in nativewind-env.d.ts ([848f980](https://github.com/aimarchirico/template/commit/848f98073d51618495e24f6dcc6af2cb0ed4b103))
+
 ## [1.10.1](https://github.com/aimarchirico/template/compare/template-app-v1.10.0...template-app-v1.10.1) (2026-08-03)
 
 
