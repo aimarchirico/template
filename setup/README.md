@@ -230,7 +230,15 @@ and a rename that rewrites the frontend's package names must not be able to
 invalidate the tooling performing it. Nothing here is compiled; `tsx` runs the
 scripts directly.
 
-## Backup and Recovery
+## Deployment
+
+This module is not deployed. It configures what CI deploys: the environments,
+variables, and secrets that
+[`.github/workflows/release.yaml`](../.github/workflows/release.yaml) reads when
+it deploys the API to the VPS, the web app to Pages at its custom domain, and
+builds a signed Android APK.
+
+### Backup and Recovery
 
 Three values cannot be regenerated without consequence. Back them up when
 `task setup` reports them.
@@ -268,14 +276,6 @@ Three values cannot be regenerated without consequence. Back them up when
 The database credentials are recorded in the VPS `.env` alongside the proxy
 secret. Losing that file without a backup means recreating the role and
 restoring the volume.
-
-## Deployment
-
-This module is not deployed. It configures what CI deploys: the environments,
-variables, and secrets that
-[`.github/workflows/release.yaml`](../.github/workflows/release.yaml) reads when
-it deploys the API to the VPS, the web app to Pages at its custom domain, and
-builds a signed Android APK.
 
 ## Contributing
 
