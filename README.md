@@ -4,8 +4,6 @@ A full-stack monorepo template with a Spring Boot backend and an Expo
 frontend, wired together with shared tooling, CI/CD, contribution guidelines,
 and agent skills.
 
-## Features
-
 - Spring Boot backend built with Gradle
 - Expo frontend built with PNPM
 - Idempotent scaffolding and provisioning of every external resource
@@ -17,7 +15,7 @@ and agent skills.
 - Contribution and documentation guidelines
 - Agent skills for the development workflow
 
-## Getting Started
+## Install
 
 The project can be initialized either using the AI agent or manually:
 
@@ -38,8 +36,23 @@ to initialize the project.
    task setup:init
    ```
 
-3. Create documentation and issues according to the guidelines in [`CONTRIBUTING.md`](.github/CONTRIBUTING.md).
-
 Module documentation: [`setup/README.md`](setup/README.md) covers the
 prerequisites, both environment files, every variable and secret, and what must
 be backed up.
+
+## Usage
+
+Every module's commands are flattened into the root [`Taskfile.yaml`](Taskfile.yaml)
+and run from the repository root. List everything available with:
+
+```bash
+task --list
+```
+
+See each module's README for the commands specific to it:
+[`setup/README.md`](setup/README.md) and [`tools/README.md`](tools/README.md).
+
+## Contributing
+
+Create documentation and issues according to the guidelines in
+[`CONTRIBUTING.md`](.github/CONTRIBUTING.md).
