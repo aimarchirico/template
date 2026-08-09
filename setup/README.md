@@ -133,6 +133,7 @@ gets pushed to GitHub — every value in it ends up there.
 | `CLOUDFLARE_DEPLOY_TOKEN` | Token CI deploys Pages with.                                          |
 | `GH_PACKAGES_TOKEN`       | Reads `@aimarchirico` packages, here and in CI.                       |
 | `EXPO_TOKEN`              | Expo credentials. Also stores and reads back the keystore.            |
+| `PROJECT_TOKEN`           | Moves sub-issues on the project board in CI.                          |
 
 ### What gets pushed to GitHub
 
@@ -146,6 +147,7 @@ provisioning command produced it and the Taskfile chained it onward.
 | `CF_ACCESS_CLIENT_ID`       | repository         | variable | `create-service-token`                 |
 | `CF_ACCESS_CLIENT_SECRET`   | repository         | secret   | `create-service-token`                 |
 | `GH_PACKAGES_TOKEN`         | repository         | secret   | `setup/.env`                           |
+| `PROJECT_TOKEN`             | repository         | secret   | `setup/.env`                           |
 | `VPS_USER`                  | api-production     | variable | `setup/.env`                           |
 | `VPS_HOST`                  | api-production     | variable | `setup/.env`                           |
 | `VPS_SSH_KEY`               | api-production     | secret   | contents of `VPS_SSH_KEY_FILE`         |

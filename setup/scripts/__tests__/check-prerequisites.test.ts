@@ -31,6 +31,7 @@ const requiredEnv = {
   VPS_SSH_KEY_FILE: '/keys/vps.pem',
   GH_PACKAGES_TOKEN: 'f',
   EXPO_TOKEN: 'g',
+  PROJECT_TOKEN: 'h',
 };
 
 const originalEnv = {...process.env};
