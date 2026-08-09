@@ -14,39 +14,9 @@ no domain, account, tunnel, policy, or layout path in it. This module owns the
 rename manifest, the configuration, the infrastructure constants, and the order
 the commands run in.
 
-## Tech Stack
+## Install
 
-- **Node** 20+ — runs the commands via `pnpm exec` and the three helper scripts
-- **Task** 3 — orchestration, and the only place configuration becomes
-  environment
-- **GitHub CLI** — resolves the repository and performs the GitHub writes
-- **OpenSSH** and **keytool** — the VPS env file and the Android keystore
-
-## Folder Structure
-
-```text
-setup/
-├── Taskfile.yaml     # orchestration: one task per provisioning step
-├── config.json       # this project's identity — the targets of the rename
-├── default.json      # the template's strings — the sources of the rename
-├── manifest.json     # what the rename touches; all layout knowledge
-├── .env.example      # the infrastructure constants and credentials needed here
-├── .npmrc            # resolves @aimarchirico packages from GitHub Packages
-├── package.json      # this module's own pnpm workspace and its dependencies
-└── scripts/
-    ├── *.ts          # entry points — one per provisioning task in Taskfile.yaml
-    └── lib/
-        ├── utils.ts          # shared helpers (runCommand, loadEnvs, config access…)
-        ├── build-manifest.ts # marries manifest.json with both configs
-        └── config-value.ts   # reads one config value for a task variable
-```
-
-Three files are generated and gitignored: `.env` (your credentials),
-`manifest.resolved.json` (the manifest handed to Commons), and `.outputs.env`
-(the values one command produces for the next). Nothing else is written here —
-the signing keystore is stored in EAS, never in this repository.
-
-## Prerequisites
+### Prerequisites
 
 These cannot be automated and must exist before `task setup` will succeed.
 
@@ -61,7 +31,7 @@ These cannot be automated and must exist before `task setup` will succeed.
 | A GitHub packages token                               | GitHub → Settings → Developer settings → Tokens (classic), `read:packages` |
 | A VPS user with an SSH key and a `~/docker` directory | The VPS                                                                    |
 
-### Minting the Cloudflare tokens
+#### Minting the Cloudflare tokens
 
 Two tokens, deliberately separate, because they are used by different parties
 with different reach:
@@ -73,7 +43,7 @@ with different reach:
 
 The deploy token only ever publishes a Pages build, so it gets nothing else.
 
-### Finding the Access policy
+#### Finding the Access policy
 
 `ACCESS_POLICY_ID` is the reusable policy the shared API Access application
 uses; every project attaches its service token to the same one. Its value is not
@@ -87,21 +57,21 @@ curl -s -H "Authorization: Bearer $CLOUDFLARE_SETUP_TOKEN" \
   | jq -r '.result[] | "\(.id)  \(.name)"'
 ```
 
-### API hostname
+#### API hostname
 
 The tunnel ingress rule is keyed by hostname, so **each project needs its own
 `API_HOST`**. Two projects sharing one hostname would overwrite each other's
 route. The backend is still reached under its own context path, so the API URL
 is `https://$API_HOST/<slug>`.
 
-### Host port
+#### Host port
 
 `modules.backend.port` must be unique across every project on the VPS, since the
 tunnel routes to `http://localhost:<port>` on the shared host. List the tunnel's
 existing ingress rules to find a free one. The value is validated as an integer
 between 1024 and 65535.
 
-### Database
+#### Database
 
 The setup flow assumes nothing exists for the database beyond the VPS itself.
 `compose.yaml` runs Postgres as a container and creates the database and role
@@ -110,14 +80,14 @@ What a maintainer must ensure by hand is only that the VPS has Docker with the
 Compose plugin and a `~/docker` directory writable by `VPS_USER`; the database
 credentials are generated on the first run and reused on every later one.
 
-## Environment Variables
+### Environment Variables
 
 Two files, with distinct purposes. `setup/.env` holds what this module needs
 locally in order to provision; see [`.env.example`](.env.example).
 [`.github/.env.example`](../.github/.env.example) is the specification of what
 gets pushed to GitHub — every value in it ends up there.
 
-### setup/.env
+#### setup/.env
 
 | Key                       | Meaning                                                               |
 | :------------------------ | :-------------------------------------------------------------------- |
@@ -135,7 +105,7 @@ gets pushed to GitHub — every value in it ends up there.
 | `EXPO_TOKEN`              | Expo credentials. Also stores and reads back the keystore.            |
 | `PROJECT_TOKEN`           | Moves sub-issues on the project board in CI.                          |
 
-### What gets pushed to GitHub
+#### What gets pushed to GitHub
 
 Every value's origin, which is the part worth knowing: `setup/.env` means you
 supplied it, `config.json` means it was derived, and *command* means a
@@ -164,7 +134,7 @@ between the Pages runtime environment and the VPS `.env` and belongs to neither
 CI nor the repository, and the database credentials, which live only in the VPS
 `.env`.
 
-## Local Development
+### Installation Steps
 
 Order of operations for a freshly generated repository:
 
@@ -184,6 +154,8 @@ every resource as already present.
 `default.json` have been replaced, editing `config.json` to a third name has no
 effect, because the strings the rename would search for are gone. Renaming again
 means editing `default.json` to the current values first.
+
+## Usage
 
 Provisioning alone, which is what you run for the rest of the project's life:
 
@@ -213,6 +185,50 @@ and secrets, `create-project` and `import-keystore` produce the
 `android-production` signing values,
 and `backend:env` produces the proxy secret the Pages environment needs. All
 three therefore run before the steps that consume them.
+
+## Development
+
+### Tech Stack
+
+- **Node** 20+ — runs the commands via `pnpm exec` and the three helper scripts
+- **Task** 3 — orchestration, and the only place configuration becomes
+  environment
+- **GitHub CLI** — resolves the repository and performs the GitHub writes
+- **OpenSSH** and **keytool** — the VPS env file and the Android keystore
+
+### Folder Structure
+
+```text
+setup/
+├── Taskfile.yaml     # orchestration: one task per provisioning step
+├── config.json       # this project's identity — the targets of the rename
+├── default.json      # the template's strings — the sources of the rename
+├── manifest.json     # what the rename touches; all layout knowledge
+├── .env.example      # the infrastructure constants and credentials needed here
+├── .npmrc            # resolves @aimarchirico packages from GitHub Packages
+├── package.json      # this module's own pnpm workspace and its dependencies
+└── scripts/
+    ├── *.ts          # entry points — one per provisioning task in Taskfile.yaml
+    └── lib/
+        ├── utils.ts          # shared helpers (runCommand, loadEnvs, config access…)
+        ├── build-manifest.ts # marries manifest.json with both configs
+        └── config-value.ts   # reads one config value for a task variable
+```
+
+Three files are generated and gitignored: `.env` (your credentials),
+`manifest.resolved.json` (the manifest handed to Commons), and `.outputs.env`
+(the values one command produces for the next). Nothing else is written here —
+the signing keystore is stored in EAS, never in this repository.
+
+### Code Quality
+
+This module is its own pnpm workspace, so it owns its checks:
+`task setup:check` lints and type-checks the scripts, and `task setup:fix`
+applies what ESLint can fix. It deliberately sits outside the frontend
+workspace — provisioning runs before the frontend's dependencies are installed,
+and a rename that rewrites the frontend's package names must not be able to
+invalidate the tooling performing it. Nothing here is compiled; `tsx` runs the
+scripts directly.
 
 ## Backup and Recovery
 
@@ -253,16 +269,6 @@ The database credentials are recorded in the VPS `.env` alongside the proxy
 secret. Losing that file without a backup means recreating the role and
 restoring the volume.
 
-## Code Quality
-
-This module is its own pnpm workspace, so it owns its checks:
-`task setup:check` lints and type-checks the scripts, and `task setup:fix`
-applies what ESLint can fix. It deliberately sits outside the frontend
-workspace — provisioning runs before the frontend's dependencies are installed,
-and a rename that rewrites the frontend's package names must not be able to
-invalidate the tooling performing it. Nothing here is compiled; `tsx` runs the
-scripts directly.
-
 ## Deployment
 
 This module is not deployed. It configures what CI deploys: the environments,
@@ -270,3 +276,7 @@ variables, and secrets that
 [`.github/workflows/release.yaml`](../.github/workflows/release.yaml) reads when
 it deploys the API to the VPS, the web app to Pages at its custom domain, and
 builds a signed Android APK.
+
+## Contributing
+
+See the root [`CONTRIBUTING.md`](../.github/CONTRIBUTING.md).
