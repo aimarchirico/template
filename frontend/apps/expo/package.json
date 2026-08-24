@@ -37,9 +37,9 @@
     "react-native-worklets": "0.10.0"
   },
   "devDependencies": {
-    "@aimarchirico/commons-cloudflare": "^3.6.1",
-    "@aimarchirico/commons-expo": "^4.5.1",
-    "@aimarchirico/commons-ts": "^3.4.5",
+    "@aimarchirico/commons-cloudflare": "^3.7.2",
+    "@aimarchirico/commons-expo": "^4.7.2",
+    "@aimarchirico/commons-ts": "^3.6.1",
     "@aimarchirico/template-expo-test-utils": "workspace:*",
     "@babel/core": "^7.20.0",
     "@tailwindcss/postcss": "^4.3.3",
