@@ -11,6 +11,7 @@
     "@aimarchirico/commons-expo": "^4.7.2",
     "@aimarchirico/commons-github": "^2.1.1",
     "@aimarchirico/commons-project": "^1.4.3",
+    "@aimarchirico/commons-ssh": "^1.1.0",
     "@aimarchirico/commons-ts": "^3.6.1",
     "@types/node": "^26.0.1",
     "@vitest/coverage-v8": "^3.2.4",
