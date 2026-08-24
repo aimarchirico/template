@@ -77,4 +77,8 @@ tools/
 
 ## Contributing
 
-See the root [`CONTRIBUTING.md`](../.github/CONTRIBUTING.md).
+See [`.github/CONTRIBUTING.md`](../.github/CONTRIBUTING.md).
+
+## License
+
+[MIT](../LICENSE) © Aimár A. Chirico

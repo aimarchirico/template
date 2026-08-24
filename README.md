@@ -54,5 +54,8 @@ See each module's README for the commands specific to it:
 
 ## Contributing
 
-Create documentation and issues according to the guidelines in
-[`CONTRIBUTING.md`](.github/CONTRIBUTING.md).
+See [`.github/CONTRIBUTING.md`](.github/CONTRIBUTING.md).
+
+## License
+
+[MIT](LICENSE) © Aimár A. Chirico
