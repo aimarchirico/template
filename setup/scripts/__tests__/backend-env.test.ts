@@ -4,12 +4,21 @@ import {beforeEach, describe, expect, it, vi} from 'vitest';
 
 vi.mock('child_process', () => ({spawnSync: vi.fn()}));
 
-const {loadEnvs, getConfigString, getRepoName} = vi.hoisted(() => ({
-  loadEnvs: vi.fn(),
-  getConfigString: vi.fn(),
-  getRepoName: vi.fn(),
+const {loadEnvs, getConfigString, getRepoName, getOutputsPath, context} =
+  vi.hoisted(() => ({
+    loadEnvs: vi.fn(),
+    getConfigString: vi.fn(),
+    getRepoName: vi.fn(),
+    getOutputsPath: vi.fn(),
+    context: vi.fn(),
+  }));
+vi.mock('../utils/common.js', () => ({
+  loadEnvs,
+  getConfigString,
+  getRepoName,
+  getOutputsPath,
 }));
-vi.mock('../utils/common.js', () => ({loadEnvs, getConfigString, getRepoName}));
+vi.mock('@aimarchirico/commons-project', () => ({context}));
 
 const appendFileSyncSpy = vi
   .spyOn(fs, 'appendFileSync')
@@ -23,19 +32,23 @@ const logSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
 const originalEnv = {...process.env};
 
 const requiredEnv = {
-  SLUG: 'my-app',
-  BACKEND_PORT: '8080',
   VPS_HOST: 'host',
   VPS_USER: 'user',
   VPS_SSH_KEY_FILE: '/keys/vps.pem',
-  REPO: 'my-repo',
 };
 
 beforeEach(() => {
   vi.resetModules();
   loadEnvs.mockReset();
   getConfigString.mockReset();
+  getConfigString.mockImplementation((key: string) =>
+    key === 'slug' ? 'my-app' : '8080',
+  );
   getRepoName.mockReset();
+  getRepoName.mockReturnValue('my-repo');
+  getOutputsPath.mockReset();
+  getOutputsPath.mockReturnValue('/setup/.outputs.env');
+  context.mockClear();
   appendFileSyncSpy.mockClear();
   vi.mocked(spawnSync).mockReset();
   exitSpy.mockClear();
@@ -46,7 +59,9 @@ beforeEach(() => {
 
 describe('backend-env script', () => {
   it('exits when required environment variables are missing', async () => {
-    process.env.SLUG = 'my-app';
+    delete process.env.VPS_HOST;
+    delete process.env.VPS_USER;
+    delete process.env.VPS_SSH_KEY_FILE;
 
     await expect(import('../backend-env.js')).rejects.toThrow('exit:1');
 
@@ -57,7 +72,7 @@ describe('backend-env script', () => {
   });
 
   it('reuses existing values, writes the remote env file, and copies compose files', async () => {
-    process.env = {...originalEnv, ...requiredEnv, OUTPUT_FILE: '/out.env'};
+    process.env = {...originalEnv, ...requiredEnv};
 
     const isReadCall = (args: unknown) =>
       Array.isArray(args) &&
@@ -82,8 +97,13 @@ describe('backend-env script', () => {
 
     await import('../backend-env.js');
 
+    expect(context).toHaveBeenCalledWith(
+      'VPS',
+      'user@host',
+      'from VPS_HOST/VPS_USER',
+    );
     expect(appendFileSyncSpy).toHaveBeenCalledWith(
-      '/out.env',
+      '/setup/.outputs.env',
       expect.stringContaining('PROXY_SECRET='),
       {mode: 0o600},
     );

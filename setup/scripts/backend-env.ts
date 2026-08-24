@@ -3,23 +3,22 @@
 import crypto from 'crypto';
 import fs from 'fs';
 import {spawnSync} from 'child_process';
-import {loadEnvs, getConfigString, getRepoName} from './utils/common.js';
+import {context} from '@aimarchirico/commons-project';
+import {
+  loadEnvs,
+  getConfigString,
+  getRepoName,
+  getOutputsPath,
+} from './utils/common.js';
 
 loadEnvs();
 
-process.env.SLUG = process.env.SLUG || getConfigString('slug');
-process.env.BACKEND_PORT =
-  process.env.BACKEND_PORT || getConfigString('modules.backend.port');
-process.env.REPO = process.env.REPO || getRepoName();
+process.env.OUTPUT_FILE = getOutputsPath();
+process.env.SLUG = getConfigString('slug');
+process.env.BACKEND_PORT = getConfigString('modules.backend.port');
+process.env.REPO = getRepoName();
 
-const required = [
-  'SLUG',
-  'BACKEND_PORT',
-  'VPS_HOST',
-  'VPS_USER',
-  'VPS_SSH_KEY_FILE',
-  'REPO',
-];
+const required = ['VPS_HOST', 'VPS_USER', 'VPS_SSH_KEY_FILE'];
 const missing = required.filter(name => !process.env[name]);
 if (missing.length) {
   console.error(
@@ -29,6 +28,7 @@ if (missing.length) {
 }
 
 const {SLUG, VPS_HOST, VPS_USER, VPS_SSH_KEY_FILE, REPO} = process.env;
+context('VPS', `${VPS_USER}@${VPS_HOST}`, 'from VPS_HOST/VPS_USER');
 const remoteDir = `~/docker/${REPO}`;
 const secret = () => crypto.randomBytes(32).toString('base64url');
 

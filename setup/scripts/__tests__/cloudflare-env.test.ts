@@ -40,7 +40,8 @@ describe('cloudflare-env script', () => {
     expect(process.env.CLOUDFLARE_API_TOKEN).toBe('cf-token');
     expect(process.env.PAGES_PROJECT_NAME).toBe('my-repo');
     expect(process.env.API_URL).toBe('https://api.example.com/my-app');
-    expect(process.env.PAGES_VARIABLES).toBe('API_URL,PROXY_SECRET');
+    expect(process.env.PAGES_VARIABLES).toBe('API_URL');
+    expect(process.env.PAGES_SECRETS).toBe('PROXY_SECRET');
     expect(runCommand).toHaveBeenCalledWith('pnpm', [
       'exec',
       'commons-cloudflare',
