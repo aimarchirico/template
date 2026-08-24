@@ -41,8 +41,8 @@ describe('github-variables script', () => {
     expect(loadEnvs).toHaveBeenCalled();
     expect(getConfigString).toHaveBeenCalledWith('slug');
     expect(process.env.NODE_AUTH_TOKEN).toBe('gh-token');
-    expect(process.env.API_URL).toBe('https://api.example.com/my-app');
     expect(process.env.APP_URL).toBe('https://my-app.example.com');
+    expect(process.env.API_URL).toBe('https://my-app.example.com/api');
     expect(process.env.GITHUB_VARIABLES).toBe('API_URL,CF_ACCESS_CLIENT_ID');
     expect(process.env.GITHUB_ENVIRONMENT_VARIABLES).toBe(
       'staging=A;production=B,C',
