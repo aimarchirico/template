@@ -22,112 +22,36 @@ These cannot be automated and must exist before `task setup` will succeed.
 
 | What                                                  | Where                                                                      |
 | :---------------------------------------------------- | :------------------------------------------------------------------------- |
-| A repository generated from the template              | GitHub — use the template, do not fork, so the project board can be copied |
+| A repository generated from the template              | GitHub, use the template, do not fork                                      |
 | Two Cloudflare API tokens                             | Cloudflare dashboard → My Profile → API Tokens                             |
 | A Cloudflare Tunnel on the VPS                        | Cloudflare Zero Trust → Networks → Tunnels                                 |
 | An Access application and policy for the APIs         | Cloudflare Zero Trust → Access → Applications                              |
-| An EAS project                                        | [expo.dev](https://expo.dev) → Projects                                    |
+| An EAS project (ID and owner go in `config.json`)     | [expo.dev](https://expo.dev) → Projects                                    |
 | An Expo access token                                  | expo.dev → Account settings → Access tokens                                |
 | A GitHub packages token                               | GitHub → Settings → Developer settings → Tokens (classic), `read:packages` |
 | A VPS user with an SSH key and a `~/docker` directory | The VPS                                                                    |
+| An Android keystore, downloaded to `credentials.json` | `pnpm exec eas credentials --platform android`, every run, see below       |
 
-#### Minting the Cloudflare tokens
+- **Access policy.** `ACCESS_POLICY_ID` isn't in this repo, find it:
 
-Two tokens, deliberately separate, because they are used by different parties
-with different reach:
+  ```bash
+  curl -s -H "Authorization: Bearer $CLOUDFLARE_SETUP_TOKEN" \
+    "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/access/policies" \
+    | jq -r '.result[] | "\(.id)  \(.name)"'
+  ```
 
-| Token                     | Used by                                           | Scopes                                                                                                                          |
-| :------------------------ | :------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------ |
-| `CLOUDFLARE_SETUP_TOKEN`  | `task setup`, locally                             | Account · Cloudflare Pages:Edit · Account · Cloudflare Tunnel:Edit · Account · Access: Apps and Policies:Edit · Zone · DNS:Edit |
-| `CLOUDFLARE_DEPLOY_TOKEN` | CI, as `CLOUDFLARE_API_TOKEN` in `web-production` | Account · Cloudflare Pages:Edit                                                                                                 |
-
-The deploy token only ever publishes a Pages build, so it gets nothing else.
-
-#### Finding the Access policy
-
-`ACCESS_POLICY_ID` is the reusable policy the shared API Access application
-uses; every project attaches its service token to the same one. Its value is not
-recorded in this repository — like every other account, zone, and tunnel
-identifier it belongs in `setup/.env`, not in version control. List the
-account's policies and take the id of the one the API application references:
-
-```bash
-curl -s -H "Authorization: Bearer $CLOUDFLARE_SETUP_TOKEN" \
-  "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/access/policies" \
-  | jq -r '.result[] | "\(.id)  \(.name)"'
-```
-
-#### API hostname
-
-The tunnel ingress rule is keyed by hostname, so **each project needs its own
-`API_HOST`**. Two projects sharing one hostname would overwrite each other's
-route. The backend is still reached under its own context path, so the API URL
-is `https://$API_HOST/<slug>`.
-
-#### Host port
-
-`modules.backend.port` must be unique across every project on the VPS, since the
-tunnel routes to `http://localhost:<port>` on the shared host. List the tunnel's
-existing ingress rules to find a free one. The value is validated as an integer
-between 1024 and 65535.
-
-#### Database
-
-The setup flow assumes nothing exists for the database beyond the VPS itself.
-`compose.yaml` runs Postgres as a container and creates the database and role
-from the `.env` this module places, and Flyway applies the schema on first boot.
-What a maintainer must ensure by hand is only that the VPS has Docker with the
-Compose plugin and a `~/docker` directory writable by `VPS_USER`; the database
-credentials are generated on the first run and reused on every later one.
+- **Android keystore.** Run `pnpm exec eas credentials --platform android`
+  from `frontend/apps/expo` (needs the app config there for project
+  context). `task setup` reads `credentials.json` back from that same
+  directory, nothing to move.
 
 ### Environment Variables
 
-Two files, with distinct purposes. `setup/.env` holds what this module needs
-locally in order to provision; see [`.env.example`](.env.example).
-[`.github/.env.example`](../.github/.env.example) is the specification of what
-gets pushed to GitHub — every value in it ends up there.
-
-#### setup/.env
-
-| Key                       | Meaning                                                               |
-| :------------------------ | :-------------------------------------------------------------------- |
-| `CLOUDFLARE_ACCOUNT_ID`   | Account owning the Pages project, tunnel, and Access resources.       |
-| `BASE_DOMAIN`             | Domain the web app's custom domain is a subdomain of.                 |
-| `API_HOST`                | Public hostname this project's API is reached on. Unique per project. |
-| `TUNNEL_ID`               | Existing Cloudflare Tunnel the VPS runs.                              |
-| `ACCESS_POLICY_ID`        | Existing Access policy the service token is attached to.              |
-| `VPS_HOST`                | VPS the API is deployed to.                                           |
-| `VPS_USER`                | User the deploy and this module connect as.                           |
-| `VPS_SSH_KEY_FILE`        | Path to that user's private key. Its contents become the secret.      |
-| `CLOUDFLARE_SETUP_TOKEN`  | Token this module provisions with.                                    |
-| `CLOUDFLARE_DEPLOY_TOKEN` | Token CI deploys Pages with.                                          |
-| `GH_PACKAGES_TOKEN`       | Reads `@aimarchirico` packages, here and in CI.                       |
-| `EXPO_TOKEN`              | Expo credentials. Also stores and reads back the keystore.            |
-| `PROJECT_TOKEN`           | Moves sub-issues on the project board in CI.                          |
-
-#### What gets pushed to GitHub
-
-Every value's origin, which is the part worth knowing: `setup/.env` means you
-supplied it, `config.json` means it was derived, and *command* means a
-provisioning command produced it and the Taskfile chained it onward.
-
-| Key                         | Scope              | Kind     | Origin                                 |
-| :-------------------------- | :----------------- | :------- | :------------------------------------- |
-| `API_URL`                   | repository         | variable | `config.json` slug + `API_HOST`        |
-| `CF_ACCESS_CLIENT_ID`       | repository         | variable | `create-service-token`                 |
-| `CF_ACCESS_CLIENT_SECRET`   | repository         | secret   | `create-service-token`                 |
-| `GH_PACKAGES_TOKEN`         | repository         | secret   | `setup/.env`                           |
-| `PROJECT_TOKEN`             | repository         | secret   | `setup/.env`                           |
-| `VPS_USER`                  | api-production     | variable | `setup/.env`                           |
-| `VPS_HOST`                  | api-production     | variable | `setup/.env`                           |
-| `VPS_SSH_KEY`               | api-production     | secret   | contents of `VPS_SSH_KEY_FILE`         |
-| `ANDROID_KEY_ALIAS`         | android-production | variable | `import-keystore`                      |
-| `ANDROID_KEYSTORE_BASE64`   | android-production | secret   | `import-keystore`                      |
-| `ANDROID_KEYSTORE_PASSWORD` | android-production | secret   | `import-keystore`                      |
-| `ANDROID_KEY_PASSWORD`      | android-production | secret   | `import-keystore`                      |
-| `APP_URL`                   | web-production     | variable | `config.json` slug + `BASE_DOMAIN`     |
-| `CLOUDFLARE_ACCOUNT_ID`     | web-production     | variable | `setup/.env`                           |
-| `CLOUDFLARE_API_TOKEN`      | web-production     | secret   | `setup/.env` `CLOUDFLARE_DEPLOY_TOKEN` |
+Two files, with distinct purposes, each documenting every key inline: `setup/.env`
+holds what this module needs locally in order to provision, see
+[`.env.example`](.env.example). [`.github/.env.example`](../.github/.env.example)
+is the specification of what gets pushed to GitHub: scope, kind, and origin
+for every value: and every value in it ends up there.
 
 Two values never reach GitHub, correctly: `PROXY_SECRET`, which is shared
 between the Pages runtime environment and the VPS `.env` and belongs to neither
@@ -138,10 +62,11 @@ CI nor the repository, and the database credentials, which live only in the VPS
 
 Order of operations for a freshly generated repository:
 
-1. Fill [`config.json`](config.json) with the project's details — its name, the
-   Kotlin and npm identifiers, the container image, and the host port.
-2. Copy [`.env.example`](.env.example) to `.env` and fill it in.
-3. Run the rename and provisioning in one step:
+1. Fill [`config.json`](config.json) with the project's details: its name, the
+   Kotlin and npm identifiers, the container image, the host port, and the
+   EAS project ID and owner from the EAS project created above.
+1. Copy [`.env.example`](.env.example) to `.env` and fill it in.
+1. Run the rename and provisioning in one step:
 
    ```bash
    task setup:init
@@ -166,18 +91,18 @@ task setup:prerequisites  # prerequisites and credentials only
 
 Individual steps, for when one value rotates:
 
-| Command                           | Provisions                                        |
-| :-------------------------------- | :------------------------------------------------ |
-| `task setup:github:project`       | The project board, copied from the template's.    |
-| `task setup:github:environments`  | The three deployment environments.                |
-| `task setup:cloudflare:pages`     | The Pages project and its custom domain.          |
-| `task setup:cloudflare:tunnel`    | The tunnel ingress route for `API_HOST`.          |
-| `task setup:cloudflare:token`     | The Access service token, attached to the policy. |
-| `task setup:android:keystore`     | The Android signing keystore, stored in EAS.      |
-| `task setup:backend:env`          | The backend `.env` and compose files on the VPS.  |
-| `task setup:cloudflare:env`       | The Pages runtime environment.                    |
-| `task setup:github:variables`     | The repository and environment variables.         |
-| `task setup:github:secrets`       | The repository and environment secrets.           |
+| Command                          | Provisions                                        |
+| :------------------------------- | :------------------------------------------------ |
+| `task setup:github:project`      | The project board, copied from the template's.    |
+| `task setup:github:environments` | The three deployment environments.                |
+| `task setup:cloudflare:pages`    | The Pages project and its custom domain.          |
+| `task setup:cloudflare:tunnel`   | The tunnel ingress route for `API_HOST`.          |
+| `task setup:cloudflare:token`    | The Access service token, attached to the policy. |
+| `task setup:android:keystore`    | The EAS project link and the keystore secrets.    |
+| `task setup:backend:env`         | The backend `.env` and compose files on the VPS.  |
+| `task setup:cloudflare:env`      | The Pages runtime environment.                    |
+| `task setup:github:variables`    | The repository and environment variables.         |
+| `task setup:github:secrets`      | The repository and environment secrets.           |
 
 Order matters when running the whole flow, because outputs chain:
 `create-service-token` produces the credentials that become repository variables
@@ -190,34 +115,33 @@ three therefore run before the steps that consume them.
 
 ### Tech Stack
 
-- **Node** 20+ — runs the commands via `pnpm exec` and the three helper scripts
-- **Task** 3 — orchestration, and the only place configuration becomes
+- **Node** 20+: runs the commands via `pnpm exec` and the three helper scripts
+- **Task** 3: orchestration, and the only place configuration becomes
   environment
-- **GitHub CLI** — resolves the repository and performs the GitHub writes
-- **OpenSSH** and **keytool** — the VPS env file and the Android keystore
+- **GitHub CLI**: resolves the repository and performs the GitHub writes
+- **OpenSSH** and **keytool**: the VPS env file and the Android keystore
 
 ### Folder Structure
 
 ```text
 setup/
 ├── Taskfile.yaml     # orchestration: one task per provisioning step
-├── config.json       # this project's identity — the targets of the rename
-├── default.json      # the template's strings — the sources of the rename
+├── config.json       # this project's identity: the targets of the rename
+├── default.json      # the template's strings: the sources of the rename
 ├── manifest.json     # what the rename touches; all layout knowledge
 ├── .env.example      # the infrastructure constants and credentials needed here
 ├── .npmrc            # resolves @aimarchirico packages from GitHub Packages
 ├── package.json      # this module's own pnpm workspace and its dependencies
 └── scripts/
-    ├── *.ts          # entry points — one per provisioning task in Taskfile.yaml
-    └── lib/
-        ├── utils.ts          # shared helpers (runCommand, loadEnvs, config access…)
-        ├── build-manifest.ts # marries manifest.json with both configs
-        └── config-value.ts   # reads one config value for a task variable
+    ├── *.ts          # entry points: one per provisioning task in Taskfile.yaml
+    └── utils/
+        ├── common.ts         # shared helpers (runCommand, loadEnvs, config access…)
+        └── build-manifest.ts # marries manifest.json with both configs
 ```
 
 Three files are generated and gitignored: `.env` (your credentials),
 `manifest.resolved.json` (the manifest handed to Commons), and `.outputs.env`
-(the values one command produces for the next). Nothing else is written here —
+(the values one command produces for the next). Nothing else is written here:
 the signing keystore is stored in EAS, never in this repository.
 
 ### Code Quality
@@ -225,7 +149,7 @@ the signing keystore is stored in EAS, never in this repository.
 This module is its own pnpm workspace, so it owns its checks:
 `task setup:check` lints and type-checks the scripts, and `task setup:fix`
 applies what ESLint can fix. It deliberately sits outside the frontend
-workspace — provisioning runs before the frontend's dependencies are installed,
+workspace: provisioning runs before the frontend's dependencies are installed,
 and a rename that rewrites the frontend's package names must not be able to
 invalidate the tooling performing it. Nothing here is compiled; `tsx` runs the
 scripts directly.
@@ -244,13 +168,13 @@ Three values cannot be regenerated without consequence. Back them up when
 `task setup` reports them.
 
 - **The Android keystore.** Replacing signing keys breaks updates for every
-  installed copy of the app — Play and any sideloaded install will refuse the new
+  installed copy of the app: Play and any sideloaded install will refuse the new
   APK.
 
   This one needs the least of you, because EAS holds it. First, `create-project`
   resolves the project on EAS and registers the project ID. Then,
   `import-keystore` imports the credentials from `credentials.json` into EAS,
-  and reads them back to push to GitHub — so no signing key is ever written
+  and reads them back to push to GitHub: so no signing key is ever written
   into this repository. An existing setup is never regenerated; the commands
   report them as already present and return the stored values.
 
@@ -260,7 +184,7 @@ Three values cannot be regenerated without consequence. Back them up when
   `npx eas-cli credentials --platform android` if you ever need the file itself.
 
   Note that the base64 copy pushed to the `android-production` secret is *not* a
-  backup — GitHub never lets a secret be read back. EAS is the copy that matters,
+  backup: GitHub never lets a secret be read back. EAS is the copy that matters,
   which means the thing to protect is **access to the EAS account**. Keep
   `EXPO_TOKEN` and that account's recovery intact.
 - **The Access service token secret.** Cloudflare returns it only at creation.
