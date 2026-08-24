@@ -16,4 +16,5 @@ process.env.OUTPUT_FILE = getOutputsPath();
 const expoDir = path.join(rootDir, 'frontend', 'apps', 'expo');
 
 runCommand('pnpm', ['exec', 'commons-expo', 'create-project'], {cwd: expoDir});
+console.log();
 runCommand('pnpm', ['exec', 'commons-expo', 'import-keystore'], {cwd: expoDir});

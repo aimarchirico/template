@@ -7,6 +7,7 @@ loadEnvs();
 runCommand('pnpm', ['exec', 'tsx', 'scripts/utils/build-manifest.ts'], {
   cwd: setupDir,
 });
+console.log();
 
 process.env.NODE_AUTH_TOKEN = process.env.GH_PACKAGES_TOKEN;
 process.env.MANIFEST_PATH = path.join(setupDir, 'manifest.resolved.json');
@@ -18,6 +19,7 @@ process.env.MANIFEST_PATH = path.join(setupDir, 'manifest.resolved.json');
  */
 process.env.PROJECT_ROOT = rootDir;
 runCommand('pnpm', ['exec', 'commons-project', 'rename-project']);
+console.log();
 
 runCommand('pnpm', [
   '--dir',
