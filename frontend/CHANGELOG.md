@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.10.4](https://github.com/aimarchirico/template/compare/template-app-v1.10.3...template-app-v1.10.4) (2026-08-24)
+
+
+### Bug Fixes
+
+* **setup:** align configured backend port and add EAS owner to the rename manifest ([88ff15d](https://github.com/aimarchirico/template/commit/88ff15d522ffe56db3fc374c25d6503abd284484))
+* **setup:** fix provisioning pipeline bugs and rewrite install docs ([eb01d20](https://github.com/aimarchirico/template/commit/eb01d204c680b6423c3e1db1451659e0fae41e0c))
+
 ## [1.10.3](https://github.com/aimarchirico/template/compare/template-app-v1.10.2...template-app-v1.10.3) (2026-08-07)
 
 
