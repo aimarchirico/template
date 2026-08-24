@@ -13,6 +13,7 @@ export function buildExpoConfig(isDev: boolean, apiUrl: string) {
     expo: {
       name: isDev ? `${NAME} (Dev)` : NAME,
       slug: LOWER_CASE,
+      owner: 'aimarchirico',
       version: '1.10.3', // x-release-please-version
       orientation: 'portrait',
       icon: './src/assets/icons/icon.png',

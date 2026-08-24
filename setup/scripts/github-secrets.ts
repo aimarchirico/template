@@ -5,7 +5,7 @@ import {loadEnvs, runCommand} from './utils/common.js';
 loadEnvs();
 
 const config = JSON.parse(
-  fs.readFileSync('./assets/environments.json', 'utf8'),
+  fs.readFileSync('./scripts/assets/environments.json', 'utf8'),
 );
 
 process.env.NODE_AUTH_TOKEN = process.env.GH_PACKAGES_TOKEN;
@@ -20,8 +20,7 @@ if (
     .trim();
 }
 
-process.env.GITHUB_SECRETS =
-  'CF_ACCESS_CLIENT_SECRET,GH_PACKAGES_TOKEN,PROJECT_TOKEN';
+process.env.GITHUB_SECRETS = 'CF_ACCESS_CLIENT_SECRET,GH_PACKAGES_TOKEN';
 process.env.GITHUB_ENVIRONMENT_SECRETS = config.environments
   .map(
     (e: {name: string; secrets: string[]}) =>

@@ -42,7 +42,7 @@ describe('github-secrets script', () => {
     expect(process.env.CLOUDFLARE_API_TOKEN).toBe('cf-token');
     expect(process.env.VPS_SSH_KEY).toBeUndefined();
     expect(process.env.GITHUB_SECRETS).toBe(
-      'CF_ACCESS_CLIENT_SECRET,GH_PACKAGES_TOKEN,PROJECT_TOKEN',
+      'CF_ACCESS_CLIENT_SECRET,GH_PACKAGES_TOKEN',
     );
     expect(process.env.GITHUB_ENVIRONMENT_SECRETS).toBe(
       'staging=A,B;production=C',

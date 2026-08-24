@@ -3,7 +3,7 @@ services:
     container_name: template-db
     image: postgres:18
     ports:
-      - '5432:5432'
+      - '5434:5432'
     environment:
       POSTGRES_DB: template
       POSTGRES_USER: ${DB_USER}

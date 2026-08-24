@@ -40,7 +40,6 @@ const requiredEnv = [
   'VPS_SSH_KEY_FILE',
   'GH_PACKAGES_TOKEN',
   'EXPO_TOKEN',
-  'PROJECT_TOKEN',
 ];
 
 for (const key of requiredEnv) {
@@ -62,12 +61,13 @@ if (missing.length > 0) {
 
 console.log('= prerequisites: already present');
 console.log(`
-Browser-only prerequisites setup cannot automate. Confirm each exists
-before continuing - setup/README.md documents how to mint them:
+Prerequisites setup cannot automate. Confirm each exists before continuing -
+setup/README.md documents how to mint them:
 
   - the two Cloudflare API tokens, the tunnel, and the Access
     application and policy this project reuses
   - the EAS project the app links to
   - the VPS user, its SSH key, and ~/docker on the VPS
-  - the GitHub packages token, the Expo token, and the Projects token
+  - the GitHub packages token and the Expo token
+  - the Android keystore, downloaded before every run
 `);

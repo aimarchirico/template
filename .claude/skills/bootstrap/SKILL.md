@@ -21,11 +21,10 @@ argument-hint: "[--no-project] [--no-issues] [--auto]"
 1. **Project Initialization** (skip if `--no-project` is passed):
     1. Read `setup/default.json` to understand the default settings, and
        `setup/README.md` for what each configuration value means.
-    2. Prompt the user to customize these settings, including the backend
-       host port, which must be unique across projects on the VPS.
+    2. Prompt the user to customize these settings.
     3. Save the customized configuration to `setup/config.json`.
     4. Confirm the user has filled `setup/.env` from `setup/.env.example`
-       and that the browser-only prerequisites in `setup/README.md` exist. Run
+       and that the prerequisites in `setup/README.md` exist. Run
        `task setup:prerequisites` and report anything missing.
     5. Execute `task setup:init`, which renames the project and chains into
        provisioning. Both it and `task setup` are idempotent and remain in the
