@@ -3,12 +3,9 @@ version: '3'
 # setup/.env is loaded by the root Taskfile: Task rejects dotenv declarations in
 # included Taskfiles.
 
-# The commands report their own outcomes, so echoing each shell block would bury
-# the summary this flow exists to produce.
+# The commands report their own outcomes, so echoing each shell block would
+# bury that reporting under Task's own noise.
 silent: true
-
-vars:
-  OUTPUTS: '{{.TASKFILE_DIR}}/.outputs.env'
 
 tasks:
   install:
@@ -39,17 +36,26 @@ tasks:
     desc: Provision every external resource the project needs
     cmds:
       - task: prerequisites
+      - echo
       - task: github:project
+      - echo
       - task: github:environments
+      - echo
       - task: cloudflare:pages
+      - echo
       - task: cloudflare:tunnel
+      - echo
       - task: cloudflare:token
+      - echo
       - task: android:keystore
+      - echo
       - task: backend:env
+      - echo
       - task: cloudflare:env
+      - echo
       - task: github:variables
+      - echo
       - task: github:secrets
-      - task: summary
 
   prerequisites:
     desc: Verify the required tools and credentials are present
@@ -106,18 +112,3 @@ tasks:
     desc: Push the repository and environment secrets
     cmds:
       - pnpm exec tsx scripts/github-secrets.ts
-
-  summary:
-    desc: Print every provisioned resource and the values that were set
-    env:
-      NAME:
-        sh: pnpm exec tsx scripts/utils/config-value.ts name
-      SLUG:
-        sh: pnpm exec tsx scripts/utils/config-value.ts slug
-      BACKEND_PORT:
-        sh: pnpm exec tsx scripts/utils/config-value.ts modules.backend.port
-      ENVIRONMENTS:
-        sh: pnpm exec tsx scripts/utils/environments-list.ts
-      OUTPUTS: '{{.OUTPUTS}}'
-    cmds:
-      - pnpm exec tsx scripts/summary.ts
