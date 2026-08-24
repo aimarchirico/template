@@ -5,7 +5,7 @@ import {loadEnvs, runCommand} from './utils/common.js';
 loadEnvs();
 
 const config = JSON.parse(
-  fs.readFileSync('./assets/environments.json', 'utf8'),
+  fs.readFileSync('./scripts/assets/environments.json', 'utf8'),
 );
 
 process.env.NODE_AUTH_TOKEN = process.env.GH_PACKAGES_TOKEN;
