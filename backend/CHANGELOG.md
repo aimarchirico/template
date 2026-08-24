@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.1](https://github.com/aimarchirico/template/compare/template-api-v1.6.0...template-api-v1.6.1) (2026-08-24)
+
+
+### Bug Fixes
+
+* **setup:** align configured backend port and add EAS owner to the rename manifest ([88ff15d](https://github.com/aimarchirico/template/commit/88ff15d522ffe56db3fc374c25d6503abd284484))
+* **setup:** fix provisioning pipeline bugs and rewrite install docs ([eb01d20](https://github.com/aimarchirico/template/commit/eb01d204c680b6423c3e1db1451659e0fae41e0c))
+
 ## [1.6.0](https://github.com/aimarchirico/template/compare/template-api-v1.5.0...template-api-v1.6.0) (2026-08-03)
 
 
