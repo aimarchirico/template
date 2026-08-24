@@ -18,11 +18,11 @@ importers:
         specifier: ^2.1.1
         version: 2.1.1
       '@aimarchirico/commons-project':
-        specifier: ^1.4.3
-        version: 1.4.3
+        specifier: ^1.4.4
+        version: 1.4.4
       '@aimarchirico/commons-ssh':
-        specifier: ^1.1.0
-        version: 1.1.0
+        specifier: ^1.1.1
+        version: 1.1.1
       '@aimarchirico/commons-ts':
         specifier: ^3.6.1
         version: 3.6.1(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(tsx@4.23.1)(yaml@2.9.0))
@@ -73,16 +73,12 @@ packages:
     resolution: {integrity: sha512-wlwWnSxdZBmHmM1x49OMCXUuAyVdCciTfdP6LmT1SsZQyfJciCUBlMPI1sbyJWLeFTRcRoczwWq8gIRZeOnvIQ==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-github/2.1.1/ee89881c404e89460f1fe64edc3c45a3ead4338e}
     hasBin: true
 
-  '@aimarchirico/commons-project@1.4.2':
-    resolution: {integrity: sha512-dn4E16UO4WdMZ0cKQYr9jPjYZn/7qFWSunokjYZ6ru0+N6oe2IqvGEgcolmfqE6zVtElni8JOlmMFnvfIPmrtw==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-project/1.4.2/2e65c3b1c59bdcd4518bf6c68aa11ec71a0f4e8c}
+  '@aimarchirico/commons-project@1.4.4':
+    resolution: {integrity: sha512-VD74t3ypRR8PwJHHcOg3FhybvAulKlYBIeLMcpUYcSDvE/iKXmHDy2h8Ty2jYxkyvTDtOsSxaZlmzSCJpr04SQ==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-project/1.4.4/db278762c3088d659449cdf507ceb5481cc4a268}
     hasBin: true
 
-  '@aimarchirico/commons-project@1.4.3':
-    resolution: {integrity: sha512-0lAsQEdSuAEcYV6nfcqmxDv0LJFpJFXbDXrSmgxXz+WzuhKOAQiOWALr5sDAt9ARfZvt/ZHIt0iZsf7zFste8w==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-project/1.4.3/1465ce88c60229cd1fba899fd9768658c28e90d1}
-    hasBin: true
-
-  '@aimarchirico/commons-ssh@1.1.0':
-    resolution: {integrity: sha512-H/gfk7i+bZdlcSdkQhzq9MJgsrPxNMOzC3/zdlA7/ERz8uDqFpgNfob2zeCMfsv5A8uNIl5ORQ/9FvB5J/oa9g==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-ssh/1.1.0/10be25092a6885af4b12f25e5406b0f1e1b3dbb0}
+  '@aimarchirico/commons-ssh@1.1.1':
+    resolution: {integrity: sha512-X2ntQRwQA8WYr4DrDbVTDxXz/9y17MsbWFEDFRNjS41GHKniVekzAb0iYbMJKIMX+Z+yonq3pT8yJNPgaF+GMw==, tarball: https://npm.pkg.github.com/download/@aimarchirico/commons-ssh/1.1.1/78d3b9b46deee31eb2139df7c48807a36f71b148}
     hasBin: true
 
   '@aimarchirico/commons-ts@3.6.1':
@@ -5217,13 +5213,13 @@ snapshots:
 
   '@aimarchirico/commons-cloudflare@3.7.2':
     dependencies:
-      '@aimarchirico/commons-project': 1.4.2
+      '@aimarchirico/commons-project': 1.4.4
       replace-in-file: 8.4.0
       shelljs: 0.10.0
 
   '@aimarchirico/commons-expo@4.7.2(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(eas-cli@21.4.0(@types/node@26.1.1)(supports-color@8.1.1)(typescript@6.0.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(expo@57.0.8)(react@19.2.8)(supports-color@8.1.1)(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(tsx@4.23.1)(yaml@2.9.0))':
     dependencies:
-      '@aimarchirico/commons-project': 1.4.2
+      '@aimarchirico/commons-project': 1.4.4
       '@aimarchirico/commons-ts': 3.6.1(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(tsx@4.23.1)(yaml@2.9.0))
       eas-cli: 21.4.0(@types/node@26.1.1)(supports-color@8.1.1)(typescript@6.0.3)
       eslint: 9.39.5(jiti@2.7.0)(supports-color@8.1.1)
@@ -5243,19 +5239,15 @@ snapshots:
 
   '@aimarchirico/commons-github@2.1.1':
     dependencies:
-      '@aimarchirico/commons-project': 1.4.2
+      '@aimarchirico/commons-project': 1.4.4
 
-  '@aimarchirico/commons-project@1.4.2':
+  '@aimarchirico/commons-project@1.4.4':
     dependencies:
       tinyglobby: 0.2.17
 
-  '@aimarchirico/commons-project@1.4.3':
+  '@aimarchirico/commons-ssh@1.1.1':
     dependencies:
-      tinyglobby: 0.2.17
-
-  '@aimarchirico/commons-ssh@1.1.0':
-    dependencies:
-      '@aimarchirico/commons-project': 1.4.3
+      '@aimarchirico/commons-project': 1.4.4
 
   '@aimarchirico/commons-ts@3.6.1(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3))(eslint-import-resolver-typescript@3.10.1)(eslint@9.39.5(jiti@2.7.0)(supports-color@8.1.1))(supports-color@8.1.1)(typescript@6.0.3)(vitest@3.2.7(@types/node@26.1.1)(jiti@2.7.0)(lightningcss@1.33.0)(supports-color@8.1.1)(terser@5.49.0)(tsx@4.23.1)(yaml@2.9.0))':
     dependencies:
