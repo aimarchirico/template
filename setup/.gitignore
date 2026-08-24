@@ -4,7 +4,7 @@ manifest.resolved.json
 node_modules/
 coverage/
 
-# Belt and braces. No keystore should ever land here — create-keystore stores it
+# Belt and braces. No keystore should ever land here: create-keystore stores it
 # in EAS and removes the temporary file keytool needs.
 *.keystore
 *.jks
