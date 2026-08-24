@@ -3,6 +3,7 @@
     "frontendName": {"path": "modules.frontend.name"},
     "frontendPackage": {"path": "modules.frontend.package"},
     "frontendScope": {"path": "modules.frontend.scope"},
+    "frontendOwner": {"path": "modules.frontend.owner"},
     "easProjectId": {"path": "modules.frontend.easProjectId"},
     "backendName": {"path": "modules.backend.name"},
     "backendPackage": {"path": "modules.backend.package"},
@@ -57,6 +58,10 @@
       "files": ["frontend/apps/expo/app.config.ts"]
     },
     {
+      "value": "frontendOwner",
+      "files": ["frontend/apps/expo/app.config.ts"]
+    },
+    {
       "value": "frontendScope",
       "files": [
         "frontend/package.json",
@@ -71,6 +76,7 @@
         "frontend/package.json",
         "frontend/apps/expo/package.json",
         "frontend/packages/shared/api-client/package.json",
+        "frontend/apps/expo/.env.example",
         "frontend/apps/expo/functions/api/.env.example",
         "tools/release-please-config.json"
       ]
